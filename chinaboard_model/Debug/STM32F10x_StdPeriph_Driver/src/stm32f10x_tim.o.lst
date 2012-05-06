@@ -1,0 +1,2773 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 2
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"stm32f10x_tim.c"
+  15              		.section	.text.TIM_DeInit,"ax",%progbits
+  16              		.align	2
+  17              		.global	TIM_DeInit
+  18              		.thumb
+  19              		.thumb_func
+  21              	TIM_DeInit:
+  22              		@ args = 0, pretend = 0, frame = 0
+  23              		@ frame_needed = 0, uses_anonymous_args = 0
+  24 0000 08B5     		push	{r3, lr}
+  25 0002 4FF43053 		mov	r3, #11264
+  26 0006 C4F20103 		movt	r3, 16385
+  27 000a 9842     		cmp	r0, r3
+  28 000c 00F08480 		beq	.L20
+  29 0010 B0F1804F 		cmp	r0, #1073741824
+  30 0014 00F08C80 		beq	.L21
+  31 0018 4FF48063 		mov	r3, #1024
+  32 001c C4F20003 		movt	r3, 16384
+  33 0020 9842     		cmp	r0, r3
+  34 0022 00F08F80 		beq	.L22
+  35 0026 4FF40063 		mov	r3, #2048
+  36 002a C4F20003 		movt	r3, 16384
+  37 002e 9842     		cmp	r0, r3
+  38 0030 00F09280 		beq	.L23
+  39 0034 4FF44063 		mov	r3, #3072
+  40 0038 C4F20003 		movt	r3, 16384
+  41 003c 9842     		cmp	r0, r3
+  42 003e 00F09580 		beq	.L24
+  43 0042 4FF48053 		mov	r3, #4096
+  44 0046 C4F20003 		movt	r3, 16384
+  45 004a 9842     		cmp	r0, r3
+  46 004c 00F09880 		beq	.L25
+  47 0050 4FF4A053 		mov	r3, #5120
+  48 0054 C4F20003 		movt	r3, 16384
+  49 0058 9842     		cmp	r0, r3
+  50 005a 00F09B80 		beq	.L26
+  51 005e 4FF45053 		mov	r3, #13312
+  52 0062 C4F20103 		movt	r3, 16385
+  53 0066 9842     		cmp	r0, r3
+  54 0068 00F09E80 		beq	.L27
+  55 006c 4FF49843 		mov	r3, #19456
+  56 0070 C4F20103 		movt	r3, 16385
+  57 0074 9842     		cmp	r0, r3
+  58 0076 00F0A380 		beq	.L28
+  59 007a 4FF4A043 		mov	r3, #20480
+  60 007e C4F20103 		movt	r3, 16385
+  61 0082 9842     		cmp	r0, r3
+  62 0084 00F0A880 		beq	.L29
+  63 0088 4FF4A843 		mov	r3, #21504
+  64 008c C4F20103 		movt	r3, 16385
+  65 0090 9842     		cmp	r0, r3
+  66 0092 00F0AD80 		beq	.L30
+  67 0096 4FF4C053 		mov	r3, #6144
+  68 009a C4F20003 		movt	r3, 16384
+  69 009e 9842     		cmp	r0, r3
+  70 00a0 00F0B280 		beq	.L31
+  71 00a4 4FF4E053 		mov	r3, #7168
+  72 00a8 C4F20003 		movt	r3, 16384
+  73 00ac 9842     		cmp	r0, r3
+  74 00ae 00F0B580 		beq	.L32
+  75 00b2 4FF40053 		mov	r3, #8192
+  76 00b6 C4F20003 		movt	r3, 16384
+  77 00ba 9842     		cmp	r0, r3
+  78 00bc 00F0B880 		beq	.L33
+  79 00c0 4FF48043 		mov	r3, #16384
+  80 00c4 C4F20103 		movt	r3, 16385
+  81 00c8 9842     		cmp	r0, r3
+  82 00ca 00F0BD80 		beq	.L34
+  83 00ce 4FF48843 		mov	r3, #17408
+  84 00d2 C4F20103 		movt	r3, 16385
+  85 00d6 9842     		cmp	r0, r3
+  86 00d8 06D0     		beq	.L35
+  87 00da 4FF49043 		mov	r3, #18432
+  88 00de C4F20103 		movt	r3, 16385
+  89 00e2 9842     		cmp	r0, r3
+  90 00e4 0CD0     		beq	.L36
+  91 00e6 08BD     		pop	{r3, pc}
+  92              	.L35:
+  93 00e8 0121     		movs	r1, #1
+  94 00ea 4FF40030 		mov	r0, #131072
+  95 00ee FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+  96 00f2 4FF40030 		mov	r0, #131072
+  97 00f6 0021     		movs	r1, #0
+  98 00f8 BDE80840 		pop	{r3, lr}
+  99 00fc FFF7FEBF 		b	RCC_APB2PeriphResetCmd
+ 100              	.L36:
+ 101 0100 0121     		movs	r1, #1
+ 102 0102 4FF48020 		mov	r0, #262144
+ 103 0106 FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+ 104 010a 4FF48020 		mov	r0, #262144
+ 105 010e 0021     		movs	r1, #0
+ 106 0110 BDE80840 		pop	{r3, lr}
+ 107 0114 FFF7FEBF 		b	RCC_APB2PeriphResetCmd
+ 108              	.L20:
+ 109 0118 0121     		movs	r1, #1
+ 110 011a 4FF40060 		mov	r0, #2048
+ 111 011e FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+ 112 0122 4FF40060 		mov	r0, #2048
+ 113 0126 0021     		movs	r1, #0
+ 114 0128 BDE80840 		pop	{r3, lr}
+ 115 012c FFF7FEBF 		b	RCC_APB2PeriphResetCmd
+ 116              	.L21:
+ 117 0130 0120     		movs	r0, #1
+ 118 0132 0146     		mov	r1, r0
+ 119 0134 FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+ 120 0138 0120     		movs	r0, #1
+ 121 013a 0021     		movs	r1, #0
+ 122 013c BDE80840 		pop	{r3, lr}
+ 123 0140 FFF7FEBF 		b	RCC_APB1PeriphResetCmd
+ 124              	.L22:
+ 125 0144 0220     		movs	r0, #2
+ 126 0146 0121     		movs	r1, #1
+ 127 0148 FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+ 128 014c 0220     		movs	r0, #2
+ 129 014e 0021     		movs	r1, #0
+ 130 0150 BDE80840 		pop	{r3, lr}
+ 131 0154 FFF7FEBF 		b	RCC_APB1PeriphResetCmd
+ 132              	.L23:
+ 133 0158 0420     		movs	r0, #4
+ 134 015a 0121     		movs	r1, #1
+ 135 015c FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+ 136 0160 0420     		movs	r0, #4
+ 137 0162 0021     		movs	r1, #0
+ 138 0164 BDE80840 		pop	{r3, lr}
+ 139 0168 FFF7FEBF 		b	RCC_APB1PeriphResetCmd
+ 140              	.L24:
+ 141 016c 0820     		movs	r0, #8
+ 142 016e 0121     		movs	r1, #1
+ 143 0170 FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+ 144 0174 0820     		movs	r0, #8
+ 145 0176 0021     		movs	r1, #0
+ 146 0178 BDE80840 		pop	{r3, lr}
+ 147 017c FFF7FEBF 		b	RCC_APB1PeriphResetCmd
+ 148              	.L25:
+ 149 0180 1020     		movs	r0, #16
+ 150 0182 0121     		movs	r1, #1
+ 151 0184 FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+ 152 0188 1020     		movs	r0, #16
+ 153 018a 0021     		movs	r1, #0
+ 154 018c BDE80840 		pop	{r3, lr}
+ 155 0190 FFF7FEBF 		b	RCC_APB1PeriphResetCmd
+ 156              	.L26:
+ 157 0194 2020     		movs	r0, #32
+ 158 0196 0121     		movs	r1, #1
+ 159 0198 FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+ 160 019c 2020     		movs	r0, #32
+ 161 019e 0021     		movs	r1, #0
+ 162 01a0 BDE80840 		pop	{r3, lr}
+ 163 01a4 FFF7FEBF 		b	RCC_APB1PeriphResetCmd
+ 164              	.L27:
+ 165 01a8 0121     		movs	r1, #1
+ 166 01aa 4FF40050 		mov	r0, #8192
+ 167 01ae FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+ 168 01b2 4FF40050 		mov	r0, #8192
+ 169 01b6 0021     		movs	r1, #0
+ 170 01b8 BDE80840 		pop	{r3, lr}
+ 171 01bc FFF7FEBF 		b	RCC_APB2PeriphResetCmd
+ 172              	.L28:
+ 173 01c0 0121     		movs	r1, #1
+ 174 01c2 4FF40020 		mov	r0, #524288
+ 175 01c6 FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+ 176 01ca 4FF40020 		mov	r0, #524288
+ 177 01ce 0021     		movs	r1, #0
+ 178 01d0 BDE80840 		pop	{r3, lr}
+ 179 01d4 FFF7FEBF 		b	RCC_APB2PeriphResetCmd
+ 180              	.L29:
+ 181 01d8 0121     		movs	r1, #1
+ 182 01da 4FF48010 		mov	r0, #1048576
+ 183 01de FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+ 184 01e2 4FF48010 		mov	r0, #1048576
+ 185 01e6 0021     		movs	r1, #0
+ 186 01e8 BDE80840 		pop	{r3, lr}
+ 187 01ec FFF7FEBF 		b	RCC_APB2PeriphResetCmd
+ 188              	.L30:
+ 189 01f0 0121     		movs	r1, #1
+ 190 01f2 4FF40010 		mov	r0, #2097152
+ 191 01f6 FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+ 192 01fa 4FF40010 		mov	r0, #2097152
+ 193 01fe 0021     		movs	r1, #0
+ 194 0200 BDE80840 		pop	{r3, lr}
+ 195 0204 FFF7FEBF 		b	RCC_APB2PeriphResetCmd
+ 196              	.L31:
+ 197 0208 4020     		movs	r0, #64
+ 198 020a 0121     		movs	r1, #1
+ 199 020c FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+ 200 0210 4020     		movs	r0, #64
+ 201 0212 0021     		movs	r1, #0
+ 202 0214 BDE80840 		pop	{r3, lr}
+ 203 0218 FFF7FEBF 		b	RCC_APB1PeriphResetCmd
+ 204              	.L32:
+ 205 021c 8020     		movs	r0, #128
+ 206 021e 0121     		movs	r1, #1
+ 207 0220 FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+ 208 0224 8020     		movs	r0, #128
+ 209 0226 0021     		movs	r1, #0
+ 210 0228 BDE80840 		pop	{r3, lr}
+ 211 022c FFF7FEBF 		b	RCC_APB1PeriphResetCmd
+ 212              	.L33:
+ 213 0230 0121     		movs	r1, #1
+ 214 0232 4FF48070 		mov	r0, #256
+ 215 0236 FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+ 216 023a 4FF48070 		mov	r0, #256
+ 217 023e 0021     		movs	r1, #0
+ 218 0240 BDE80840 		pop	{r3, lr}
+ 219 0244 FFF7FEBF 		b	RCC_APB1PeriphResetCmd
+ 220              	.L34:
+ 221 0248 0121     		movs	r1, #1
+ 222 024a 4FF48030 		mov	r0, #65536
+ 223 024e FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+ 224 0252 4FF48030 		mov	r0, #65536
+ 225 0256 0021     		movs	r1, #0
+ 226 0258 BDE80840 		pop	{r3, lr}
+ 227 025c FFF7FEBF 		b	RCC_APB2PeriphResetCmd
+ 229              		.section	.text.TIM_TimeBaseInit,"ax",%progbits
+ 230              		.align	2
+ 231              		.global	TIM_TimeBaseInit
+ 232              		.thumb
+ 233              		.thumb_func
+ 235              	TIM_TimeBaseInit:
+ 236              		@ args = 0, pretend = 0, frame = 0
+ 237              		@ frame_needed = 0, uses_anonymous_args = 0
+ 238              		@ link register save eliminated.
+ 239 0000 70B4     		push	{r4, r5, r6}
+ 240 0002 4FF43052 		mov	r2, #11264
+ 241 0006 4FF45054 		mov	r4, #13312
+ 242 000a C4F20102 		movt	r2, 16385
+ 243 000e 0388     		ldrh	r3, [r0, #0]
+ 244 0010 C4F20104 		movt	r4, 16385
+ 245 0014 9042     		cmp	r0, r2
+ 246 0016 18BF     		it	ne
+ 247 0018 A042     		cmpne	r0, r4
+ 248 001a 9BB2     		uxth	r3, r3
+ 249 001c 14BF     		ite	ne
+ 250 001e 0022     		movne	r2, #0
+ 251 0020 0122     		moveq	r2, #1
+ 252 0022 08D0     		beq	.L38
+ 253 0024 4FF48064 		mov	r4, #1024
+ 254 0028 C4F20004 		movt	r4, 16384
+ 255 002c B0F1804F 		cmp	r0, #1073741824
+ 256 0030 18BF     		it	ne
+ 257 0032 A042     		cmpne	r0, r4
+ 258 0034 36D1     		bne	.L49
+ 259              	.L38:
+ 260 0036 4FF68F75 		movw	r5, #65423
+ 261 003a 4C88     		ldrh	r4, [r1, #2]
+ 262 003c 1D40     		ands	r5, r5, r3
+ 263 003e 45EA0403 		orr	r3, r5, r4
+ 264              	.L39:
+ 265 0042 4FF4A056 		mov	r6, #5120
+ 266 0046 4FF48055 		mov	r5, #4096
+ 267 004a C4F20005 		movt	r5, 16384
+ 268 004e C4F20006 		movt	r6, 16384
+ 269 0052 B042     		cmp	r0, r6
+ 270 0054 18BF     		it	ne
+ 271 0056 A842     		cmpne	r0, r5
+ 272 0058 1FBF     		itttt	ne
+ 273 005a CD88     		ldrhne	r5, [r1, #6]
+ 274 005c 4FF6FF44 		movwne	r4, #64767
+ 275 0060 1C40     		andne	r4, r3, r4
+ 276 0062 44EA0503 		orrne	r3, r4, r5
+ 277 0066 8D88     		ldrh	r5, [r1, #4]
+ 278 0068 0C88     		ldrh	r4, [r1, #0]
+ 279 006a 0380     		strh	r3, [r0, #0]	@ movhi
+ 280 006c 8585     		strh	r5, [r0, #44]	@ movhi
+ 281 006e 0485     		strh	r4, [r0, #40]	@ movhi
+ 282 0070 5AB9     		cbnz	r2, .L41
+ 283 0072 4FF48842 		mov	r2, #17408
+ 284 0076 4FF48043 		mov	r3, #16384
+ 285 007a C4F20102 		movt	r2, 16385
+ 286 007e C4F20103 		movt	r3, 16385
+ 287 0082 9842     		cmp	r0, r3
+ 288 0084 18BF     		it	ne
+ 289 0086 9042     		cmpne	r0, r2
+ 290 0088 05D1     		bne	.L50
+ 291              	.L41:
+ 292 008a 0B7A     		ldrb	r3, [r1, #8]	@ zero_extendqisi2
+ 293 008c 0386     		strh	r3, [r0, #48]	@ movhi
+ 294              	.L42:
+ 295 008e 0123     		movs	r3, #1
+ 296 0090 8382     		strh	r3, [r0, #20]	@ movhi
+ 297 0092 70BC     		pop	{r4, r5, r6}
+ 298 0094 7047     		bx	lr
+ 299              	.L50:
+ 300 0096 4FF49043 		mov	r3, #18432
+ 301 009a C4F20103 		movt	r3, 16385
+ 302 009e 9842     		cmp	r0, r3
+ 303 00a0 F5D1     		bne	.L42
+ 304 00a2 F2E7     		b	.L41
+ 305              	.L49:
+ 306 00a4 4FF44065 		mov	r5, #3072
+ 307 00a8 4FF40064 		mov	r4, #2048
+ 308 00ac C4F20005 		movt	r5, 16384
+ 309 00b0 C4F20004 		movt	r4, 16384
+ 310 00b4 A042     		cmp	r0, r4
+ 311 00b6 18BF     		it	ne
+ 312 00b8 A842     		cmpne	r0, r5
+ 313 00ba C2D1     		bne	.L39
+ 314 00bc BBE7     		b	.L38
+ 316 00be 00BF     		.section	.text.TIM_OC1Init,"ax",%progbits
+ 317              		.align	2
+ 318              		.global	TIM_OC1Init
+ 319              		.thumb
+ 320              		.thumb_func
+ 322              	TIM_OC1Init:
+ 323              		@ args = 0, pretend = 0, frame = 0
+ 324              		@ frame_needed = 0, uses_anonymous_args = 0
+ 325              		@ link register save eliminated.
+ 326 0000 038C     		ldrh	r3, [r0, #32]
+ 327 0002 2DE9F001 		push	{r4, r5, r6, r7, r8}
+ 328 0006 23F00103 		bic	r3, r3, #1
+ 329 000a 1B04     		lsls	r3, r3, #16
+ 330 000c 1B0C     		lsrs	r3, r3, #16
+ 331 000e 0384     		strh	r3, [r0, #32]	@ movhi
+ 332 0010 038C     		ldrh	r3, [r0, #32]
+ 333 0012 0D89     		ldrh	r5, [r1, #8]
+ 334 0014 8488     		ldrh	r4, [r0, #4]
+ 335 0016 4F88     		ldrh	r7, [r1, #2]
+ 336 0018 028B     		ldrh	r2, [r0, #24]
+ 337 001a 2F43     		orrs	r7, r7, r5
+ 338 001c 22F07302 		bic	r2, r2, #115
+ 339 0020 23F00203 		bic	r3, r3, #2
+ 340 0024 4FF45056 		mov	r6, #13312
+ 341 0028 4FF43055 		mov	r5, #11264
+ 342 002c 1204     		lsls	r2, r2, #16
+ 343 002e 1B04     		lsls	r3, r3, #16
+ 344 0030 B1F800C0 		ldrh	ip, [r1, #0]
+ 345 0034 C4F20106 		movt	r6, 16385
+ 346 0038 C4F20105 		movt	r5, 16385
+ 347 003c 120C     		lsrs	r2, r2, #16
+ 348 003e 1B0C     		lsrs	r3, r3, #16
+ 349 0040 BFB2     		uxth	r7, r7
+ 350 0042 A842     		cmp	r0, r5
+ 351 0044 18BF     		it	ne
+ 352 0046 B042     		cmpne	r0, r6
+ 353 0048 A4B2     		uxth	r4, r4
+ 354 004a 42EA0C02 		orr	r2, r2, ip
+ 355 004e 47EA0303 		orr	r3, r7, r3
+ 356 0052 0BD0     		beq	.L52
+ 357 0054 4FF48846 		mov	r6, #17408
+ 358 0058 4FF48045 		mov	r5, #16384
+ 359 005c C4F20106 		movt	r6, 16385
+ 360 0060 C4F20105 		movt	r5, 16385
+ 361 0064 A842     		cmp	r0, r5
+ 362 0066 18BF     		it	ne
+ 363 0068 B042     		cmpne	r0, r6
+ 364 006a 1ED1     		bne	.L54
+ 365              	.L52:
+ 366 006c 4FF6F775 		movw	r5, #65527
+ 367 0070 B1F80AC0 		ldrh	ip, [r1, #10]
+ 368 0074 B1F80E80 		ldrh	r8, [r1, #14]
+ 369 0078 8F89     		ldrh	r7, [r1, #12]
+ 370 007a 1D40     		ands	r5, r5, r3
+ 371 007c 45EA0C0C 		orr	ip, r5, ip
+ 372 0080 4FF6FB73 		movw	r3, #65531
+ 373 0084 8E88     		ldrh	r6, [r1, #4]
+ 374 0086 4FF6FF45 		movw	r5, #64767
+ 375 008a 48EA0707 		orr	r7, r8, r7
+ 376 008e 2540     		ands	r5, r5, r4
+ 377 0090 0CEA0303 		and	r3, ip, r3
+ 378 0094 BCB2     		uxth	r4, r7
+ 379 0096 3343     		orrs	r3, r3, r6
+ 380 0098 2C43     		orrs	r4, r4, r5
+ 381              	.L53:
+ 382 009a C988     		ldrh	r1, [r1, #6]
+ 383 009c 8480     		strh	r4, [r0, #4]	@ movhi
+ 384 009e 0283     		strh	r2, [r0, #24]	@ movhi
+ 385 00a0 8186     		strh	r1, [r0, #52]	@ movhi
+ 386 00a2 0384     		strh	r3, [r0, #32]	@ movhi
+ 387 00a4 BDE8F001 		pop	{r4, r5, r6, r7, r8}
+ 388 00a8 7047     		bx	lr
+ 389              	.L54:
+ 390 00aa 4FF49045 		mov	r5, #18432
+ 391 00ae C4F20105 		movt	r5, 16385
+ 392 00b2 A842     		cmp	r0, r5
+ 393 00b4 F1D1     		bne	.L53
+ 394 00b6 D9E7     		b	.L52
+ 396              		.section	.text.TIM_OC2Init,"ax",%progbits
+ 397              		.align	2
+ 398              		.global	TIM_OC2Init
+ 399              		.thumb
+ 400              		.thumb_func
+ 402              	TIM_OC2Init:
+ 403              		@ args = 0, pretend = 0, frame = 0
+ 404              		@ frame_needed = 0, uses_anonymous_args = 0
+ 405              		@ link register save eliminated.
+ 406 0000 038C     		ldrh	r3, [r0, #32]
+ 407 0002 F0B4     		push	{r4, r5, r6, r7}
+ 408 0004 23F01003 		bic	r3, r3, #16
+ 409 0008 1B04     		lsls	r3, r3, #16
+ 410 000a 1B0C     		lsrs	r3, r3, #16
+ 411 000c 0384     		strh	r3, [r0, #32]	@ movhi
+ 412 000e 028C     		ldrh	r2, [r0, #32]
+ 413 0010 8488     		ldrh	r4, [r0, #4]
+ 414 0012 22F02002 		bic	r2, r2, #32
+ 415 0016 038B     		ldrh	r3, [r0, #24]
+ 416 0018 1204     		lsls	r2, r2, #16
+ 417 001a 0D89     		ldrh	r5, [r1, #8]
+ 418 001c 120C     		lsrs	r2, r2, #16
+ 419 001e 23F4E643 		bic	r3, r3, #29440
+ 420 0022 1B04     		lsls	r3, r3, #16
+ 421 0024 42EA0512 		orr	r2, r2, r5, lsl #4
+ 422 0028 B1F800C0 		ldrh	ip, [r1, #0]
+ 423 002c 4F88     		ldrh	r7, [r1, #2]
+ 424 002e 4FF45056 		mov	r6, #13312
+ 425 0032 4FF43055 		mov	r5, #11264
+ 426 0036 1B0C     		lsrs	r3, r3, #16
+ 427 0038 C4F20106 		movt	r6, 16385
+ 428 003c C4F20105 		movt	r5, 16385
+ 429 0040 43EA0C23 		orr	r3, r3, ip, lsl #8
+ 430 0044 42EA0712 		orr	r2, r2, r7, lsl #4
+ 431 0048 A842     		cmp	r0, r5
+ 432 004a 18BF     		it	ne
+ 433 004c B042     		cmpne	r0, r6
+ 434 004e A4B2     		uxth	r4, r4
+ 435 0050 9BB2     		uxth	r3, r3
+ 436 0052 92B2     		uxth	r2, r2
+ 437 0054 17D1     		bne	.L56
+ 438 0056 4F89     		ldrh	r7, [r1, #10]
+ 439 0058 4FF67F76 		movw	r6, #65407
+ 440 005c 1640     		ands	r6, r6, r2
+ 441 005e 4FF2FF35 		movw	r5, #62463
+ 442 0062 B1F80CC0 		ldrh	ip, [r1, #12]
+ 443 0066 2540     		ands	r5, r5, r4
+ 444 0068 46EA0716 		orr	r6, r6, r7, lsl #4
+ 445 006c 4FF6BF72 		movw	r2, #65471
+ 446 0070 8F88     		ldrh	r7, [r1, #4]
+ 447 0072 CC89     		ldrh	r4, [r1, #14]
+ 448 0074 3240     		ands	r2, r2, r6
+ 449 0076 45EA8C05 		orr	r5, r5, ip, lsl #2
+ 450 007a 42EA0712 		orr	r2, r2, r7, lsl #4
+ 451 007e 45EA8404 		orr	r4, r5, r4, lsl #2
+ 452 0082 92B2     		uxth	r2, r2
+ 453 0084 A4B2     		uxth	r4, r4
+ 454              	.L56:
+ 455 0086 C988     		ldrh	r1, [r1, #6]
+ 456 0088 8480     		strh	r4, [r0, #4]	@ movhi
+ 457 008a 0383     		strh	r3, [r0, #24]	@ movhi
+ 458 008c 0187     		strh	r1, [r0, #56]	@ movhi
+ 459 008e 0284     		strh	r2, [r0, #32]	@ movhi
+ 460 0090 F0BC     		pop	{r4, r5, r6, r7}
+ 461 0092 7047     		bx	lr
+ 463              		.section	.text.TIM_OC3Init,"ax",%progbits
+ 464              		.align	2
+ 465              		.global	TIM_OC3Init
+ 466              		.thumb
+ 467              		.thumb_func
+ 469              	TIM_OC3Init:
+ 470              		@ args = 0, pretend = 0, frame = 0
+ 471              		@ frame_needed = 0, uses_anonymous_args = 0
+ 472              		@ link register save eliminated.
+ 473 0000 038C     		ldrh	r3, [r0, #32]
+ 474 0002 F0B4     		push	{r4, r5, r6, r7}
+ 475 0004 23F48073 		bic	r3, r3, #256
+ 476 0008 1B04     		lsls	r3, r3, #16
+ 477 000a 1B0C     		lsrs	r3, r3, #16
+ 478 000c 0384     		strh	r3, [r0, #32]	@ movhi
+ 479 000e 028C     		ldrh	r2, [r0, #32]
+ 480 0010 0D89     		ldrh	r5, [r1, #8]
+ 481 0012 22F40072 		bic	r2, r2, #512
+ 482 0016 8488     		ldrh	r4, [r0, #4]
+ 483 0018 1204     		lsls	r2, r2, #16
+ 484 001a 838B     		ldrh	r3, [r0, #28]
+ 485 001c 120C     		lsrs	r2, r2, #16
+ 486 001e 42EA0522 		orr	r2, r2, r5, lsl #8
+ 487 0022 23F07303 		bic	r3, r3, #115
+ 488 0026 B1F802C0 		ldrh	ip, [r1, #2]
+ 489 002a 4FF45056 		mov	r6, #13312
+ 490 002e 4FF43055 		mov	r5, #11264
+ 491 0032 1B04     		lsls	r3, r3, #16
+ 492 0034 0F88     		ldrh	r7, [r1, #0]
+ 493 0036 C4F20106 		movt	r6, 16385
+ 494 003a C4F20105 		movt	r5, 16385
+ 495 003e 1B0C     		lsrs	r3, r3, #16
+ 496 0040 42EA0C22 		orr	r2, r2, ip, lsl #8
+ 497 0044 A842     		cmp	r0, r5
+ 498 0046 18BF     		it	ne
+ 499 0048 B042     		cmpne	r0, r6
+ 500 004a A4B2     		uxth	r4, r4
+ 501 004c 43EA0703 		orr	r3, r3, r7
+ 502 0050 92B2     		uxth	r2, r2
+ 503 0052 17D1     		bne	.L61
+ 504 0054 4F89     		ldrh	r7, [r1, #10]
+ 505 0056 4FF2FF76 		movw	r6, #63487
+ 506 005a 1640     		ands	r6, r6, r2
+ 507 005c 4CF6FF75 		movw	r5, #53247
+ 508 0060 B1F80CC0 		ldrh	ip, [r1, #12]
+ 509 0064 2540     		ands	r5, r5, r4
+ 510 0066 46EA0726 		orr	r6, r6, r7, lsl #8
+ 511 006a 4FF6FF32 		movw	r2, #64511
+ 512 006e 8F88     		ldrh	r7, [r1, #4]
+ 513 0070 CC89     		ldrh	r4, [r1, #14]
+ 514 0072 3240     		ands	r2, r2, r6
+ 515 0074 45EA0C15 		orr	r5, r5, ip, lsl #4
+ 516 0078 42EA0722 		orr	r2, r2, r7, lsl #8
+ 517 007c 45EA0414 		orr	r4, r5, r4, lsl #4
+ 518 0080 92B2     		uxth	r2, r2
+ 519 0082 A4B2     		uxth	r4, r4
+ 520              	.L61:
+ 521 0084 C988     		ldrh	r1, [r1, #6]
+ 522 0086 8480     		strh	r4, [r0, #4]	@ movhi
+ 523 0088 8383     		strh	r3, [r0, #28]	@ movhi
+ 524 008a 8187     		strh	r1, [r0, #60]	@ movhi
+ 525 008c 0284     		strh	r2, [r0, #32]	@ movhi
+ 526 008e F0BC     		pop	{r4, r5, r6, r7}
+ 527 0090 7047     		bx	lr
+ 529 0092 00BF     		.section	.text.TIM_OC4Init,"ax",%progbits
+ 530              		.align	2
+ 531              		.global	TIM_OC4Init
+ 532              		.thumb
+ 533              		.thumb_func
+ 535              	TIM_OC4Init:
+ 536              		@ args = 0, pretend = 0, frame = 0
+ 537              		@ frame_needed = 0, uses_anonymous_args = 0
+ 538              		@ link register save eliminated.
+ 539 0000 038C     		ldrh	r3, [r0, #32]
+ 540 0002 F0B4     		push	{r4, r5, r6, r7}
+ 541 0004 23F48053 		bic	r3, r3, #4096
+ 542 0008 1B04     		lsls	r3, r3, #16
+ 543 000a 1B0C     		lsrs	r3, r3, #16
+ 544 000c 0384     		strh	r3, [r0, #32]	@ movhi
+ 545 000e 028C     		ldrh	r2, [r0, #32]
+ 546 0010 0D89     		ldrh	r5, [r1, #8]
+ 547 0012 22F40052 		bic	r2, r2, #8192
+ 548 0016 8488     		ldrh	r4, [r0, #4]
+ 549 0018 1204     		lsls	r2, r2, #16
+ 550 001a 838B     		ldrh	r3, [r0, #28]
+ 551 001c 120C     		lsrs	r2, r2, #16
+ 552 001e 42EA0532 		orr	r2, r2, r5, lsl #12
+ 553 0022 23F4E643 		bic	r3, r3, #29440
+ 554 0026 4FF45056 		mov	r6, #13312
+ 555 002a 4FF43055 		mov	r5, #11264
+ 556 002e C4F20105 		movt	r5, 16385
+ 557 0032 C4F20106 		movt	r6, 16385
+ 558 0036 1B04     		lsls	r3, r3, #16
+ 559 0038 1B0C     		lsrs	r3, r3, #16
+ 560 003a A842     		cmp	r0, r5
+ 561 003c 18BF     		it	ne
+ 562 003e B042     		cmpne	r0, r6
+ 563 0040 B1F800C0 		ldrh	ip, [r1, #0]
+ 564 0044 4F88     		ldrh	r7, [r1, #2]
+ 565 0046 08BF     		it	eq
+ 566 0048 8E89     		ldrheq	r6, [r1, #12]
+ 567 004a A4B2     		uxth	r4, r4
+ 568 004c 04BF     		itt	eq
+ 569 004e 4BF6FF75 		movweq	r5, #49151
+ 570 0052 2540     		andeq	r5, r4, r5
+ 571 0054 C988     		ldrh	r1, [r1, #6]
+ 572 0056 08BF     		it	eq
+ 573 0058 45EA8614 		orreq	r4, r5, r6, lsl #6
+ 574 005c 43EA0C23 		orr	r3, r3, ip, lsl #8
+ 575 0060 42EA0732 		orr	r2, r2, r7, lsl #12
+ 576 0064 9BB2     		uxth	r3, r3
+ 577 0066 92B2     		uxth	r2, r2
+ 578 0068 08BF     		it	eq
+ 579 006a A4B2     		uxtheq	r4, r4
+ 580 006c 8480     		strh	r4, [r0, #4]	@ movhi
+ 581 006e 8383     		strh	r3, [r0, #28]	@ movhi
+ 582 0070 A0F84010 		strh	r1, [r0, #64]	@ movhi
+ 583 0074 0284     		strh	r2, [r0, #32]	@ movhi
+ 584 0076 F0BC     		pop	{r4, r5, r6, r7}
+ 585 0078 7047     		bx	lr
+ 587 007a 00BF     		.section	.text.TIM_ICInit,"ax",%progbits
+ 588              		.align	2
+ 589              		.global	TIM_ICInit
+ 590              		.thumb
+ 591              		.thumb_func
+ 593              	TIM_ICInit:
+ 594              		@ args = 0, pretend = 0, frame = 0
+ 595              		@ frame_needed = 0, uses_anonymous_args = 0
+ 596              		@ link register save eliminated.
+ 597 0000 0B88     		ldrh	r3, [r1, #0]
+ 598 0002 F0B4     		push	{r4, r5, r6, r7}
+ 599 0004 028C     		ldrh	r2, [r0, #32]
+ 600 0006 002B     		cmp	r3, #0
+ 601 0008 5AD0     		beq	.L87
+ 602 000a 042B     		cmp	r3, #4
+ 603 000c 4D88     		ldrh	r5, [r1, #2]
+ 604 000e 00F0FC80 		beq	.L88
+ 605 0012 082B     		cmp	r3, #8
+ 606 0014 00F0A580 		beq	.L89
+ 607 0018 22F48052 		bic	r2, r2, #4096
+ 608 001c 1204     		lsls	r2, r2, #16
+ 609 001e 120C     		lsrs	r2, r2, #16
+ 610 0020 8E88     		ldrh	r6, [r1, #4]
+ 611 0022 B1F808C0 		ldrh	ip, [r1, #8]
+ 612 0026 0284     		strh	r2, [r0, #32]	@ movhi
+ 613 0028 838B     		ldrh	r3, [r0, #28]
+ 614 002a 4FF45054 		mov	r4, #13312
+ 615 002e 23F44073 		bic	r3, r3, #768
+ 616 0032 1B05     		lsls	r3, r3, #20
+ 617 0034 1B0D     		lsrs	r3, r3, #20
+ 618 0036 4FF43052 		mov	r2, #11264
+ 619 003a 43EA0623 		orr	r3, r3, r6, lsl #8
+ 620 003e 078C     		ldrh	r7, [r0, #32]
+ 621 0040 C4F20104 		movt	r4, 16385
+ 622 0044 C4F20102 		movt	r2, 16385
+ 623 0048 2E03     		lsls	r6, r5, #12
+ 624 004a 43EA0C33 		orr	r3, r3, ip, lsl #12
+ 625 004e 9042     		cmp	r0, r2
+ 626 0050 18BF     		it	ne
+ 627 0052 A042     		cmpne	r0, r4
+ 628 0054 BFB2     		uxth	r7, r7
+ 629 0056 B6B2     		uxth	r6, r6
+ 630 0058 9BB2     		uxth	r3, r3
+ 631 005a 1BD0     		beq	.L84
+ 632 005c 4FF48062 		mov	r2, #1024
+ 633 0060 C4F20002 		movt	r2, 16384
+ 634 0064 B0F1804F 		cmp	r0, #1073741824
+ 635 0068 18BF     		it	ne
+ 636 006a 9042     		cmpne	r0, r2
+ 637 006c 12D0     		beq	.L84
+ 638 006e 4FF44064 		mov	r4, #3072
+ 639 0072 4FF40062 		mov	r2, #2048
+ 640 0076 C4F20004 		movt	r4, 16384
+ 641 007a C4F20002 		movt	r2, 16384
+ 642 007e 9042     		cmp	r0, r2
+ 643 0080 18BF     		it	ne
+ 644 0082 A042     		cmpne	r0, r4
+ 645 0084 06D0     		beq	.L84
+ 646 0086 47F6FF52 		movw	r2, #32255
+ 647 008a 3A40     		ands	r2, r2, r7
+ 648 008c 45F48055 		orr	r5, r5, #4096
+ 649 0090 1543     		orrs	r5, r5, r2
+ 650 0092 04E0     		b	.L86
+ 651              	.L84:
+ 652 0094 27F40057 		bic	r7, r7, #8192
+ 653 0098 3E43     		orrs	r6, r6, r7
+ 654 009a 46F48055 		orr	r5, r6, #4096
+ 655              	.L86:
+ 656 009e 8383     		strh	r3, [r0, #28]	@ movhi
+ 657 00a0 0584     		strh	r5, [r0, #32]	@ movhi
+ 658 00a2 838B     		ldrh	r3, [r0, #28]
+ 659 00a4 CA88     		ldrh	r2, [r1, #6]
+ 660 00a6 23F44063 		bic	r3, r3, #3072
+ 661 00aa 1B04     		lsls	r3, r3, #16
+ 662 00ac 1B0C     		lsrs	r3, r3, #16
+ 663 00ae 8383     		strh	r3, [r0, #28]	@ movhi
+ 664 00b0 838B     		ldrh	r3, [r0, #28]
+ 665 00b2 9BB2     		uxth	r3, r3
+ 666 00b4 43EA0223 		orr	r3, r3, r2, lsl #8
+ 667 00b8 9BB2     		uxth	r3, r3
+ 668 00ba 8383     		strh	r3, [r0, #28]	@ movhi
+ 669              	.L70:
+ 670 00bc F0BC     		pop	{r4, r5, r6, r7}
+ 671 00be 7047     		bx	lr
+ 672              	.L87:
+ 673 00c0 22F00102 		bic	r2, r2, #1
+ 674 00c4 1204     		lsls	r2, r2, #16
+ 675 00c6 120C     		lsrs	r2, r2, #16
+ 676 00c8 0C89     		ldrh	r4, [r1, #8]
+ 677 00ca B1F804C0 		ldrh	ip, [r1, #4]
+ 678 00ce 4E88     		ldrh	r6, [r1, #2]
+ 679 00d0 0284     		strh	r2, [r0, #32]	@ movhi
+ 680 00d2 038B     		ldrh	r3, [r0, #24]
+ 681 00d4 4FF45055 		mov	r5, #13312
+ 682 00d8 23F0F303 		bic	r3, r3, #243
+ 683 00dc 1B04     		lsls	r3, r3, #16
+ 684 00de 1B0C     		lsrs	r3, r3, #16
+ 685 00e0 43EA0413 		orr	r3, r3, r4, lsl #4
+ 686 00e4 4FF43054 		mov	r4, #11264
+ 687 00e8 078C     		ldrh	r7, [r0, #32]
+ 688 00ea C4F20105 		movt	r5, 16385
+ 689 00ee C4F20104 		movt	r4, 16385
+ 690 00f2 9BB2     		uxth	r3, r3
+ 691 00f4 A042     		cmp	r0, r4
+ 692 00f6 18BF     		it	ne
+ 693 00f8 A842     		cmpne	r0, r5
+ 694 00fa BFB2     		uxth	r7, r7
+ 695 00fc 43EA0C03 		orr	r3, r3, ip
+ 696 0100 1BD0     		beq	.L72
+ 697 0102 4FF48062 		mov	r2, #1024
+ 698 0106 C4F20002 		movt	r2, 16384
+ 699 010a B0F1804F 		cmp	r0, #1073741824
+ 700 010e 18BF     		it	ne
+ 701 0110 9042     		cmpne	r0, r2
+ 702 0112 12D0     		beq	.L72
+ 703 0114 4FF44064 		mov	r4, #3072
+ 704 0118 4FF40062 		mov	r2, #2048
+ 705 011c C4F20004 		movt	r4, 16384
+ 706 0120 C4F20002 		movt	r2, 16384
+ 707 0124 9042     		cmp	r0, r2
+ 708 0126 18BF     		it	ne
+ 709 0128 A042     		cmpne	r0, r4
+ 710 012a 06D0     		beq	.L72
+ 711 012c 4FF6F572 		movw	r2, #65525
+ 712 0130 3A40     		ands	r2, r2, r7
+ 713 0132 46F00106 		orr	r6, r6, #1
+ 714 0136 3243     		orrs	r2, r2, r6
+ 715 0138 05E0     		b	.L74
+ 716              	.L72:
+ 717 013a 4FF6FD72 		movw	r2, #65533
+ 718 013e 3A40     		ands	r2, r2, r7
+ 719 0140 46F00106 		orr	r6, r6, #1
+ 720 0144 3243     		orrs	r2, r2, r6
+ 721              	.L74:
+ 722 0146 0383     		strh	r3, [r0, #24]	@ movhi
+ 723 0148 0284     		strh	r2, [r0, #32]	@ movhi
+ 724 014a 038B     		ldrh	r3, [r0, #24]
+ 725 014c CA88     		ldrh	r2, [r1, #6]
+ 726 014e 23F00C03 		bic	r3, r3, #12
+ 727 0152 1B04     		lsls	r3, r3, #16
+ 728 0154 1B0C     		lsrs	r3, r3, #16
+ 729 0156 0383     		strh	r3, [r0, #24]	@ movhi
+ 730 0158 038B     		ldrh	r3, [r0, #24]
+ 731 015a 9BB2     		uxth	r3, r3
+ 732 015c 1343     		orrs	r3, r3, r2
+ 733 015e 0383     		strh	r3, [r0, #24]	@ movhi
+ 734 0160 ACE7     		b	.L70
+ 735              	.L89:
+ 736 0162 22F48072 		bic	r2, r2, #256
+ 737 0166 1204     		lsls	r2, r2, #16
+ 738 0168 120C     		lsrs	r2, r2, #16
+ 739 016a 0F89     		ldrh	r7, [r1, #8]
+ 740 016c 8E88     		ldrh	r6, [r1, #4]
+ 741 016e 0284     		strh	r2, [r0, #32]	@ movhi
+ 742 0170 838B     		ldrh	r3, [r0, #28]
+ 743 0172 4FF45054 		mov	r4, #13312
+ 744 0176 23F0F303 		bic	r3, r3, #243
+ 745 017a 1B04     		lsls	r3, r3, #16
+ 746 017c 1B0C     		lsrs	r3, r3, #16
+ 747 017e 4FF43052 		mov	r2, #11264
+ 748 0182 43EA0713 		orr	r3, r3, r7, lsl #4
+ 749 0186 B0F820C0 		ldrh	ip, [r0, #32]
+ 750 018a C4F20104 		movt	r4, 16385
+ 751 018e C4F20102 		movt	r2, 16385
+ 752 0192 2F02     		lsls	r7, r5, #8
+ 753 0194 9BB2     		uxth	r3, r3
+ 754 0196 9042     		cmp	r0, r2
+ 755 0198 18BF     		it	ne
+ 756 019a A042     		cmpne	r0, r4
+ 757 019c 1FFA8CFC 		uxth	ip, ip
+ 758 01a0 BFB2     		uxth	r7, r7
+ 759 01a2 43EA0603 		orr	r3, r3, r6
+ 760 01a6 1CD0     		beq	.L81
+ 761 01a8 4FF48062 		mov	r2, #1024
+ 762 01ac C4F20002 		movt	r2, 16384
+ 763 01b0 B0F1804F 		cmp	r0, #1073741824
+ 764 01b4 18BF     		it	ne
+ 765 01b6 9042     		cmpne	r0, r2
+ 766 01b8 13D0     		beq	.L81
+ 767 01ba 4FF44064 		mov	r4, #3072
+ 768 01be 4FF40062 		mov	r2, #2048
+ 769 01c2 C4F20004 		movt	r4, 16384
+ 770 01c6 C4F20002 		movt	r2, 16384
+ 771 01ca 9042     		cmp	r0, r2
+ 772 01cc 18BF     		it	ne
+ 773 01ce A042     		cmpne	r0, r4
+ 774 01d0 07D0     		beq	.L81
+ 775 01d2 4FF2FF52 		movw	r2, #62975
+ 776 01d6 0CEA0202 		and	r2, ip, r2
+ 777 01da 45F48075 		orr	r5, r5, #256
+ 778 01de 1543     		orrs	r5, r5, r2
+ 779 01e0 05E0     		b	.L83
+ 780              	.L81:
+ 781 01e2 2CF4007C 		bic	ip, ip, #512
+ 782 01e6 47EA0C07 		orr	r7, r7, ip
+ 783 01ea 47F48075 		orr	r5, r7, #256
+ 784              	.L83:
+ 785 01ee 8383     		strh	r3, [r0, #28]	@ movhi
+ 786 01f0 0584     		strh	r5, [r0, #32]	@ movhi
+ 787 01f2 838B     		ldrh	r3, [r0, #28]
+ 788 01f4 CA88     		ldrh	r2, [r1, #6]
+ 789 01f6 23F00C03 		bic	r3, r3, #12
+ 790 01fa 1B04     		lsls	r3, r3, #16
+ 791 01fc 1B0C     		lsrs	r3, r3, #16
+ 792 01fe 8383     		strh	r3, [r0, #28]	@ movhi
+ 793 0200 838B     		ldrh	r3, [r0, #28]
+ 794 0202 9BB2     		uxth	r3, r3
+ 795 0204 1343     		orrs	r3, r3, r2
+ 796 0206 8383     		strh	r3, [r0, #28]	@ movhi
+ 797 0208 58E7     		b	.L70
+ 798              	.L88:
+ 799 020a 22F01002 		bic	r2, r2, #16
+ 800 020e 1204     		lsls	r2, r2, #16
+ 801 0210 120C     		lsrs	r2, r2, #16
+ 802 0212 0E89     		ldrh	r6, [r1, #8]
+ 803 0214 B1F804C0 		ldrh	ip, [r1, #4]
+ 804 0218 0284     		strh	r2, [r0, #32]	@ movhi
+ 805 021a 038B     		ldrh	r3, [r0, #24]
+ 806 021c 4FF45054 		mov	r4, #13312
+ 807 0220 23F44073 		bic	r3, r3, #768
+ 808 0224 1B05     		lsls	r3, r3, #20
+ 809 0226 1B0D     		lsrs	r3, r3, #20
+ 810 0228 43EA0633 		orr	r3, r3, r6, lsl #12
+ 811 022c 4FF43052 		mov	r2, #11264
+ 812 0230 078C     		ldrh	r7, [r0, #32]
+ 813 0232 9BB2     		uxth	r3, r3
+ 814 0234 C4F20104 		movt	r4, 16385
+ 815 0238 C4F20102 		movt	r2, 16385
+ 816 023c 2E01     		lsls	r6, r5, #4
+ 817 023e 43EA0C23 		orr	r3, r3, ip, lsl #8
+ 818 0242 9042     		cmp	r0, r2
+ 819 0244 18BF     		it	ne
+ 820 0246 A042     		cmpne	r0, r4
+ 821 0248 BFB2     		uxth	r7, r7
+ 822 024a B6B2     		uxth	r6, r6
+ 823 024c 9BB2     		uxth	r3, r3
+ 824 024e 1BD0     		beq	.L77
+ 825 0250 4FF48062 		mov	r2, #1024
+ 826 0254 C4F20002 		movt	r2, 16384
+ 827 0258 B0F1804F 		cmp	r0, #1073741824
+ 828 025c 18BF     		it	ne
+ 829 025e 9042     		cmpne	r0, r2
+ 830 0260 12D0     		beq	.L77
+ 831 0262 4FF44064 		mov	r4, #3072
+ 832 0266 4FF40062 		mov	r2, #2048
+ 833 026a C4F20004 		movt	r4, 16384
+ 834 026e C4F20002 		movt	r2, 16384
+ 835 0272 9042     		cmp	r0, r2
+ 836 0274 18BF     		it	ne
+ 837 0276 A042     		cmpne	r0, r4
+ 838 0278 06D0     		beq	.L77
+ 839 027a 4FF65F72 		movw	r2, #65375
+ 840 027e 3A40     		ands	r2, r2, r7
+ 841 0280 45F01005 		orr	r5, r5, #16
+ 842 0284 1543     		orrs	r5, r5, r2
+ 843 0286 04E0     		b	.L79
+ 844              	.L77:
+ 845 0288 27F02007 		bic	r7, r7, #32
+ 846 028c 3E43     		orrs	r6, r6, r7
+ 847 028e 46F01005 		orr	r5, r6, #16
+ 848              	.L79:
+ 849 0292 0383     		strh	r3, [r0, #24]	@ movhi
+ 850 0294 0584     		strh	r5, [r0, #32]	@ movhi
+ 851 0296 038B     		ldrh	r3, [r0, #24]
+ 852 0298 CA88     		ldrh	r2, [r1, #6]
+ 853 029a 23F44063 		bic	r3, r3, #3072
+ 854 029e 1B04     		lsls	r3, r3, #16
+ 855 02a0 1B0C     		lsrs	r3, r3, #16
+ 856 02a2 0383     		strh	r3, [r0, #24]	@ movhi
+ 857 02a4 038B     		ldrh	r3, [r0, #24]
+ 858 02a6 9BB2     		uxth	r3, r3
+ 859 02a8 43EA0223 		orr	r3, r3, r2, lsl #8
+ 860 02ac 9BB2     		uxth	r3, r3
+ 861 02ae 0383     		strh	r3, [r0, #24]	@ movhi
+ 862 02b0 04E7     		b	.L70
+ 864 02b2 00BF     		.section	.text.TIM_PWMIConfig,"ax",%progbits
+ 865              		.align	2
+ 866              		.global	TIM_PWMIConfig
+ 867              		.thumb
+ 868              		.thumb_func
+ 870              	TIM_PWMIConfig:
+ 871              		@ args = 0, pretend = 0, frame = 0
+ 872              		@ frame_needed = 0, uses_anonymous_args = 0
+ 873              		@ link register save eliminated.
+ 874 0000 2DE9F007 		push	{r4, r5, r6, r7, r8, r9, sl}
+ 875 0004 4D88     		ldrh	r5, [r1, #2]
+ 876 0006 8E88     		ldrh	r6, [r1, #4]
+ 877 0008 0A88     		ldrh	r2, [r1, #0]
+ 878 000a 002D     		cmp	r5, #0
+ 879 000c 0CBF     		ite	eq
+ 880 000e 0227     		moveq	r7, #2
+ 881 0010 0027     		movne	r7, #0
+ 882 0012 012E     		cmp	r6, #1
+ 883 0014 14BF     		ite	ne
+ 884 0016 4FF48074 		movne	r4, #256
+ 885 001a 4FF40074 		moveq	r4, #512
+ 886 001e 14BF     		ite	ne
+ 887 0020 4FF00108 		movne	r8, #1
+ 888 0024 4FF00208 		moveq	r8, #2
+ 889 0028 002A     		cmp	r2, #0
+ 890 002a 00F09F80 		beq	.L109
+ 891 002e 048C     		ldrh	r4, [r0, #32]
+ 892 0030 B1F808C0 		ldrh	ip, [r1, #8]
+ 893 0034 24F01004 		bic	r4, r4, #16
+ 894 0038 2404     		lsls	r4, r4, #16
+ 895 003a 240C     		lsrs	r4, r4, #16
+ 896 003c 0484     		strh	r4, [r0, #32]	@ movhi
+ 897 003e 028B     		ldrh	r2, [r0, #24]
+ 898 0040 4FF45053 		mov	r3, #13312
+ 899 0044 22F44072 		bic	r2, r2, #768
+ 900 0048 1205     		lsls	r2, r2, #20
+ 901 004a 120D     		lsrs	r2, r2, #20
+ 902 004c 42EA0C32 		orr	r2, r2, ip, lsl #12
+ 903 0050 4FF43054 		mov	r4, #11264
+ 904 0054 C4F20104 		movt	r4, 16385
+ 905 0058 B0F820A0 		ldrh	sl, [r0, #32]
+ 906 005c 92B2     		uxth	r2, r2
+ 907 005e C4F20103 		movt	r3, 16385
+ 908 0062 4FEA0519 		lsl	r9, r5, #4
+ 909 0066 42EA0626 		orr	r6, r2, r6, lsl #8
+ 910 006a A042     		cmp	r0, r4
+ 911 006c 18BF     		it	ne
+ 912 006e 9842     		cmpne	r0, r3
+ 913 0070 1FFA8AFA 		uxth	sl, sl
+ 914 0074 1FFA89F9 		uxth	r9, r9
+ 915 0078 B6B2     		uxth	r6, r6
+ 916 007a 14BF     		ite	ne
+ 917 007c 0024     		movne	r4, #0
+ 918 007e 0124     		moveq	r4, #1
+ 919 0080 1CD0     		beq	.L101
+ 920 0082 4FF48063 		mov	r3, #1024
+ 921 0086 C4F20003 		movt	r3, 16384
+ 922 008a B0F1804F 		cmp	r0, #1073741824
+ 923 008e 18BF     		it	ne
+ 924 0090 9842     		cmpne	r0, r3
+ 925 0092 13D0     		beq	.L101
+ 926 0094 4FF44062 		mov	r2, #3072
+ 927 0098 4FF40063 		mov	r3, #2048
+ 928 009c C4F20002 		movt	r2, 16384
+ 929 00a0 C4F20003 		movt	r3, 16384
+ 930 00a4 9842     		cmp	r0, r3
+ 931 00a6 18BF     		it	ne
+ 932 00a8 9042     		cmpne	r0, r2
+ 933 00aa 07D0     		beq	.L101
+ 934 00ac 4FF65F73 		movw	r3, #65375
+ 935 00b0 0AEA0303 		and	r3, sl, r3
+ 936 00b4 45F01005 		orr	r5, r5, #16
+ 937 00b8 1D43     		orrs	r5, r5, r3
+ 938 00ba 05E0     		b	.L103
+ 939              	.L101:
+ 940 00bc 2AF0200A 		bic	sl, sl, #32
+ 941 00c0 49EA0A09 		orr	r9, r9, sl
+ 942 00c4 49F01005 		orr	r5, r9, #16
+ 943              	.L103:
+ 944 00c8 0683     		strh	r6, [r0, #24]	@ movhi
+ 945 00ca 0584     		strh	r5, [r0, #32]	@ movhi
+ 946 00cc 028B     		ldrh	r2, [r0, #24]
+ 947 00ce C988     		ldrh	r1, [r1, #6]
+ 948 00d0 22F44062 		bic	r2, r2, #3072
+ 949 00d4 1204     		lsls	r2, r2, #16
+ 950 00d6 120C     		lsrs	r2, r2, #16
+ 951 00d8 0283     		strh	r2, [r0, #24]	@ movhi
+ 952 00da 038B     		ldrh	r3, [r0, #24]
+ 953 00dc 9BB2     		uxth	r3, r3
+ 954 00de 43EA0123 		orr	r3, r3, r1, lsl #8
+ 955 00e2 9BB2     		uxth	r3, r3
+ 956 00e4 0383     		strh	r3, [r0, #24]	@ movhi
+ 957 00e6 028C     		ldrh	r2, [r0, #32]
+ 958 00e8 22F00102 		bic	r2, r2, #1
+ 959 00ec 1204     		lsls	r2, r2, #16
+ 960 00ee 120C     		lsrs	r2, r2, #16
+ 961 00f0 0284     		strh	r2, [r0, #32]	@ movhi
+ 962 00f2 038B     		ldrh	r3, [r0, #24]
+ 963 00f4 028C     		ldrh	r2, [r0, #32]
+ 964 00f6 23F0F303 		bic	r3, r3, #243
+ 965 00fa 1B04     		lsls	r3, r3, #16
+ 966 00fc 1B0C     		lsrs	r3, r3, #16
+ 967 00fe 43EA0C13 		orr	r3, r3, ip, lsl #4
+ 968 0102 9BB2     		uxth	r3, r3
+ 969 0104 92B2     		uxth	r2, r2
+ 970 0106 43EA0808 		orr	r8, r3, r8
+ 971 010a D4B9     		cbnz	r4, .L104
+ 972 010c 4FF48063 		mov	r3, #1024
+ 973 0110 C4F20003 		movt	r3, 16384
+ 974 0114 B0F1804F 		cmp	r0, #1073741824
+ 975 0118 18BF     		it	ne
+ 976 011a 9842     		cmpne	r0, r3
+ 977 011c 11D0     		beq	.L104
+ 978 011e 4FF44064 		mov	r4, #3072
+ 979 0122 4FF40063 		mov	r3, #2048
+ 980 0126 C4F20004 		movt	r4, 16384
+ 981 012a C4F20003 		movt	r3, 16384
+ 982 012e 9842     		cmp	r0, r3
+ 983 0130 18BF     		it	ne
+ 984 0132 A042     		cmpne	r0, r4
+ 985 0134 05D0     		beq	.L104
+ 986 0136 22F00A02 		bic	r2, r2, #10
+ 987 013a 42F00102 		orr	r2, r2, #1
+ 988 013e 1743     		orrs	r7, r7, r2
+ 989 0140 04E0     		b	.L106
+ 990              	.L104:
+ 991 0142 22F00202 		bic	r2, r2, #2
+ 992 0146 42F00102 		orr	r2, r2, #1
+ 993 014a 1743     		orrs	r7, r7, r2
+ 994              	.L106:
+ 995 014c A0F81880 		strh	r8, [r0, #24]	@ movhi
+ 996 0150 0784     		strh	r7, [r0, #32]	@ movhi
+ 997 0152 038B     		ldrh	r3, [r0, #24]
+ 998 0154 23F00C03 		bic	r3, r3, #12
+ 999 0158 1B04     		lsls	r3, r3, #16
+ 1000 015a 1B0C     		lsrs	r3, r3, #16
+ 1001 015c 0383     		strh	r3, [r0, #24]	@ movhi
+ 1002 015e 038B     		ldrh	r3, [r0, #24]
+ 1003 0160 9BB2     		uxth	r3, r3
+ 1004 0162 1943     		orrs	r1, r1, r3
+ 1005 0164 0183     		strh	r1, [r0, #24]	@ movhi
+ 1006              	.L90:
+ 1007 0166 BDE8F007 		pop	{r4, r5, r6, r7, r8, r9, sl}
+ 1008 016a 7047     		bx	lr
+ 1009              	.L109:
+ 1010 016c 028C     		ldrh	r2, [r0, #32]
+ 1011 016e B1F80880 		ldrh	r8, [r1, #8]
+ 1012 0172 22F00102 		bic	r2, r2, #1
+ 1013 0176 1204     		lsls	r2, r2, #16
+ 1014 0178 120C     		lsrs	r2, r2, #16
+ 1015 017a 0284     		strh	r2, [r0, #32]	@ movhi
+ 1016 017c 028B     		ldrh	r2, [r0, #24]
+ 1017 017e 4FF45053 		mov	r3, #13312
+ 1018 0182 22F0F302 		bic	r2, r2, #243
+ 1019 0186 1204     		lsls	r2, r2, #16
+ 1020 0188 120C     		lsrs	r2, r2, #16
+ 1021 018a 4FF4305C 		mov	ip, #11264
+ 1022 018e B0F820A0 		ldrh	sl, [r0, #32]
+ 1023 0192 42EA0812 		orr	r2, r2, r8, lsl #4
+ 1024 0196 C4F20103 		movt	r3, 16385
+ 1025 019a C4F2010C 		movt	ip, 16385
+ 1026 019e 92B2     		uxth	r2, r2
+ 1027 01a0 6045     		cmp	r0, ip
+ 1028 01a2 18BF     		it	ne
+ 1029 01a4 9842     		cmpne	r0, r3
+ 1030 01a6 42EA0602 		orr	r2, r2, r6
+ 1031 01aa 1FFA8AFA 		uxth	sl, sl
+ 1032 01ae 14BF     		ite	ne
+ 1033 01b0 0026     		movne	r6, #0
+ 1034 01b2 0126     		moveq	r6, #1
+ 1035 01b4 1DD0     		beq	.L94
+ 1036 01b6 4FF48063 		mov	r3, #1024
+ 1037 01ba C4F20003 		movt	r3, 16384
+ 1038 01be B0F1804F 		cmp	r0, #1073741824
+ 1039 01c2 18BF     		it	ne
+ 1040 01c4 9842     		cmpne	r0, r3
+ 1041 01c6 14D0     		beq	.L94
+ 1042 01c8 4FF4406C 		mov	ip, #3072
+ 1043 01cc 4FF40063 		mov	r3, #2048
+ 1044 01d0 C4F2000C 		movt	ip, 16384
+ 1045 01d4 C4F20003 		movt	r3, 16384
+ 1046 01d8 9842     		cmp	r0, r3
+ 1047 01da 18BF     		it	ne
+ 1048 01dc 6045     		cmpne	r0, ip
+ 1049 01de 08D0     		beq	.L94
+ 1050 01e0 4FF6F573 		movw	r3, #65525
+ 1051 01e4 0AEA0303 		and	r3, sl, r3
+ 1052 01e8 45F00109 		orr	r9, r5, #1
+ 1053 01ec 43EA0909 		orr	r9, r3, r9
+ 1054 01f0 07E0     		b	.L96
+ 1055              	.L94:
+ 1056 01f2 4FF6FD79 		movw	r9, #65533
+ 1057 01f6 0AEA0909 		and	r9, sl, r9
+ 1058 01fa 45F00105 		orr	r5, r5, #1
+ 1059 01fe 49EA0509 		orr	r9, r9, r5
+ 1060              	.L96:
+ 1061 0202 0283     		strh	r2, [r0, #24]	@ movhi
+ 1062 0204 A0F82090 		strh	r9, [r0, #32]	@ movhi
+ 1063 0208 028B     		ldrh	r2, [r0, #24]
+ 1064 020a C988     		ldrh	r1, [r1, #6]
+ 1065 020c 22F00C02 		bic	r2, r2, #12
+ 1066 0210 1204     		lsls	r2, r2, #16
+ 1067 0212 120C     		lsrs	r2, r2, #16
+ 1068 0214 0283     		strh	r2, [r0, #24]	@ movhi
+ 1069 0216 038B     		ldrh	r3, [r0, #24]
+ 1070 0218 3D01     		lsls	r5, r7, #4
+ 1071 021a 9BB2     		uxth	r3, r3
+ 1072 021c 0B43     		orrs	r3, r3, r1
+ 1073 021e 0383     		strh	r3, [r0, #24]	@ movhi
+ 1074 0220 028C     		ldrh	r2, [r0, #32]
+ 1075 0222 ADB2     		uxth	r5, r5
+ 1076 0224 22F01002 		bic	r2, r2, #16
+ 1077 0228 1204     		lsls	r2, r2, #16
+ 1078 022a 120C     		lsrs	r2, r2, #16
+ 1079 022c 0284     		strh	r2, [r0, #32]	@ movhi
+ 1080 022e 038B     		ldrh	r3, [r0, #24]
+ 1081 0230 028C     		ldrh	r2, [r0, #32]
+ 1082 0232 23F44073 		bic	r3, r3, #768
+ 1083 0236 1B05     		lsls	r3, r3, #20
+ 1084 0238 1B0D     		lsrs	r3, r3, #20
+ 1085 023a 43EA0833 		orr	r3, r3, r8, lsl #12
+ 1086 023e 9BB2     		uxth	r3, r3
+ 1087 0240 92B2     		uxth	r2, r2
+ 1088 0242 1C43     		orrs	r4, r4, r3
+ 1089 0244 D6B9     		cbnz	r6, .L97
+ 1090 0246 4FF48063 		mov	r3, #1024
+ 1091 024a C4F20003 		movt	r3, 16384
+ 1092 024e B0F1804F 		cmp	r0, #1073741824
+ 1093 0252 18BF     		it	ne
+ 1094 0254 9842     		cmpne	r0, r3
+ 1095 0256 11D0     		beq	.L97
+ 1096 0258 4FF44066 		mov	r6, #3072
+ 1097 025c 4FF40063 		mov	r3, #2048
+ 1098 0260 C4F20006 		movt	r6, 16384
+ 1099 0264 C4F20003 		movt	r3, 16384
+ 1100 0268 9842     		cmp	r0, r3
+ 1101 026a 18BF     		it	ne
+ 1102 026c B042     		cmpne	r0, r6
+ 1103 026e 05D0     		beq	.L97
+ 1104 0270 22F0A002 		bic	r2, r2, #160
+ 1105 0274 42F01005 		orr	r5, r2, #16
+ 1106 0278 3D43     		orrs	r5, r5, r7
+ 1107 027a 04E0     		b	.L99
+ 1108              	.L97:
+ 1109 027c 22F02002 		bic	r2, r2, #32
+ 1110 0280 42F01002 		orr	r2, r2, #16
+ 1111 0284 1543     		orrs	r5, r5, r2
+ 1112              	.L99:
+ 1113 0286 0483     		strh	r4, [r0, #24]	@ movhi
+ 1114 0288 0584     		strh	r5, [r0, #32]	@ movhi
+ 1115 028a 038B     		ldrh	r3, [r0, #24]
+ 1116 028c 23F44063 		bic	r3, r3, #3072
+ 1117 0290 1B04     		lsls	r3, r3, #16
+ 1118 0292 1B0C     		lsrs	r3, r3, #16
+ 1119 0294 0383     		strh	r3, [r0, #24]	@ movhi
+ 1120 0296 038B     		ldrh	r3, [r0, #24]
+ 1121 0298 9BB2     		uxth	r3, r3
+ 1122 029a 43EA0121 		orr	r1, r3, r1, lsl #8
+ 1123 029e 89B2     		uxth	r1, r1
+ 1124 02a0 0183     		strh	r1, [r0, #24]	@ movhi
+ 1125 02a2 60E7     		b	.L90
+ 1127              		.section	.text.TIM_BDTRConfig,"ax",%progbits
+ 1128              		.align	2
+ 1129              		.global	TIM_BDTRConfig
+ 1130              		.thumb
+ 1131              		.thumb_func
+ 1133              	TIM_BDTRConfig:
+ 1134              		@ args = 0, pretend = 0, frame = 0
+ 1135              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1136              		@ link register save eliminated.
+ 1137 0000 30B4     		push	{r4, r5}
+ 1138 0002 0B88     		ldrh	r3, [r1, #0]
+ 1139 0004 4D88     		ldrh	r5, [r1, #2]
+ 1140 0006 8C88     		ldrh	r4, [r1, #4]
+ 1141 0008 CA88     		ldrh	r2, [r1, #6]
+ 1142 000a 2B43     		orrs	r3, r3, r5
+ 1143 000c 2343     		orrs	r3, r3, r4
+ 1144 000e 0D89     		ldrh	r5, [r1, #8]
+ 1145 0010 4C89     		ldrh	r4, [r1, #10]
+ 1146 0012 1343     		orrs	r3, r3, r2
+ 1147 0014 2B43     		orrs	r3, r3, r5
+ 1148 0016 8A89     		ldrh	r2, [r1, #12]
+ 1149 0018 2343     		orrs	r3, r3, r4
+ 1150 001a 1343     		orrs	r3, r3, r2
+ 1151 001c 9BB2     		uxth	r3, r3
+ 1152 001e A0F84430 		strh	r3, [r0, #68]	@ movhi
+ 1153 0022 30BC     		pop	{r4, r5}
+ 1154 0024 7047     		bx	lr
+ 1156 0026 00BF     		.section	.text.TIM_TimeBaseStructInit,"ax",%progbits
+ 1157              		.align	2
+ 1158              		.global	TIM_TimeBaseStructInit
+ 1159              		.thumb
+ 1160              		.thumb_func
+ 1162              	TIM_TimeBaseStructInit:
+ 1163              		@ args = 0, pretend = 0, frame = 0
+ 1164              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1165              		@ link register save eliminated.
+ 1166 0000 0023     		movs	r3, #0
+ 1167 0002 4FF6FF71 		movw	r1, #65535
+ 1168 0006 8180     		strh	r1, [r0, #4]	@ movhi
+ 1169 0008 0380     		strh	r3, [r0, #0]	@ movhi
+ 1170 000a C380     		strh	r3, [r0, #6]	@ movhi
+ 1171 000c 4380     		strh	r3, [r0, #2]	@ movhi
+ 1172 000e 0372     		strb	r3, [r0, #8]
+ 1173 0010 7047     		bx	lr
+ 1175 0012 00BF     		.section	.text.TIM_OCStructInit,"ax",%progbits
+ 1176              		.align	2
+ 1177              		.global	TIM_OCStructInit
+ 1178              		.thumb
+ 1179              		.thumb_func
+ 1181              	TIM_OCStructInit:
+ 1182              		@ args = 0, pretend = 0, frame = 0
+ 1183              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1184              		@ link register save eliminated.
+ 1185 0000 0023     		movs	r3, #0
+ 1186 0002 0380     		strh	r3, [r0, #0]	@ movhi
+ 1187 0004 4380     		strh	r3, [r0, #2]	@ movhi
+ 1188 0006 8380     		strh	r3, [r0, #4]	@ movhi
+ 1189 0008 C380     		strh	r3, [r0, #6]	@ movhi
+ 1190 000a 0381     		strh	r3, [r0, #8]	@ movhi
+ 1191 000c 4381     		strh	r3, [r0, #10]	@ movhi
+ 1192 000e 8381     		strh	r3, [r0, #12]	@ movhi
+ 1193 0010 C381     		strh	r3, [r0, #14]	@ movhi
+ 1194 0012 7047     		bx	lr
+ 1196              		.section	.text.TIM_ICStructInit,"ax",%progbits
+ 1197              		.align	2
+ 1198              		.global	TIM_ICStructInit
+ 1199              		.thumb
+ 1200              		.thumb_func
+ 1202              	TIM_ICStructInit:
+ 1203              		@ args = 0, pretend = 0, frame = 0
+ 1204              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1205              		@ link register save eliminated.
+ 1206 0000 0023     		movs	r3, #0
+ 1207 0002 0122     		movs	r2, #1
+ 1208 0004 0380     		strh	r3, [r0, #0]	@ movhi
+ 1209 0006 4380     		strh	r3, [r0, #2]	@ movhi
+ 1210 0008 8280     		strh	r2, [r0, #4]	@ movhi
+ 1211 000a C380     		strh	r3, [r0, #6]	@ movhi
+ 1212 000c 0381     		strh	r3, [r0, #8]	@ movhi
+ 1213 000e 7047     		bx	lr
+ 1215              		.section	.text.TIM_BDTRStructInit,"ax",%progbits
+ 1216              		.align	2
+ 1217              		.global	TIM_BDTRStructInit
+ 1218              		.thumb
+ 1219              		.thumb_func
+ 1221              	TIM_BDTRStructInit:
+ 1222              		@ args = 0, pretend = 0, frame = 0
+ 1223              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1224              		@ link register save eliminated.
+ 1225 0000 0023     		movs	r3, #0
+ 1226 0002 0380     		strh	r3, [r0, #0]	@ movhi
+ 1227 0004 4380     		strh	r3, [r0, #2]	@ movhi
+ 1228 0006 8380     		strh	r3, [r0, #4]	@ movhi
+ 1229 0008 C380     		strh	r3, [r0, #6]	@ movhi
+ 1230 000a 0381     		strh	r3, [r0, #8]	@ movhi
+ 1231 000c 4381     		strh	r3, [r0, #10]	@ movhi
+ 1232 000e 8381     		strh	r3, [r0, #12]	@ movhi
+ 1233 0010 7047     		bx	lr
+ 1235 0012 00BF     		.section	.text.TIM_Cmd,"ax",%progbits
+ 1236              		.align	2
+ 1237              		.global	TIM_Cmd
+ 1238              		.thumb
+ 1239              		.thumb_func
+ 1241              	TIM_Cmd:
+ 1242              		@ args = 0, pretend = 0, frame = 0
+ 1243              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1244              		@ link register save eliminated.
+ 1245 0000 0388     		ldrh	r3, [r0, #0]
+ 1246 0002 29B9     		cbnz	r1, .L118
+ 1247 0004 23F00103 		bic	r3, r3, #1
+ 1248 0008 1B04     		lsls	r3, r3, #16
+ 1249 000a 1B0C     		lsrs	r3, r3, #16
+ 1250 000c 0380     		strh	r3, [r0, #0]	@ movhi
+ 1251 000e 7047     		bx	lr
+ 1252              	.L118:
+ 1253 0010 9BB2     		uxth	r3, r3
+ 1254 0012 43F00103 		orr	r3, r3, #1
+ 1255 0016 0380     		strh	r3, [r0, #0]	@ movhi
+ 1256 0018 7047     		bx	lr
+ 1258 001a 00BF     		.section	.text.TIM_CtrlPWMOutputs,"ax",%progbits
+ 1259              		.align	2
+ 1260              		.global	TIM_CtrlPWMOutputs
+ 1261              		.thumb
+ 1262              		.thumb_func
+ 1264              	TIM_CtrlPWMOutputs:
+ 1265              		@ args = 0, pretend = 0, frame = 0
+ 1266              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1267              		@ link register save eliminated.
+ 1268 0000 B0F84430 		ldrh	r3, [r0, #68]
+ 1269 0004 21B9     		cbnz	r1, .L122
+ 1270 0006 5B04     		lsls	r3, r3, #17
+ 1271 0008 5B0C     		lsrs	r3, r3, #17
+ 1272 000a A0F84430 		strh	r3, [r0, #68]	@ movhi
+ 1273 000e 7047     		bx	lr
+ 1274              	.L122:
+ 1275 0010 6FEA4343 		mvn	r3, r3, lsl #17
+ 1276 0014 6FEA5343 		mvn	r3, r3, lsr #17
+ 1277 0018 9BB2     		uxth	r3, r3
+ 1278 001a A0F84430 		strh	r3, [r0, #68]	@ movhi
+ 1279 001e 7047     		bx	lr
+ 1281              		.section	.text.TIM_ITConfig,"ax",%progbits
+ 1282              		.align	2
+ 1283              		.global	TIM_ITConfig
+ 1284              		.thumb
+ 1285              		.thumb_func
+ 1287              	TIM_ITConfig:
+ 1288              		@ args = 0, pretend = 0, frame = 0
+ 1289              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1290              		@ link register save eliminated.
+ 1291 0000 8389     		ldrh	r3, [r0, #12]
+ 1292 0002 9BB2     		uxth	r3, r3
+ 1293 0004 1AB9     		cbnz	r2, .L126
+ 1294 0006 23EA0101 		bic	r1, r3, r1
+ 1295 000a 8181     		strh	r1, [r0, #12]	@ movhi
+ 1296 000c 7047     		bx	lr
+ 1297              	.L126:
+ 1298 000e 1943     		orrs	r1, r1, r3
+ 1299 0010 8181     		strh	r1, [r0, #12]	@ movhi
+ 1300 0012 7047     		bx	lr
+ 1302              		.section	.text.TIM_GenerateEvent,"ax",%progbits
+ 1303              		.align	2
+ 1304              		.global	TIM_GenerateEvent
+ 1305              		.thumb
+ 1306              		.thumb_func
+ 1308              	TIM_GenerateEvent:
+ 1309              		@ args = 0, pretend = 0, frame = 0
+ 1310              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1311              		@ link register save eliminated.
+ 1312 0000 8182     		strh	r1, [r0, #20]	@ movhi
+ 1313 0002 7047     		bx	lr
+ 1315              		.section	.text.TIM_DMAConfig,"ax",%progbits
+ 1316              		.align	2
+ 1317              		.global	TIM_DMAConfig
+ 1318              		.thumb
+ 1319              		.thumb_func
+ 1321              	TIM_DMAConfig:
+ 1322              		@ args = 0, pretend = 0, frame = 0
+ 1323              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1324              		@ link register save eliminated.
+ 1325 0000 0A43     		orrs	r2, r2, r1
+ 1326 0002 A0F84820 		strh	r2, [r0, #72]	@ movhi
+ 1327 0006 7047     		bx	lr
+ 1329              		.section	.text.TIM_DMACmd,"ax",%progbits
+ 1330              		.align	2
+ 1331              		.global	TIM_DMACmd
+ 1332              		.thumb
+ 1333              		.thumb_func
+ 1335              	TIM_DMACmd:
+ 1336              		@ args = 0, pretend = 0, frame = 0
+ 1337              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1338              		@ link register save eliminated.
+ 1339 0000 8389     		ldrh	r3, [r0, #12]
+ 1340 0002 9BB2     		uxth	r3, r3
+ 1341 0004 1AB9     		cbnz	r2, .L132
+ 1342 0006 23EA0101 		bic	r1, r3, r1
+ 1343 000a 8181     		strh	r1, [r0, #12]	@ movhi
+ 1344 000c 7047     		bx	lr
+ 1345              	.L132:
+ 1346 000e 1943     		orrs	r1, r1, r3
+ 1347 0010 8181     		strh	r1, [r0, #12]	@ movhi
+ 1348 0012 7047     		bx	lr
+ 1350              		.section	.text.TIM_InternalClockConfig,"ax",%progbits
+ 1351              		.align	2
+ 1352              		.global	TIM_InternalClockConfig
+ 1353              		.thumb
+ 1354              		.thumb_func
+ 1356              	TIM_InternalClockConfig:
+ 1357              		@ args = 0, pretend = 0, frame = 0
+ 1358              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1359              		@ link register save eliminated.
+ 1360 0000 0389     		ldrh	r3, [r0, #8]
+ 1361 0002 23F00703 		bic	r3, r3, #7
+ 1362 0006 1B04     		lsls	r3, r3, #16
+ 1363 0008 1B0C     		lsrs	r3, r3, #16
+ 1364 000a 0381     		strh	r3, [r0, #8]	@ movhi
+ 1365 000c 7047     		bx	lr
+ 1367 000e 00BF     		.section	.text.TIM_ITRxExternalClockConfig,"ax",%progbits
+ 1368              		.align	2
+ 1369              		.global	TIM_ITRxExternalClockConfig
+ 1370              		.thumb
+ 1371              		.thumb_func
+ 1373              	TIM_ITRxExternalClockConfig:
+ 1374              		@ args = 0, pretend = 0, frame = 0
+ 1375              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1376              		@ link register save eliminated.
+ 1377 0000 0389     		ldrh	r3, [r0, #8]
+ 1378 0002 23F07003 		bic	r3, r3, #112
+ 1379 0006 1B04     		lsls	r3, r3, #16
+ 1380 0008 1B0C     		lsrs	r3, r3, #16
+ 1381 000a 1943     		orrs	r1, r1, r3
+ 1382 000c 0181     		strh	r1, [r0, #8]	@ movhi
+ 1383 000e 0389     		ldrh	r3, [r0, #8]
+ 1384 0010 9BB2     		uxth	r3, r3
+ 1385 0012 43F00703 		orr	r3, r3, #7
+ 1386 0016 0381     		strh	r3, [r0, #8]	@ movhi
+ 1387 0018 7047     		bx	lr
+ 1389 001a 00BF     		.section	.text.TIM_TIxExternalClockConfig,"ax",%progbits
+ 1390              		.align	2
+ 1391              		.global	TIM_TIxExternalClockConfig
+ 1392              		.thumb
+ 1393              		.thumb_func
+ 1395              	TIM_TIxExternalClockConfig:
+ 1396              		@ args = 0, pretend = 0, frame = 0
+ 1397              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1398              		@ link register save eliminated.
+ 1399 0000 6029     		cmp	r1, #96
+ 1400 0002 F0B4     		push	{r4, r5, r6, r7}
+ 1401 0004 4DD0     		beq	.L144
+ 1402 0006 058C     		ldrh	r5, [r0, #32]
+ 1403 0008 4FF45056 		mov	r6, #13312
+ 1404 000c 25F00105 		bic	r5, r5, #1
+ 1405 0010 2D04     		lsls	r5, r5, #16
+ 1406 0012 2D0C     		lsrs	r5, r5, #16
+ 1407 0014 0584     		strh	r5, [r0, #32]	@ movhi
+ 1408 0016 048B     		ldrh	r4, [r0, #24]
+ 1409 0018 4FF43055 		mov	r5, #11264
+ 1410 001c 24F0F304 		bic	r4, r4, #243
+ 1411 0020 2404     		lsls	r4, r4, #16
+ 1412 0022 240C     		lsrs	r4, r4, #16
+ 1413 0024 078C     		ldrh	r7, [r0, #32]
+ 1414 0026 44F00104 		orr	r4, r4, #1
+ 1415 002a C4F20106 		movt	r6, 16385
+ 1416 002e C4F20105 		movt	r5, 16385
+ 1417 0032 44EA0313 		orr	r3, r4, r3, lsl #4
+ 1418 0036 A842     		cmp	r0, r5
+ 1419 0038 18BF     		it	ne
+ 1420 003a B042     		cmpne	r0, r6
+ 1421 003c BFB2     		uxth	r7, r7
+ 1422 003e 9BB2     		uxth	r3, r3
+ 1423 0040 1AD0     		beq	.L141
+ 1424 0042 4FF48064 		mov	r4, #1024
+ 1425 0046 C4F20004 		movt	r4, 16384
+ 1426 004a B0F1804F 		cmp	r0, #1073741824
+ 1427 004e 18BF     		it	ne
+ 1428 0050 A042     		cmpne	r0, r4
+ 1429 0052 11D0     		beq	.L141
+ 1430 0054 4FF44065 		mov	r5, #3072
+ 1431 0058 4FF40064 		mov	r4, #2048
+ 1432 005c C4F20005 		movt	r5, 16384
+ 1433 0060 C4F20004 		movt	r4, 16384
+ 1434 0064 A042     		cmp	r0, r4
+ 1435 0066 18BF     		it	ne
+ 1436 0068 A842     		cmpne	r0, r5
+ 1437 006a 05D0     		beq	.L141
+ 1438 006c 27F00A07 		bic	r7, r7, #10
+ 1439 0070 47F00107 		orr	r7, r7, #1
+ 1440 0074 3A43     		orrs	r2, r2, r7
+ 1441 0076 04E0     		b	.L143
+ 1442              	.L141:
+ 1443 0078 27F00207 		bic	r7, r7, #2
+ 1444 007c 47F00107 		orr	r7, r7, #1
+ 1445 0080 3A43     		orrs	r2, r2, r7
+ 1446              	.L143:
+ 1447 0082 0383     		strh	r3, [r0, #24]	@ movhi
+ 1448 0084 0284     		strh	r2, [r0, #32]	@ movhi
+ 1449 0086 0389     		ldrh	r3, [r0, #8]
+ 1450 0088 23F07003 		bic	r3, r3, #112
+ 1451 008c 1B04     		lsls	r3, r3, #16
+ 1452 008e 1B0C     		lsrs	r3, r3, #16
+ 1453 0090 0B43     		orrs	r3, r3, r1
+ 1454 0092 0381     		strh	r3, [r0, #8]	@ movhi
+ 1455 0094 0389     		ldrh	r3, [r0, #8]
+ 1456 0096 9BB2     		uxth	r3, r3
+ 1457 0098 43F00703 		orr	r3, r3, #7
+ 1458 009c 0381     		strh	r3, [r0, #8]	@ movhi
+ 1459 009e F0BC     		pop	{r4, r5, r6, r7}
+ 1460 00a0 7047     		bx	lr
+ 1461              	.L144:
+ 1462 00a2 048C     		ldrh	r4, [r0, #32]
+ 1463 00a4 4FF45056 		mov	r6, #13312
+ 1464 00a8 24F01004 		bic	r4, r4, #16
+ 1465 00ac 2404     		lsls	r4, r4, #16
+ 1466 00ae 240C     		lsrs	r4, r4, #16
+ 1467 00b0 0484     		strh	r4, [r0, #32]	@ movhi
+ 1468 00b2 048B     		ldrh	r4, [r0, #24]
+ 1469 00b4 4FF43055 		mov	r5, #11264
+ 1470 00b8 24F44074 		bic	r4, r4, #768
+ 1471 00bc 2405     		lsls	r4, r4, #20
+ 1472 00be 240D     		lsrs	r4, r4, #20
+ 1473 00c0 B0F820C0 		ldrh	ip, [r0, #32]
+ 1474 00c4 44F48074 		orr	r4, r4, #256
+ 1475 00c8 C4F20106 		movt	r6, 16385
+ 1476 00cc C4F20105 		movt	r5, 16385
+ 1477 00d0 1701     		lsls	r7, r2, #4
+ 1478 00d2 44EA0333 		orr	r3, r4, r3, lsl #12
+ 1479 00d6 A842     		cmp	r0, r5
+ 1480 00d8 18BF     		it	ne
+ 1481 00da B042     		cmpne	r0, r6
+ 1482 00dc 1FFA8CFC 		uxth	ip, ip
+ 1483 00e0 BFB2     		uxth	r7, r7
+ 1484 00e2 9BB2     		uxth	r3, r3
+ 1485 00e4 1BD0     		beq	.L137
+ 1486 00e6 4FF48064 		mov	r4, #1024
+ 1487 00ea C4F20004 		movt	r4, 16384
+ 1488 00ee B0F1804F 		cmp	r0, #1073741824
+ 1489 00f2 18BF     		it	ne
+ 1490 00f4 A042     		cmpne	r0, r4
+ 1491 00f6 12D0     		beq	.L137
+ 1492 00f8 4FF44065 		mov	r5, #3072
+ 1493 00fc 4FF40064 		mov	r4, #2048
+ 1494 0100 C4F20005 		movt	r5, 16384
+ 1495 0104 C4F20004 		movt	r4, 16384
+ 1496 0108 A042     		cmp	r0, r4
+ 1497 010a 18BF     		it	ne
+ 1498 010c A842     		cmpne	r0, r5
+ 1499 010e 06D0     		beq	.L137
+ 1500 0110 2CF0A00C 		bic	ip, ip, #160
+ 1501 0114 4CF0100C 		orr	ip, ip, #16
+ 1502 0118 4CEA0202 		orr	r2, ip, r2
+ 1503 011c B1E7     		b	.L143
+ 1504              	.L137:
+ 1505 011e 2CF02002 		bic	r2, ip, #32
+ 1506 0122 42F01002 		orr	r2, r2, #16
+ 1507 0126 3A43     		orrs	r2, r2, r7
+ 1508 0128 ABE7     		b	.L143
+ 1510 012a 00BF     		.section	.text.TIM_ETRClockMode1Config,"ax",%progbits
+ 1511              		.align	2
+ 1512              		.global	TIM_ETRClockMode1Config
+ 1513              		.thumb
+ 1514              		.thumb_func
+ 1516              	TIM_ETRClockMode1Config:
+ 1517              		@ args = 0, pretend = 0, frame = 0
+ 1518              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1519              		@ link register save eliminated.
+ 1520 0000 10B4     		push	{r4}
+ 1521 0002 0489     		ldrh	r4, [r0, #8]
+ 1522 0004 E4B2     		uxtb	r4, r4
+ 1523 0006 2143     		orrs	r1, r1, r4
+ 1524 0008 0A43     		orrs	r2, r2, r1
+ 1525 000a 42EA0323 		orr	r3, r2, r3, lsl #8
+ 1526 000e 9CB2     		uxth	r4, r3
+ 1527 0010 0481     		strh	r4, [r0, #8]	@ movhi
+ 1528 0012 0389     		ldrh	r3, [r0, #8]
+ 1529 0014 23F07703 		bic	r3, r3, #119
+ 1530 0018 1B04     		lsls	r3, r3, #16
+ 1531 001a 1B0C     		lsrs	r3, r3, #16
+ 1532 001c 43F07703 		orr	r3, r3, #119
+ 1533 0020 0381     		strh	r3, [r0, #8]	@ movhi
+ 1534 0022 10BC     		pop	{r4}
+ 1535 0024 7047     		bx	lr
+ 1537 0026 00BF     		.section	.text.TIM_ETRClockMode2Config,"ax",%progbits
+ 1538              		.align	2
+ 1539              		.global	TIM_ETRClockMode2Config
+ 1540              		.thumb
+ 1541              		.thumb_func
+ 1543              	TIM_ETRClockMode2Config:
+ 1544              		@ args = 0, pretend = 0, frame = 0
+ 1545              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1546              		@ link register save eliminated.
+ 1547 0000 10B4     		push	{r4}
+ 1548 0002 0489     		ldrh	r4, [r0, #8]
+ 1549 0004 E4B2     		uxtb	r4, r4
+ 1550 0006 2143     		orrs	r1, r1, r4
+ 1551 0008 0A43     		orrs	r2, r2, r1
+ 1552 000a 42EA0323 		orr	r3, r2, r3, lsl #8
+ 1553 000e 9CB2     		uxth	r4, r3
+ 1554 0010 0481     		strh	r4, [r0, #8]	@ movhi
+ 1555 0012 0389     		ldrh	r3, [r0, #8]
+ 1556 0014 9BB2     		uxth	r3, r3
+ 1557 0016 43F48043 		orr	r3, r3, #16384
+ 1558 001a 0381     		strh	r3, [r0, #8]	@ movhi
+ 1559 001c 10BC     		pop	{r4}
+ 1560 001e 7047     		bx	lr
+ 1562              		.section	.text.TIM_ETRConfig,"ax",%progbits
+ 1563              		.align	2
+ 1564              		.global	TIM_ETRConfig
+ 1565              		.thumb
+ 1566              		.thumb_func
+ 1568              	TIM_ETRConfig:
+ 1569              		@ args = 0, pretend = 0, frame = 0
+ 1570              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1571              		@ link register save eliminated.
+ 1572 0000 10B4     		push	{r4}
+ 1573 0002 0489     		ldrh	r4, [r0, #8]
+ 1574 0004 E4B2     		uxtb	r4, r4
+ 1575 0006 2143     		orrs	r1, r1, r4
+ 1576 0008 0A43     		orrs	r2, r2, r1
+ 1577 000a 42EA0323 		orr	r3, r2, r3, lsl #8
+ 1578 000e 9CB2     		uxth	r4, r3
+ 1579 0010 0481     		strh	r4, [r0, #8]	@ movhi
+ 1580 0012 10BC     		pop	{r4}
+ 1581 0014 7047     		bx	lr
+ 1583 0016 00BF     		.section	.text.TIM_PrescalerConfig,"ax",%progbits
+ 1584              		.align	2
+ 1585              		.global	TIM_PrescalerConfig
+ 1586              		.thumb
+ 1587              		.thumb_func
+ 1589              	TIM_PrescalerConfig:
+ 1590              		@ args = 0, pretend = 0, frame = 0
+ 1591              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1592              		@ link register save eliminated.
+ 1593 0000 0185     		strh	r1, [r0, #40]	@ movhi
+ 1594 0002 8282     		strh	r2, [r0, #20]	@ movhi
+ 1595 0004 7047     		bx	lr
+ 1597 0006 00BF     		.section	.text.TIM_CounterModeConfig,"ax",%progbits
+ 1598              		.align	2
+ 1599              		.global	TIM_CounterModeConfig
+ 1600              		.thumb
+ 1601              		.thumb_func
+ 1603              	TIM_CounterModeConfig:
+ 1604              		@ args = 0, pretend = 0, frame = 0
+ 1605              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1606              		@ link register save eliminated.
+ 1607 0000 0388     		ldrh	r3, [r0, #0]
+ 1608 0002 23F07003 		bic	r3, r3, #112
+ 1609 0006 1B04     		lsls	r3, r3, #16
+ 1610 0008 1B0C     		lsrs	r3, r3, #16
+ 1611 000a 1943     		orrs	r1, r1, r3
+ 1612 000c 0180     		strh	r1, [r0, #0]	@ movhi
+ 1613 000e 7047     		bx	lr
+ 1615              		.section	.text.TIM_SelectInputTrigger,"ax",%progbits
+ 1616              		.align	2
+ 1617              		.global	TIM_SelectInputTrigger
+ 1618              		.thumb
+ 1619              		.thumb_func
+ 1621              	TIM_SelectInputTrigger:
+ 1622              		@ args = 0, pretend = 0, frame = 0
+ 1623              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1624              		@ link register save eliminated.
+ 1625 0000 0389     		ldrh	r3, [r0, #8]
+ 1626 0002 23F07003 		bic	r3, r3, #112
+ 1627 0006 1B04     		lsls	r3, r3, #16
+ 1628 0008 1B0C     		lsrs	r3, r3, #16
+ 1629 000a 1943     		orrs	r1, r1, r3
+ 1630 000c 0181     		strh	r1, [r0, #8]	@ movhi
+ 1631 000e 7047     		bx	lr
+ 1633              		.section	.text.TIM_EncoderInterfaceConfig,"ax",%progbits
+ 1634              		.align	2
+ 1635              		.global	TIM_EncoderInterfaceConfig
+ 1636              		.thumb
+ 1637              		.thumb_func
+ 1639              	TIM_EncoderInterfaceConfig:
+ 1640              		@ args = 0, pretend = 0, frame = 0
+ 1641              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1642              		@ link register save eliminated.
+ 1643 0000 70B4     		push	{r4, r5, r6}
+ 1644 0002 0589     		ldrh	r5, [r0, #8]
+ 1645 0004 048B     		ldrh	r4, [r0, #24]
+ 1646 0006 068C     		ldrh	r6, [r0, #32]
+ 1647 0008 24F44074 		bic	r4, r4, #768
+ 1648 000c 26F02206 		bic	r6, r6, #34
+ 1649 0010 24F00304 		bic	r4, r4, #3
+ 1650 0014 3604     		lsls	r6, r6, #16
+ 1651 0016 360C     		lsrs	r6, r6, #16
+ 1652 0018 25F00705 		bic	r5, r5, #7
+ 1653 001c 2404     		lsls	r4, r4, #16
+ 1654 001e 3243     		orrs	r2, r2, r6
+ 1655 0020 2D04     		lsls	r5, r5, #16
+ 1656 0022 240C     		lsrs	r4, r4, #16
+ 1657 0024 2D0C     		lsrs	r5, r5, #16
+ 1658 0026 44F48074 		orr	r4, r4, #256
+ 1659 002a 42EA0313 		orr	r3, r2, r3, lsl #4
+ 1660 002e 2943     		orrs	r1, r1, r5
+ 1661 0030 44F00104 		orr	r4, r4, #1
+ 1662 0034 9EB2     		uxth	r6, r3
+ 1663 0036 0181     		strh	r1, [r0, #8]	@ movhi
+ 1664 0038 0483     		strh	r4, [r0, #24]	@ movhi
+ 1665 003a 0684     		strh	r6, [r0, #32]	@ movhi
+ 1666 003c 70BC     		pop	{r4, r5, r6}
+ 1667 003e 7047     		bx	lr
+ 1669              		.section	.text.TIM_ForcedOC1Config,"ax",%progbits
+ 1670              		.align	2
+ 1671              		.global	TIM_ForcedOC1Config
+ 1672              		.thumb
+ 1673              		.thumb_func
+ 1675              	TIM_ForcedOC1Config:
+ 1676              		@ args = 0, pretend = 0, frame = 0
+ 1677              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1678              		@ link register save eliminated.
+ 1679 0000 038B     		ldrh	r3, [r0, #24]
+ 1680 0002 23F07003 		bic	r3, r3, #112
+ 1681 0006 1B04     		lsls	r3, r3, #16
+ 1682 0008 1B0C     		lsrs	r3, r3, #16
+ 1683 000a 1943     		orrs	r1, r1, r3
+ 1684 000c 0183     		strh	r1, [r0, #24]	@ movhi
+ 1685 000e 7047     		bx	lr
+ 1687              		.section	.text.TIM_ForcedOC2Config,"ax",%progbits
+ 1688              		.align	2
+ 1689              		.global	TIM_ForcedOC2Config
+ 1690              		.thumb
+ 1691              		.thumb_func
+ 1693              	TIM_ForcedOC2Config:
+ 1694              		@ args = 0, pretend = 0, frame = 0
+ 1695              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1696              		@ link register save eliminated.
+ 1697 0000 038B     		ldrh	r3, [r0, #24]
+ 1698 0002 23F4E043 		bic	r3, r3, #28672
+ 1699 0006 1B04     		lsls	r3, r3, #16
+ 1700 0008 1B0C     		lsrs	r3, r3, #16
+ 1701 000a 43EA0121 		orr	r1, r3, r1, lsl #8
+ 1702 000e 8BB2     		uxth	r3, r1
+ 1703 0010 0383     		strh	r3, [r0, #24]	@ movhi
+ 1704 0012 7047     		bx	lr
+ 1706              		.section	.text.TIM_ForcedOC3Config,"ax",%progbits
+ 1707              		.align	2
+ 1708              		.global	TIM_ForcedOC3Config
+ 1709              		.thumb
+ 1710              		.thumb_func
+ 1712              	TIM_ForcedOC3Config:
+ 1713              		@ args = 0, pretend = 0, frame = 0
+ 1714              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1715              		@ link register save eliminated.
+ 1716 0000 838B     		ldrh	r3, [r0, #28]
+ 1717 0002 23F07003 		bic	r3, r3, #112
+ 1718 0006 1B04     		lsls	r3, r3, #16
+ 1719 0008 1B0C     		lsrs	r3, r3, #16
+ 1720 000a 1943     		orrs	r1, r1, r3
+ 1721 000c 8183     		strh	r1, [r0, #28]	@ movhi
+ 1722 000e 7047     		bx	lr
+ 1724              		.section	.text.TIM_ForcedOC4Config,"ax",%progbits
+ 1725              		.align	2
+ 1726              		.global	TIM_ForcedOC4Config
+ 1727              		.thumb
+ 1728              		.thumb_func
+ 1730              	TIM_ForcedOC4Config:
+ 1731              		@ args = 0, pretend = 0, frame = 0
+ 1732              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1733              		@ link register save eliminated.
+ 1734 0000 838B     		ldrh	r3, [r0, #28]
+ 1735 0002 23F4E043 		bic	r3, r3, #28672
+ 1736 0006 1B04     		lsls	r3, r3, #16
+ 1737 0008 1B0C     		lsrs	r3, r3, #16
+ 1738 000a 43EA0121 		orr	r1, r3, r1, lsl #8
+ 1739 000e 8BB2     		uxth	r3, r1
+ 1740 0010 8383     		strh	r3, [r0, #28]	@ movhi
+ 1741 0012 7047     		bx	lr
+ 1743              		.section	.text.TIM_ARRPreloadConfig,"ax",%progbits
+ 1744              		.align	2
+ 1745              		.global	TIM_ARRPreloadConfig
+ 1746              		.thumb
+ 1747              		.thumb_func
+ 1749              	TIM_ARRPreloadConfig:
+ 1750              		@ args = 0, pretend = 0, frame = 0
+ 1751              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1752              		@ link register save eliminated.
+ 1753 0000 0388     		ldrh	r3, [r0, #0]
+ 1754 0002 29B9     		cbnz	r1, .L159
+ 1755 0004 23F08003 		bic	r3, r3, #128
+ 1756 0008 1B04     		lsls	r3, r3, #16
+ 1757 000a 1B0C     		lsrs	r3, r3, #16
+ 1758 000c 0380     		strh	r3, [r0, #0]	@ movhi
+ 1759 000e 7047     		bx	lr
+ 1760              	.L159:
+ 1761 0010 9BB2     		uxth	r3, r3
+ 1762 0012 43F08003 		orr	r3, r3, #128
+ 1763 0016 0380     		strh	r3, [r0, #0]	@ movhi
+ 1764 0018 7047     		bx	lr
+ 1766 001a 00BF     		.section	.text.TIM_SelectCOM,"ax",%progbits
+ 1767              		.align	2
+ 1768              		.global	TIM_SelectCOM
+ 1769              		.thumb
+ 1770              		.thumb_func
+ 1772              	TIM_SelectCOM:
+ 1773              		@ args = 0, pretend = 0, frame = 0
+ 1774              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1775              		@ link register save eliminated.
+ 1776 0000 8388     		ldrh	r3, [r0, #4]
+ 1777 0002 29B9     		cbnz	r1, .L163
+ 1778 0004 23F00403 		bic	r3, r3, #4
+ 1779 0008 1B04     		lsls	r3, r3, #16
+ 1780 000a 1B0C     		lsrs	r3, r3, #16
+ 1781 000c 8380     		strh	r3, [r0, #4]	@ movhi
+ 1782 000e 7047     		bx	lr
+ 1783              	.L163:
+ 1784 0010 9BB2     		uxth	r3, r3
+ 1785 0012 43F00403 		orr	r3, r3, #4
+ 1786 0016 8380     		strh	r3, [r0, #4]	@ movhi
+ 1787 0018 7047     		bx	lr
+ 1789 001a 00BF     		.section	.text.TIM_SelectCCDMA,"ax",%progbits
+ 1790              		.align	2
+ 1791              		.global	TIM_SelectCCDMA
+ 1792              		.thumb
+ 1793              		.thumb_func
+ 1795              	TIM_SelectCCDMA:
+ 1796              		@ args = 0, pretend = 0, frame = 0
+ 1797              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1798              		@ link register save eliminated.
+ 1799 0000 8388     		ldrh	r3, [r0, #4]
+ 1800 0002 29B9     		cbnz	r1, .L167
+ 1801 0004 23F00803 		bic	r3, r3, #8
+ 1802 0008 1B04     		lsls	r3, r3, #16
+ 1803 000a 1B0C     		lsrs	r3, r3, #16
+ 1804 000c 8380     		strh	r3, [r0, #4]	@ movhi
+ 1805 000e 7047     		bx	lr
+ 1806              	.L167:
+ 1807 0010 9BB2     		uxth	r3, r3
+ 1808 0012 43F00803 		orr	r3, r3, #8
+ 1809 0016 8380     		strh	r3, [r0, #4]	@ movhi
+ 1810 0018 7047     		bx	lr
+ 1812 001a 00BF     		.section	.text.TIM_CCPreloadControl,"ax",%progbits
+ 1813              		.align	2
+ 1814              		.global	TIM_CCPreloadControl
+ 1815              		.thumb
+ 1816              		.thumb_func
+ 1818              	TIM_CCPreloadControl:
+ 1819              		@ args = 0, pretend = 0, frame = 0
+ 1820              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1821              		@ link register save eliminated.
+ 1822 0000 8388     		ldrh	r3, [r0, #4]
+ 1823 0002 29B9     		cbnz	r1, .L171
+ 1824 0004 23F00103 		bic	r3, r3, #1
+ 1825 0008 1B04     		lsls	r3, r3, #16
+ 1826 000a 1B0C     		lsrs	r3, r3, #16
+ 1827 000c 8380     		strh	r3, [r0, #4]	@ movhi
+ 1828 000e 7047     		bx	lr
+ 1829              	.L171:
+ 1830 0010 9BB2     		uxth	r3, r3
+ 1831 0012 43F00103 		orr	r3, r3, #1
+ 1832 0016 8380     		strh	r3, [r0, #4]	@ movhi
+ 1833 0018 7047     		bx	lr
+ 1835 001a 00BF     		.section	.text.TIM_OC1PreloadConfig,"ax",%progbits
+ 1836              		.align	2
+ 1837              		.global	TIM_OC1PreloadConfig
+ 1838              		.thumb
+ 1839              		.thumb_func
+ 1841              	TIM_OC1PreloadConfig:
+ 1842              		@ args = 0, pretend = 0, frame = 0
+ 1843              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1844              		@ link register save eliminated.
+ 1845 0000 038B     		ldrh	r3, [r0, #24]
+ 1846 0002 23F00803 		bic	r3, r3, #8
+ 1847 0006 1B04     		lsls	r3, r3, #16
+ 1848 0008 1B0C     		lsrs	r3, r3, #16
+ 1849 000a 1943     		orrs	r1, r1, r3
+ 1850 000c 0183     		strh	r1, [r0, #24]	@ movhi
+ 1851 000e 7047     		bx	lr
+ 1853              		.section	.text.TIM_OC2PreloadConfig,"ax",%progbits
+ 1854              		.align	2
+ 1855              		.global	TIM_OC2PreloadConfig
+ 1856              		.thumb
+ 1857              		.thumb_func
+ 1859              	TIM_OC2PreloadConfig:
+ 1860              		@ args = 0, pretend = 0, frame = 0
+ 1861              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1862              		@ link register save eliminated.
+ 1863 0000 038B     		ldrh	r3, [r0, #24]
+ 1864 0002 23F40063 		bic	r3, r3, #2048
+ 1865 0006 1B04     		lsls	r3, r3, #16
+ 1866 0008 1B0C     		lsrs	r3, r3, #16
+ 1867 000a 43EA0121 		orr	r1, r3, r1, lsl #8
+ 1868 000e 8BB2     		uxth	r3, r1
+ 1869 0010 0383     		strh	r3, [r0, #24]	@ movhi
+ 1870 0012 7047     		bx	lr
+ 1872              		.section	.text.TIM_OC3PreloadConfig,"ax",%progbits
+ 1873              		.align	2
+ 1874              		.global	TIM_OC3PreloadConfig
+ 1875              		.thumb
+ 1876              		.thumb_func
+ 1878              	TIM_OC3PreloadConfig:
+ 1879              		@ args = 0, pretend = 0, frame = 0
+ 1880              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1881              		@ link register save eliminated.
+ 1882 0000 838B     		ldrh	r3, [r0, #28]
+ 1883 0002 23F00803 		bic	r3, r3, #8
+ 1884 0006 1B04     		lsls	r3, r3, #16
+ 1885 0008 1B0C     		lsrs	r3, r3, #16
+ 1886 000a 1943     		orrs	r1, r1, r3
+ 1887 000c 8183     		strh	r1, [r0, #28]	@ movhi
+ 1888 000e 7047     		bx	lr
+ 1890              		.section	.text.TIM_OC4PreloadConfig,"ax",%progbits
+ 1891              		.align	2
+ 1892              		.global	TIM_OC4PreloadConfig
+ 1893              		.thumb
+ 1894              		.thumb_func
+ 1896              	TIM_OC4PreloadConfig:
+ 1897              		@ args = 0, pretend = 0, frame = 0
+ 1898              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1899              		@ link register save eliminated.
+ 1900 0000 838B     		ldrh	r3, [r0, #28]
+ 1901 0002 23F40063 		bic	r3, r3, #2048
+ 1902 0006 1B04     		lsls	r3, r3, #16
+ 1903 0008 1B0C     		lsrs	r3, r3, #16
+ 1904 000a 43EA0121 		orr	r1, r3, r1, lsl #8
+ 1905 000e 8BB2     		uxth	r3, r1
+ 1906 0010 8383     		strh	r3, [r0, #28]	@ movhi
+ 1907 0012 7047     		bx	lr
+ 1909              		.section	.text.TIM_OC1FastConfig,"ax",%progbits
+ 1910              		.align	2
+ 1911              		.global	TIM_OC1FastConfig
+ 1912              		.thumb
+ 1913              		.thumb_func
+ 1915              	TIM_OC1FastConfig:
+ 1916              		@ args = 0, pretend = 0, frame = 0
+ 1917              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1918              		@ link register save eliminated.
+ 1919 0000 038B     		ldrh	r3, [r0, #24]
+ 1920 0002 23F00403 		bic	r3, r3, #4
+ 1921 0006 1B04     		lsls	r3, r3, #16
+ 1922 0008 1B0C     		lsrs	r3, r3, #16
+ 1923 000a 1943     		orrs	r1, r1, r3
+ 1924 000c 0183     		strh	r1, [r0, #24]	@ movhi
+ 1925 000e 7047     		bx	lr
+ 1927              		.section	.text.TIM_OC2FastConfig,"ax",%progbits
+ 1928              		.align	2
+ 1929              		.global	TIM_OC2FastConfig
+ 1930              		.thumb
+ 1931              		.thumb_func
+ 1933              	TIM_OC2FastConfig:
+ 1934              		@ args = 0, pretend = 0, frame = 0
+ 1935              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1936              		@ link register save eliminated.
+ 1937 0000 038B     		ldrh	r3, [r0, #24]
+ 1938 0002 23F48063 		bic	r3, r3, #1024
+ 1939 0006 1B04     		lsls	r3, r3, #16
+ 1940 0008 1B0C     		lsrs	r3, r3, #16
+ 1941 000a 43EA0121 		orr	r1, r3, r1, lsl #8
+ 1942 000e 8BB2     		uxth	r3, r1
+ 1943 0010 0383     		strh	r3, [r0, #24]	@ movhi
+ 1944 0012 7047     		bx	lr
+ 1946              		.section	.text.TIM_OC3FastConfig,"ax",%progbits
+ 1947              		.align	2
+ 1948              		.global	TIM_OC3FastConfig
+ 1949              		.thumb
+ 1950              		.thumb_func
+ 1952              	TIM_OC3FastConfig:
+ 1953              		@ args = 0, pretend = 0, frame = 0
+ 1954              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1955              		@ link register save eliminated.
+ 1956 0000 838B     		ldrh	r3, [r0, #28]
+ 1957 0002 23F00403 		bic	r3, r3, #4
+ 1958 0006 1B04     		lsls	r3, r3, #16
+ 1959 0008 1B0C     		lsrs	r3, r3, #16
+ 1960 000a 1943     		orrs	r1, r1, r3
+ 1961 000c 8183     		strh	r1, [r0, #28]	@ movhi
+ 1962 000e 7047     		bx	lr
+ 1964              		.section	.text.TIM_OC4FastConfig,"ax",%progbits
+ 1965              		.align	2
+ 1966              		.global	TIM_OC4FastConfig
+ 1967              		.thumb
+ 1968              		.thumb_func
+ 1970              	TIM_OC4FastConfig:
+ 1971              		@ args = 0, pretend = 0, frame = 0
+ 1972              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1973              		@ link register save eliminated.
+ 1974 0000 838B     		ldrh	r3, [r0, #28]
+ 1975 0002 23F48063 		bic	r3, r3, #1024
+ 1976 0006 1B04     		lsls	r3, r3, #16
+ 1977 0008 1B0C     		lsrs	r3, r3, #16
+ 1978 000a 43EA0121 		orr	r1, r3, r1, lsl #8
+ 1979 000e 8BB2     		uxth	r3, r1
+ 1980 0010 8383     		strh	r3, [r0, #28]	@ movhi
+ 1981 0012 7047     		bx	lr
+ 1983              		.section	.text.TIM_ClearOC1Ref,"ax",%progbits
+ 1984              		.align	2
+ 1985              		.global	TIM_ClearOC1Ref
+ 1986              		.thumb
+ 1987              		.thumb_func
+ 1989              	TIM_ClearOC1Ref:
+ 1990              		@ args = 0, pretend = 0, frame = 0
+ 1991              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1992              		@ link register save eliminated.
+ 1993 0000 038B     		ldrh	r3, [r0, #24]
+ 1994 0002 23F08003 		bic	r3, r3, #128
+ 1995 0006 1B04     		lsls	r3, r3, #16
+ 1996 0008 1B0C     		lsrs	r3, r3, #16
+ 1997 000a 1943     		orrs	r1, r1, r3
+ 1998 000c 0183     		strh	r1, [r0, #24]	@ movhi
+ 1999 000e 7047     		bx	lr
+ 2001              		.section	.text.TIM_ClearOC2Ref,"ax",%progbits
+ 2002              		.align	2
+ 2003              		.global	TIM_ClearOC2Ref
+ 2004              		.thumb
+ 2005              		.thumb_func
+ 2007              	TIM_ClearOC2Ref:
+ 2008              		@ args = 0, pretend = 0, frame = 0
+ 2009              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2010              		@ link register save eliminated.
+ 2011 0000 038B     		ldrh	r3, [r0, #24]
+ 2012 0002 5B04     		lsls	r3, r3, #17
+ 2013 0004 5B0C     		lsrs	r3, r3, #17
+ 2014 0006 43EA0121 		orr	r1, r3, r1, lsl #8
+ 2015 000a 8BB2     		uxth	r3, r1
+ 2016 000c 0383     		strh	r3, [r0, #24]	@ movhi
+ 2017 000e 7047     		bx	lr
+ 2019              		.section	.text.TIM_ClearOC3Ref,"ax",%progbits
+ 2020              		.align	2
+ 2021              		.global	TIM_ClearOC3Ref
+ 2022              		.thumb
+ 2023              		.thumb_func
+ 2025              	TIM_ClearOC3Ref:
+ 2026              		@ args = 0, pretend = 0, frame = 0
+ 2027              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2028              		@ link register save eliminated.
+ 2029 0000 838B     		ldrh	r3, [r0, #28]
+ 2030 0002 23F08003 		bic	r3, r3, #128
+ 2031 0006 1B04     		lsls	r3, r3, #16
+ 2032 0008 1B0C     		lsrs	r3, r3, #16
+ 2033 000a 1943     		orrs	r1, r1, r3
+ 2034 000c 8183     		strh	r1, [r0, #28]	@ movhi
+ 2035 000e 7047     		bx	lr
+ 2037              		.section	.text.TIM_ClearOC4Ref,"ax",%progbits
+ 2038              		.align	2
+ 2039              		.global	TIM_ClearOC4Ref
+ 2040              		.thumb
+ 2041              		.thumb_func
+ 2043              	TIM_ClearOC4Ref:
+ 2044              		@ args = 0, pretend = 0, frame = 0
+ 2045              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2046              		@ link register save eliminated.
+ 2047 0000 838B     		ldrh	r3, [r0, #28]
+ 2048 0002 5B04     		lsls	r3, r3, #17
+ 2049 0004 5B0C     		lsrs	r3, r3, #17
+ 2050 0006 43EA0121 		orr	r1, r3, r1, lsl #8
+ 2051 000a 8BB2     		uxth	r3, r1
+ 2052 000c 8383     		strh	r3, [r0, #28]	@ movhi
+ 2053 000e 7047     		bx	lr
+ 2055              		.section	.text.TIM_OC1PolarityConfig,"ax",%progbits
+ 2056              		.align	2
+ 2057              		.global	TIM_OC1PolarityConfig
+ 2058              		.thumb
+ 2059              		.thumb_func
+ 2061              	TIM_OC1PolarityConfig:
+ 2062              		@ args = 0, pretend = 0, frame = 0
+ 2063              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2064              		@ link register save eliminated.
+ 2065 0000 038C     		ldrh	r3, [r0, #32]
+ 2066 0002 23F00203 		bic	r3, r3, #2
+ 2067 0006 1B04     		lsls	r3, r3, #16
+ 2068 0008 1B0C     		lsrs	r3, r3, #16
+ 2069 000a 1943     		orrs	r1, r1, r3
+ 2070 000c 0184     		strh	r1, [r0, #32]	@ movhi
+ 2071 000e 7047     		bx	lr
+ 2073              		.section	.text.TIM_OC1NPolarityConfig,"ax",%progbits
+ 2074              		.align	2
+ 2075              		.global	TIM_OC1NPolarityConfig
+ 2076              		.thumb
+ 2077              		.thumb_func
+ 2079              	TIM_OC1NPolarityConfig:
+ 2080              		@ args = 0, pretend = 0, frame = 0
+ 2081              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2082              		@ link register save eliminated.
+ 2083 0000 038C     		ldrh	r3, [r0, #32]
+ 2084 0002 23F00803 		bic	r3, r3, #8
+ 2085 0006 1B04     		lsls	r3, r3, #16
+ 2086 0008 1B0C     		lsrs	r3, r3, #16
+ 2087 000a 1943     		orrs	r1, r1, r3
+ 2088 000c 0184     		strh	r1, [r0, #32]	@ movhi
+ 2089 000e 7047     		bx	lr
+ 2091              		.section	.text.TIM_OC2PolarityConfig,"ax",%progbits
+ 2092              		.align	2
+ 2093              		.global	TIM_OC2PolarityConfig
+ 2094              		.thumb
+ 2095              		.thumb_func
+ 2097              	TIM_OC2PolarityConfig:
+ 2098              		@ args = 0, pretend = 0, frame = 0
+ 2099              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2100              		@ link register save eliminated.
+ 2101 0000 038C     		ldrh	r3, [r0, #32]
+ 2102 0002 23F02003 		bic	r3, r3, #32
+ 2103 0006 1B04     		lsls	r3, r3, #16
+ 2104 0008 1B0C     		lsrs	r3, r3, #16
+ 2105 000a 43EA0111 		orr	r1, r3, r1, lsl #4
+ 2106 000e 8BB2     		uxth	r3, r1
+ 2107 0010 0384     		strh	r3, [r0, #32]	@ movhi
+ 2108 0012 7047     		bx	lr
+ 2110              		.section	.text.TIM_OC2NPolarityConfig,"ax",%progbits
+ 2111              		.align	2
+ 2112              		.global	TIM_OC2NPolarityConfig
+ 2113              		.thumb
+ 2114              		.thumb_func
+ 2116              	TIM_OC2NPolarityConfig:
+ 2117              		@ args = 0, pretend = 0, frame = 0
+ 2118              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2119              		@ link register save eliminated.
+ 2120 0000 038C     		ldrh	r3, [r0, #32]
+ 2121 0002 23F08003 		bic	r3, r3, #128
+ 2122 0006 1B04     		lsls	r3, r3, #16
+ 2123 0008 1B0C     		lsrs	r3, r3, #16
+ 2124 000a 43EA0111 		orr	r1, r3, r1, lsl #4
+ 2125 000e 8BB2     		uxth	r3, r1
+ 2126 0010 0384     		strh	r3, [r0, #32]	@ movhi
+ 2127 0012 7047     		bx	lr
+ 2129              		.section	.text.TIM_OC3PolarityConfig,"ax",%progbits
+ 2130              		.align	2
+ 2131              		.global	TIM_OC3PolarityConfig
+ 2132              		.thumb
+ 2133              		.thumb_func
+ 2135              	TIM_OC3PolarityConfig:
+ 2136              		@ args = 0, pretend = 0, frame = 0
+ 2137              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2138              		@ link register save eliminated.
+ 2139 0000 038C     		ldrh	r3, [r0, #32]
+ 2140 0002 23F40073 		bic	r3, r3, #512
+ 2141 0006 1B04     		lsls	r3, r3, #16
+ 2142 0008 1B0C     		lsrs	r3, r3, #16
+ 2143 000a 43EA0121 		orr	r1, r3, r1, lsl #8
+ 2144 000e 8BB2     		uxth	r3, r1
+ 2145 0010 0384     		strh	r3, [r0, #32]	@ movhi
+ 2146 0012 7047     		bx	lr
+ 2148              		.section	.text.TIM_OC3NPolarityConfig,"ax",%progbits
+ 2149              		.align	2
+ 2150              		.global	TIM_OC3NPolarityConfig
+ 2151              		.thumb
+ 2152              		.thumb_func
+ 2154              	TIM_OC3NPolarityConfig:
+ 2155              		@ args = 0, pretend = 0, frame = 0
+ 2156              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2157              		@ link register save eliminated.
+ 2158 0000 038C     		ldrh	r3, [r0, #32]
+ 2159 0002 23F40063 		bic	r3, r3, #2048
+ 2160 0006 1B04     		lsls	r3, r3, #16
+ 2161 0008 1B0C     		lsrs	r3, r3, #16
+ 2162 000a 43EA0121 		orr	r1, r3, r1, lsl #8
+ 2163 000e 8BB2     		uxth	r3, r1
+ 2164 0010 0384     		strh	r3, [r0, #32]	@ movhi
+ 2165 0012 7047     		bx	lr
+ 2167              		.section	.text.TIM_OC4PolarityConfig,"ax",%progbits
+ 2168              		.align	2
+ 2169              		.global	TIM_OC4PolarityConfig
+ 2170              		.thumb
+ 2171              		.thumb_func
+ 2173              	TIM_OC4PolarityConfig:
+ 2174              		@ args = 0, pretend = 0, frame = 0
+ 2175              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2176              		@ link register save eliminated.
+ 2177 0000 038C     		ldrh	r3, [r0, #32]
+ 2178 0002 23F40053 		bic	r3, r3, #8192
+ 2179 0006 1B04     		lsls	r3, r3, #16
+ 2180 0008 1B0C     		lsrs	r3, r3, #16
+ 2181 000a 43EA0131 		orr	r1, r3, r1, lsl #12
+ 2182 000e 8BB2     		uxth	r3, r1
+ 2183 0010 0384     		strh	r3, [r0, #32]	@ movhi
+ 2184 0012 7047     		bx	lr
+ 2186              		.section	.text.TIM_CCxCmd,"ax",%progbits
+ 2187              		.align	2
+ 2188              		.global	TIM_CCxCmd
+ 2189              		.thumb
+ 2190              		.thumb_func
+ 2192              	TIM_CCxCmd:
+ 2193              		@ args = 0, pretend = 0, frame = 0
+ 2194              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2195              		@ link register save eliminated.
+ 2196 0000 0123     		movs	r3, #1
+ 2197 0002 03FA01F3 		lsl	r3, r3, r1
+ 2198 0006 02FA01F2 		lsl	r2, r2, r1
+ 2199 000a 018C     		ldrh	r1, [r0, #32]
+ 2200 000c 89B2     		uxth	r1, r1
+ 2201 000e 21EA0303 		bic	r3, r1, r3
+ 2202 0012 0384     		strh	r3, [r0, #32]	@ movhi
+ 2203 0014 018C     		ldrh	r1, [r0, #32]
+ 2204 0016 0A43     		orrs	r2, r2, r1
+ 2205 0018 92B2     		uxth	r2, r2
+ 2206 001a 0284     		strh	r2, [r0, #32]	@ movhi
+ 2207 001c 7047     		bx	lr
+ 2209 001e 00BF     		.section	.text.TIM_CCxNCmd,"ax",%progbits
+ 2210              		.align	2
+ 2211              		.global	TIM_CCxNCmd
+ 2212              		.thumb
+ 2213              		.thumb_func
+ 2215              	TIM_CCxNCmd:
+ 2216              		@ args = 0, pretend = 0, frame = 0
+ 2217              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2218              		@ link register save eliminated.
+ 2219 0000 0423     		movs	r3, #4
+ 2220 0002 03FA01F3 		lsl	r3, r3, r1
+ 2221 0006 02FA01F2 		lsl	r2, r2, r1
+ 2222 000a 018C     		ldrh	r1, [r0, #32]
+ 2223 000c 89B2     		uxth	r1, r1
+ 2224 000e 21EA0303 		bic	r3, r1, r3
+ 2225 0012 0384     		strh	r3, [r0, #32]	@ movhi
+ 2226 0014 018C     		ldrh	r1, [r0, #32]
+ 2227 0016 0A43     		orrs	r2, r2, r1
+ 2228 0018 92B2     		uxth	r2, r2
+ 2229 001a 0284     		strh	r2, [r0, #32]	@ movhi
+ 2230 001c 7047     		bx	lr
+ 2232 001e 00BF     		.section	.text.TIM_SelectOCxM,"ax",%progbits
+ 2233              		.align	2
+ 2234              		.global	TIM_SelectOCxM
+ 2235              		.thumb
+ 2236              		.thumb_func
+ 2238              	TIM_SelectOCxM:
+ 2239              		@ args = 0, pretend = 0, frame = 0
+ 2240              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2241              		@ link register save eliminated.
+ 2242 0000 0123     		movs	r3, #1
+ 2243 0002 03FA01F3 		lsl	r3, r3, r1
+ 2244 0006 30B4     		push	{r4, r5}
+ 2245 0008 058C     		ldrh	r5, [r0, #32]
+ 2246 000a 4FF6F774 		movw	r4, #65527
+ 2247 000e ADB2     		uxth	r5, r5
+ 2248 0010 25EA0305 		bic	r5, r5, r3
+ 2249 0014 0C40     		ands	r4, r4, r1
+ 2250 0016 00F11803 		add	r3, r0, #24
+ 2251 001a 0584     		strh	r5, [r0, #32]	@ movhi
+ 2252 001c 6CB1     		cbz	r4, .L196
+ 2253 001e 0439     		subs	r1, r1, #4
+ 2254 0020 C1F34E01 		ubfx	r1, r1, #1, #15
+ 2255 0024 C858     		ldr	r0, [r1, r3]
+ 2256 0026 1202     		lsls	r2, r2, #8
+ 2257 0028 20F4E040 		bic	r0, r0, #28672
+ 2258 002c C850     		str	r0, [r1, r3]
+ 2259 002e C858     		ldr	r0, [r1, r3]
+ 2260 0030 92B2     		uxth	r2, r2
+ 2261 0032 0243     		orrs	r2, r2, r0
+ 2262 0034 CA50     		str	r2, [r1, r3]
+ 2263              	.L193:
+ 2264 0036 30BC     		pop	{r4, r5}
+ 2265 0038 7047     		bx	lr
+ 2266              	.L196:
+ 2267 003a 4908     		lsrs	r1, r1, #1
+ 2268 003c C858     		ldr	r0, [r1, r3]
+ 2269 003e 20F07000 		bic	r0, r0, #112
+ 2270 0042 C850     		str	r0, [r1, r3]
+ 2271 0044 C858     		ldr	r0, [r1, r3]
+ 2272 0046 0243     		orrs	r2, r2, r0
+ 2273 0048 CA50     		str	r2, [r1, r3]
+ 2274 004a F4E7     		b	.L193
+ 2276              		.section	.text.TIM_UpdateDisableConfig,"ax",%progbits
+ 2277              		.align	2
+ 2278              		.global	TIM_UpdateDisableConfig
+ 2279              		.thumb
+ 2280              		.thumb_func
+ 2282              	TIM_UpdateDisableConfig:
+ 2283              		@ args = 0, pretend = 0, frame = 0
+ 2284              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2285              		@ link register save eliminated.
+ 2286 0000 0388     		ldrh	r3, [r0, #0]
+ 2287 0002 29B9     		cbnz	r1, .L200
+ 2288 0004 23F00203 		bic	r3, r3, #2
+ 2289 0008 1B04     		lsls	r3, r3, #16
+ 2290 000a 1B0C     		lsrs	r3, r3, #16
+ 2291 000c 0380     		strh	r3, [r0, #0]	@ movhi
+ 2292 000e 7047     		bx	lr
+ 2293              	.L200:
+ 2294 0010 9BB2     		uxth	r3, r3
+ 2295 0012 43F00203 		orr	r3, r3, #2
+ 2296 0016 0380     		strh	r3, [r0, #0]	@ movhi
+ 2297 0018 7047     		bx	lr
+ 2299 001a 00BF     		.section	.text.TIM_UpdateRequestConfig,"ax",%progbits
+ 2300              		.align	2
+ 2301              		.global	TIM_UpdateRequestConfig
+ 2302              		.thumb
+ 2303              		.thumb_func
+ 2305              	TIM_UpdateRequestConfig:
+ 2306              		@ args = 0, pretend = 0, frame = 0
+ 2307              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2308              		@ link register save eliminated.
+ 2309 0000 0388     		ldrh	r3, [r0, #0]
+ 2310 0002 29B9     		cbnz	r1, .L204
+ 2311 0004 23F00403 		bic	r3, r3, #4
+ 2312 0008 1B04     		lsls	r3, r3, #16
+ 2313 000a 1B0C     		lsrs	r3, r3, #16
+ 2314 000c 0380     		strh	r3, [r0, #0]	@ movhi
+ 2315 000e 7047     		bx	lr
+ 2316              	.L204:
+ 2317 0010 9BB2     		uxth	r3, r3
+ 2318 0012 43F00403 		orr	r3, r3, #4
+ 2319 0016 0380     		strh	r3, [r0, #0]	@ movhi
+ 2320 0018 7047     		bx	lr
+ 2322 001a 00BF     		.section	.text.TIM_SelectHallSensor,"ax",%progbits
+ 2323              		.align	2
+ 2324              		.global	TIM_SelectHallSensor
+ 2325              		.thumb
+ 2326              		.thumb_func
+ 2328              	TIM_SelectHallSensor:
+ 2329              		@ args = 0, pretend = 0, frame = 0
+ 2330              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2331              		@ link register save eliminated.
+ 2332 0000 8388     		ldrh	r3, [r0, #4]
+ 2333 0002 29B9     		cbnz	r1, .L208
+ 2334 0004 23F08003 		bic	r3, r3, #128
+ 2335 0008 1B04     		lsls	r3, r3, #16
+ 2336 000a 1B0C     		lsrs	r3, r3, #16
+ 2337 000c 8380     		strh	r3, [r0, #4]	@ movhi
+ 2338 000e 7047     		bx	lr
+ 2339              	.L208:
+ 2340 0010 9BB2     		uxth	r3, r3
+ 2341 0012 43F08003 		orr	r3, r3, #128
+ 2342 0016 8380     		strh	r3, [r0, #4]	@ movhi
+ 2343 0018 7047     		bx	lr
+ 2345 001a 00BF     		.section	.text.TIM_SelectOnePulseMode,"ax",%progbits
+ 2346              		.align	2
+ 2347              		.global	TIM_SelectOnePulseMode
+ 2348              		.thumb
+ 2349              		.thumb_func
+ 2351              	TIM_SelectOnePulseMode:
+ 2352              		@ args = 0, pretend = 0, frame = 0
+ 2353              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2354              		@ link register save eliminated.
+ 2355 0000 0388     		ldrh	r3, [r0, #0]
+ 2356 0002 23F00803 		bic	r3, r3, #8
+ 2357 0006 1B04     		lsls	r3, r3, #16
+ 2358 0008 1B0C     		lsrs	r3, r3, #16
+ 2359 000a 0380     		strh	r3, [r0, #0]	@ movhi
+ 2360 000c 0388     		ldrh	r3, [r0, #0]
+ 2361 000e 9BB2     		uxth	r3, r3
+ 2362 0010 1943     		orrs	r1, r1, r3
+ 2363 0012 0180     		strh	r1, [r0, #0]	@ movhi
+ 2364 0014 7047     		bx	lr
+ 2366 0016 00BF     		.section	.text.TIM_SelectOutputTrigger,"ax",%progbits
+ 2367              		.align	2
+ 2368              		.global	TIM_SelectOutputTrigger
+ 2369              		.thumb
+ 2370              		.thumb_func
+ 2372              	TIM_SelectOutputTrigger:
+ 2373              		@ args = 0, pretend = 0, frame = 0
+ 2374              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2375              		@ link register save eliminated.
+ 2376 0000 8388     		ldrh	r3, [r0, #4]
+ 2377 0002 23F07003 		bic	r3, r3, #112
+ 2378 0006 1B04     		lsls	r3, r3, #16
+ 2379 0008 1B0C     		lsrs	r3, r3, #16
+ 2380 000a 8380     		strh	r3, [r0, #4]	@ movhi
+ 2381 000c 8388     		ldrh	r3, [r0, #4]
+ 2382 000e 9BB2     		uxth	r3, r3
+ 2383 0010 1943     		orrs	r1, r1, r3
+ 2384 0012 8180     		strh	r1, [r0, #4]	@ movhi
+ 2385 0014 7047     		bx	lr
+ 2387 0016 00BF     		.section	.text.TIM_SelectSlaveMode,"ax",%progbits
+ 2388              		.align	2
+ 2389              		.global	TIM_SelectSlaveMode
+ 2390              		.thumb
+ 2391              		.thumb_func
+ 2393              	TIM_SelectSlaveMode:
+ 2394              		@ args = 0, pretend = 0, frame = 0
+ 2395              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2396              		@ link register save eliminated.
+ 2397 0000 0389     		ldrh	r3, [r0, #8]
+ 2398 0002 23F00703 		bic	r3, r3, #7
+ 2399 0006 1B04     		lsls	r3, r3, #16
+ 2400 0008 1B0C     		lsrs	r3, r3, #16
+ 2401 000a 0381     		strh	r3, [r0, #8]	@ movhi
+ 2402 000c 0389     		ldrh	r3, [r0, #8]
+ 2403 000e 9BB2     		uxth	r3, r3
+ 2404 0010 1943     		orrs	r1, r1, r3
+ 2405 0012 0181     		strh	r1, [r0, #8]	@ movhi
+ 2406 0014 7047     		bx	lr
+ 2408 0016 00BF     		.section	.text.TIM_SelectMasterSlaveMode,"ax",%progbits
+ 2409              		.align	2
+ 2410              		.global	TIM_SelectMasterSlaveMode
+ 2411              		.thumb
+ 2412              		.thumb_func
+ 2414              	TIM_SelectMasterSlaveMode:
+ 2415              		@ args = 0, pretend = 0, frame = 0
+ 2416              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2417              		@ link register save eliminated.
+ 2418 0000 0389     		ldrh	r3, [r0, #8]
+ 2419 0002 23F08003 		bic	r3, r3, #128
+ 2420 0006 1B04     		lsls	r3, r3, #16
+ 2421 0008 1B0C     		lsrs	r3, r3, #16
+ 2422 000a 0381     		strh	r3, [r0, #8]	@ movhi
+ 2423 000c 0389     		ldrh	r3, [r0, #8]
+ 2424 000e 9BB2     		uxth	r3, r3
+ 2425 0010 1943     		orrs	r1, r1, r3
+ 2426 0012 0181     		strh	r1, [r0, #8]	@ movhi
+ 2427 0014 7047     		bx	lr
+ 2429 0016 00BF     		.section	.text.TIM_SetCounter,"ax",%progbits
+ 2430              		.align	2
+ 2431              		.global	TIM_SetCounter
+ 2432              		.thumb
+ 2433              		.thumb_func
+ 2435              	TIM_SetCounter:
+ 2436              		@ args = 0, pretend = 0, frame = 0
+ 2437              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2438              		@ link register save eliminated.
+ 2439 0000 8184     		strh	r1, [r0, #36]	@ movhi
+ 2440 0002 7047     		bx	lr
+ 2442              		.section	.text.TIM_SetAutoreload,"ax",%progbits
+ 2443              		.align	2
+ 2444              		.global	TIM_SetAutoreload
+ 2445              		.thumb
+ 2446              		.thumb_func
+ 2448              	TIM_SetAutoreload:
+ 2449              		@ args = 0, pretend = 0, frame = 0
+ 2450              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2451              		@ link register save eliminated.
+ 2452 0000 8185     		strh	r1, [r0, #44]	@ movhi
+ 2453 0002 7047     		bx	lr
+ 2455              		.section	.text.TIM_SetCompare1,"ax",%progbits
+ 2456              		.align	2
+ 2457              		.global	TIM_SetCompare1
+ 2458              		.thumb
+ 2459              		.thumb_func
+ 2461              	TIM_SetCompare1:
+ 2462              		@ args = 0, pretend = 0, frame = 0
+ 2463              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2464              		@ link register save eliminated.
+ 2465 0000 8186     		strh	r1, [r0, #52]	@ movhi
+ 2466 0002 7047     		bx	lr
+ 2468              		.section	.text.TIM_SetCompare2,"ax",%progbits
+ 2469              		.align	2
+ 2470              		.global	TIM_SetCompare2
+ 2471              		.thumb
+ 2472              		.thumb_func
+ 2474              	TIM_SetCompare2:
+ 2475              		@ args = 0, pretend = 0, frame = 0
+ 2476              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2477              		@ link register save eliminated.
+ 2478 0000 0187     		strh	r1, [r0, #56]	@ movhi
+ 2479 0002 7047     		bx	lr
+ 2481              		.section	.text.TIM_SetCompare3,"ax",%progbits
+ 2482              		.align	2
+ 2483              		.global	TIM_SetCompare3
+ 2484              		.thumb
+ 2485              		.thumb_func
+ 2487              	TIM_SetCompare3:
+ 2488              		@ args = 0, pretend = 0, frame = 0
+ 2489              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2490              		@ link register save eliminated.
+ 2491 0000 8187     		strh	r1, [r0, #60]	@ movhi
+ 2492 0002 7047     		bx	lr
+ 2494              		.section	.text.TIM_SetCompare4,"ax",%progbits
+ 2495              		.align	2
+ 2496              		.global	TIM_SetCompare4
+ 2497              		.thumb
+ 2498              		.thumb_func
+ 2500              	TIM_SetCompare4:
+ 2501              		@ args = 0, pretend = 0, frame = 0
+ 2502              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2503              		@ link register save eliminated.
+ 2504 0000 A0F84010 		strh	r1, [r0, #64]	@ movhi
+ 2505 0004 7047     		bx	lr
+ 2507 0006 00BF     		.section	.text.TIM_SetIC1Prescaler,"ax",%progbits
+ 2508              		.align	2
+ 2509              		.global	TIM_SetIC1Prescaler
+ 2510              		.thumb
+ 2511              		.thumb_func
+ 2513              	TIM_SetIC1Prescaler:
+ 2514              		@ args = 0, pretend = 0, frame = 0
+ 2515              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2516              		@ link register save eliminated.
+ 2517 0000 038B     		ldrh	r3, [r0, #24]
+ 2518 0002 23F00C03 		bic	r3, r3, #12
+ 2519 0006 1B04     		lsls	r3, r3, #16
+ 2520 0008 1B0C     		lsrs	r3, r3, #16
+ 2521 000a 0383     		strh	r3, [r0, #24]	@ movhi
+ 2522 000c 038B     		ldrh	r3, [r0, #24]
+ 2523 000e 9BB2     		uxth	r3, r3
+ 2524 0010 1943     		orrs	r1, r1, r3
+ 2525 0012 0183     		strh	r1, [r0, #24]	@ movhi
+ 2526 0014 7047     		bx	lr
+ 2528 0016 00BF     		.section	.text.TIM_SetIC2Prescaler,"ax",%progbits
+ 2529              		.align	2
+ 2530              		.global	TIM_SetIC2Prescaler
+ 2531              		.thumb
+ 2532              		.thumb_func
+ 2534              	TIM_SetIC2Prescaler:
+ 2535              		@ args = 0, pretend = 0, frame = 0
+ 2536              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2537              		@ link register save eliminated.
+ 2538 0000 038B     		ldrh	r3, [r0, #24]
+ 2539 0002 23F44063 		bic	r3, r3, #3072
+ 2540 0006 1B04     		lsls	r3, r3, #16
+ 2541 0008 1B0C     		lsrs	r3, r3, #16
+ 2542 000a 0383     		strh	r3, [r0, #24]	@ movhi
+ 2543 000c 038B     		ldrh	r3, [r0, #24]
+ 2544 000e 9BB2     		uxth	r3, r3
+ 2545 0010 43EA0121 		orr	r1, r3, r1, lsl #8
+ 2546 0014 8BB2     		uxth	r3, r1
+ 2547 0016 0383     		strh	r3, [r0, #24]	@ movhi
+ 2548 0018 7047     		bx	lr
+ 2550 001a 00BF     		.section	.text.TIM_SetIC3Prescaler,"ax",%progbits
+ 2551              		.align	2
+ 2552              		.global	TIM_SetIC3Prescaler
+ 2553              		.thumb
+ 2554              		.thumb_func
+ 2556              	TIM_SetIC3Prescaler:
+ 2557              		@ args = 0, pretend = 0, frame = 0
+ 2558              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2559              		@ link register save eliminated.
+ 2560 0000 838B     		ldrh	r3, [r0, #28]
+ 2561 0002 23F00C03 		bic	r3, r3, #12
+ 2562 0006 1B04     		lsls	r3, r3, #16
+ 2563 0008 1B0C     		lsrs	r3, r3, #16
+ 2564 000a 8383     		strh	r3, [r0, #28]	@ movhi
+ 2565 000c 838B     		ldrh	r3, [r0, #28]
+ 2566 000e 9BB2     		uxth	r3, r3
+ 2567 0010 1943     		orrs	r1, r1, r3
+ 2568 0012 8183     		strh	r1, [r0, #28]	@ movhi
+ 2569 0014 7047     		bx	lr
+ 2571 0016 00BF     		.section	.text.TIM_SetIC4Prescaler,"ax",%progbits
+ 2572              		.align	2
+ 2573              		.global	TIM_SetIC4Prescaler
+ 2574              		.thumb
+ 2575              		.thumb_func
+ 2577              	TIM_SetIC4Prescaler:
+ 2578              		@ args = 0, pretend = 0, frame = 0
+ 2579              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2580              		@ link register save eliminated.
+ 2581 0000 838B     		ldrh	r3, [r0, #28]
+ 2582 0002 23F44063 		bic	r3, r3, #3072
+ 2583 0006 1B04     		lsls	r3, r3, #16
+ 2584 0008 1B0C     		lsrs	r3, r3, #16
+ 2585 000a 8383     		strh	r3, [r0, #28]	@ movhi
+ 2586 000c 838B     		ldrh	r3, [r0, #28]
+ 2587 000e 9BB2     		uxth	r3, r3
+ 2588 0010 43EA0121 		orr	r1, r3, r1, lsl #8
+ 2589 0014 8BB2     		uxth	r3, r1
+ 2590 0016 8383     		strh	r3, [r0, #28]	@ movhi
+ 2591 0018 7047     		bx	lr
+ 2593 001a 00BF     		.section	.text.TIM_SetClockDivision,"ax",%progbits
+ 2594              		.align	2
+ 2595              		.global	TIM_SetClockDivision
+ 2596              		.thumb
+ 2597              		.thumb_func
+ 2599              	TIM_SetClockDivision:
+ 2600              		@ args = 0, pretend = 0, frame = 0
+ 2601              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2602              		@ link register save eliminated.
+ 2603 0000 0388     		ldrh	r3, [r0, #0]
+ 2604 0002 23F44073 		bic	r3, r3, #768
+ 2605 0006 1B04     		lsls	r3, r3, #16
+ 2606 0008 1B0C     		lsrs	r3, r3, #16
+ 2607 000a 0380     		strh	r3, [r0, #0]	@ movhi
+ 2608 000c 0388     		ldrh	r3, [r0, #0]
+ 2609 000e 9BB2     		uxth	r3, r3
+ 2610 0010 1943     		orrs	r1, r1, r3
+ 2611 0012 0180     		strh	r1, [r0, #0]	@ movhi
+ 2612 0014 7047     		bx	lr
+ 2614 0016 00BF     		.section	.text.TIM_GetCapture1,"ax",%progbits
+ 2615              		.align	2
+ 2616              		.global	TIM_GetCapture1
+ 2617              		.thumb
+ 2618              		.thumb_func
+ 2620              	TIM_GetCapture1:
+ 2621              		@ args = 0, pretend = 0, frame = 0
+ 2622              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2623              		@ link register save eliminated.
+ 2624 0000 808E     		ldrh	r0, [r0, #52]
+ 2625 0002 80B2     		uxth	r0, r0
+ 2626 0004 7047     		bx	lr
+ 2628 0006 00BF     		.section	.text.TIM_GetCapture2,"ax",%progbits
+ 2629              		.align	2
+ 2630              		.global	TIM_GetCapture2
+ 2631              		.thumb
+ 2632              		.thumb_func
+ 2634              	TIM_GetCapture2:
+ 2635              		@ args = 0, pretend = 0, frame = 0
+ 2636              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2637              		@ link register save eliminated.
+ 2638 0000 008F     		ldrh	r0, [r0, #56]
+ 2639 0002 80B2     		uxth	r0, r0
+ 2640 0004 7047     		bx	lr
+ 2642 0006 00BF     		.section	.text.TIM_GetCapture3,"ax",%progbits
+ 2643              		.align	2
+ 2644              		.global	TIM_GetCapture3
+ 2645              		.thumb
+ 2646              		.thumb_func
+ 2648              	TIM_GetCapture3:
+ 2649              		@ args = 0, pretend = 0, frame = 0
+ 2650              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2651              		@ link register save eliminated.
+ 2652 0000 808F     		ldrh	r0, [r0, #60]
+ 2653 0002 80B2     		uxth	r0, r0
+ 2654 0004 7047     		bx	lr
+ 2656 0006 00BF     		.section	.text.TIM_GetCapture4,"ax",%progbits
+ 2657              		.align	2
+ 2658              		.global	TIM_GetCapture4
+ 2659              		.thumb
+ 2660              		.thumb_func
+ 2662              	TIM_GetCapture4:
+ 2663              		@ args = 0, pretend = 0, frame = 0
+ 2664              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2665              		@ link register save eliminated.
+ 2666 0000 B0F84000 		ldrh	r0, [r0, #64]
+ 2667 0004 80B2     		uxth	r0, r0
+ 2668 0006 7047     		bx	lr
+ 2670              		.section	.text.TIM_GetCounter,"ax",%progbits
+ 2671              		.align	2
+ 2672              		.global	TIM_GetCounter
+ 2673              		.thumb
+ 2674              		.thumb_func
+ 2676              	TIM_GetCounter:
+ 2677              		@ args = 0, pretend = 0, frame = 0
+ 2678              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2679              		@ link register save eliminated.
+ 2680 0000 808C     		ldrh	r0, [r0, #36]
+ 2681 0002 80B2     		uxth	r0, r0
+ 2682 0004 7047     		bx	lr
+ 2684 0006 00BF     		.section	.text.TIM_GetPrescaler,"ax",%progbits
+ 2685              		.align	2
+ 2686              		.global	TIM_GetPrescaler
+ 2687              		.thumb
+ 2688              		.thumb_func
+ 2690              	TIM_GetPrescaler:
+ 2691              		@ args = 0, pretend = 0, frame = 0
+ 2692              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2693              		@ link register save eliminated.
+ 2694 0000 008D     		ldrh	r0, [r0, #40]
+ 2695 0002 80B2     		uxth	r0, r0
+ 2696 0004 7047     		bx	lr
+ 2698 0006 00BF     		.section	.text.TIM_GetFlagStatus,"ax",%progbits
+ 2699              		.align	2
+ 2700              		.global	TIM_GetFlagStatus
+ 2701              		.thumb
+ 2702              		.thumb_func
+ 2704              	TIM_GetFlagStatus:
+ 2705              		@ args = 0, pretend = 0, frame = 0
+ 2706              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2707              		@ link register save eliminated.
+ 2708 0000 038A     		ldrh	r3, [r0, #16]
+ 2709 0002 1942     		tst	r1, r3
+ 2710 0004 0CBF     		ite	eq
+ 2711 0006 0020     		moveq	r0, #0
+ 2712 0008 0120     		movne	r0, #1
+ 2713 000a 7047     		bx	lr
+ 2715              		.section	.text.TIM_ClearFlag,"ax",%progbits
+ 2716              		.align	2
+ 2717              		.global	TIM_ClearFlag
+ 2718              		.thumb
+ 2719              		.thumb_func
+ 2721              	TIM_ClearFlag:
+ 2722              		@ args = 0, pretend = 0, frame = 0
+ 2723              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2724              		@ link register save eliminated.
+ 2725 0000 C943     		mvns	r1, r1
+ 2726 0002 89B2     		uxth	r1, r1
+ 2727 0004 0182     		strh	r1, [r0, #16]	@ movhi
+ 2728 0006 7047     		bx	lr
+ 2730              		.section	.text.TIM_GetITStatus,"ax",%progbits
+ 2731              		.align	2
+ 2732              		.global	TIM_GetITStatus
+ 2733              		.thumb
+ 2734              		.thumb_func
+ 2736              	TIM_GetITStatus:
+ 2737              		@ args = 0, pretend = 0, frame = 0
+ 2738              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2739              		@ link register save eliminated.
+ 2740 0000 038A     		ldrh	r3, [r0, #16]
+ 2741 0002 8289     		ldrh	r2, [r0, #12]
+ 2742 0004 1142     		tst	r1, r2
+ 2743 0006 0CBF     		ite	eq
+ 2744 0008 0020     		moveq	r0, #0
+ 2745 000a 0120     		movne	r0, #1
+ 2746 000c 1942     		tst	r1, r3
+ 2747 000e 0CBF     		ite	eq
+ 2748 0010 0020     		moveq	r0, #0
+ 2749 0012 00F00100 		andne	r0, r0, #1
+ 2750 0016 7047     		bx	lr
+ 2752              		.section	.text.TIM_ClearITPendingBit,"ax",%progbits
+ 2753              		.align	2
+ 2754              		.global	TIM_ClearITPendingBit
+ 2755              		.thumb
+ 2756              		.thumb_func
+ 2758              	TIM_ClearITPendingBit:
+ 2759              		@ args = 0, pretend = 0, frame = 0
+ 2760              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2761              		@ link register save eliminated.
+ 2762 0000 C943     		mvns	r1, r1
+ 2763 0002 89B2     		uxth	r1, r1
+ 2764 0004 0182     		strh	r1, [r0, #16]	@ movhi
+ 2765 0006 7047     		bx	lr
+ 2767              		.ident	"GCC: (GNU) 4.7.0"
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 stm32f10x_tim.c
+     /tmp/ccDy6U1l.s:16     .text.TIM_DeInit:0000000000000000 $t
+     /tmp/ccDy6U1l.s:21     .text.TIM_DeInit:0000000000000000 TIM_DeInit
+     /tmp/ccDy6U1l.s:230    .text.TIM_TimeBaseInit:0000000000000000 $t
+     /tmp/ccDy6U1l.s:235    .text.TIM_TimeBaseInit:0000000000000000 TIM_TimeBaseInit
+     /tmp/ccDy6U1l.s:317    .text.TIM_OC1Init:0000000000000000 $t
+     /tmp/ccDy6U1l.s:322    .text.TIM_OC1Init:0000000000000000 TIM_OC1Init
+     /tmp/ccDy6U1l.s:397    .text.TIM_OC2Init:0000000000000000 $t
+     /tmp/ccDy6U1l.s:402    .text.TIM_OC2Init:0000000000000000 TIM_OC2Init
+     /tmp/ccDy6U1l.s:464    .text.TIM_OC3Init:0000000000000000 $t
+     /tmp/ccDy6U1l.s:469    .text.TIM_OC3Init:0000000000000000 TIM_OC3Init
+     /tmp/ccDy6U1l.s:530    .text.TIM_OC4Init:0000000000000000 $t
+     /tmp/ccDy6U1l.s:535    .text.TIM_OC4Init:0000000000000000 TIM_OC4Init
+     /tmp/ccDy6U1l.s:588    .text.TIM_ICInit:0000000000000000 $t
+     /tmp/ccDy6U1l.s:593    .text.TIM_ICInit:0000000000000000 TIM_ICInit
+     /tmp/ccDy6U1l.s:865    .text.TIM_PWMIConfig:0000000000000000 $t
+     /tmp/ccDy6U1l.s:870    .text.TIM_PWMIConfig:0000000000000000 TIM_PWMIConfig
+     /tmp/ccDy6U1l.s:1128   .text.TIM_BDTRConfig:0000000000000000 $t
+     /tmp/ccDy6U1l.s:1133   .text.TIM_BDTRConfig:0000000000000000 TIM_BDTRConfig
+     /tmp/ccDy6U1l.s:1157   .text.TIM_TimeBaseStructInit:0000000000000000 $t
+     /tmp/ccDy6U1l.s:1162   .text.TIM_TimeBaseStructInit:0000000000000000 TIM_TimeBaseStructInit
+     /tmp/ccDy6U1l.s:1176   .text.TIM_OCStructInit:0000000000000000 $t
+     /tmp/ccDy6U1l.s:1181   .text.TIM_OCStructInit:0000000000000000 TIM_OCStructInit
+     /tmp/ccDy6U1l.s:1197   .text.TIM_ICStructInit:0000000000000000 $t
+     /tmp/ccDy6U1l.s:1202   .text.TIM_ICStructInit:0000000000000000 TIM_ICStructInit
+     /tmp/ccDy6U1l.s:1216   .text.TIM_BDTRStructInit:0000000000000000 $t
+     /tmp/ccDy6U1l.s:1221   .text.TIM_BDTRStructInit:0000000000000000 TIM_BDTRStructInit
+     /tmp/ccDy6U1l.s:1236   .text.TIM_Cmd:0000000000000000 $t
+     /tmp/ccDy6U1l.s:1241   .text.TIM_Cmd:0000000000000000 TIM_Cmd
+     /tmp/ccDy6U1l.s:1259   .text.TIM_CtrlPWMOutputs:0000000000000000 $t
+     /tmp/ccDy6U1l.s:1264   .text.TIM_CtrlPWMOutputs:0000000000000000 TIM_CtrlPWMOutputs
+     /tmp/ccDy6U1l.s:1282   .text.TIM_ITConfig:0000000000000000 $t
+     /tmp/ccDy6U1l.s:1287   .text.TIM_ITConfig:0000000000000000 TIM_ITConfig
+     /tmp/ccDy6U1l.s:1303   .text.TIM_GenerateEvent:0000000000000000 $t
+     /tmp/ccDy6U1l.s:1308   .text.TIM_GenerateEvent:0000000000000000 TIM_GenerateEvent
+     /tmp/ccDy6U1l.s:1316   .text.TIM_DMAConfig:0000000000000000 $t
+     /tmp/ccDy6U1l.s:1321   .text.TIM_DMAConfig:0000000000000000 TIM_DMAConfig
+     /tmp/ccDy6U1l.s:1330   .text.TIM_DMACmd:0000000000000000 $t
+     /tmp/ccDy6U1l.s:1335   .text.TIM_DMACmd:0000000000000000 TIM_DMACmd
+     /tmp/ccDy6U1l.s:1351   .text.TIM_InternalClockConfig:0000000000000000 $t
+     /tmp/ccDy6U1l.s:1356   .text.TIM_InternalClockConfig:0000000000000000 TIM_InternalClockConfig
+     /tmp/ccDy6U1l.s:1368   .text.TIM_ITRxExternalClockConfig:0000000000000000 $t
+     /tmp/ccDy6U1l.s:1373   .text.TIM_ITRxExternalClockConfig:0000000000000000 TIM_ITRxExternalClockConfig
+     /tmp/ccDy6U1l.s:1390   .text.TIM_TIxExternalClockConfig:0000000000000000 $t
+     /tmp/ccDy6U1l.s:1395   .text.TIM_TIxExternalClockConfig:0000000000000000 TIM_TIxExternalClockConfig
+     /tmp/ccDy6U1l.s:1511   .text.TIM_ETRClockMode1Config:0000000000000000 $t
+     /tmp/ccDy6U1l.s:1516   .text.TIM_ETRClockMode1Config:0000000000000000 TIM_ETRClockMode1Config
+     /tmp/ccDy6U1l.s:1538   .text.TIM_ETRClockMode2Config:0000000000000000 $t
+     /tmp/ccDy6U1l.s:1543   .text.TIM_ETRClockMode2Config:0000000000000000 TIM_ETRClockMode2Config
+     /tmp/ccDy6U1l.s:1563   .text.TIM_ETRConfig:0000000000000000 $t
+     /tmp/ccDy6U1l.s:1568   .text.TIM_ETRConfig:0000000000000000 TIM_ETRConfig
+     /tmp/ccDy6U1l.s:1584   .text.TIM_PrescalerConfig:0000000000000000 $t
+     /tmp/ccDy6U1l.s:1589   .text.TIM_PrescalerConfig:0000000000000000 TIM_PrescalerConfig
+     /tmp/ccDy6U1l.s:1598   .text.TIM_CounterModeConfig:0000000000000000 $t
+     /tmp/ccDy6U1l.s:1603   .text.TIM_CounterModeConfig:0000000000000000 TIM_CounterModeConfig
+     /tmp/ccDy6U1l.s:1616   .text.TIM_SelectInputTrigger:0000000000000000 $t
+     /tmp/ccDy6U1l.s:1621   .text.TIM_SelectInputTrigger:0000000000000000 TIM_SelectInputTrigger
+     /tmp/ccDy6U1l.s:1634   .text.TIM_EncoderInterfaceConfig:0000000000000000 $t
+     /tmp/ccDy6U1l.s:1639   .text.TIM_EncoderInterfaceConfig:0000000000000000 TIM_EncoderInterfaceConfig
+     /tmp/ccDy6U1l.s:1670   .text.TIM_ForcedOC1Config:0000000000000000 $t
+     /tmp/ccDy6U1l.s:1675   .text.TIM_ForcedOC1Config:0000000000000000 TIM_ForcedOC1Config
+     /tmp/ccDy6U1l.s:1688   .text.TIM_ForcedOC2Config:0000000000000000 $t
+     /tmp/ccDy6U1l.s:1693   .text.TIM_ForcedOC2Config:0000000000000000 TIM_ForcedOC2Config
+     /tmp/ccDy6U1l.s:1707   .text.TIM_ForcedOC3Config:0000000000000000 $t
+     /tmp/ccDy6U1l.s:1712   .text.TIM_ForcedOC3Config:0000000000000000 TIM_ForcedOC3Config
+     /tmp/ccDy6U1l.s:1725   .text.TIM_ForcedOC4Config:0000000000000000 $t
+     /tmp/ccDy6U1l.s:1730   .text.TIM_ForcedOC4Config:0000000000000000 TIM_ForcedOC4Config
+     /tmp/ccDy6U1l.s:1744   .text.TIM_ARRPreloadConfig:0000000000000000 $t
+     /tmp/ccDy6U1l.s:1749   .text.TIM_ARRPreloadConfig:0000000000000000 TIM_ARRPreloadConfig
+     /tmp/ccDy6U1l.s:1767   .text.TIM_SelectCOM:0000000000000000 $t
+     /tmp/ccDy6U1l.s:1772   .text.TIM_SelectCOM:0000000000000000 TIM_SelectCOM
+     /tmp/ccDy6U1l.s:1790   .text.TIM_SelectCCDMA:0000000000000000 $t
+     /tmp/ccDy6U1l.s:1795   .text.TIM_SelectCCDMA:0000000000000000 TIM_SelectCCDMA
+     /tmp/ccDy6U1l.s:1813   .text.TIM_CCPreloadControl:0000000000000000 $t
+     /tmp/ccDy6U1l.s:1818   .text.TIM_CCPreloadControl:0000000000000000 TIM_CCPreloadControl
+     /tmp/ccDy6U1l.s:1836   .text.TIM_OC1PreloadConfig:0000000000000000 $t
+     /tmp/ccDy6U1l.s:1841   .text.TIM_OC1PreloadConfig:0000000000000000 TIM_OC1PreloadConfig
+     /tmp/ccDy6U1l.s:1854   .text.TIM_OC2PreloadConfig:0000000000000000 $t
+     /tmp/ccDy6U1l.s:1859   .text.TIM_OC2PreloadConfig:0000000000000000 TIM_OC2PreloadConfig
+     /tmp/ccDy6U1l.s:1873   .text.TIM_OC3PreloadConfig:0000000000000000 $t
+     /tmp/ccDy6U1l.s:1878   .text.TIM_OC3PreloadConfig:0000000000000000 TIM_OC3PreloadConfig
+     /tmp/ccDy6U1l.s:1891   .text.TIM_OC4PreloadConfig:0000000000000000 $t
+     /tmp/ccDy6U1l.s:1896   .text.TIM_OC4PreloadConfig:0000000000000000 TIM_OC4PreloadConfig
+     /tmp/ccDy6U1l.s:1910   .text.TIM_OC1FastConfig:0000000000000000 $t
+     /tmp/ccDy6U1l.s:1915   .text.TIM_OC1FastConfig:0000000000000000 TIM_OC1FastConfig
+     /tmp/ccDy6U1l.s:1928   .text.TIM_OC2FastConfig:0000000000000000 $t
+     /tmp/ccDy6U1l.s:1933   .text.TIM_OC2FastConfig:0000000000000000 TIM_OC2FastConfig
+     /tmp/ccDy6U1l.s:1947   .text.TIM_OC3FastConfig:0000000000000000 $t
+     /tmp/ccDy6U1l.s:1952   .text.TIM_OC3FastConfig:0000000000000000 TIM_OC3FastConfig
+     /tmp/ccDy6U1l.s:1965   .text.TIM_OC4FastConfig:0000000000000000 $t
+     /tmp/ccDy6U1l.s:1970   .text.TIM_OC4FastConfig:0000000000000000 TIM_OC4FastConfig
+     /tmp/ccDy6U1l.s:1984   .text.TIM_ClearOC1Ref:0000000000000000 $t
+     /tmp/ccDy6U1l.s:1989   .text.TIM_ClearOC1Ref:0000000000000000 TIM_ClearOC1Ref
+     /tmp/ccDy6U1l.s:2002   .text.TIM_ClearOC2Ref:0000000000000000 $t
+     /tmp/ccDy6U1l.s:2007   .text.TIM_ClearOC2Ref:0000000000000000 TIM_ClearOC2Ref
+     /tmp/ccDy6U1l.s:2020   .text.TIM_ClearOC3Ref:0000000000000000 $t
+     /tmp/ccDy6U1l.s:2025   .text.TIM_ClearOC3Ref:0000000000000000 TIM_ClearOC3Ref
+     /tmp/ccDy6U1l.s:2038   .text.TIM_ClearOC4Ref:0000000000000000 $t
+     /tmp/ccDy6U1l.s:2043   .text.TIM_ClearOC4Ref:0000000000000000 TIM_ClearOC4Ref
+     /tmp/ccDy6U1l.s:2056   .text.TIM_OC1PolarityConfig:0000000000000000 $t
+     /tmp/ccDy6U1l.s:2061   .text.TIM_OC1PolarityConfig:0000000000000000 TIM_OC1PolarityConfig
+     /tmp/ccDy6U1l.s:2074   .text.TIM_OC1NPolarityConfig:0000000000000000 $t
+     /tmp/ccDy6U1l.s:2079   .text.TIM_OC1NPolarityConfig:0000000000000000 TIM_OC1NPolarityConfig
+     /tmp/ccDy6U1l.s:2092   .text.TIM_OC2PolarityConfig:0000000000000000 $t
+     /tmp/ccDy6U1l.s:2097   .text.TIM_OC2PolarityConfig:0000000000000000 TIM_OC2PolarityConfig
+     /tmp/ccDy6U1l.s:2111   .text.TIM_OC2NPolarityConfig:0000000000000000 $t
+     /tmp/ccDy6U1l.s:2116   .text.TIM_OC2NPolarityConfig:0000000000000000 TIM_OC2NPolarityConfig
+     /tmp/ccDy6U1l.s:2130   .text.TIM_OC3PolarityConfig:0000000000000000 $t
+     /tmp/ccDy6U1l.s:2135   .text.TIM_OC3PolarityConfig:0000000000000000 TIM_OC3PolarityConfig
+     /tmp/ccDy6U1l.s:2149   .text.TIM_OC3NPolarityConfig:0000000000000000 $t
+     /tmp/ccDy6U1l.s:2154   .text.TIM_OC3NPolarityConfig:0000000000000000 TIM_OC3NPolarityConfig
+     /tmp/ccDy6U1l.s:2168   .text.TIM_OC4PolarityConfig:0000000000000000 $t
+     /tmp/ccDy6U1l.s:2173   .text.TIM_OC4PolarityConfig:0000000000000000 TIM_OC4PolarityConfig
+     /tmp/ccDy6U1l.s:2187   .text.TIM_CCxCmd:0000000000000000 $t
+     /tmp/ccDy6U1l.s:2192   .text.TIM_CCxCmd:0000000000000000 TIM_CCxCmd
+     /tmp/ccDy6U1l.s:2210   .text.TIM_CCxNCmd:0000000000000000 $t
+     /tmp/ccDy6U1l.s:2215   .text.TIM_CCxNCmd:0000000000000000 TIM_CCxNCmd
+     /tmp/ccDy6U1l.s:2233   .text.TIM_SelectOCxM:0000000000000000 $t
+     /tmp/ccDy6U1l.s:2238   .text.TIM_SelectOCxM:0000000000000000 TIM_SelectOCxM
+     /tmp/ccDy6U1l.s:2277   .text.TIM_UpdateDisableConfig:0000000000000000 $t
+     /tmp/ccDy6U1l.s:2282   .text.TIM_UpdateDisableConfig:0000000000000000 TIM_UpdateDisableConfig
+     /tmp/ccDy6U1l.s:2300   .text.TIM_UpdateRequestConfig:0000000000000000 $t
+     /tmp/ccDy6U1l.s:2305   .text.TIM_UpdateRequestConfig:0000000000000000 TIM_UpdateRequestConfig
+     /tmp/ccDy6U1l.s:2323   .text.TIM_SelectHallSensor:0000000000000000 $t
+     /tmp/ccDy6U1l.s:2328   .text.TIM_SelectHallSensor:0000000000000000 TIM_SelectHallSensor
+     /tmp/ccDy6U1l.s:2346   .text.TIM_SelectOnePulseMode:0000000000000000 $t
+     /tmp/ccDy6U1l.s:2351   .text.TIM_SelectOnePulseMode:0000000000000000 TIM_SelectOnePulseMode
+     /tmp/ccDy6U1l.s:2367   .text.TIM_SelectOutputTrigger:0000000000000000 $t
+     /tmp/ccDy6U1l.s:2372   .text.TIM_SelectOutputTrigger:0000000000000000 TIM_SelectOutputTrigger
+     /tmp/ccDy6U1l.s:2388   .text.TIM_SelectSlaveMode:0000000000000000 $t
+     /tmp/ccDy6U1l.s:2393   .text.TIM_SelectSlaveMode:0000000000000000 TIM_SelectSlaveMode
+     /tmp/ccDy6U1l.s:2409   .text.TIM_SelectMasterSlaveMode:0000000000000000 $t
+     /tmp/ccDy6U1l.s:2414   .text.TIM_SelectMasterSlaveMode:0000000000000000 TIM_SelectMasterSlaveMode
+     /tmp/ccDy6U1l.s:2430   .text.TIM_SetCounter:0000000000000000 $t
+     /tmp/ccDy6U1l.s:2435   .text.TIM_SetCounter:0000000000000000 TIM_SetCounter
+     /tmp/ccDy6U1l.s:2443   .text.TIM_SetAutoreload:0000000000000000 $t
+     /tmp/ccDy6U1l.s:2448   .text.TIM_SetAutoreload:0000000000000000 TIM_SetAutoreload
+     /tmp/ccDy6U1l.s:2456   .text.TIM_SetCompare1:0000000000000000 $t
+     /tmp/ccDy6U1l.s:2461   .text.TIM_SetCompare1:0000000000000000 TIM_SetCompare1
+     /tmp/ccDy6U1l.s:2469   .text.TIM_SetCompare2:0000000000000000 $t
+     /tmp/ccDy6U1l.s:2474   .text.TIM_SetCompare2:0000000000000000 TIM_SetCompare2
+     /tmp/ccDy6U1l.s:2482   .text.TIM_SetCompare3:0000000000000000 $t
+     /tmp/ccDy6U1l.s:2487   .text.TIM_SetCompare3:0000000000000000 TIM_SetCompare3
+     /tmp/ccDy6U1l.s:2495   .text.TIM_SetCompare4:0000000000000000 $t
+     /tmp/ccDy6U1l.s:2500   .text.TIM_SetCompare4:0000000000000000 TIM_SetCompare4
+     /tmp/ccDy6U1l.s:2508   .text.TIM_SetIC1Prescaler:0000000000000000 $t
+     /tmp/ccDy6U1l.s:2513   .text.TIM_SetIC1Prescaler:0000000000000000 TIM_SetIC1Prescaler
+     /tmp/ccDy6U1l.s:2529   .text.TIM_SetIC2Prescaler:0000000000000000 $t
+     /tmp/ccDy6U1l.s:2534   .text.TIM_SetIC2Prescaler:0000000000000000 TIM_SetIC2Prescaler
+     /tmp/ccDy6U1l.s:2551   .text.TIM_SetIC3Prescaler:0000000000000000 $t
+     /tmp/ccDy6U1l.s:2556   .text.TIM_SetIC3Prescaler:0000000000000000 TIM_SetIC3Prescaler
+     /tmp/ccDy6U1l.s:2572   .text.TIM_SetIC4Prescaler:0000000000000000 $t
+     /tmp/ccDy6U1l.s:2577   .text.TIM_SetIC4Prescaler:0000000000000000 TIM_SetIC4Prescaler
+     /tmp/ccDy6U1l.s:2594   .text.TIM_SetClockDivision:0000000000000000 $t
+     /tmp/ccDy6U1l.s:2599   .text.TIM_SetClockDivision:0000000000000000 TIM_SetClockDivision
+     /tmp/ccDy6U1l.s:2615   .text.TIM_GetCapture1:0000000000000000 $t
+     /tmp/ccDy6U1l.s:2620   .text.TIM_GetCapture1:0000000000000000 TIM_GetCapture1
+     /tmp/ccDy6U1l.s:2629   .text.TIM_GetCapture2:0000000000000000 $t
+     /tmp/ccDy6U1l.s:2634   .text.TIM_GetCapture2:0000000000000000 TIM_GetCapture2
+     /tmp/ccDy6U1l.s:2643   .text.TIM_GetCapture3:0000000000000000 $t
+     /tmp/ccDy6U1l.s:2648   .text.TIM_GetCapture3:0000000000000000 TIM_GetCapture3
+     /tmp/ccDy6U1l.s:2657   .text.TIM_GetCapture4:0000000000000000 $t
+     /tmp/ccDy6U1l.s:2662   .text.TIM_GetCapture4:0000000000000000 TIM_GetCapture4
+     /tmp/ccDy6U1l.s:2671   .text.TIM_GetCounter:0000000000000000 $t
+     /tmp/ccDy6U1l.s:2676   .text.TIM_GetCounter:0000000000000000 TIM_GetCounter
+     /tmp/ccDy6U1l.s:2685   .text.TIM_GetPrescaler:0000000000000000 $t
+     /tmp/ccDy6U1l.s:2690   .text.TIM_GetPrescaler:0000000000000000 TIM_GetPrescaler
+     /tmp/ccDy6U1l.s:2699   .text.TIM_GetFlagStatus:0000000000000000 $t
+     /tmp/ccDy6U1l.s:2704   .text.TIM_GetFlagStatus:0000000000000000 TIM_GetFlagStatus
+     /tmp/ccDy6U1l.s:2716   .text.TIM_ClearFlag:0000000000000000 $t
+     /tmp/ccDy6U1l.s:2721   .text.TIM_ClearFlag:0000000000000000 TIM_ClearFlag
+     /tmp/ccDy6U1l.s:2731   .text.TIM_GetITStatus:0000000000000000 $t
+     /tmp/ccDy6U1l.s:2736   .text.TIM_GetITStatus:0000000000000000 TIM_GetITStatus
+     /tmp/ccDy6U1l.s:2753   .text.TIM_ClearITPendingBit:0000000000000000 $t
+     /tmp/ccDy6U1l.s:2758   .text.TIM_ClearITPendingBit:0000000000000000 TIM_ClearITPendingBit
+
+UNDEFINED SYMBOLS
+RCC_APB2PeriphResetCmd
+RCC_APB1PeriphResetCmd

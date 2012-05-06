@@ -1,0 +1,182 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"uart.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.align	2
+  19              		.global	uart_init
+  20              		.thumb
+  21              		.thumb_func
+  23              	uart_init:
+  24              	.LFB29:
+  25              		.file 1 "../uart.c"
+   1:../uart.c     **** /*
+   2:../uart.c     ****  * uart.c
+   3:../uart.c     ****  *
+   4:../uart.c     ****  *  Created on: Apr 12, 2012
+   5:../uart.c     ****  *      Author: alexs
+   6:../uart.c     ****  */
+   7:../uart.c     **** 
+   8:../uart.c     **** #include "stm32f10x_gpio.h"
+   9:../uart.c     **** #include "stm32f10x_usart.h"
+  10:../uart.c     **** 
+  11:../uart.c     **** void uart_init( int baudrate )
+  12:../uart.c     **** {
+  26              		.loc 1 12 0
+  27              		.cfi_startproc
+  28              		@ args = 0, pretend = 0, frame = 32
+  29              		@ frame_needed = 1, uses_anonymous_args = 0
+  30 0000 80B5     		push	{r7, lr}
+  31              	.LCFI0:
+  32              		.cfi_def_cfa_offset 8
+  33              		.cfi_offset 7, -8
+  34              		.cfi_offset 14, -4
+  35 0002 88B0     		sub	sp, sp, #32
+  36              	.LCFI1:
+  37              		.cfi_def_cfa_offset 40
+  38 0004 00AF     		add	r7, sp, #0
+  39              	.LCFI2:
+  40              		.cfi_def_cfa_register 7
+  41 0006 7860     		str	r0, [r7, #4]
+  13:../uart.c     ****   // start with pin configuration
+  14:../uart.c     ****   GPIO_InitTypeDef GPIO_init;
+  15:../uart.c     **** 
+  16:../uart.c     ****   GPIO_init.GPIO_Pin   = GPIO_Pin_10;
+  42              		.loc 1 16 0
+  43 0008 4FF48063 		mov	r3, #1024
+  44 000c BB83     		strh	r3, [r7, #28]	@ movhi
+  17:../uart.c     ****   GPIO_init.GPIO_Mode  = GPIO_Mode_IN_FLOATING;
+  45              		.loc 1 17 0
+  46 000e 4FF00403 		mov	r3, #4
+  47 0012 FB77     		strb	r3, [r7, #31]
+  18:../uart.c     ****   GPIO_init.GPIO_Speed = GPIO_Speed_50MHz;
+  48              		.loc 1 18 0
+  49 0014 4FF00303 		mov	r3, #3
+  50 0018 BB77     		strb	r3, [r7, #30]
+  19:../uart.c     ****   GPIO_Init(GPIOA, &GPIO_init);
+  51              		.loc 1 19 0
+  52 001a 07F11C03 		add	r3, r7, #28
+  53 001e 4FF40060 		mov	r0, #2048
+  54 0022 C4F20100 		movt	r0, 16385
+  55 0026 1946     		mov	r1, r3
+  56 0028 FFF7FEFF 		bl	GPIO_Init
+  20:../uart.c     **** 
+  21:../uart.c     ****   GPIO_init.GPIO_Pin   = GPIO_Pin_9;
+  57              		.loc 1 21 0
+  58 002c 4FF40073 		mov	r3, #512
+  59 0030 BB83     		strh	r3, [r7, #28]	@ movhi
+  22:../uart.c     ****   GPIO_init.GPIO_Mode  = GPIO_Mode_AF_PP;
+  60              		.loc 1 22 0
+  61 0032 4FF01803 		mov	r3, #24
+  62 0036 FB77     		strb	r3, [r7, #31]
+  23:../uart.c     ****   GPIO_init.GPIO_Speed = GPIO_Speed_50MHz;
+  63              		.loc 1 23 0
+  64 0038 4FF00303 		mov	r3, #3
+  65 003c BB77     		strb	r3, [r7, #30]
+  24:../uart.c     ****   GPIO_Init(GPIOA, &GPIO_init);
+  66              		.loc 1 24 0
+  67 003e 07F11C03 		add	r3, r7, #28
+  68 0042 4FF40060 		mov	r0, #2048
+  69 0046 C4F20100 		movt	r0, 16385
+  70 004a 1946     		mov	r1, r3
+  71 004c FFF7FEFF 		bl	GPIO_Init
+  25:../uart.c     **** 
+  26:../uart.c     ****   // usart peripheral confguration
+  27:../uart.c     ****   USART_InitTypeDef USART_init;
+  28:../uart.c     ****   //USART_ClockInitTypeDef USART_ClockInitStructure;
+  29:../uart.c     **** 
+  30:../uart.c     ****   USART_init.USART_BaudRate   = 9600;
+  72              		.loc 1 30 0
+  73 0050 4FF41653 		mov	r3, #9600
+  74 0054 FB60     		str	r3, [r7, #12]
+  31:../uart.c     ****   USART_init.USART_WordLength = USART_WordLength_8b;
+  75              		.loc 1 31 0
+  76 0056 4FF00003 		mov	r3, #0
+  77 005a 3B82     		strh	r3, [r7, #16]	@ movhi
+  32:../uart.c     ****   USART_init.USART_Parity     = USART_Parity_No;
+  78              		.loc 1 32 0
+  79 005c 4FF00003 		mov	r3, #0
+  80 0060 BB82     		strh	r3, [r7, #20]	@ movhi
+  33:../uart.c     ****   USART_init.USART_Mode       = USART_Mode_Rx | USART_Mode_Tx;
+  81              		.loc 1 33 0
+  82 0062 4FF00C03 		mov	r3, #12
+  83 0066 FB82     		strh	r3, [r7, #22]	@ movhi
+  34:../uart.c     ****   USART_init.USART_StopBits   = USART_StopBits_1;
+  84              		.loc 1 34 0
+  85 0068 4FF00003 		mov	r3, #0
+  86 006c 7B82     		strh	r3, [r7, #18]	@ movhi
+  35:../uart.c     ****   USART_init.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
+  87              		.loc 1 35 0
+  88 006e 4FF00003 		mov	r3, #0
+  89 0072 3B83     		strh	r3, [r7, #24]	@ movhi
+  36:../uart.c     **** 
+  37:../uart.c     ****   USART_Init(USART1, &USART_init);
+  90              		.loc 1 37 0
+  91 0074 07F10C03 		add	r3, r7, #12
+  92 0078 4FF46050 		mov	r0, #14336
+  93 007c C4F20100 		movt	r0, 16385
+  94 0080 1946     		mov	r1, r3
+  95 0082 FFF7FEFF 		bl	USART_Init
+  38:../uart.c     **** 
+  39:../uart.c     **** }
+  96              		.loc 1 39 0
+  97 0086 07F12007 		add	r7, r7, #32
+  98 008a BD46     		mov	sp, r7
+  99 008c 80BD     		pop	{r7, pc}
+ 100              		.cfi_endproc
+ 101              	.LFE29:
+ 103              	.Letext0:
+ 104              		.file 2 "/usr/lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/include/stdint.h"
+ 105              		.file 3 "../CMSIS/CM3/DeviceSupport/ST/STM32F10x/stm32f10x.h"
+ 106              		.file 4 "../STM32F10x_StdPeriph_Driver/inc/stm32f10x_usart.h"
+ 107              		.file 5 "../STM32F10x_StdPeriph_Driver/inc/stm32f10x_gpio.h"
+ 108              		.file 6 "../CMSIS/CM3/CoreSupport/core_cm3.h"
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 uart.c
+     /tmp/cckvZHqf.s:18     .text:0000000000000000 $t
+     /tmp/cckvZHqf.s:23     .text:0000000000000000 uart_init
+                     .debug_frame:0000000000000010 $d
+                           .group:0000000000000000 wm4.stm32f10x.h.51.f8e02decc61d103e6060acb7056f1e5e
+                           .group:0000000000000000 wm4.core_cm3.h.25.d35e9a9b04ec4aaebae9bf79fff061f9
+                           .group:0000000000000000 wm4.stdint.h.10.90b695f550ca6cc3fb08fa83baf01e05
+                           .group:0000000000000000 wm4.core_cm3.h.113.b286929a54d33b4c8909a7132437b244
+                           .group:0000000000000000 wm4.stm32f10x.h.522.9a9f642c8c562acb4a63ad5d933b7c01
+                           .group:0000000000000000 wm4.stm32f10x_adc.h.83.4d35a50d598070ecea6f33bcef02c922
+                           .group:0000000000000000 wm4.stm32f10x_bkp.h.25.4622919f1e30efdad5eb44e12edd5513
+                           .group:0000000000000000 wm4.stm32f10x_can.h.25.48aab46fcce6d08400bf960b028e4698
+                           .group:0000000000000000 wm4.stm32f10x_cec.h.25.8f03450e7bbb704d96e7bc73ec0f66a7
+                           .group:0000000000000000 wm4.stm32f10x_dac.h.25.6e7f2924f39c60c10815105b99b8b446
+                           .group:0000000000000000 wm4.stm32f10x_dbgmcu.h.25.d3351200fc7f9c8615d1ae81d40db08a
+                           .group:0000000000000000 wm4.stm32f10x_dma.h.25.94e36204daa98cae5dcc70a10a9694d5
+                           .group:0000000000000000 wm4.stm32f10x_exti.h.25.b9064155c5c006b5154b39788c79001a
+                           .group:0000000000000000 wm4.stm32f10x_flash.h.25.4be61fcb02863962a1e006449d310650
+                           .group:0000000000000000 wm4.stm32f10x_fsmc.h.25.bca154da2699cdb6024c0c6c4fc5aa89
+                           .group:0000000000000000 wm4.stm32f10x_i2c.h.25.7b6cbaea24c6f25f538f8516d1814cb2
+                           .group:0000000000000000 wm4.stm32f10x_iwdg.h.25.da9374ab9856795610487f312ccf3122
+                           .group:0000000000000000 wm4.stm32f10x_pwr.h.25.37ef75009f751ef5fe27910e0bf00a62
+                           .group:0000000000000000 wm4.stm32f10x_rcc.h.25.968bcf08d813e68e57c280a4da69fa5a
+                           .group:0000000000000000 wm4.stm32f10x_rtc.h.25.361142606ba98ddcd10369f321f6e636
+                           .group:0000000000000000 wm4.stm32f10x_sdio.h.25.1fb5280a7690ef99070096bf8c866b3a
+                           .group:0000000000000000 wm4.stm32f10x_spi.h.25.68b3d5ccfcf895f9fe505ce20c0c300f
+                           .group:0000000000000000 wm4.stm32f10x_tim.h.25.21c6ec062f1e74898cb96a57da276fec
+                           .group:0000000000000000 wm4.stm32f10x_usart.h.25.29629c699b65db3f3efd3561f66b0bf6
+                           .group:0000000000000000 wm4.stm32f10x_wwdg.h.25.dde12201d86b5aa9ecaafb5eccdc6549
+                           .group:0000000000000000 wm4.misc.h.25.068e106f368fa5369a681ef57c106f4b
+                           .group:0000000000000000 wm4.stm32f10x.h.8304.f7d8ad90959e99679b3257267c3aadfe
+                           .group:0000000000000000 wm4.stm32f10x_gpio.h.46.4096b03458401eca76553253bd40f29d
+
+UNDEFINED SYMBOLS
+GPIO_Init
+USART_Init

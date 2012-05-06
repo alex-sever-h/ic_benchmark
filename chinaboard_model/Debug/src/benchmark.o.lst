@@ -1,0 +1,958 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 2
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"benchmark.c"
+  15              		.section	.text.int_to_a,"ax",%progbits
+  16              		.align	2
+  17              		.global	int_to_a
+  18              		.thumb
+  19              		.thumb_func
+  21              	int_to_a:
+  22              		@ args = 0, pretend = 0, frame = 40
+  23              		@ frame_needed = 0, uses_anonymous_args = 0
+  24 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+  25 0002 0746     		mov	r7, r0
+  26 0004 8BB0     		sub	sp, sp, #44
+  27 0006 0C46     		mov	r4, r1
+  28 0008 0028     		cmp	r0, #0
+  29 000a 35D0     		beq	.L10
+  30 000c 0029     		cmp	r1, #0
+  31 000e 25DD     		ble	.L3
+  32 0010 1A4E     		ldr	r6, .L17
+  33 0012 6D46     		mov	r5, sp
+  34 0014 0FCE     		ldmia	r6!, {r0, r1, r2, r3}
+  35 0016 0FC5     		stmia	r5!, {r0, r1, r2, r3}
+  36 0018 0FCE     		ldmia	r6!, {r0, r1, r2, r3}
+  37 001a 0FC5     		stmia	r5!, {r0, r1, r2, r3}
+  38 001c 96E80300 		ldmia	r6, {r0, r1}
+  39 0020 0022     		movs	r2, #0
+  40 0022 85E80300 		stmia	r5, {r0, r1}
+  41 0026 ADF10401 		sub	r1, sp, #4
+  42 002a 09A8     		add	r0, sp, #36
+  43 002c 1546     		mov	r5, r2
+  44              	.L8:
+  45 002e 51F8043F 		ldr	r3, [r1, #4]!
+  46 0032 A342     		cmp	r3, r4
+  47 0034 0EDC     		bgt	.L4
+  48 0036 0022     		movs	r2, #0
+  49              	.L5:
+  50 0038 E41A     		subs	r4, r4, r3
+  51 003a 0132     		adds	r2, r2, #1
+  52 003c A342     		cmp	r3, r4
+  53 003e FBDD     		ble	.L5
+  54              	.L6:
+  55 0040 3032     		adds	r2, r2, #48
+  56 0042 7A55     		strb	r2, [r7, r5]
+  57 0044 0122     		movs	r2, #1
+  58 0046 AD18     		adds	r5, r5, r2
+  59              	.L7:
+  60 0048 8142     		cmp	r1, r0
+  61 004a F0D1     		bne	.L8
+  62 004c 0020     		movs	r0, #0
+  63 004e 7855     		strb	r0, [r7, r5]
+  64              	.L2:
+  65 0050 0BB0     		add	sp, sp, #44
+  66 0052 F0BD     		pop	{r4, r5, r6, r7, pc}
+  67              	.L4:
+  68 0054 002A     		cmp	r2, #0
+  69 0056 F7D0     		beq	.L7
+  70 0058 0022     		movs	r2, #0
+  71 005a F1E7     		b	.L6
+  72              	.L3:
+  73 005c 04D1     		bne	.L9
+  74 005e 3023     		movs	r3, #48
+  75 0060 0370     		strb	r3, [r0, #0]
+  76 0062 7970     		strb	r1, [r7, #1]
+  77 0064 0846     		mov	r0, r1
+  78 0066 F3E7     		b	.L2
+  79              	.L9:
+  80 0068 2D23     		movs	r3, #45
+  81 006a 00F8013B 		strb	r3, [r0], #1
+  82 006e 4942     		negs	r1, r1
+  83 0070 FFF7FEFF 		bl	int_to_a
+  84 0074 0020     		movs	r0, #0
+  85 0076 EBE7     		b	.L2
+  86              	.L10:
+  87 0078 0120     		movs	r0, #1
+  88 007a E9E7     		b	.L2
+  89              	.L18:
+  90              		.align	2
+  91              	.L17:
+  92 007c 00000000 		.word	.LANCHOR0
+  94              		.section	.text.Proc_1,"ax",%progbits
+  95              		.align	2
+  96              		.global	Proc_1
+  97              		.thumb
+  98              		.thumb_func
+ 100              	Proc_1:
+ 101              		@ args = 0, pretend = 0, frame = 0
+ 102              		@ frame_needed = 0, uses_anonymous_args = 0
+ 103              		@ link register save eliminated.
+ 104 0000 2DE9F002 		push	{r4, r5, r6, r7, r9}
+ 105 0004 264F     		ldr	r7, .L33
+ 106 0006 0668     		ldr	r6, [r0, #0]
+ 107 0008 D7F80090 		ldr	r9, [r7, #0]
+ 108 000c 3446     		mov	r4, r6
+ 109 000e 4D46     		mov	r5, r9
+ 110 0010 8446     		mov	ip, r0
+ 111 0012 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 112 0014 0FC4     		stmia	r4!, {r0, r1, r2, r3}
+ 113 0016 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 114 0018 0FC4     		stmia	r4!, {r0, r1, r2, r3}
+ 115 001a 95E80F00 		ldmia	r5, {r0, r1, r2, r3}
+ 116 001e 84E80F00 		stmia	r4, {r0, r1, r2, r3}
+ 117 0022 DCF80000 		ldr	r0, [ip, #0]
+ 118 0026 1F49     		ldr	r1, .L33+4
+ 119 0028 3060     		str	r0, [r6, #0]
+ 120 002a D9F80020 		ldr	r2, [r9, #0]
+ 121 002e 0523     		movs	r3, #5
+ 122 0030 CCF80C30 		str	r3, [ip, #12]
+ 123 0034 0968     		ldr	r1, [r1, #0]
+ 124 0036 3260     		str	r2, [r6, #0]
+ 125 0038 3A68     		ldr	r2, [r7, #0]
+ 126 003a F360     		str	r3, [r6, #12]
+ 127 003c 3379     		ldrb	r3, [r6, #4]	@ zero_extendqisi2
+ 128 003e 01F10C00 		add	r0, r1, #12
+ 129 0042 D060     		str	r0, [r2, #12]
+ 130 0044 6BB1     		cbz	r3, .L32
+ 131 0046 DCF80050 		ldr	r5, [ip, #0]
+ 132 004a 6446     		mov	r4, ip
+ 133 004c 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 134 004e 0FC4     		stmia	r4!, {r0, r1, r2, r3}
+ 135 0050 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 136 0052 0FC4     		stmia	r4!, {r0, r1, r2, r3}
+ 137 0054 95E80F00 		ldmia	r5, {r0, r1, r2, r3}
+ 138 0058 84E80F00 		stmia	r4, {r0, r1, r2, r3}
+ 139              	.L19:
+ 140 005c BDE8F002 		pop	{r4, r5, r6, r7, r9}
+ 141 0060 7047     		bx	lr
+ 142              	.L32:
+ 143 0062 9CF80830 		ldrb	r3, [ip, #8]	@ zero_extendqisi2
+ 144 0066 0620     		movs	r0, #6
+ 145 0068 022B     		cmp	r3, #2
+ 146 006a F060     		str	r0, [r6, #12]
+ 147 006c 3372     		strb	r3, [r6, #8]
+ 148 006e 08D0     		beq	.L21
+ 149 0070 0320     		movs	r0, #3
+ 150 0072 3072     		strb	r0, [r6, #8]
+ 151 0074 042B     		cmp	r3, #4
+ 152 0076 06D8     		bhi	.L22
+ 153 0078 DFE803F0 		tbb	[pc, r3]
+ 154              	.L26:
+ 155 007c 0C       		.byte	(.L31-.L26)/2
+ 156 007d 0A       		.byte	(.L24-.L26)/2
+ 157 007e 03       		.byte	(.L21-.L26)/2
+ 158 007f 05       		.byte	(.L22-.L26)/2
+ 159 0080 0F       		.byte	(.L25-.L26)/2
+ 160 0081 00       		.align	1
+ 161              	.L21:
+ 162 0082 0123     		movs	r3, #1
+ 163 0084 3372     		strb	r3, [r6, #8]
+ 164              	.L22:
+ 165 0086 1368     		ldr	r3, [r2, #0]
+ 166 0088 3360     		str	r3, [r6, #0]
+ 167 008a 1223     		movs	r3, #18
+ 168 008c F360     		str	r3, [r6, #12]
+ 169 008e E5E7     		b	.L19
+ 170              	.L24:
+ 171 0090 6429     		cmp	r1, #100
+ 172 0092 F8DD     		ble	.L22
+ 173              	.L31:
+ 174 0094 0023     		movs	r3, #0
+ 175 0096 3372     		strb	r3, [r6, #8]
+ 176 0098 F5E7     		b	.L22
+ 177              	.L25:
+ 178 009a 0223     		movs	r3, #2
+ 179 009c 3372     		strb	r3, [r6, #8]
+ 180 009e F2E7     		b	.L22
+ 181              	.L34:
+ 182              		.align	2
+ 183              	.L33:
+ 184 00a0 00000000 		.word	Ptr_Glob
+ 185 00a4 00000000 		.word	Int_Glob
+ 187              		.section	.text.dhrystone,"ax",%progbits
+ 188              		.align	2
+ 189              		.global	dhrystone
+ 190              		.thumb
+ 191              		.thumb_func
+ 193              	dhrystone:
+ 194              		@ args = 0, pretend = 0, frame = 136
+ 195              		@ frame_needed = 0, uses_anonymous_args = 0
+ 196 0000 2DE9F04F 		push	{r4, r5, r6, r7, r8, r9, sl, fp, lr}
+ 197 0004 3020     		movs	r0, #48
+ 198 0006 A3B0     		sub	sp, sp, #140
+ 199 0008 FFF7FEFF 		bl	malloc
+ 200 000c 874B     		ldr	r3, .L86
+ 201 000e 8046     		mov	r8, r0
+ 202 0010 3020     		movs	r0, #48
+ 203 0012 C3F80080 		str	r8, [r3, #0]
+ 204 0016 FFF7FEFF 		bl	malloc
+ 205 001a 854C     		ldr	r4, .L86+4
+ 206 001c 00F11005 		add	r5, r0, #16
+ 207 0020 0746     		mov	r7, r0
+ 208 0022 0FCC     		ldmia	r4!, {r0, r1, r2, r3}
+ 209 0024 0FC5     		stmia	r5!, {r0, r1, r2, r3}
+ 210 0026 94E80F00 		ldmia	r4, {r0, r1, r2, r3}
+ 211 002a 07C5     		stmia	r5!, {r0, r1, r2}
+ 212 002c 814E     		ldr	r6, .L86+8
+ 213 002e 08AC     		add	r4, sp, #32
+ 214 0030 4FEA134E 		lsr	lr, r3, #16
+ 215 0034 25F8023B 		strh	r3, [r5], #2	@ movhi
+ 216 0038 0FCE     		ldmia	r6!, {r0, r1, r2, r3}
+ 217 003a 0FC4     		stmia	r4!, {r0, r1, r2, r3}
+ 218 003c 96E80F00 		ldmia	r6, {r0, r1, r2, r3}
+ 219 0040 0026     		movs	r6, #0
+ 220 0042 3E71     		strb	r6, [r7, #4]
+ 221 0044 DFF80CA2 		ldr	sl, .L86+40
+ 222 0048 0226     		movs	r6, #2
+ 223 004a 3E72     		strb	r6, [r7, #8]
+ 224 004c 2826     		movs	r6, #40
+ 225 004e C7F80080 		str	r8, [r7, #0]
+ 226 0052 FE60     		str	r6, [r7, #12]
+ 227 0054 CAF80070 		str	r7, [sl, #0]
+ 228 0058 85F800E0 		strb	lr, [r5, #0]
+ 229 005c 07C4     		stmia	r4!, {r0, r1, r2}
+ 230 005e 764D     		ldr	r5, .L86+12
+ 231 0060 24F8023B 		strh	r3, [r4], #2	@ movhi
+ 232 0064 1B0C     		lsrs	r3, r3, #16
+ 233 0066 7548     		ldr	r0, .L86+16
+ 234 0068 2370     		strb	r3, [r4, #0]
+ 235 006a 0A23     		movs	r3, #10
+ 236 006c C5F85C36 		str	r3, [r5, #1628]
+ 237 0070 44F64036 		movw	r6, #19264
+ 238 0074 FFF7FEFF 		bl	usart_puts
+ 239 0078 7148     		ldr	r0, .L86+20
+ 240 007a FFF7FEFF 		bl	usart_puts
+ 241 007e C0F24C06 		movt	r6, 76
+ 242 0082 6E48     		ldr	r0, .L86+16
+ 243 0084 FFF7FEFF 		bl	usart_puts
+ 244 0088 6E4F     		ldr	r7, .L86+24
+ 245 008a FFF7FEFF 		bl	init_counter_ms
+ 246 008e DFF8C891 		ldr	r9, .L86+44
+ 247 0092 0296     		str	r6, [sp, #8]
+ 248 0094 DFF8C4B1 		ldr	fp, .L86+48
+ 249 0098 21AE     		add	r6, sp, #132
+ 250 009a 0096     		str	r6, [sp, #0]
+ 251 009c 05F5B058 		add	r8, r5, #5632
+ 252              	.L50:
+ 253 00a0 694E     		ldr	r6, .L86+28
+ 254 00a2 6A48     		ldr	r0, .L86+32
+ 255 00a4 18AC     		add	r4, sp, #96
+ 256 00a6 FFF7FEFF 		bl	usart_puts
+ 257 00aa 0FCE     		ldmia	r6!, {r0, r1, r2, r3}
+ 258 00ac 0FC4     		stmia	r4!, {r0, r1, r2, r3}
+ 259 00ae 0FCE     		ldmia	r6!, {r0, r1, r2, r3}
+ 260 00b0 0FC4     		stmia	r4!, {r0, r1, r2, r3}
+ 261 00b2 96E80300 		ldmia	r6, {r0, r1}
+ 262 00b6 029B     		ldr	r3, [sp, #8]
+ 263 00b8 84E80300 		stmia	r4, {r0, r1}
+ 264 00bc 0021     		movs	r1, #0
+ 265 00be 17A8     		add	r0, sp, #92
+ 266 00c0 0C46     		mov	r4, r1
+ 267              	.L40:
+ 268 00c2 50F8042F 		ldr	r2, [r0, #4]!
+ 269 00c6 9A42     		cmp	r2, r3
+ 270 00c8 00F3AA80 		bgt	.L36
+ 271 00cc 0021     		movs	r1, #0
+ 272              	.L37:
+ 273 00ce 9B1A     		subs	r3, r3, r2
+ 274 00d0 0131     		adds	r1, r1, #1
+ 275 00d2 9A42     		cmp	r2, r3
+ 276 00d4 FBDD     		ble	.L37
+ 277              	.L38:
+ 278 00d6 22AE     		add	r6, sp, #136
+ 279 00d8 3219     		adds	r2, r6, r4
+ 280 00da 3031     		adds	r1, r1, #48
+ 281 00dc 02F8781C 		strb	r1, [r2, #-120]
+ 282 00e0 0134     		adds	r4, r4, #1
+ 283 00e2 0121     		movs	r1, #1
+ 284              	.L39:
+ 285 00e4 009E     		ldr	r6, [sp, #0]
+ 286 00e6 B042     		cmp	r0, r6
+ 287 00e8 EBD1     		bne	.L40
+ 288 00ea 22A8     		add	r0, sp, #136
+ 289 00ec 0023     		movs	r3, #0
+ 290 00ee 0419     		adds	r4, r0, r4
+ 291 00f0 04F8783C 		strb	r3, [r4, #-120]
+ 292 00f4 04A8     		add	r0, sp, #16
+ 293 00f6 FFF7FEFF 		bl	usart_puts
+ 294 00fa 0126     		movs	r6, #1
+ 295 00fc 4F48     		ldr	r0, .L86+16
+ 296 00fe FFF7FEFF 		bl	usart_puts
+ 297 0102 0196     		str	r6, [sp, #4]
+ 298 0104 FFF7FEFF 		bl	reset_counter
+ 299 0108 9DF82260 		ldrb	r6, [sp, #34]	@ zero_extendqisi2
+ 300 010c 0396     		str	r6, [sp, #12]
+ 301              	.L48:
+ 302 010e 504E     		ldr	r6, .L86+36
+ 303 0110 10AC     		add	r4, sp, #64
+ 304 0112 0FCE     		ldmia	r6!, {r0, r1, r2, r3}
+ 305 0114 0FC4     		stmia	r4!, {r0, r1, r2, r3}
+ 306 0116 96E80F00 		ldmia	r6, {r0, r1, r2, r3}
+ 307 011a 07C4     		stmia	r4!, {r0, r1, r2}
+ 308 011c 40F20001 		movw	r1, #:lower16:Ch_1_Glob
+ 309 0120 4120     		movs	r0, #65
+ 310 0122 C0F20001 		movt	r1, #:upper16:Ch_1_Glob
+ 311 0126 0870     		strb	r0, [r1, #0]
+ 312 0128 40F20000 		movw	r0, #:lower16:Bool_Glob
+ 313 012c 0126     		movs	r6, #1
+ 314 012e C0F20000 		movt	r0, #:upper16:Bool_Glob
+ 315 0132 0660     		str	r6, [r0, #0]
+ 316 0134 40F20006 		movw	r6, #:lower16:Ch_2_Glob
+ 317 0138 4221     		movs	r1, #66
+ 318 013a C0F20006 		movt	r6, #:upper16:Ch_2_Glob
+ 319 013e 9DF84320 		ldrb	r2, [sp, #67]	@ zero_extendqisi2
+ 320 0142 3170     		strb	r1, [r6, #0]
+ 321 0144 039E     		ldr	r6, [sp, #12]
+ 322 0146 24F8023B 		strh	r3, [r4], #2	@ movhi
+ 323 014a 1B0C     		lsrs	r3, r3, #16
+ 324 014c B242     		cmp	r2, r6
+ 325 014e 2370     		strb	r3, [r4, #0]
+ 326 0150 65D0     		beq	.L84
+ 327 0152 10A9     		add	r1, sp, #64
+ 328 0154 08A8     		add	r0, sp, #32
+ 329 0156 FFF7FEFF 		bl	strcmp
+ 330 015a D5F85C16 		ldr	r1, [r5, #1628]
+ 331 015e 0822     		movs	r2, #8
+ 332 0160 0723     		movs	r3, #7
+ 333 0162 0028     		cmp	r0, #0
+ 334 0164 CCBF     		ite	gt
+ 335 0166 0024     		movgt	r4, #0
+ 336 0168 0124     		movle	r4, #1
+ 337 016a DAF80000 		ldr	r0, [sl, #0]
+ 338 016e 0131     		adds	r1, r1, #1
+ 339 0170 3B62     		str	r3, [r7, #32]
+ 340 0172 7B62     		str	r3, [r7, #36]
+ 341 0174 C7F89820 		str	r2, [r7, #152]
+ 342 0178 C8F80030 		str	r3, [r8, #0]
+ 343 017c 0523     		movs	r3, #5
+ 344 017e CBF80040 		str	r4, [fp, #0]
+ 345 0182 C5F86026 		str	r2, [r5, #1632]
+ 346 0186 C5F86426 		str	r2, [r5, #1636]
+ 347 018a C5F85C16 		str	r1, [r5, #1628]
+ 348 018e C9F80030 		str	r3, [r9, #0]
+ 349 0192 FFF7FEFF 		bl	Proc_1
+ 350 0196 40F20000 		movw	r0, #:lower16:Ch_2_Glob
+ 351 019a C0F20000 		movt	r0, #:upper16:Ch_2_Glob
+ 352 019e 0678     		ldrb	r6, [r0, #0]	@ zero_extendqisi2
+ 353 01a0 4124     		movs	r4, #65
+ 354 01a2 0122     		movs	r2, #1
+ 355 01a4 402E     		cmp	r6, #64
+ 356 01a6 27D9     		bls	.L44
+ 357              	.L83:
+ 358 01a8 0134     		adds	r4, r4, #1
+ 359 01aa E4B2     		uxtb	r4, r4
+ 360 01ac B442     		cmp	r4, r6
+ 361 01ae 23D8     		bhi	.L44
+ 362              	.L47:
+ 363 01b0 0023     		movs	r3, #0
+ 364 01b2 432C     		cmp	r4, #67
+ 365 01b4 01BF     		itttt	eq
+ 366 01b6 40F20001 		movweq	r1, #:lower16:Ch_1_Glob
+ 367 01ba C0F20001 		movteq	r1, #:upper16:Ch_1_Glob
+ 368 01be 0C70     		strbeq	r4, [r1, #0]
+ 369 01c0 0123     		moveq	r3, #1
+ 370 01c2 9A42     		cmp	r2, r3
+ 371 01c4 F0D1     		bne	.L83
+ 372 01c6 DFF898C0 		ldr	ip, .L86+52
+ 373 01ca 0DF1400E 		add	lr, sp, #64
+ 374 01ce BCE80F00 		ldmia	ip!, {r0, r1, r2, r3}
+ 375 01d2 AEE80F00 		stmia	lr!, {r0, r1, r2, r3}
+ 376 01d6 9CE80F00 		ldmia	ip, {r0, r1, r2, r3}
+ 377 01da AEE80700 		stmia	lr!, {r0, r1, r2}
+ 378 01de 1A0C     		lsrs	r2, r3, #16
+ 379 01e0 2EF8023B 		strh	r3, [lr], #2	@ movhi
+ 380 01e4 0134     		adds	r4, r4, #1
+ 381 01e6 8EF80020 		strb	r2, [lr, #0]
+ 382 01ea 019A     		ldr	r2, [sp, #4]
+ 383 01ec E4B2     		uxtb	r4, r4
+ 384 01ee C9F80020 		str	r2, [r9, #0]
+ 385 01f2 0022     		movs	r2, #0
+ 386 01f4 B442     		cmp	r4, r6
+ 387 01f6 DBD9     		bls	.L47
+ 388              	.L44:
+ 389 01f8 019E     		ldr	r6, [sp, #4]
+ 390 01fa 0298     		ldr	r0, [sp, #8]
+ 391 01fc 0136     		adds	r6, r6, #1
+ 392 01fe B042     		cmp	r0, r6
+ 393 0200 0196     		str	r6, [sp, #4]
+ 394 0202 84DA     		bge	.L48
+ 395 0204 FFF7FEFF 		bl	read_counter
+ 396 0208 43F69723 		movw	r3, #14999
+ 397 020c 9842     		cmp	r0, r3
+ 398 020e 29D8     		bhi	.L49
+ 399 0210 029E     		ldr	r6, [sp, #8]
+ 400 0212 0A23     		movs	r3, #10
+ 401 0214 7600     		lsls	r6, r6, #1
+ 402 0216 0296     		str	r6, [sp, #8]
+ 403 0218 C5F85C36 		str	r3, [r5, #1628]
+ 404 021c 40E7     		b	.L50
+ 405              	.L84:
+ 406 021e FEE7     		b	.L84
+ 407              	.L36:
+ 408 0220 0029     		cmp	r1, #0
+ 409 0222 3FF45FAF 		beq	.L39
+ 410 0226 0021     		movs	r1, #0
+ 411 0228 55E7     		b	.L38
+ 412              	.L87:
+ 413 022a 00BF     		.align	2
+ 414              	.L86:
+ 415 022c 00000000 		.word	Next_Ptr_Glob
+ 416 0230 00000000 		.word	.LC1
+ 417 0234 20000000 		.word	.LC2
+ 418 0238 00000000 		.word	Arr_2_Glob
+ 419 023c 40000000 		.word	.LC3
+ 420 0240 44000000 		.word	.LC4
+ 421 0244 00000000 		.word	Arr_1_Glob
+ 422 0248 00000000 		.word	.LANCHOR0
+ 423 024c 74000000 		.word	.LC5
+ 424 0250 A0000000 		.word	.LC6
+ 425 0254 00000000 		.word	Ptr_Glob
+ 426 0258 00000000 		.word	Int_Glob
+ 427 025c 00000000 		.word	Bool_Glob
+ 428 0260 C0000000 		.word	.LC7
+ 429              	.L49:
+ 430 0264 0446     		mov	r4, r0
+ 431 0266 3B4E     		ldr	r6, .L88
+ 432 0268 3B48     		ldr	r0, .L88+4
+ 433 026a FFF7FEFF 		bl	usart_puts
+ 434 026e 18AD     		add	r5, sp, #96
+ 435 0270 3A48     		ldr	r0, .L88+8
+ 436 0272 FFF7FEFF 		bl	usart_puts
+ 437 0276 0FCE     		ldmia	r6!, {r0, r1, r2, r3}
+ 438 0278 0FC5     		stmia	r5!, {r0, r1, r2, r3}
+ 439 027a 0FCE     		ldmia	r6!, {r0, r1, r2, r3}
+ 440 027c 0FC5     		stmia	r5!, {r0, r1, r2, r3}
+ 441 027e 96E80300 		ldmia	r6, {r0, r1}
+ 442 0282 029B     		ldr	r3, [sp, #8]
+ 443 0284 0026     		movs	r6, #0
+ 444 0286 85E80300 		stmia	r5, {r0, r1}
+ 445 028a 17A9     		add	r1, sp, #92
+ 446 028c 3046     		mov	r0, r6
+ 447              	.L55:
+ 448 028e 51F8042F 		ldr	r2, [r1, #4]!
+ 449 0292 9342     		cmp	r3, r2
+ 450 0294 51DB     		blt	.L51
+ 451 0296 0025     		movs	r5, #0
+ 452              	.L52:
+ 453 0298 9B1A     		subs	r3, r3, r2
+ 454 029a 0135     		adds	r5, r5, #1
+ 455 029c 9A42     		cmp	r2, r3
+ 456 029e FBDD     		ble	.L52
+ 457 02a0 0126     		movs	r6, #1
+ 458              	.L53:
+ 459 02a2 22AF     		add	r7, sp, #136
+ 460 02a4 3A18     		adds	r2, r7, r0
+ 461 02a6 3035     		adds	r5, r5, #48
+ 462 02a8 02F8785C 		strb	r5, [r2, #-120]
+ 463 02ac 0130     		adds	r0, r0, #1
+ 464              	.L54:
+ 465 02ae 009F     		ldr	r7, [sp, #0]
+ 466 02b0 B942     		cmp	r1, r7
+ 467 02b2 ECD1     		bne	.L55
+ 468 02b4 22A9     		add	r1, sp, #136
+ 469 02b6 0B18     		adds	r3, r1, r0
+ 470 02b8 0027     		movs	r7, #0
+ 471 02ba 03F8787C 		strb	r7, [r3, #-120]
+ 472 02be 04A8     		add	r0, sp, #16
+ 473 02c0 FFF7FEFF 		bl	usart_puts
+ 474 02c4 2648     		ldr	r0, .L88+12
+ 475 02c6 FFF7FEFF 		bl	usart_puts
+ 476 02ca 2648     		ldr	r0, .L88+16
+ 477 02cc FFF7FEFF 		bl	usart_puts
+ 478 02d0 251E     		subs	r5, r4, #0
+ 479 02d2 36DD     		ble	.L56
+ 480 02d4 1F4E     		ldr	r6, .L88
+ 481 02d6 18AC     		add	r4, sp, #96
+ 482 02d8 0FCE     		ldmia	r6!, {r0, r1, r2, r3}
+ 483 02da 0FC4     		stmia	r4!, {r0, r1, r2, r3}
+ 484 02dc 0FCE     		ldmia	r6!, {r0, r1, r2, r3}
+ 485 02de 0FC4     		stmia	r4!, {r0, r1, r2, r3}
+ 486 02e0 96E80300 		ldmia	r6, {r0, r1}
+ 487 02e4 84E80300 		stmia	r4, {r0, r1}
+ 488 02e8 3C46     		mov	r4, r7
+ 489 02ea 17A9     		add	r1, sp, #92
+ 490 02ec 3846     		mov	r0, r7
+ 491              	.L61:
+ 492 02ee 51F8043F 		ldr	r3, [r1, #4]!
+ 493 02f2 9D42     		cmp	r5, r3
+ 494 02f4 1DDB     		blt	.L57
+ 495 02f6 0022     		movs	r2, #0
+ 496              	.L58:
+ 497 02f8 ED1A     		subs	r5, r5, r3
+ 498 02fa 0132     		adds	r2, r2, #1
+ 499 02fc AB42     		cmp	r3, r5
+ 500 02fe FBDD     		ble	.L58
+ 501 0300 0124     		movs	r4, #1
+ 502              	.L59:
+ 503 0302 22AE     		add	r6, sp, #136
+ 504 0304 3318     		adds	r3, r6, r0
+ 505 0306 3032     		adds	r2, r2, #48
+ 506 0308 03F8782C 		strb	r2, [r3, #-120]
+ 507 030c 0130     		adds	r0, r0, #1
+ 508              	.L60:
+ 509 030e 009F     		ldr	r7, [sp, #0]
+ 510 0310 B942     		cmp	r1, r7
+ 511 0312 ECD1     		bne	.L61
+ 512 0314 22A9     		add	r1, sp, #136
+ 513 0316 0818     		adds	r0, r1, r0
+ 514 0318 0023     		movs	r3, #0
+ 515 031a 00F8783C 		strb	r3, [r0, #-120]
+ 516              	.L62:
+ 517 031e 04A8     		add	r0, sp, #16
+ 518 0320 FFF7FEFF 		bl	usart_puts
+ 519 0324 0E48     		ldr	r0, .L88+12
+ 520 0326 FFF7FEFF 		bl	usart_puts
+ 521 032a 0020     		movs	r0, #0
+ 522 032c 23B0     		add	sp, sp, #140
+ 523 032e BDE8F08F 		pop	{r4, r5, r6, r7, r8, r9, sl, fp, pc}
+ 524              	.L57:
+ 525 0332 002C     		cmp	r4, #0
+ 526 0334 EBD0     		beq	.L60
+ 527 0336 0022     		movs	r2, #0
+ 528 0338 E3E7     		b	.L59
+ 529              	.L51:
+ 530 033a 002E     		cmp	r6, #0
+ 531 033c B7D0     		beq	.L54
+ 532 033e 0025     		movs	r5, #0
+ 533 0340 AFE7     		b	.L53
+ 534              	.L56:
+ 535 0342 2D23     		movs	r3, #45
+ 536 0344 0DF11100 		add	r0, sp, #17
+ 537 0348 6142     		negs	r1, r4
+ 538 034a 8DF81030 		strb	r3, [sp, #16]
+ 539 034e FFF7FEFF 		bl	int_to_a
+ 540 0352 E4E7     		b	.L62
+ 541              	.L89:
+ 542              		.align	2
+ 543              	.L88:
+ 544 0354 00000000 		.word	.LANCHOR0
+ 545 0358 E8000000 		.word	.LC9
+ 546 035c 08010000 		.word	.LC10
+ 547 0360 40000000 		.word	.LC3
+ 548 0364 E0000000 		.word	.LC8
+ 550              		.section	.text.start_benchmark,"ax",%progbits
+ 551              		.align	2
+ 552              		.global	start_benchmark
+ 553              		.thumb
+ 554              		.thumb_func
+ 556              	start_benchmark:
+ 557              		@ args = 0, pretend = 0, frame = 0
+ 558              		@ frame_needed = 0, uses_anonymous_args = 0
+ 559              		@ link register save eliminated.
+ 560 0000 FFF7FEBF 		b	dhrystone
+ 562              		.section	.text.Proc_2,"ax",%progbits
+ 563              		.align	2
+ 564              		.global	Proc_2
+ 565              		.thumb
+ 566              		.thumb_func
+ 568              	Proc_2:
+ 569              		@ args = 0, pretend = 0, frame = 0
+ 570              		@ frame_needed = 0, uses_anonymous_args = 0
+ 571              		@ link register save eliminated.
+ 572 0000 054B     		ldr	r3, .L93
+ 573 0002 0268     		ldr	r2, [r0, #0]
+ 574 0004 1B78     		ldrb	r3, [r3, #0]	@ zero_extendqisi2
+ 575 0006 412B     		cmp	r3, #65
+ 576 0008 04D1     		bne	.L91
+ 577 000a 044B     		ldr	r3, .L93+4
+ 578 000c 0932     		adds	r2, r2, #9
+ 579 000e 1B68     		ldr	r3, [r3, #0]
+ 580 0010 D21A     		subs	r2, r2, r3
+ 581 0012 0260     		str	r2, [r0, #0]
+ 582              	.L91:
+ 583 0014 7047     		bx	lr
+ 584              	.L94:
+ 585 0016 00BF     		.align	2
+ 586              	.L93:
+ 587 0018 00000000 		.word	Ch_1_Glob
+ 588 001c 00000000 		.word	Int_Glob
+ 590              		.section	.text.Proc_3,"ax",%progbits
+ 591              		.align	2
+ 592              		.global	Proc_3
+ 593              		.thumb
+ 594              		.thumb_func
+ 596              	Proc_3:
+ 597              		@ args = 0, pretend = 0, frame = 0
+ 598              		@ frame_needed = 0, uses_anonymous_args = 0
+ 599              		@ link register save eliminated.
+ 600 0000 054A     		ldr	r2, .L98
+ 601 0002 1368     		ldr	r3, [r2, #0]
+ 602 0004 13B1     		cbz	r3, .L96
+ 603 0006 1B68     		ldr	r3, [r3, #0]
+ 604 0008 0360     		str	r3, [r0, #0]
+ 605 000a 1368     		ldr	r3, [r2, #0]
+ 606              	.L96:
+ 607 000c 034A     		ldr	r2, .L98+4
+ 608 000e 1268     		ldr	r2, [r2, #0]
+ 609 0010 0C32     		adds	r2, r2, #12
+ 610 0012 DA60     		str	r2, [r3, #12]
+ 611 0014 7047     		bx	lr
+ 612              	.L99:
+ 613 0016 00BF     		.align	2
+ 614              	.L98:
+ 615 0018 00000000 		.word	Ptr_Glob
+ 616 001c 00000000 		.word	Int_Glob
+ 618              		.section	.text.Proc_4,"ax",%progbits
+ 619              		.align	2
+ 620              		.global	Proc_4
+ 621              		.thumb
+ 622              		.thumb_func
+ 624              	Proc_4:
+ 625              		@ args = 0, pretend = 0, frame = 0
+ 626              		@ frame_needed = 0, uses_anonymous_args = 0
+ 627              		@ link register save eliminated.
+ 628 0000 40F20003 		movw	r3, #:lower16:Bool_Glob
+ 629 0004 40F20002 		movw	r2, #:lower16:Ch_1_Glob
+ 630 0008 C0F20003 		movt	r3, #:upper16:Bool_Glob
+ 631 000c C0F20002 		movt	r2, #:upper16:Ch_1_Glob
+ 632 0010 1968     		ldr	r1, [r3, #0]
+ 633 0012 1078     		ldrb	r0, [r2, #0]	@ zero_extendqisi2
+ 634 0014 40F20002 		movw	r2, #:lower16:Ch_2_Glob
+ 635 0018 4128     		cmp	r0, #65
+ 636 001a 08BF     		it	eq
+ 637 001c 41F00101 		orreq	r1, r1, #1
+ 638 0020 C0F20002 		movt	r2, #:upper16:Ch_2_Glob
+ 639 0024 1960     		str	r1, [r3, #0]
+ 640 0026 4223     		movs	r3, #66
+ 641 0028 1370     		strb	r3, [r2, #0]
+ 642 002a 7047     		bx	lr
+ 644              		.section	.text.Proc_5,"ax",%progbits
+ 645              		.align	2
+ 646              		.global	Proc_5
+ 647              		.thumb
+ 648              		.thumb_func
+ 650              	Proc_5:
+ 651              		@ args = 0, pretend = 0, frame = 0
+ 652              		@ frame_needed = 0, uses_anonymous_args = 0
+ 653              		@ link register save eliminated.
+ 654 0000 40F20002 		movw	r2, #:lower16:Ch_1_Glob
+ 655 0004 C0F20002 		movt	r2, #:upper16:Ch_1_Glob
+ 656 0008 40F20003 		movw	r3, #:lower16:Bool_Glob
+ 657 000c 4121     		movs	r1, #65
+ 658 000e C0F20003 		movt	r3, #:upper16:Bool_Glob
+ 659 0012 1170     		strb	r1, [r2, #0]
+ 660 0014 0022     		movs	r2, #0
+ 661 0016 1A60     		str	r2, [r3, #0]
+ 662 0018 7047     		bx	lr
+ 664 001a 00BF     		.section	.text.Proc_6,"ax",%progbits
+ 665              		.align	2
+ 666              		.global	Proc_6
+ 667              		.thumb
+ 668              		.thumb_func
+ 670              	Proc_6:
+ 671              		@ args = 0, pretend = 0, frame = 0
+ 672              		@ frame_needed = 0, uses_anonymous_args = 0
+ 673              		@ link register save eliminated.
+ 674 0000 0228     		cmp	r0, #2
+ 675 0002 0870     		strb	r0, [r1, #0]
+ 676 0004 12D0     		beq	.L103
+ 677 0006 0323     		movs	r3, #3
+ 678 0008 0B70     		strb	r3, [r1, #0]
+ 679 000a 0428     		cmp	r0, #4
+ 680 000c 06D8     		bhi	.L102
+ 681 000e DFE800F0 		tbb	[pc, r0]
+ 682              	.L108:
+ 683 0012 0A       		.byte	(.L112-.L108)/2
+ 684 0013 06       		.byte	(.L106-.L108)/2
+ 685 0014 0D       		.byte	(.L103-.L108)/2
+ 686 0015 05       		.byte	(.L102-.L108)/2
+ 687 0016 03       		.byte	(.L107-.L108)/2
+ 688 0017 00       		.align	1
+ 689              	.L107:
+ 690 0018 0223     		movs	r3, #2
+ 691 001a 0B70     		strb	r3, [r1, #0]
+ 692              	.L102:
+ 693 001c 7047     		bx	lr
+ 694              	.L106:
+ 695 001e 054B     		ldr	r3, .L113
+ 696 0020 1B68     		ldr	r3, [r3, #0]
+ 697 0022 642B     		cmp	r3, #100
+ 698 0024 FADD     		ble	.L102
+ 699              	.L112:
+ 700 0026 0023     		movs	r3, #0
+ 701 0028 0B70     		strb	r3, [r1, #0]
+ 702 002a 7047     		bx	lr
+ 703              	.L103:
+ 704 002c 0123     		movs	r3, #1
+ 705 002e 0B70     		strb	r3, [r1, #0]
+ 706 0030 7047     		bx	lr
+ 707              	.L114:
+ 708 0032 00BF     		.align	2
+ 709              	.L113:
+ 710 0034 00000000 		.word	Int_Glob
+ 712              		.section	.text.Proc_7,"ax",%progbits
+ 713              		.align	2
+ 714              		.global	Proc_7
+ 715              		.thumb
+ 716              		.thumb_func
+ 718              	Proc_7:
+ 719              		@ args = 0, pretend = 0, frame = 0
+ 720              		@ frame_needed = 0, uses_anonymous_args = 0
+ 721              		@ link register save eliminated.
+ 722 0000 0230     		adds	r0, r0, #2
+ 723 0002 0918     		adds	r1, r1, r0
+ 724 0004 1160     		str	r1, [r2, #0]
+ 725 0006 7047     		bx	lr
+ 727              		.section	.text.Proc_8,"ax",%progbits
+ 728              		.align	2
+ 729              		.global	Proc_8
+ 730              		.thumb
+ 731              		.thumb_func
+ 733              	Proc_8:
+ 734              		@ args = 0, pretend = 0, frame = 0
+ 735              		@ frame_needed = 0, uses_anonymous_args = 0
+ 736              		@ link register save eliminated.
+ 737 0000 70B4     		push	{r4, r5, r6}
+ 738 0002 541D     		adds	r4, r2, #5
+ 739 0004 C825     		movs	r5, #200
+ 740 0006 05FB0411 		mla	r1, r5, r4, r1
+ 741 000a 02F12306 		add	r6, r2, #35
+ 742 000e 951D     		adds	r5, r2, #6
+ 743 0010 40F82430 		str	r3, [r0, r4, lsl #2]
+ 744 0014 0432     		adds	r2, r2, #4
+ 745 0016 40F82530 		str	r3, [r0, r5, lsl #2]
+ 746 001a 40F82640 		str	r4, [r0, r6, lsl #2]
+ 747 001e 41F82440 		str	r4, [r1, r4, lsl #2]
+ 748 0022 41F82540 		str	r4, [r1, r5, lsl #2]
+ 749 0026 51F82250 		ldr	r5, [r1, r2, lsl #2]
+ 750 002a 40F20003 		movw	r3, #:lower16:Int_Glob
+ 751 002e 0135     		adds	r5, r5, #1
+ 752 0030 41F82250 		str	r5, [r1, r2, lsl #2]
+ 753 0034 50F82420 		ldr	r2, [r0, r4, lsl #2]
+ 754 0038 01EB8404 		add	r4, r1, r4, lsl #2
+ 755 003c C4F8A02F 		str	r2, [r4, #4000]
+ 756 0040 C0F20003 		movt	r3, #:upper16:Int_Glob
+ 757 0044 0522     		movs	r2, #5
+ 758 0046 1A60     		str	r2, [r3, #0]
+ 759 0048 70BC     		pop	{r4, r5, r6}
+ 760 004a 7047     		bx	lr
+ 762              		.section	.text.Func_1,"ax",%progbits
+ 763              		.align	2
+ 764              		.global	Func_1
+ 765              		.thumb
+ 766              		.thumb_func
+ 768              	Func_1:
+ 769              		@ args = 0, pretend = 0, frame = 0
+ 770              		@ frame_needed = 0, uses_anonymous_args = 0
+ 771              		@ link register save eliminated.
+ 772 0000 8842     		cmp	r0, r1
+ 773 0002 0346     		mov	r3, r0
+ 774 0004 01D0     		beq	.L120
+ 775 0006 0020     		movs	r0, #0
+ 776 0008 7047     		bx	lr
+ 777              	.L120:
+ 778 000a 024A     		ldr	r2, .L121
+ 779 000c 0120     		movs	r0, #1
+ 780 000e 1370     		strb	r3, [r2, #0]
+ 781 0010 7047     		bx	lr
+ 782              	.L122:
+ 783 0012 00BF     		.align	2
+ 784              	.L121:
+ 785 0014 00000000 		.word	Ch_1_Glob
+ 787              		.section	.text.Func_2,"ax",%progbits
+ 788              		.align	2
+ 789              		.global	Func_2
+ 790              		.thumb
+ 791              		.thumb_func
+ 793              	Func_2:
+ 794              		@ args = 0, pretend = 0, frame = 0
+ 795              		@ frame_needed = 0, uses_anonymous_args = 0
+ 796 0000 08B5     		push	{r3, lr}
+ 797 0002 8278     		ldrb	r2, [r0, #2]	@ zero_extendqisi2
+ 798 0004 CB78     		ldrb	r3, [r1, #3]	@ zero_extendqisi2
+ 799 0006 9A42     		cmp	r2, r3
+ 800 0008 08D0     		beq	.L128
+ 801 000a FFF7FEFF 		bl	strcmp
+ 802 000e 0028     		cmp	r0, #0
+ 803 0010 05DD     		ble	.L127
+ 804 0012 044B     		ldr	r3, .L129
+ 805 0014 0A22     		movs	r2, #10
+ 806 0016 1A60     		str	r2, [r3, #0]
+ 807 0018 0120     		movs	r0, #1
+ 808 001a 08BD     		pop	{r3, pc}
+ 809              	.L128:
+ 810 001c FEE7     		b	.L128
+ 811              	.L127:
+ 812 001e 0020     		movs	r0, #0
+ 813 0020 08BD     		pop	{r3, pc}
+ 814              	.L130:
+ 815 0022 00BF     		.align	2
+ 816              	.L129:
+ 817 0024 00000000 		.word	Int_Glob
+ 819              		.section	.text.Func_3,"ax",%progbits
+ 820              		.align	2
+ 821              		.global	Func_3
+ 822              		.thumb
+ 823              		.thumb_func
+ 825              	Func_3:
+ 826              		@ args = 0, pretend = 0, frame = 0
+ 827              		@ frame_needed = 0, uses_anonymous_args = 0
+ 828              		@ link register save eliminated.
+ 829 0000 831E     		subs	r3, r0, #2
+ 830 0002 5842     		rsbs	r0, r3, #0
+ 831 0004 5841     		adcs	r0, r0, r3
+ 832 0006 7047     		bx	lr
+ 834              		.global	Reg
+ 835              		.comm	Arr_2_Glob,10000,4
+ 836              		.comm	Arr_1_Glob,200,4
+ 837              		.comm	Ch_2_Glob,1,1
+ 838              		.comm	Ch_1_Glob,1,1
+ 839              		.comm	Bool_Glob,4,4
+ 840              		.comm	Int_Glob,4,4
+ 841              		.comm	Next_Ptr_Glob,4,4
+ 842              		.comm	Ptr_Glob,4,4
+ 843              		.section	.rodata
+ 844              		.align	2
+ 845              		.set	.LANCHOR0,. + 0
+ 846              	.LC0:
+ 847 0000 00CA9A3B 		.word	1000000000
+ 848 0004 00E1F505 		.word	100000000
+ 849 0008 80969800 		.word	10000000
+ 850 000c 40420F00 		.word	1000000
+ 851 0010 A0860100 		.word	100000
+ 852 0014 10270000 		.word	10000
+ 853 0018 E8030000 		.word	1000
+ 854 001c 64000000 		.word	100
+ 855 0020 0A000000 		.word	10
+ 856 0024 01000000 		.word	1
+ 857              		.section	.bss.Reg,"aw",%nobits
+ 858              		.align	2
+ 861              	Reg:
+ 862 0000 00000000 		.space	4
+ 863              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 864              		.align	2
+ 865              	.LC1:
+ 866 0000 44485259 		.ascii	"DHRYSTONE PROGRAM, SOME STRING\000"
+ 866      53544F4E 
+ 866      45205052 
+ 866      4F475241 
+ 866      4D2C2053 
+ 867 001f 00       		.space	1
+ 868              	.LC2:
+ 869 0020 44485259 		.ascii	"DHRYSTONE PROGRAM, 1'ST STRING\000"
+ 869      53544F4E 
+ 869      45205052 
+ 869      4F475241 
+ 869      4D2C2031 
+ 870 003f 00       		.space	1
+ 871              	.LC3:
+ 872 0040 0A00     		.ascii	"\012\000"
+ 873 0042 0000     		.space	2
+ 874              	.LC4:
+ 875 0044 44687279 		.ascii	"Dhrystone Benchmark, Version 2.1 (Language: C)\012\000"
+ 875      73746F6E 
+ 875      65204265 
+ 875      6E63686D 
+ 875      61726B2C 
+ 876              	.LC5:
+ 877 0074 54686520 		.ascii	"The number of runs through the benchmark: \000"
+ 877      6E756D62 
+ 877      6572206F 
+ 877      66207275 
+ 877      6E732074 
+ 878 009f 00       		.space	1
+ 879              	.LC6:
+ 880 00a0 44485259 		.ascii	"DHRYSTONE PROGRAM, 2'ND STRING\000"
+ 880      53544F4E 
+ 880      45205052 
+ 880      4F475241 
+ 880      4D2C2032 
+ 881 00bf 00       		.space	1
+ 882              	.LC7:
+ 883 00c0 44485259 		.ascii	"DHRYSTONE PROGRAM, 3'RD STRING\000"
+ 883      53544F4E 
+ 883      45205052 
+ 883      4F475241 
+ 883      4D2C2033 
+ 884 00df 00       		.space	1
+ 885              	.LC8:
+ 886 00e0 54494D45 		.ascii	"TIME : \000"
+ 886      203A2000 
+ 887              	.LC9:
+ 888 00e8 54657374 		.ascii	"Test runned successfully !!!\012\000"
+ 888      2072756E 
+ 888      6E656420 
+ 888      73756363 
+ 888      65737366 
+ 889 0106 0000     		.space	2
+ 890              	.LC10:
+ 891 0108 4C4F4F50 		.ascii	"LOOPS: \000"
+ 891      533A2000 
+ 892              		.ident	"GCC: (GNU) 4.7.0"
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 benchmark.c
+     /tmp/ccvKmdeU.s:16     .text.int_to_a:0000000000000000 $t
+     /tmp/ccvKmdeU.s:21     .text.int_to_a:0000000000000000 int_to_a
+     /tmp/ccvKmdeU.s:92     .text.int_to_a:000000000000007c $d
+     /tmp/ccvKmdeU.s:95     .text.Proc_1:0000000000000000 $t
+     /tmp/ccvKmdeU.s:100    .text.Proc_1:0000000000000000 Proc_1
+     /tmp/ccvKmdeU.s:155    .text.Proc_1:000000000000007c $d
+     /tmp/ccvKmdeU.s:184    .text.Proc_1:00000000000000a0 $d
+                            *COM*:0000000000000004 Ptr_Glob
+                            *COM*:0000000000000004 Int_Glob
+     /tmp/ccvKmdeU.s:188    .text.dhrystone:0000000000000000 $t
+     /tmp/ccvKmdeU.s:193    .text.dhrystone:0000000000000000 dhrystone
+                            *COM*:0000000000000001 Ch_1_Glob
+                            *COM*:0000000000000004 Bool_Glob
+                            *COM*:0000000000000001 Ch_2_Glob
+     /tmp/ccvKmdeU.s:415    .text.dhrystone:000000000000022c $d
+                            *COM*:0000000000000004 Next_Ptr_Glob
+                            *COM*:0000000000002710 Arr_2_Glob
+                            *COM*:00000000000000c8 Arr_1_Glob
+     /tmp/ccvKmdeU.s:430    .text.dhrystone:0000000000000264 $t
+     /tmp/ccvKmdeU.s:544    .text.dhrystone:0000000000000354 $d
+     /tmp/ccvKmdeU.s:551    .text.start_benchmark:0000000000000000 $t
+     /tmp/ccvKmdeU.s:556    .text.start_benchmark:0000000000000000 start_benchmark
+     /tmp/ccvKmdeU.s:563    .text.Proc_2:0000000000000000 $t
+     /tmp/ccvKmdeU.s:568    .text.Proc_2:0000000000000000 Proc_2
+     /tmp/ccvKmdeU.s:587    .text.Proc_2:0000000000000018 $d
+     /tmp/ccvKmdeU.s:591    .text.Proc_3:0000000000000000 $t
+     /tmp/ccvKmdeU.s:596    .text.Proc_3:0000000000000000 Proc_3
+     /tmp/ccvKmdeU.s:615    .text.Proc_3:0000000000000018 $d
+     /tmp/ccvKmdeU.s:619    .text.Proc_4:0000000000000000 $t
+     /tmp/ccvKmdeU.s:624    .text.Proc_4:0000000000000000 Proc_4
+     /tmp/ccvKmdeU.s:645    .text.Proc_5:0000000000000000 $t
+     /tmp/ccvKmdeU.s:650    .text.Proc_5:0000000000000000 Proc_5
+     /tmp/ccvKmdeU.s:665    .text.Proc_6:0000000000000000 $t
+     /tmp/ccvKmdeU.s:670    .text.Proc_6:0000000000000000 Proc_6
+     /tmp/ccvKmdeU.s:683    .text.Proc_6:0000000000000012 $d
+     /tmp/ccvKmdeU.s:710    .text.Proc_6:0000000000000034 $d
+     /tmp/ccvKmdeU.s:713    .text.Proc_7:0000000000000000 $t
+     /tmp/ccvKmdeU.s:718    .text.Proc_7:0000000000000000 Proc_7
+     /tmp/ccvKmdeU.s:728    .text.Proc_8:0000000000000000 $t
+     /tmp/ccvKmdeU.s:733    .text.Proc_8:0000000000000000 Proc_8
+     /tmp/ccvKmdeU.s:763    .text.Func_1:0000000000000000 $t
+     /tmp/ccvKmdeU.s:768    .text.Func_1:0000000000000000 Func_1
+     /tmp/ccvKmdeU.s:785    .text.Func_1:0000000000000014 $d
+     /tmp/ccvKmdeU.s:788    .text.Func_2:0000000000000000 $t
+     /tmp/ccvKmdeU.s:793    .text.Func_2:0000000000000000 Func_2
+     /tmp/ccvKmdeU.s:817    .text.Func_2:0000000000000024 $d
+     /tmp/ccvKmdeU.s:820    .text.Func_3:0000000000000000 $t
+     /tmp/ccvKmdeU.s:825    .text.Func_3:0000000000000000 Func_3
+     /tmp/ccvKmdeU.s:861    .bss.Reg:0000000000000000 Reg
+     /tmp/ccvKmdeU.s:844    .rodata:0000000000000000 $d
+     /tmp/ccvKmdeU.s:858    .bss.Reg:0000000000000000 $d
+     /tmp/ccvKmdeU.s:864    .rodata.str1.4:0000000000000000 $d
+     /tmp/ccvKmdeU.s:160    .text.Proc_1:0000000000000081 $d
+     /tmp/ccvKmdeU.s:160    .text.Proc_1:0000000000000082 $t
+     /tmp/ccvKmdeU.s:688    .text.Proc_6:0000000000000017 $d
+     /tmp/ccvKmdeU.s:688    .text.Proc_6:0000000000000018 $t
+
+UNDEFINED SYMBOLS
+malloc
+usart_puts
+init_counter_ms
+reset_counter
+strcmp
+read_counter

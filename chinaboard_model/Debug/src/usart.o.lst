@@ -1,0 +1,258 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 2
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"usart.c"
+  15              		.section	.text.usart_init,"ax",%progbits
+  16              		.align	2
+  17              		.global	usart_init
+  18              		.thumb
+  19              		.thumb_func
+  21              	usart_init:
+  22              		@ args = 0, pretend = 0, frame = 32
+  23              		@ frame_needed = 0, uses_anonymous_args = 0
+  24 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+  25 0002 0746     		mov	r7, r0
+  26 0004 40F20000 		movw	r0, #:lower16:u1rx
+  27 0008 89B0     		sub	sp, sp, #36
+  28 000a C0F20000 		movt	r0, #:upper16:u1rx
+  29 000e FFF7FEFF 		bl	buffer_init
+  30 0012 40F20000 		movw	r0, #:lower16:u1tx
+  31 0016 C0F20000 		movt	r0, #:upper16:u1tx
+  32 001a FFF7FEFF 		bl	buffer_init
+  33 001e 4FF40065 		mov	r5, #2048
+  34 0022 0121     		movs	r1, #1
+  35 0024 44F20500 		movw	r0, #16389
+  36 0028 FFF7FEFF 		bl	RCC_APB2PeriphClockCmd
+  37 002c C4F20105 		movt	r5, 16385
+  38 0030 4FF48063 		mov	r3, #1024
+  39 0034 0326     		movs	r6, #3
+  40 0036 2846     		mov	r0, r5
+  41 0038 6946     		mov	r1, sp
+  42 003a ADF80030 		strh	r3, [sp, #0]	@ movhi
+  43 003e 0423     		movs	r3, #4
+  44 0040 8DF80330 		strb	r3, [sp, #3]
+  45 0044 8DF80260 		strb	r6, [sp, #2]
+  46 0048 FFF7FEFF 		bl	GPIO_Init
+  47 004c 4FF40073 		mov	r3, #512
+  48 0050 6946     		mov	r1, sp
+  49 0052 2846     		mov	r0, r5
+  50 0054 ADF80030 		strh	r3, [sp, #0]	@ movhi
+  51 0058 4FF46054 		mov	r4, #14336
+  52 005c 1823     		movs	r3, #24
+  53 005e C4F20104 		movt	r4, 16385
+  54 0062 0125     		movs	r5, #1
+  55 0064 8DF80330 		strb	r3, [sp, #3]
+  56 0068 8DF80260 		strb	r6, [sp, #2]
+  57 006c FFF7FEFF 		bl	GPIO_Init
+  58 0070 0F23     		movs	r3, #15
+  59 0072 2522     		movs	r2, #37
+  60 0074 01A8     		add	r0, sp, #4
+  61 0076 8DF80530 		strb	r3, [sp, #5]
+  62 007a 8DF80630 		strb	r3, [sp, #6]
+  63 007e 8DF80420 		strb	r2, [sp, #4]
+  64 0082 8DF80750 		strb	r5, [sp, #7]
+  65 0086 FFF7FEFF 		bl	NVIC_Init
+  66 008a 0022     		movs	r2, #0
+  67 008c 2046     		mov	r0, r4
+  68 008e 40F22771 		movw	r1, #1831
+  69 0092 FFF7FEFF 		bl	USART_ITConfig
+  70 0096 2A46     		mov	r2, r5
+  71 0098 2046     		mov	r0, r4
+  72 009a 40F22551 		movw	r1, #1317
+  73 009e FFF7FEFF 		bl	USART_ITConfig
+  74 00a2 02A8     		add	r0, sp, #8
+  75 00a4 FFF7FEFF 		bl	USART_ClockStructInit
+  76 00a8 2046     		mov	r0, r4
+  77 00aa 02A9     		add	r1, sp, #8
+  78 00ac FFF7FEFF 		bl	USART_ClockInit
+  79 00b0 0023     		movs	r3, #0
+  80 00b2 2046     		mov	r0, r4
+  81 00b4 04A9     		add	r1, sp, #16
+  82 00b6 0C22     		movs	r2, #12
+  83 00b8 0497     		str	r7, [sp, #16]
+  84 00ba ADF81430 		strh	r3, [sp, #20]	@ movhi
+  85 00be ADF81830 		strh	r3, [sp, #24]	@ movhi
+  86 00c2 ADF81A20 		strh	r2, [sp, #26]	@ movhi
+  87 00c6 ADF81630 		strh	r3, [sp, #22]	@ movhi
+  88 00ca ADF81C30 		strh	r3, [sp, #28]	@ movhi
+  89 00ce FFF7FEFF 		bl	USART_Init
+  90 00d2 2046     		mov	r0, r4
+  91 00d4 2946     		mov	r1, r5
+  92 00d6 FFF7FEFF 		bl	USART_Cmd
+  93 00da 09B0     		add	sp, sp, #36
+  94 00dc F0BD     		pop	{r4, r5, r6, r7, pc}
+  96 00de 00BF     		.section	.text.USART1_IRQHandler,"ax",%progbits
+  97              		.align	2
+  98              		.global	USART1_IRQHandler
+  99              		.thumb
+ 100              		.thumb_func
+ 102              	USART1_IRQHandler:
+ 103              		@ args = 0, pretend = 0, frame = 8
+ 104              		@ frame_needed = 0, uses_anonymous_args = 0
+ 105 0000 00B5     		push	{lr}
+ 106 0002 4FF46050 		mov	r0, #14336
+ 107 0006 83B0     		sub	sp, sp, #12
+ 108 0008 C4F20100 		movt	r0, 16385
+ 109 000c 40F22551 		movw	r1, #1317
+ 110 0010 FFF7FEFF 		bl	USART_GetITStatus
+ 111 0014 D0B9     		cbnz	r0, .L13
+ 112              	.L3:
+ 113 0016 4FF46050 		mov	r0, #14336
+ 114 001a C4F20100 		movt	r0, 16385
+ 115 001e 40F22771 		movw	r1, #1831
+ 116 0022 FFF7FEFF 		bl	USART_GetITStatus
+ 117 0026 08B9     		cbnz	r0, .L14
+ 118              	.L2:
+ 119 0028 03B0     		add	sp, sp, #12
+ 120 002a 00BD     		pop	{pc}
+ 121              	.L14:
+ 122 002c 1148     		ldr	r0, .L16
+ 123 002e 6946     		mov	r1, sp
+ 124 0030 FFF7FEFF 		bl	buffer_get
+ 125 0034 0128     		cmp	r0, #1
+ 126 0036 4FF46050 		mov	r0, #14336
+ 127 003a C4F20100 		movt	r0, 16385
+ 128 003e 13D0     		beq	.L15
+ 129 0040 40F22771 		movw	r1, #1831
+ 130 0044 0022     		movs	r2, #0
+ 131 0046 FFF7FEFF 		bl	USART_ITConfig
+ 132 004a EDE7     		b	.L2
+ 133              	.L13:
+ 134 004c 4FF46050 		mov	r0, #14336
+ 135 0050 C4F20100 		movt	r0, 16385
+ 136 0054 FFF7FEFF 		bl	USART_ReceiveData
+ 137 0058 C3B2     		uxtb	r3, r0
+ 138 005a 1946     		mov	r1, r3
+ 139 005c 0648     		ldr	r0, .L16+4
+ 140 005e 8DF80030 		strb	r3, [sp, #0]
+ 141 0062 FFF7FEFF 		bl	buffer_put
+ 142 0066 D6E7     		b	.L3
+ 143              	.L15:
+ 144 0068 9DF80010 		ldrb	r1, [sp, #0]	@ zero_extendqisi2
+ 145 006c FFF7FEFF 		bl	USART_SendData
+ 146 0070 DAE7     		b	.L2
+ 147              	.L17:
+ 148 0072 00BF     		.align	2
+ 149              	.L16:
+ 150 0074 00000000 		.word	u1tx
+ 151 0078 00000000 		.word	u1rx
+ 153              		.section	.text.usart1_put,"ax",%progbits
+ 154              		.align	2
+ 155              		.global	usart1_put
+ 156              		.thumb
+ 157              		.thumb_func
+ 159              	usart1_put:
+ 160              		@ args = 0, pretend = 0, frame = 0
+ 161              		@ frame_needed = 0, uses_anonymous_args = 0
+ 162 0000 0146     		mov	r1, r0
+ 163 0002 40F20000 		movw	r0, #:lower16:u1tx
+ 164 0006 08B5     		push	{r3, lr}
+ 165 0008 C0F20000 		movt	r0, #:upper16:u1tx
+ 166 000c FFF7FEFF 		bl	buffer_put
+ 167 0010 4FF46050 		mov	r0, #14336
+ 168 0014 C4F20100 		movt	r0, 16385
+ 169 0018 40F22771 		movw	r1, #1831
+ 170 001c 0122     		movs	r2, #1
+ 171 001e BDE80840 		pop	{r3, lr}
+ 172 0022 FFF7FEBF 		b	USART_ITConfig
+ 174 0026 00BF     		.section	.text.usart1_get,"ax",%progbits
+ 175              		.align	2
+ 176              		.global	usart1_get
+ 177              		.thumb
+ 178              		.thumb_func
+ 180              	usart1_get:
+ 181              		@ args = 0, pretend = 0, frame = 8
+ 182              		@ frame_needed = 0, uses_anonymous_args = 0
+ 183 0000 00B5     		push	{lr}
+ 184 0002 83B0     		sub	sp, sp, #12
+ 185              	.L20:
+ 186 0004 0648     		ldr	r0, .L25
+ 187 0006 FFF7FEFF 		bl	buffer_empty
+ 188 000a 0128     		cmp	r0, #1
+ 189 000c FAD0     		beq	.L20
+ 190 000e 0DF10701 		add	r1, sp, #7
+ 191 0012 0348     		ldr	r0, .L25
+ 192 0014 FFF7FEFF 		bl	buffer_get
+ 193 0018 9DF80700 		ldrb	r0, [sp, #7]	@ zero_extendqisi2
+ 194 001c 03B0     		add	sp, sp, #12
+ 195 001e 00BD     		pop	{pc}
+ 196              	.L26:
+ 197              		.align	2
+ 198              	.L25:
+ 199 0020 00000000 		.word	u1rx
+ 201              		.section	.text.usart_puts,"ax",%progbits
+ 202              		.align	2
+ 203              		.global	usart_puts
+ 204              		.thumb
+ 205              		.thumb_func
+ 207              	usart_puts:
+ 208              		@ args = 0, pretend = 0, frame = 0
+ 209              		@ frame_needed = 0, uses_anonymous_args = 0
+ 210 0000 10B5     		push	{r4, lr}
+ 211 0002 0178     		ldrb	r1, [r0, #0]	@ zero_extendqisi2
+ 212 0004 39B1     		cbz	r1, .L30
+ 213 0006 0446     		mov	r4, r0
+ 214              	.L29:
+ 215 0008 0848     		ldr	r0, .L32
+ 216 000a FFF7FEFF 		bl	buffer_put
+ 217 000e 14F8011F 		ldrb	r1, [r4, #1]!	@ zero_extendqisi2
+ 218 0012 0029     		cmp	r1, #0
+ 219 0014 F8D1     		bne	.L29
+ 220              	.L30:
+ 221 0016 4FF46050 		mov	r0, #14336
+ 222 001a C4F20100 		movt	r0, 16385
+ 223 001e 40F22771 		movw	r1, #1831
+ 224 0022 0122     		movs	r2, #1
+ 225 0024 BDE81040 		pop	{r4, lr}
+ 226 0028 FFF7FEBF 		b	USART_ITConfig
+ 227              	.L33:
+ 228              		.align	2
+ 229              	.L32:
+ 230 002c 00000000 		.word	u1tx
+ 232              		.comm	u1tx,131,4
+ 233              		.comm	u1rx,131,4
+ 234              		.ident	"GCC: (GNU) 4.7.0"
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 usart.c
+     /tmp/ccsHRaYU.s:16     .text.usart_init:0000000000000000 $t
+     /tmp/ccsHRaYU.s:21     .text.usart_init:0000000000000000 usart_init
+                            *COM*:0000000000000083 u1rx
+                            *COM*:0000000000000083 u1tx
+     /tmp/ccsHRaYU.s:97     .text.USART1_IRQHandler:0000000000000000 $t
+     /tmp/ccsHRaYU.s:102    .text.USART1_IRQHandler:0000000000000000 USART1_IRQHandler
+     /tmp/ccsHRaYU.s:150    .text.USART1_IRQHandler:0000000000000074 $d
+     /tmp/ccsHRaYU.s:154    .text.usart1_put:0000000000000000 $t
+     /tmp/ccsHRaYU.s:159    .text.usart1_put:0000000000000000 usart1_put
+     /tmp/ccsHRaYU.s:175    .text.usart1_get:0000000000000000 $t
+     /tmp/ccsHRaYU.s:180    .text.usart1_get:0000000000000000 usart1_get
+     /tmp/ccsHRaYU.s:199    .text.usart1_get:0000000000000020 $d
+     /tmp/ccsHRaYU.s:202    .text.usart_puts:0000000000000000 $t
+     /tmp/ccsHRaYU.s:207    .text.usart_puts:0000000000000000 usart_puts
+     /tmp/ccsHRaYU.s:230    .text.usart_puts:000000000000002c $d
+
+UNDEFINED SYMBOLS
+buffer_init
+RCC_APB2PeriphClockCmd
+GPIO_Init
+NVIC_Init
+USART_ITConfig
+USART_ClockStructInit
+USART_ClockInit
+USART_Init
+USART_Cmd
+USART_GetITStatus
+buffer_get
+USART_ReceiveData
+buffer_put
+USART_SendData
+buffer_empty

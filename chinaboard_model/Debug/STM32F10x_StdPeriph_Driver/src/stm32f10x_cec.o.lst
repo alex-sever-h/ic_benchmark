@@ -1,0 +1,280 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 2
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"stm32f10x_cec.c"
+  15              		.section	.text.CEC_DeInit,"ax",%progbits
+  16              		.align	2
+  17              		.global	CEC_DeInit
+  18              		.thumb
+  19              		.thumb_func
+  21              	CEC_DeInit:
+  22              		@ args = 0, pretend = 0, frame = 0
+  23              		@ frame_needed = 0, uses_anonymous_args = 0
+  24 0000 0121     		movs	r1, #1
+  25 0002 08B5     		push	{r3, lr}
+  26 0004 4FF08040 		mov	r0, #1073741824
+  27 0008 FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+  28 000c 4FF08040 		mov	r0, #1073741824
+  29 0010 0021     		movs	r1, #0
+  30 0012 BDE80840 		pop	{r3, lr}
+  31 0016 FFF7FEBF 		b	RCC_APB1PeriphResetCmd
+  33 001a 00BF     		.section	.text.CEC_Init,"ax",%progbits
+  34              		.align	2
+  35              		.global	CEC_Init
+  36              		.thumb
+  37              		.thumb_func
+  39              	CEC_Init:
+  40              		@ args = 0, pretend = 0, frame = 0
+  41              		@ frame_needed = 0, uses_anonymous_args = 0
+  42              		@ link register save eliminated.
+  43 0000 4FF4F043 		mov	r3, #30720
+  44 0004 C4F20003 		movt	r3, 16384
+  45 0008 4288     		ldrh	r2, [r0, #2]
+  46 000a 1968     		ldr	r1, [r3, #0]
+  47 000c 0088     		ldrh	r0, [r0, #0]
+  48 000e 01F0F301 		and	r1, r1, #243
+  49 0012 0243     		orrs	r2, r2, r0
+  50 0014 0A43     		orrs	r2, r2, r1
+  51 0016 92B2     		uxth	r2, r2
+  52 0018 1A60     		str	r2, [r3, #0]
+  53 001a 7047     		bx	lr
+  55              		.section	.text.CEC_Cmd,"ax",%progbits
+  56              		.align	2
+  57              		.global	CEC_Cmd
+  58              		.thumb
+  59              		.thumb_func
+  61              	CEC_Cmd:
+  62              		@ args = 0, pretend = 0, frame = 0
+  63              		@ frame_needed = 0, uses_anonymous_args = 0
+  64              		@ link register save eliminated.
+  65 0000 0023     		movs	r3, #0
+  66 0002 C4F20F23 		movt	r3, 16911
+  67 0006 1860     		str	r0, [r3, #0]
+  68 0008 30B9     		cbnz	r0, .L3
+  69 000a 4FF4F042 		mov	r2, #30720
+  70 000e C4F20002 		movt	r2, 16384
+  71              	.L6:
+  72 0012 1368     		ldr	r3, [r2, #0]
+  73 0014 DB07     		lsls	r3, r3, #31
+  74 0016 FCD4     		bmi	.L6
+  75              	.L3:
+  76 0018 7047     		bx	lr
+  78 001a 00BF     		.section	.text.CEC_ITConfig,"ax",%progbits
+  79              		.align	2
+  80              		.global	CEC_ITConfig
+  81              		.thumb
+  82              		.thumb_func
+  84              	CEC_ITConfig:
+  85              		@ args = 0, pretend = 0, frame = 0
+  86              		@ frame_needed = 0, uses_anonymous_args = 0
+  87              		@ link register save eliminated.
+  88 0000 0423     		movs	r3, #4
+  89 0002 C4F20F23 		movt	r3, 16911
+  90 0006 1860     		str	r0, [r3, #0]
+  91 0008 7047     		bx	lr
+  93 000a 00BF     		.section	.text.CEC_OwnAddressConfig,"ax",%progbits
+  94              		.align	2
+  95              		.global	CEC_OwnAddressConfig
+  96              		.thumb
+  97              		.thumb_func
+  99              	CEC_OwnAddressConfig:
+ 100              		@ args = 0, pretend = 0, frame = 0
+ 101              		@ frame_needed = 0, uses_anonymous_args = 0
+ 102              		@ link register save eliminated.
+ 103 0000 4FF4F043 		mov	r3, #30720
+ 104 0004 C4F20003 		movt	r3, 16384
+ 105 0008 5860     		str	r0, [r3, #4]
+ 106 000a 7047     		bx	lr
+ 108              		.section	.text.CEC_SetPrescaler,"ax",%progbits
+ 109              		.align	2
+ 110              		.global	CEC_SetPrescaler
+ 111              		.thumb
+ 112              		.thumb_func
+ 114              	CEC_SetPrescaler:
+ 115              		@ args = 0, pretend = 0, frame = 0
+ 116              		@ frame_needed = 0, uses_anonymous_args = 0
+ 117              		@ link register save eliminated.
+ 118 0000 4FF4F043 		mov	r3, #30720
+ 119 0004 C4F20003 		movt	r3, 16384
+ 120 0008 9860     		str	r0, [r3, #8]
+ 121 000a 7047     		bx	lr
+ 123              		.section	.text.CEC_SendDataByte,"ax",%progbits
+ 124              		.align	2
+ 125              		.global	CEC_SendDataByte
+ 126              		.thumb
+ 127              		.thumb_func
+ 129              	CEC_SendDataByte:
+ 130              		@ args = 0, pretend = 0, frame = 0
+ 131              		@ frame_needed = 0, uses_anonymous_args = 0
+ 132              		@ link register save eliminated.
+ 133 0000 4FF4F043 		mov	r3, #30720
+ 134 0004 C4F20003 		movt	r3, 16384
+ 135 0008 5861     		str	r0, [r3, #20]
+ 136 000a 7047     		bx	lr
+ 138              		.section	.text.CEC_ReceiveDataByte,"ax",%progbits
+ 139              		.align	2
+ 140              		.global	CEC_ReceiveDataByte
+ 141              		.thumb
+ 142              		.thumb_func
+ 144              	CEC_ReceiveDataByte:
+ 145              		@ args = 0, pretend = 0, frame = 0
+ 146              		@ frame_needed = 0, uses_anonymous_args = 0
+ 147              		@ link register save eliminated.
+ 148 0000 4FF4F043 		mov	r3, #30720
+ 149 0004 C4F20003 		movt	r3, 16384
+ 150 0008 9869     		ldr	r0, [r3, #24]
+ 151 000a C0B2     		uxtb	r0, r0
+ 152 000c 7047     		bx	lr
+ 154 000e 00BF     		.section	.text.CEC_StartOfMessage,"ax",%progbits
+ 155              		.align	2
+ 156              		.global	CEC_StartOfMessage
+ 157              		.thumb
+ 158              		.thumb_func
+ 160              	CEC_StartOfMessage:
+ 161              		@ args = 0, pretend = 0, frame = 0
+ 162              		@ frame_needed = 0, uses_anonymous_args = 0
+ 163              		@ link register save eliminated.
+ 164 0000 4FF40073 		mov	r3, #512
+ 165 0004 C4F20F23 		movt	r3, 16911
+ 166 0008 0122     		movs	r2, #1
+ 167 000a 1A60     		str	r2, [r3, #0]
+ 168 000c 7047     		bx	lr
+ 170 000e 00BF     		.section	.text.CEC_EndOfMessageCmd,"ax",%progbits
+ 171              		.align	2
+ 172              		.global	CEC_EndOfMessageCmd
+ 173              		.thumb
+ 174              		.thumb_func
+ 176              	CEC_EndOfMessageCmd:
+ 177              		@ args = 0, pretend = 0, frame = 0
+ 178              		@ frame_needed = 0, uses_anonymous_args = 0
+ 179              		@ link register save eliminated.
+ 180 0000 4FF40173 		mov	r3, #516
+ 181 0004 C4F20F23 		movt	r3, 16911
+ 182 0008 1860     		str	r0, [r3, #0]
+ 183 000a 7047     		bx	lr
+ 185              		.section	.text.CEC_GetFlagStatus,"ax",%progbits
+ 186              		.align	2
+ 187              		.global	CEC_GetFlagStatus
+ 188              		.thumb
+ 189              		.thumb_func
+ 191              	CEC_GetFlagStatus:
+ 192              		@ args = 0, pretend = 0, frame = 0
+ 193              		@ frame_needed = 0, uses_anonymous_args = 0
+ 194              		@ link register save eliminated.
+ 195 0000 20F07F43 		bic	r3, r0, #-16777216
+ 196 0004 000F     		lsrs	r0, r0, #28
+ 197 0006 04BF     		itt	eq
+ 198 0008 47F61002 		movweq	r2, #30736
+ 199 000c C4F20002 		movteq	r2, 16384
+ 200 0010 04D0     		beq	.L17
+ 201 0012 47F60C02 		movw	r2, #30732
+ 202 0016 1B0C     		lsrs	r3, r3, #16
+ 203 0018 C4F20002 		movt	r2, 16384
+ 204              	.L17:
+ 205 001c 1268     		ldr	r2, [r2, #0]
+ 206 001e 1A42     		tst	r2, r3
+ 207 0020 0CBF     		ite	eq
+ 208 0022 0020     		moveq	r0, #0
+ 209 0024 0120     		movne	r0, #1
+ 210 0026 7047     		bx	lr
+ 212              		.section	.text.CEC_ClearFlag,"ax",%progbits
+ 213              		.align	2
+ 214              		.global	CEC_ClearFlag
+ 215              		.thumb
+ 216              		.thumb_func
+ 218              	CEC_ClearFlag:
+ 219              		@ args = 0, pretend = 0, frame = 0
+ 220              		@ frame_needed = 0, uses_anonymous_args = 0
+ 221              		@ link register save eliminated.
+ 222 0000 4FF4F043 		mov	r3, #30720
+ 223 0004 C4F20003 		movt	r3, 16384
+ 224 0008 1A69     		ldr	r2, [r3, #16]
+ 225 000a C043     		mvns	r0, r0
+ 226 000c 1969     		ldr	r1, [r3, #16]
+ 227 000e 20F00300 		bic	r0, r0, #3
+ 228 0012 02F00202 		and	r2, r2, #2
+ 229 0016 0243     		orrs	r2, r2, r0
+ 230 0018 0A40     		ands	r2, r2, r1
+ 231 001a 1A61     		str	r2, [r3, #16]
+ 232 001c 7047     		bx	lr
+ 234 001e 00BF     		.section	.text.CEC_GetITStatus,"ax",%progbits
+ 235              		.align	2
+ 236              		.global	CEC_GetITStatus
+ 237              		.thumb
+ 238              		.thumb_func
+ 240              	CEC_GetITStatus:
+ 241              		@ args = 0, pretend = 0, frame = 0
+ 242              		@ frame_needed = 0, uses_anonymous_args = 0
+ 243              		@ link register save eliminated.
+ 244 0000 4FF4F043 		mov	r3, #30720
+ 245 0004 C4F20003 		movt	r3, 16384
+ 246 0008 1A68     		ldr	r2, [r3, #0]
+ 247 000a 1B69     		ldr	r3, [r3, #16]
+ 248 000c 1840     		ands	r0, r0, r3
+ 249 000e 18BF     		it	ne
+ 250 0010 C2F34000 		ubfxne	r0, r2, #1, #1
+ 251 0014 7047     		bx	lr
+ 253 0016 00BF     		.section	.text.CEC_ClearITPendingBit,"ax",%progbits
+ 254              		.align	2
+ 255              		.global	CEC_ClearITPendingBit
+ 256              		.thumb
+ 257              		.thumb_func
+ 259              	CEC_ClearITPendingBit:
+ 260              		@ args = 0, pretend = 0, frame = 0
+ 261              		@ frame_needed = 0, uses_anonymous_args = 0
+ 262              		@ link register save eliminated.
+ 263 0000 4FF4F043 		mov	r3, #30720
+ 264 0004 C4F20003 		movt	r3, 16384
+ 265 0008 1A69     		ldr	r2, [r3, #16]
+ 266 000a C043     		mvns	r0, r0
+ 267 000c 1969     		ldr	r1, [r3, #16]
+ 268 000e 20F00300 		bic	r0, r0, #3
+ 269 0012 02F00202 		and	r2, r2, #2
+ 270 0016 0243     		orrs	r2, r2, r0
+ 271 0018 0A40     		ands	r2, r2, r1
+ 272 001a 1A61     		str	r2, [r3, #16]
+ 273 001c 7047     		bx	lr
+ 275 001e 00BF     		.ident	"GCC: (GNU) 4.7.0"
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 stm32f10x_cec.c
+     /tmp/cctnFPfV.s:16     .text.CEC_DeInit:0000000000000000 $t
+     /tmp/cctnFPfV.s:21     .text.CEC_DeInit:0000000000000000 CEC_DeInit
+     /tmp/cctnFPfV.s:34     .text.CEC_Init:0000000000000000 $t
+     /tmp/cctnFPfV.s:39     .text.CEC_Init:0000000000000000 CEC_Init
+     /tmp/cctnFPfV.s:56     .text.CEC_Cmd:0000000000000000 $t
+     /tmp/cctnFPfV.s:61     .text.CEC_Cmd:0000000000000000 CEC_Cmd
+     /tmp/cctnFPfV.s:79     .text.CEC_ITConfig:0000000000000000 $t
+     /tmp/cctnFPfV.s:84     .text.CEC_ITConfig:0000000000000000 CEC_ITConfig
+     /tmp/cctnFPfV.s:94     .text.CEC_OwnAddressConfig:0000000000000000 $t
+     /tmp/cctnFPfV.s:99     .text.CEC_OwnAddressConfig:0000000000000000 CEC_OwnAddressConfig
+     /tmp/cctnFPfV.s:109    .text.CEC_SetPrescaler:0000000000000000 $t
+     /tmp/cctnFPfV.s:114    .text.CEC_SetPrescaler:0000000000000000 CEC_SetPrescaler
+     /tmp/cctnFPfV.s:124    .text.CEC_SendDataByte:0000000000000000 $t
+     /tmp/cctnFPfV.s:129    .text.CEC_SendDataByte:0000000000000000 CEC_SendDataByte
+     /tmp/cctnFPfV.s:139    .text.CEC_ReceiveDataByte:0000000000000000 $t
+     /tmp/cctnFPfV.s:144    .text.CEC_ReceiveDataByte:0000000000000000 CEC_ReceiveDataByte
+     /tmp/cctnFPfV.s:155    .text.CEC_StartOfMessage:0000000000000000 $t
+     /tmp/cctnFPfV.s:160    .text.CEC_StartOfMessage:0000000000000000 CEC_StartOfMessage
+     /tmp/cctnFPfV.s:171    .text.CEC_EndOfMessageCmd:0000000000000000 $t
+     /tmp/cctnFPfV.s:176    .text.CEC_EndOfMessageCmd:0000000000000000 CEC_EndOfMessageCmd
+     /tmp/cctnFPfV.s:186    .text.CEC_GetFlagStatus:0000000000000000 $t
+     /tmp/cctnFPfV.s:191    .text.CEC_GetFlagStatus:0000000000000000 CEC_GetFlagStatus
+     /tmp/cctnFPfV.s:213    .text.CEC_ClearFlag:0000000000000000 $t
+     /tmp/cctnFPfV.s:218    .text.CEC_ClearFlag:0000000000000000 CEC_ClearFlag
+     /tmp/cctnFPfV.s:235    .text.CEC_GetITStatus:0000000000000000 $t
+     /tmp/cctnFPfV.s:240    .text.CEC_GetITStatus:0000000000000000 CEC_GetITStatus
+     /tmp/cctnFPfV.s:254    .text.CEC_ClearITPendingBit:0000000000000000 $t
+     /tmp/cctnFPfV.s:259    .text.CEC_ClearITPendingBit:0000000000000000 CEC_ClearITPendingBit
+
+UNDEFINED SYMBOLS
+RCC_APB1PeriphResetCmd

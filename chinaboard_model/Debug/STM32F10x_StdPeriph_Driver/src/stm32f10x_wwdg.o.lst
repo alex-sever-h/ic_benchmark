@@ -1,0 +1,163 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 2
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"stm32f10x_wwdg.c"
+  15              		.section	.text.WWDG_DeInit,"ax",%progbits
+  16              		.align	2
+  17              		.global	WWDG_DeInit
+  18              		.thumb
+  19              		.thumb_func
+  21              	WWDG_DeInit:
+  22              		@ args = 0, pretend = 0, frame = 0
+  23              		@ frame_needed = 0, uses_anonymous_args = 0
+  24 0000 0121     		movs	r1, #1
+  25 0002 08B5     		push	{r3, lr}
+  26 0004 4FF40060 		mov	r0, #2048
+  27 0008 FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+  28 000c 4FF40060 		mov	r0, #2048
+  29 0010 0021     		movs	r1, #0
+  30 0012 BDE80840 		pop	{r3, lr}
+  31 0016 FFF7FEBF 		b	RCC_APB1PeriphResetCmd
+  33 001a 00BF     		.section	.text.WWDG_SetPrescaler,"ax",%progbits
+  34              		.align	2
+  35              		.global	WWDG_SetPrescaler
+  36              		.thumb
+  37              		.thumb_func
+  39              	WWDG_SetPrescaler:
+  40              		@ args = 0, pretend = 0, frame = 0
+  41              		@ frame_needed = 0, uses_anonymous_args = 0
+  42              		@ link register save eliminated.
+  43 0000 4FF43053 		mov	r3, #11264
+  44 0004 C4F20003 		movt	r3, 16384
+  45 0008 5A68     		ldr	r2, [r3, #4]
+  46 000a 22F4C072 		bic	r2, r2, #384
+  47 000e 1043     		orrs	r0, r0, r2
+  48 0010 5860     		str	r0, [r3, #4]
+  49 0012 7047     		bx	lr
+  51              		.section	.text.WWDG_SetWindowValue,"ax",%progbits
+  52              		.align	2
+  53              		.global	WWDG_SetWindowValue
+  54              		.thumb
+  55              		.thumb_func
+  57              	WWDG_SetWindowValue:
+  58              		@ args = 0, pretend = 0, frame = 8
+  59              		@ frame_needed = 0, uses_anonymous_args = 0
+  60              		@ link register save eliminated.
+  61 0000 82B0     		sub	sp, sp, #8
+  62 0002 0022     		movs	r2, #0
+  63 0004 4FF43053 		mov	r3, #11264
+  64 0008 0192     		str	r2, [sp, #4]
+  65 000a C4F20003 		movt	r3, 16384
+  66 000e 5A68     		ldr	r2, [r3, #4]
+  67 0010 00F07F00 		and	r0, r0, #127
+  68 0014 22F07F02 		bic	r2, r2, #127
+  69 0018 0192     		str	r2, [sp, #4]
+  70 001a 019A     		ldr	r2, [sp, #4]
+  71 001c 1043     		orrs	r0, r0, r2
+  72 001e 0190     		str	r0, [sp, #4]
+  73 0020 019A     		ldr	r2, [sp, #4]
+  74 0022 5A60     		str	r2, [r3, #4]
+  75 0024 02B0     		add	sp, sp, #8
+  76 0026 7047     		bx	lr
+  78              		.section	.text.WWDG_EnableIT,"ax",%progbits
+  79              		.align	2
+  80              		.global	WWDG_EnableIT
+  81              		.thumb
+  82              		.thumb_func
+  84              	WWDG_EnableIT:
+  85              		@ args = 0, pretend = 0, frame = 0
+  86              		@ frame_needed = 0, uses_anonymous_args = 0
+  87              		@ link register save eliminated.
+  88 0000 48F2A403 		movw	r3, #32932
+  89 0004 C4F20523 		movt	r3, 16901
+  90 0008 0122     		movs	r2, #1
+  91 000a 1A60     		str	r2, [r3, #0]
+  92 000c 7047     		bx	lr
+  94 000e 00BF     		.section	.text.WWDG_SetCounter,"ax",%progbits
+  95              		.align	2
+  96              		.global	WWDG_SetCounter
+  97              		.thumb
+  98              		.thumb_func
+ 100              	WWDG_SetCounter:
+ 101              		@ args = 0, pretend = 0, frame = 0
+ 102              		@ frame_needed = 0, uses_anonymous_args = 0
+ 103              		@ link register save eliminated.
+ 104 0000 4FF43053 		mov	r3, #11264
+ 105 0004 00F07F00 		and	r0, r0, #127
+ 106 0008 C4F20003 		movt	r3, 16384
+ 107 000c 1860     		str	r0, [r3, #0]
+ 108 000e 7047     		bx	lr
+ 110              		.section	.text.WWDG_Enable,"ax",%progbits
+ 111              		.align	2
+ 112              		.global	WWDG_Enable
+ 113              		.thumb
+ 114              		.thumb_func
+ 116              	WWDG_Enable:
+ 117              		@ args = 0, pretend = 0, frame = 0
+ 118              		@ frame_needed = 0, uses_anonymous_args = 0
+ 119              		@ link register save eliminated.
+ 120 0000 4FF43053 		mov	r3, #11264
+ 121 0004 40F08000 		orr	r0, r0, #128
+ 122 0008 C4F20003 		movt	r3, 16384
+ 123 000c 1860     		str	r0, [r3, #0]
+ 124 000e 7047     		bx	lr
+ 126              		.section	.text.WWDG_GetFlagStatus,"ax",%progbits
+ 127              		.align	2
+ 128              		.global	WWDG_GetFlagStatus
+ 129              		.thumb
+ 130              		.thumb_func
+ 132              	WWDG_GetFlagStatus:
+ 133              		@ args = 0, pretend = 0, frame = 0
+ 134              		@ frame_needed = 0, uses_anonymous_args = 0
+ 135              		@ link register save eliminated.
+ 136 0000 4FF43053 		mov	r3, #11264
+ 137 0004 C4F20003 		movt	r3, 16384
+ 138 0008 9868     		ldr	r0, [r3, #8]
+ 139 000a C0B2     		uxtb	r0, r0
+ 140 000c 7047     		bx	lr
+ 142 000e 00BF     		.section	.text.WWDG_ClearFlag,"ax",%progbits
+ 143              		.align	2
+ 144              		.global	WWDG_ClearFlag
+ 145              		.thumb
+ 146              		.thumb_func
+ 148              	WWDG_ClearFlag:
+ 149              		@ args = 0, pretend = 0, frame = 0
+ 150              		@ frame_needed = 0, uses_anonymous_args = 0
+ 151              		@ link register save eliminated.
+ 152 0000 4FF43053 		mov	r3, #11264
+ 153 0004 C4F20003 		movt	r3, 16384
+ 154 0008 0022     		movs	r2, #0
+ 155 000a 9A60     		str	r2, [r3, #8]
+ 156 000c 7047     		bx	lr
+ 158 000e 00BF     		.ident	"GCC: (GNU) 4.7.0"
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 stm32f10x_wwdg.c
+     /tmp/ccSy14gn.s:16     .text.WWDG_DeInit:0000000000000000 $t
+     /tmp/ccSy14gn.s:21     .text.WWDG_DeInit:0000000000000000 WWDG_DeInit
+     /tmp/ccSy14gn.s:34     .text.WWDG_SetPrescaler:0000000000000000 $t
+     /tmp/ccSy14gn.s:39     .text.WWDG_SetPrescaler:0000000000000000 WWDG_SetPrescaler
+     /tmp/ccSy14gn.s:52     .text.WWDG_SetWindowValue:0000000000000000 $t
+     /tmp/ccSy14gn.s:57     .text.WWDG_SetWindowValue:0000000000000000 WWDG_SetWindowValue
+     /tmp/ccSy14gn.s:79     .text.WWDG_EnableIT:0000000000000000 $t
+     /tmp/ccSy14gn.s:84     .text.WWDG_EnableIT:0000000000000000 WWDG_EnableIT
+     /tmp/ccSy14gn.s:95     .text.WWDG_SetCounter:0000000000000000 $t
+     /tmp/ccSy14gn.s:100    .text.WWDG_SetCounter:0000000000000000 WWDG_SetCounter
+     /tmp/ccSy14gn.s:111    .text.WWDG_Enable:0000000000000000 $t
+     /tmp/ccSy14gn.s:116    .text.WWDG_Enable:0000000000000000 WWDG_Enable
+     /tmp/ccSy14gn.s:127    .text.WWDG_GetFlagStatus:0000000000000000 $t
+     /tmp/ccSy14gn.s:132    .text.WWDG_GetFlagStatus:0000000000000000 WWDG_GetFlagStatus
+     /tmp/ccSy14gn.s:143    .text.WWDG_ClearFlag:0000000000000000 $t
+     /tmp/ccSy14gn.s:148    .text.WWDG_ClearFlag:0000000000000000 WWDG_ClearFlag
+
+UNDEFINED SYMBOLS
+RCC_APB1PeriphResetCmd

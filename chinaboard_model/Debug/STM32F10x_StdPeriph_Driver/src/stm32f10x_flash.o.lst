@@ -1,0 +1,2197 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 2
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"stm32f10x_flash.c"
+  15              		.section	.text.FLASH_SetLatency,"ax",%progbits
+  16              		.align	2
+  17              		.global	FLASH_SetLatency
+  18              		.thumb
+  19              		.thumb_func
+  21              	FLASH_SetLatency:
+  22              		@ args = 0, pretend = 0, frame = 0
+  23              		@ frame_needed = 0, uses_anonymous_args = 0
+  24              		@ link register save eliminated.
+  25 0000 4FF40053 		mov	r3, #8192
+  26 0004 C4F20203 		movt	r3, 16386
+  27 0008 1A68     		ldr	r2, [r3, #0]
+  28 000a 02F03802 		and	r2, r2, #56
+  29 000e 1043     		orrs	r0, r0, r2
+  30 0010 1860     		str	r0, [r3, #0]
+  31 0012 7047     		bx	lr
+  33              		.section	.text.FLASH_HalfCycleAccessCmd,"ax",%progbits
+  34              		.align	2
+  35              		.global	FLASH_HalfCycleAccessCmd
+  36              		.thumb
+  37              		.thumb_func
+  39              	FLASH_HalfCycleAccessCmd:
+  40              		@ args = 0, pretend = 0, frame = 0
+  41              		@ frame_needed = 0, uses_anonymous_args = 0
+  42              		@ link register save eliminated.
+  43 0000 4FF40053 		mov	r3, #8192
+  44 0004 C4F20203 		movt	r3, 16386
+  45 0008 1A68     		ldr	r2, [r3, #0]
+  46 000a 22F00802 		bic	r2, r2, #8
+  47 000e 1A60     		str	r2, [r3, #0]
+  48 0010 1A68     		ldr	r2, [r3, #0]
+  49 0012 1043     		orrs	r0, r0, r2
+  50 0014 1860     		str	r0, [r3, #0]
+  51 0016 7047     		bx	lr
+  53              		.section	.text.FLASH_PrefetchBufferCmd,"ax",%progbits
+  54              		.align	2
+  55              		.global	FLASH_PrefetchBufferCmd
+  56              		.thumb
+  57              		.thumb_func
+  59              	FLASH_PrefetchBufferCmd:
+  60              		@ args = 0, pretend = 0, frame = 0
+  61              		@ frame_needed = 0, uses_anonymous_args = 0
+  62              		@ link register save eliminated.
+  63 0000 4FF40053 		mov	r3, #8192
+  64 0004 C4F20203 		movt	r3, 16386
+  65 0008 1A68     		ldr	r2, [r3, #0]
+  66 000a 22F01002 		bic	r2, r2, #16
+  67 000e 1A60     		str	r2, [r3, #0]
+  68 0010 1A68     		ldr	r2, [r3, #0]
+  69 0012 1043     		orrs	r0, r0, r2
+  70 0014 1860     		str	r0, [r3, #0]
+  71 0016 7047     		bx	lr
+  73              		.section	.text.FLASH_Unlock,"ax",%progbits
+  74              		.align	2
+  75              		.global	FLASH_Unlock
+  76              		.thumb
+  77              		.thumb_func
+  79              	FLASH_Unlock:
+  80              		@ args = 0, pretend = 0, frame = 0
+  81              		@ frame_needed = 0, uses_anonymous_args = 0
+  82              		@ link register save eliminated.
+  83 0000 4FF40053 		mov	r3, #8192
+  84 0004 40F22311 		movw	r1, #291
+  85 0008 48F6AB12 		movw	r2, #35243
+  86 000c C4F20203 		movt	r3, 16386
+  87 0010 C4F26751 		movt	r1, 17767
+  88 0014 CCF6EF52 		movt	r2, 52719
+  89 0018 5960     		str	r1, [r3, #4]
+  90 001a 5A60     		str	r2, [r3, #4]
+  91 001c 7047     		bx	lr
+  93 001e 00BF     		.section	.text.FLASH_UnlockBank1,"ax",%progbits
+  94              		.align	2
+  95              		.global	FLASH_UnlockBank1
+  96              		.thumb
+  97              		.thumb_func
+  99              	FLASH_UnlockBank1:
+ 100              		@ args = 0, pretend = 0, frame = 0
+ 101              		@ frame_needed = 0, uses_anonymous_args = 0
+ 102              		@ link register save eliminated.
+ 103 0000 4FF40053 		mov	r3, #8192
+ 104 0004 40F22311 		movw	r1, #291
+ 105 0008 48F6AB12 		movw	r2, #35243
+ 106 000c C4F20203 		movt	r3, 16386
+ 107 0010 C4F26751 		movt	r1, 17767
+ 108 0014 CCF6EF52 		movt	r2, 52719
+ 109 0018 5960     		str	r1, [r3, #4]
+ 110 001a 5A60     		str	r2, [r3, #4]
+ 111 001c 7047     		bx	lr
+ 113 001e 00BF     		.section	.text.FLASH_Lock,"ax",%progbits
+ 114              		.align	2
+ 115              		.global	FLASH_Lock
+ 116              		.thumb
+ 117              		.thumb_func
+ 119              	FLASH_Lock:
+ 120              		@ args = 0, pretend = 0, frame = 0
+ 121              		@ frame_needed = 0, uses_anonymous_args = 0
+ 122              		@ link register save eliminated.
+ 123 0000 4FF40053 		mov	r3, #8192
+ 124 0004 C4F20203 		movt	r3, 16386
+ 125 0008 1A69     		ldr	r2, [r3, #16]
+ 126 000a 42F08002 		orr	r2, r2, #128
+ 127 000e 1A61     		str	r2, [r3, #16]
+ 128 0010 7047     		bx	lr
+ 130 0012 00BF     		.section	.text.FLASH_LockBank1,"ax",%progbits
+ 131              		.align	2
+ 132              		.global	FLASH_LockBank1
+ 133              		.thumb
+ 134              		.thumb_func
+ 136              	FLASH_LockBank1:
+ 137              		@ args = 0, pretend = 0, frame = 0
+ 138              		@ frame_needed = 0, uses_anonymous_args = 0
+ 139              		@ link register save eliminated.
+ 140 0000 4FF40053 		mov	r3, #8192
+ 141 0004 C4F20203 		movt	r3, 16386
+ 142 0008 1A69     		ldr	r2, [r3, #16]
+ 143 000a 42F08002 		orr	r2, r2, #128
+ 144 000e 1A61     		str	r2, [r3, #16]
+ 145 0010 7047     		bx	lr
+ 147 0012 00BF     		.section	.text.FLASH_ErasePage,"ax",%progbits
+ 148              		.align	2
+ 149              		.global	FLASH_ErasePage
+ 150              		.thumb
+ 151              		.thumb_func
+ 153              	FLASH_ErasePage:
+ 154              		@ args = 0, pretend = 0, frame = 0
+ 155              		@ frame_needed = 0, uses_anonymous_args = 0
+ 156              		@ link register save eliminated.
+ 157 0000 30B4     		push	{r4, r5}
+ 158 0002 4FF40054 		mov	r4, #8192
+ 159 0006 C4F20204 		movt	r4, 16386
+ 160 000a E368     		ldr	r3, [r4, #12]
+ 161 000c 0546     		mov	r5, r0
+ 162 000e D907     		lsls	r1, r3, #31
+ 163 0010 26D4     		bmi	.L28
+ 164 0012 E368     		ldr	r3, [r4, #12]
+ 165 0014 0220     		movs	r0, #2
+ 166 0016 5A07     		lsls	r2, r3, #29
+ 167 0018 01D5     		bpl	.L49
+ 168              	.L40:
+ 169 001a 30BC     		pop	{r4, r5}
+ 170 001c 7047     		bx	lr
+ 171              	.L49:
+ 172 001e E368     		ldr	r3, [r4, #12]
+ 173 0020 DB06     		lsls	r3, r3, #27
+ 174 0022 3FD4     		bmi	.L50
+ 175              	.L47:
+ 176 0024 4FF40053 		mov	r3, #8192
+ 177 0028 C4F20203 		movt	r3, 16386
+ 178 002c 1A69     		ldr	r2, [r3, #16]
+ 179 002e 42F00202 		orr	r2, r2, #2
+ 180 0032 1A61     		str	r2, [r3, #16]
+ 181 0034 5D61     		str	r5, [r3, #20]
+ 182 0036 1A69     		ldr	r2, [r3, #16]
+ 183 0038 42F04002 		orr	r2, r2, #64
+ 184 003c 1A61     		str	r2, [r3, #16]
+ 185 003e DA68     		ldr	r2, [r3, #12]
+ 186 0040 D007     		lsls	r0, r2, #31
+ 187 0042 31D4     		bmi	.L34
+ 188 0044 DA68     		ldr	r2, [r3, #12]
+ 189 0046 0220     		movs	r0, #2
+ 190 0048 5107     		lsls	r1, r2, #29
+ 191 004a 4FD5     		bpl	.L51
+ 192              	.L24:
+ 193 004c 4FF40053 		mov	r3, #8192
+ 194 0050 C4F20203 		movt	r3, 16386
+ 195 0054 1969     		ldr	r1, [r3, #16]
+ 196 0056 41F6FD72 		movw	r2, #8189
+ 197 005a 0A40     		ands	r2, r2, r1
+ 198 005c 1A61     		str	r2, [r3, #16]
+ 199 005e DCE7     		b	.L40
+ 200              	.L28:
+ 201 0060 4FF6FF71 		movw	r1, #65535
+ 202 0064 C0F20A01 		movt	r1, 10
+ 203              	.L9:
+ 204 0068 E268     		ldr	r2, [r4, #12]
+ 205 006a 4FF40053 		mov	r3, #8192
+ 206 006e D007     		lsls	r0, r2, #31
+ 207 0070 C4F20203 		movt	r3, 16386
+ 208 0074 06D4     		bmi	.L52
+ 209 0076 DA68     		ldr	r2, [r3, #12]
+ 210 0078 5207     		lsls	r2, r2, #29
+ 211 007a 08D5     		bpl	.L53
+ 212 007c 0220     		movs	r0, #2
+ 213 007e 71B9     		cbnz	r1, .L54
+ 214              	.L33:
+ 215 0080 0520     		movs	r0, #5
+ 216 0082 CAE7     		b	.L40
+ 217              	.L52:
+ 218 0084 4B1E     		subs	r3, r1, #1
+ 219 0086 0029     		cmp	r1, #0
+ 220 0088 FAD0     		beq	.L33
+ 221 008a 1946     		mov	r1, r3
+ 222 008c ECE7     		b	.L9
+ 223              	.L53:
+ 224 008e DB68     		ldr	r3, [r3, #12]
+ 225 0090 13F0100F 		tst	r3, #16
+ 226 0094 0CBF     		ite	eq
+ 227 0096 0420     		moveq	r0, #4
+ 228 0098 0320     		movne	r0, #3
+ 229 009a 0029     		cmp	r1, #0
+ 230 009c F0D0     		beq	.L33
+ 231              	.L54:
+ 232 009e 0428     		cmp	r0, #4
+ 233 00a0 C0D0     		beq	.L47
+ 234 00a2 BAE7     		b	.L40
+ 235              	.L50:
+ 236 00a4 0320     		movs	r0, #3
+ 237 00a6 B8E7     		b	.L40
+ 238              	.L34:
+ 239 00a8 4FF6FF71 		movw	r1, #65535
+ 240 00ac C0F20A01 		movt	r1, 10
+ 241 00b0 1846     		mov	r0, r3
+ 242              	.L17:
+ 243 00b2 C268     		ldr	r2, [r0, #12]
+ 244 00b4 4FF40053 		mov	r3, #8192
+ 245 00b8 D207     		lsls	r2, r2, #31
+ 246 00ba C4F20203 		movt	r3, 16386
+ 247 00be 07D4     		bmi	.L55
+ 248 00c0 DA68     		ldr	r2, [r3, #12]
+ 249 00c2 5207     		lsls	r2, r2, #29
+ 250 00c4 09D5     		bpl	.L56
+ 251 00c6 0220     		movs	r0, #2
+ 252 00c8 0029     		cmp	r1, #0
+ 253 00ca BFD1     		bne	.L24
+ 254              	.L37:
+ 255 00cc 0520     		movs	r0, #5
+ 256 00ce BDE7     		b	.L24
+ 257              	.L55:
+ 258 00d0 4B1E     		subs	r3, r1, #1
+ 259 00d2 0029     		cmp	r1, #0
+ 260 00d4 FAD0     		beq	.L37
+ 261 00d6 1946     		mov	r1, r3
+ 262 00d8 EBE7     		b	.L17
+ 263              	.L56:
+ 264 00da DB68     		ldr	r3, [r3, #12]
+ 265 00dc 13F0100F 		tst	r3, #16
+ 266 00e0 0CBF     		ite	eq
+ 267 00e2 0420     		moveq	r0, #4
+ 268 00e4 0320     		movne	r0, #3
+ 269 00e6 0029     		cmp	r1, #0
+ 270 00e8 F0D0     		beq	.L37
+ 271 00ea AFE7     		b	.L24
+ 272              	.L51:
+ 273 00ec DB68     		ldr	r3, [r3, #12]
+ 274 00ee 13F0100F 		tst	r3, #16
+ 275 00f2 0CBF     		ite	eq
+ 276 00f4 0420     		moveq	r0, #4
+ 277 00f6 0320     		movne	r0, #3
+ 278 00f8 A8E7     		b	.L24
+ 280 00fa 00BF     		.section	.text.FLASH_EraseAllPages,"ax",%progbits
+ 281              		.align	2
+ 282              		.global	FLASH_EraseAllPages
+ 283              		.thumb
+ 284              		.thumb_func
+ 286              	FLASH_EraseAllPages:
+ 287              		@ args = 0, pretend = 0, frame = 0
+ 288              		@ frame_needed = 0, uses_anonymous_args = 0
+ 289              		@ link register save eliminated.
+ 290 0000 4FF40050 		mov	r0, #8192
+ 291 0004 C4F20200 		movt	r0, 16386
+ 292 0008 C368     		ldr	r3, [r0, #12]
+ 293 000a DA07     		lsls	r2, r3, #31
+ 294 000c 24D4     		bmi	.L77
+ 295 000e C368     		ldr	r3, [r0, #12]
+ 296 0010 5B07     		lsls	r3, r3, #29
+ 297 0012 01D5     		bpl	.L97
+ 298 0014 0220     		movs	r0, #2
+ 299 0016 7047     		bx	lr
+ 300              	.L97:
+ 301 0018 C368     		ldr	r3, [r0, #12]
+ 302 001a D906     		lsls	r1, r3, #27
+ 303 001c 3DD4     		bmi	.L98
+ 304              	.L96:
+ 305 001e 4FF40050 		mov	r0, #8192
+ 306 0022 C4F20200 		movt	r0, 16386
+ 307 0026 0369     		ldr	r3, [r0, #16]
+ 308 0028 43F00403 		orr	r3, r3, #4
+ 309 002c 0361     		str	r3, [r0, #16]
+ 310 002e 0369     		ldr	r3, [r0, #16]
+ 311 0030 43F04003 		orr	r3, r3, #64
+ 312 0034 0361     		str	r3, [r0, #16]
+ 313 0036 C368     		ldr	r3, [r0, #12]
+ 314 0038 DB07     		lsls	r3, r3, #31
+ 315 003a 30D4     		bmi	.L83
+ 316 003c C368     		ldr	r3, [r0, #12]
+ 317 003e 5907     		lsls	r1, r3, #29
+ 318 0040 4ED5     		bpl	.L99
+ 319 0042 0220     		movs	r0, #2
+ 320              	.L73:
+ 321 0044 4FF40053 		mov	r3, #8192
+ 322 0048 C4F20203 		movt	r3, 16386
+ 323 004c 1969     		ldr	r1, [r3, #16]
+ 324 004e 41F6FB72 		movw	r2, #8187
+ 325 0052 0A40     		ands	r2, r2, r1
+ 326 0054 1A61     		str	r2, [r3, #16]
+ 327 0056 7047     		bx	lr
+ 328              	.L77:
+ 329 0058 4FF6FF71 		movw	r1, #65535
+ 330 005c C0F20A01 		movt	r1, 10
+ 331              	.L58:
+ 332 0060 C268     		ldr	r2, [r0, #12]
+ 333 0062 4FF40053 		mov	r3, #8192
+ 334 0066 D207     		lsls	r2, r2, #31
+ 335 0068 C4F20203 		movt	r3, 16386
+ 336 006c 06D4     		bmi	.L100
+ 337 006e DA68     		ldr	r2, [r3, #12]
+ 338 0070 5207     		lsls	r2, r2, #29
+ 339 0072 08D5     		bpl	.L101
+ 340 0074 0220     		movs	r0, #2
+ 341              	.L74:
+ 342 0076 69B9     		cbnz	r1, .L102
+ 343              	.L82:
+ 344 0078 0520     		movs	r0, #5
+ 345 007a 7047     		bx	lr
+ 346              	.L100:
+ 347 007c 4B1E     		subs	r3, r1, #1
+ 348 007e 0029     		cmp	r1, #0
+ 349 0080 FAD0     		beq	.L82
+ 350 0082 1946     		mov	r1, r3
+ 351 0084 ECE7     		b	.L58
+ 352              	.L101:
+ 353 0086 DB68     		ldr	r3, [r3, #12]
+ 354 0088 13F0100F 		tst	r3, #16
+ 355 008c 0CBF     		ite	eq
+ 356 008e 0420     		moveq	r0, #4
+ 357 0090 0320     		movne	r0, #3
+ 358 0092 F0E7     		b	.L74
+ 359              	.L102:
+ 360 0094 0428     		cmp	r0, #4
+ 361 0096 C2D0     		beq	.L96
+ 362 0098 7047     		bx	lr
+ 363              	.L98:
+ 364 009a 0320     		movs	r0, #3
+ 365 009c 7047     		bx	lr
+ 366              	.L83:
+ 367 009e 4FF6FF71 		movw	r1, #65535
+ 368 00a2 C0F20A01 		movt	r1, 10
+ 369              	.L66:
+ 370 00a6 C268     		ldr	r2, [r0, #12]
+ 371 00a8 4FF40053 		mov	r3, #8192
+ 372 00ac D207     		lsls	r2, r2, #31
+ 373 00ae C4F20203 		movt	r3, 16386
+ 374 00b2 07D4     		bmi	.L103
+ 375 00b4 DA68     		ldr	r2, [r3, #12]
+ 376 00b6 5007     		lsls	r0, r2, #29
+ 377 00b8 09D5     		bpl	.L104
+ 378 00ba 0220     		movs	r0, #2
+ 379 00bc 0029     		cmp	r1, #0
+ 380 00be C1D1     		bne	.L73
+ 381              	.L86:
+ 382 00c0 0520     		movs	r0, #5
+ 383 00c2 BFE7     		b	.L73
+ 384              	.L103:
+ 385 00c4 4B1E     		subs	r3, r1, #1
+ 386 00c6 0029     		cmp	r1, #0
+ 387 00c8 FAD0     		beq	.L86
+ 388 00ca 1946     		mov	r1, r3
+ 389 00cc EBE7     		b	.L66
+ 390              	.L104:
+ 391 00ce DB68     		ldr	r3, [r3, #12]
+ 392 00d0 13F0100F 		tst	r3, #16
+ 393 00d4 0CBF     		ite	eq
+ 394 00d6 0420     		moveq	r0, #4
+ 395 00d8 0320     		movne	r0, #3
+ 396 00da 0029     		cmp	r1, #0
+ 397 00dc F0D0     		beq	.L86
+ 398 00de B1E7     		b	.L73
+ 399              	.L99:
+ 400 00e0 C368     		ldr	r3, [r0, #12]
+ 401 00e2 13F0100F 		tst	r3, #16
+ 402 00e6 0CBF     		ite	eq
+ 403 00e8 0420     		moveq	r0, #4
+ 404 00ea 0320     		movne	r0, #3
+ 405 00ec AAE7     		b	.L73
+ 407 00ee 00BF     		.section	.text.FLASH_EraseAllBank1Pages,"ax",%progbits
+ 408              		.align	2
+ 409              		.global	FLASH_EraseAllBank1Pages
+ 410              		.thumb
+ 411              		.thumb_func
+ 413              	FLASH_EraseAllBank1Pages:
+ 414              		@ args = 0, pretend = 0, frame = 0
+ 415              		@ frame_needed = 0, uses_anonymous_args = 0
+ 416              		@ link register save eliminated.
+ 417 0000 4FF40050 		mov	r0, #8192
+ 418 0004 C4F20200 		movt	r0, 16386
+ 419 0008 C368     		ldr	r3, [r0, #12]
+ 420 000a DA07     		lsls	r2, r3, #31
+ 421 000c 24D4     		bmi	.L125
+ 422 000e C368     		ldr	r3, [r0, #12]
+ 423 0010 5B07     		lsls	r3, r3, #29
+ 424 0012 01D5     		bpl	.L145
+ 425 0014 0220     		movs	r0, #2
+ 426 0016 7047     		bx	lr
+ 427              	.L145:
+ 428 0018 C368     		ldr	r3, [r0, #12]
+ 429 001a D906     		lsls	r1, r3, #27
+ 430 001c 3DD4     		bmi	.L146
+ 431              	.L144:
+ 432 001e 4FF40050 		mov	r0, #8192
+ 433 0022 C4F20200 		movt	r0, 16386
+ 434 0026 0369     		ldr	r3, [r0, #16]
+ 435 0028 43F00403 		orr	r3, r3, #4
+ 436 002c 0361     		str	r3, [r0, #16]
+ 437 002e 0369     		ldr	r3, [r0, #16]
+ 438 0030 43F04003 		orr	r3, r3, #64
+ 439 0034 0361     		str	r3, [r0, #16]
+ 440 0036 C368     		ldr	r3, [r0, #12]
+ 441 0038 DB07     		lsls	r3, r3, #31
+ 442 003a 30D4     		bmi	.L131
+ 443 003c C368     		ldr	r3, [r0, #12]
+ 444 003e 5907     		lsls	r1, r3, #29
+ 445 0040 4ED5     		bpl	.L147
+ 446 0042 0220     		movs	r0, #2
+ 447              	.L121:
+ 448 0044 4FF40053 		mov	r3, #8192
+ 449 0048 C4F20203 		movt	r3, 16386
+ 450 004c 1969     		ldr	r1, [r3, #16]
+ 451 004e 41F6FB72 		movw	r2, #8187
+ 452 0052 0A40     		ands	r2, r2, r1
+ 453 0054 1A61     		str	r2, [r3, #16]
+ 454 0056 7047     		bx	lr
+ 455              	.L125:
+ 456 0058 4FF6FF71 		movw	r1, #65535
+ 457 005c C0F20A01 		movt	r1, 10
+ 458              	.L106:
+ 459 0060 C268     		ldr	r2, [r0, #12]
+ 460 0062 4FF40053 		mov	r3, #8192
+ 461 0066 D207     		lsls	r2, r2, #31
+ 462 0068 C4F20203 		movt	r3, 16386
+ 463 006c 06D4     		bmi	.L148
+ 464 006e DA68     		ldr	r2, [r3, #12]
+ 465 0070 5207     		lsls	r2, r2, #29
+ 466 0072 08D5     		bpl	.L149
+ 467 0074 0220     		movs	r0, #2
+ 468              	.L122:
+ 469 0076 69B9     		cbnz	r1, .L150
+ 470              	.L130:
+ 471 0078 0520     		movs	r0, #5
+ 472 007a 7047     		bx	lr
+ 473              	.L148:
+ 474 007c 4B1E     		subs	r3, r1, #1
+ 475 007e 0029     		cmp	r1, #0
+ 476 0080 FAD0     		beq	.L130
+ 477 0082 1946     		mov	r1, r3
+ 478 0084 ECE7     		b	.L106
+ 479              	.L149:
+ 480 0086 DB68     		ldr	r3, [r3, #12]
+ 481 0088 13F0100F 		tst	r3, #16
+ 482 008c 0CBF     		ite	eq
+ 483 008e 0420     		moveq	r0, #4
+ 484 0090 0320     		movne	r0, #3
+ 485 0092 F0E7     		b	.L122
+ 486              	.L150:
+ 487 0094 0428     		cmp	r0, #4
+ 488 0096 C2D0     		beq	.L144
+ 489 0098 7047     		bx	lr
+ 490              	.L146:
+ 491 009a 0320     		movs	r0, #3
+ 492 009c 7047     		bx	lr
+ 493              	.L131:
+ 494 009e 4FF6FF71 		movw	r1, #65535
+ 495 00a2 C0F20A01 		movt	r1, 10
+ 496              	.L114:
+ 497 00a6 C268     		ldr	r2, [r0, #12]
+ 498 00a8 4FF40053 		mov	r3, #8192
+ 499 00ac D207     		lsls	r2, r2, #31
+ 500 00ae C4F20203 		movt	r3, 16386
+ 501 00b2 07D4     		bmi	.L151
+ 502 00b4 DA68     		ldr	r2, [r3, #12]
+ 503 00b6 5007     		lsls	r0, r2, #29
+ 504 00b8 09D5     		bpl	.L152
+ 505 00ba 0220     		movs	r0, #2
+ 506 00bc 0029     		cmp	r1, #0
+ 507 00be C1D1     		bne	.L121
+ 508              	.L134:
+ 509 00c0 0520     		movs	r0, #5
+ 510 00c2 BFE7     		b	.L121
+ 511              	.L151:
+ 512 00c4 4B1E     		subs	r3, r1, #1
+ 513 00c6 0029     		cmp	r1, #0
+ 514 00c8 FAD0     		beq	.L134
+ 515 00ca 1946     		mov	r1, r3
+ 516 00cc EBE7     		b	.L114
+ 517              	.L152:
+ 518 00ce DB68     		ldr	r3, [r3, #12]
+ 519 00d0 13F0100F 		tst	r3, #16
+ 520 00d4 0CBF     		ite	eq
+ 521 00d6 0420     		moveq	r0, #4
+ 522 00d8 0320     		movne	r0, #3
+ 523 00da 0029     		cmp	r1, #0
+ 524 00dc F0D0     		beq	.L134
+ 525 00de B1E7     		b	.L121
+ 526              	.L147:
+ 527 00e0 C368     		ldr	r3, [r0, #12]
+ 528 00e2 13F0100F 		tst	r3, #16
+ 529 00e6 0CBF     		ite	eq
+ 530 00e8 0420     		moveq	r0, #4
+ 531 00ea 0320     		movne	r0, #3
+ 532 00ec AAE7     		b	.L121
+ 534 00ee 00BF     		.section	.text.FLASH_EraseOptionBytes,"ax",%progbits
+ 535              		.align	2
+ 536              		.global	FLASH_EraseOptionBytes
+ 537              		.thumb
+ 538              		.thumb_func
+ 540              	FLASH_EraseOptionBytes:
+ 541              		@ args = 0, pretend = 0, frame = 0
+ 542              		@ frame_needed = 0, uses_anonymous_args = 0
+ 543              		@ link register save eliminated.
+ 544 0000 4FF40050 		mov	r0, #8192
+ 545 0004 C4F20200 		movt	r0, 16386
+ 546 0008 C269     		ldr	r2, [r0, #28]
+ 547 000a C368     		ldr	r3, [r0, #12]
+ 548 000c 12F0020F 		tst	r2, #2
+ 549 0010 10B4     		push	{r4}
+ 550 0012 0CBF     		ite	eq
+ 551 0014 A524     		moveq	r4, #165
+ 552 0016 0024     		movne	r4, #0
+ 553 0018 DA07     		lsls	r2, r3, #31
+ 554 001a 30D4     		bmi	.L186
+ 555 001c C368     		ldr	r3, [r0, #12]
+ 556 001e 5B07     		lsls	r3, r3, #29
+ 557 0020 02D5     		bpl	.L215
+ 558 0022 0220     		movs	r0, #2
+ 559              	.L203:
+ 560 0024 10BC     		pop	{r4}
+ 561 0026 7047     		bx	lr
+ 562              	.L215:
+ 563 0028 C368     		ldr	r3, [r0, #12]
+ 564 002a 0320     		movs	r0, #3
+ 565 002c D906     		lsls	r1, r3, #27
+ 566 002e F9D4     		bmi	.L203
+ 567              	.L213:
+ 568 0030 4FF40050 		mov	r0, #8192
+ 569 0034 40F22312 		movw	r2, #291
+ 570 0038 48F6AB13 		movw	r3, #35243
+ 571 003c C4F20200 		movt	r0, 16386
+ 572 0040 C4F26752 		movt	r2, 17767
+ 573 0044 CCF6EF53 		movt	r3, 52719
+ 574 0048 8260     		str	r2, [r0, #8]
+ 575 004a 8360     		str	r3, [r0, #8]
+ 576 004c 0369     		ldr	r3, [r0, #16]
+ 577 004e 43F02003 		orr	r3, r3, #32
+ 578 0052 0361     		str	r3, [r0, #16]
+ 579 0054 0369     		ldr	r3, [r0, #16]
+ 580 0056 43F04003 		orr	r3, r3, #64
+ 581 005a 0361     		str	r3, [r0, #16]
+ 582 005c C368     		ldr	r3, [r0, #12]
+ 583 005e DA07     		lsls	r2, r3, #31
+ 584 0060 2FD4     		bmi	.L191
+ 585 0062 C368     		ldr	r3, [r0, #12]
+ 586 0064 5B07     		lsls	r3, r3, #29
+ 587 0066 4ED5     		bpl	.L216
+ 588              	.L192:
+ 589 0068 0220     		movs	r0, #2
+ 590              	.L180:
+ 591 006a 4FF40053 		mov	r3, #8192
+ 592 006e C4F20203 		movt	r3, 16386
+ 593 0072 1969     		ldr	r1, [r3, #16]
+ 594 0074 41F6EF72 		movw	r2, #8175
+ 595 0078 0A40     		ands	r2, r2, r1
+ 596 007a 1A61     		str	r2, [r3, #16]
+ 597 007c D2E7     		b	.L203
+ 598              	.L186:
+ 599 007e 4FF6FF71 		movw	r1, #65535
+ 600 0082 C0F20A01 		movt	r1, 10
+ 601              	.L155:
+ 602 0086 C268     		ldr	r2, [r0, #12]
+ 603 0088 4FF40053 		mov	r3, #8192
+ 604 008c D207     		lsls	r2, r2, #31
+ 605 008e C4F20203 		movt	r3, 16386
+ 606 0092 06D4     		bmi	.L217
+ 607 0094 DA68     		ldr	r2, [r3, #12]
+ 608 0096 5007     		lsls	r0, r2, #29
+ 609 0098 08D5     		bpl	.L218
+ 610 009a 0220     		movs	r0, #2
+ 611 009c 71B9     		cbnz	r1, .L162
+ 612              	.L171:
+ 613 009e 0520     		movs	r0, #5
+ 614 00a0 C0E7     		b	.L203
+ 615              	.L217:
+ 616 00a2 4B1E     		subs	r3, r1, #1
+ 617 00a4 0029     		cmp	r1, #0
+ 618 00a6 FAD0     		beq	.L171
+ 619 00a8 1946     		mov	r1, r3
+ 620 00aa ECE7     		b	.L155
+ 621              	.L218:
+ 622 00ac DB68     		ldr	r3, [r3, #12]
+ 623 00ae 13F0100F 		tst	r3, #16
+ 624 00b2 0CBF     		ite	eq
+ 625 00b4 0420     		moveq	r0, #4
+ 626 00b6 0320     		movne	r0, #3
+ 627 00b8 0029     		cmp	r1, #0
+ 628 00ba F0D0     		beq	.L171
+ 629              	.L162:
+ 630 00bc 0428     		cmp	r0, #4
+ 631 00be B7D0     		beq	.L213
+ 632 00c0 B0E7     		b	.L203
+ 633              	.L191:
+ 634 00c2 4FF6FF71 		movw	r1, #65535
+ 635 00c6 C0F20A01 		movt	r1, 10
+ 636              	.L164:
+ 637 00ca C268     		ldr	r2, [r0, #12]
+ 638 00cc 4FF40053 		mov	r3, #8192
+ 639 00d0 D207     		lsls	r2, r2, #31
+ 640 00d2 C4F20203 		movt	r3, 16386
+ 641 00d6 08D4     		bmi	.L219
+ 642 00d8 DA68     		ldr	r2, [r3, #12]
+ 643 00da 5207     		lsls	r2, r2, #29
+ 644 00dc 0AD5     		bpl	.L220
+ 645 00de 0220     		movs	r0, #2
+ 646 00e0 0029     		cmp	r1, #0
+ 647 00e2 DCD0     		beq	.L171
+ 648              	.L221:
+ 649 00e4 0428     		cmp	r0, #4
+ 650 00e6 C0D1     		bne	.L180
+ 651 00e8 11E0     		b	.L209
+ 652              	.L219:
+ 653 00ea 4B1E     		subs	r3, r1, #1
+ 654 00ec 0029     		cmp	r1, #0
+ 655 00ee D6D0     		beq	.L171
+ 656 00f0 1946     		mov	r1, r3
+ 657 00f2 EAE7     		b	.L164
+ 658              	.L220:
+ 659 00f4 DB68     		ldr	r3, [r3, #12]
+ 660 00f6 13F0100F 		tst	r3, #16
+ 661 00fa 0CBF     		ite	eq
+ 662 00fc 0420     		moveq	r0, #4
+ 663 00fe 0320     		movne	r0, #3
+ 664 0100 0029     		cmp	r1, #0
+ 665 0102 CCD0     		beq	.L171
+ 666 0104 EEE7     		b	.L221
+ 667              	.L216:
+ 668 0106 C368     		ldr	r3, [r0, #12]
+ 669 0108 0320     		movs	r0, #3
+ 670 010a D906     		lsls	r1, r3, #27
+ 671 010c ADD4     		bmi	.L180
+ 672              	.L209:
+ 673 010e 4FF40050 		mov	r0, #8192
+ 674 0112 C4F20200 		movt	r0, 16386
+ 675 0116 0269     		ldr	r2, [r0, #16]
+ 676 0118 41F6DF73 		movw	r3, #8159
+ 677 011c 1340     		ands	r3, r3, r2
+ 678 011e 0361     		str	r3, [r0, #16]
+ 679 0120 0269     		ldr	r2, [r0, #16]
+ 680 0122 4FF47843 		mov	r3, #63488
+ 681 0126 C1F6FF73 		movt	r3, 8191
+ 682 012a 42F01002 		orr	r2, r2, #16
+ 683 012e 0261     		str	r2, [r0, #16]
+ 684 0130 1C80     		strh	r4, [r3, #0]	@ movhi
+ 685 0132 C368     		ldr	r3, [r0, #12]
+ 686 0134 DB07     		lsls	r3, r3, #31
+ 687 0136 09D4     		bmi	.L194
+ 688 0138 C368     		ldr	r3, [r0, #12]
+ 689 013a 5907     		lsls	r1, r3, #29
+ 690 013c 94D4     		bmi	.L192
+ 691 013e C368     		ldr	r3, [r0, #12]
+ 692 0140 13F0100F 		tst	r3, #16
+ 693 0144 0CBF     		ite	eq
+ 694 0146 0420     		moveq	r0, #4
+ 695 0148 0320     		movne	r0, #3
+ 696 014a 8EE7     		b	.L180
+ 697              	.L194:
+ 698 014c 41F6FF71 		movw	r1, #8191
+ 699              	.L173:
+ 700 0150 C268     		ldr	r2, [r0, #12]
+ 701 0152 4FF40053 		mov	r3, #8192
+ 702 0156 D207     		lsls	r2, r2, #31
+ 703 0158 C4F20203 		movt	r3, 16386
+ 704 015c 08D4     		bmi	.L222
+ 705 015e DA68     		ldr	r2, [r3, #12]
+ 706 0160 5007     		lsls	r0, r2, #29
+ 707 0162 0AD5     		bpl	.L223
+ 708 0164 0220     		movs	r0, #2
+ 709 0166 0029     		cmp	r1, #0
+ 710 0168 7FF47FAF 		bne	.L180
+ 711              	.L214:
+ 712 016c 0520     		movs	r0, #5
+ 713 016e 59E7     		b	.L203
+ 714              	.L222:
+ 715 0170 4B1E     		subs	r3, r1, #1
+ 716 0172 0029     		cmp	r1, #0
+ 717 0174 93D0     		beq	.L171
+ 718 0176 1946     		mov	r1, r3
+ 719 0178 EAE7     		b	.L173
+ 720              	.L223:
+ 721 017a DB68     		ldr	r3, [r3, #12]
+ 722 017c 13F0100F 		tst	r3, #16
+ 723 0180 0CBF     		ite	eq
+ 724 0182 0420     		moveq	r0, #4
+ 725 0184 0320     		movne	r0, #3
+ 726 0186 0029     		cmp	r1, #0
+ 727 0188 F0D0     		beq	.L214
+ 728 018a 6EE7     		b	.L180
+ 730              		.section	.text.FLASH_ProgramWord,"ax",%progbits
+ 731              		.align	2
+ 732              		.global	FLASH_ProgramWord
+ 733              		.thumb
+ 734              		.thumb_func
+ 736              	FLASH_ProgramWord:
+ 737              		@ args = 0, pretend = 0, frame = 8
+ 738              		@ frame_needed = 0, uses_anonymous_args = 0
+ 739              		@ link register save eliminated.
+ 740 0000 70B4     		push	{r4, r5, r6}
+ 741 0002 0023     		movs	r3, #0
+ 742 0004 83B0     		sub	sp, sp, #12
+ 743 0006 4FF40055 		mov	r5, #8192
+ 744 000a 0193     		str	r3, [sp, #4]
+ 745 000c C4F20205 		movt	r5, 16386
+ 746 0010 EB68     		ldr	r3, [r5, #12]
+ 747 0012 0646     		mov	r6, r0
+ 748 0014 DA07     		lsls	r2, r3, #31
+ 749 0016 24D4     		bmi	.L254
+ 750 0018 EB68     		ldr	r3, [r5, #12]
+ 751 001a 5B07     		lsls	r3, r3, #29
+ 752 001c 03D5     		bpl	.L285
+ 753 001e 0220     		movs	r0, #2
+ 754              	.L272:
+ 755 0020 03B0     		add	sp, sp, #12
+ 756 0022 70BC     		pop	{r4, r5, r6}
+ 757 0024 7047     		bx	lr
+ 758              	.L285:
+ 759 0026 EB68     		ldr	r3, [r5, #12]
+ 760 0028 D806     		lsls	r0, r3, #27
+ 761 002a 3AD4     		bmi	.L286
+ 762              	.L284:
+ 763 002c 4FF40050 		mov	r0, #8192
+ 764 0030 C4F20200 		movt	r0, 16386
+ 765 0034 0269     		ldr	r2, [r0, #16]
+ 766 0036 8BB2     		uxth	r3, r1
+ 767 0038 42F00102 		orr	r2, r2, #1
+ 768 003c 0261     		str	r2, [r0, #16]
+ 769 003e 3380     		strh	r3, [r6, #0]	@ movhi
+ 770 0040 C368     		ldr	r3, [r0, #12]
+ 771 0042 DA07     		lsls	r2, r3, #31
+ 772 0044 2FD4     		bmi	.L260
+ 773 0046 C368     		ldr	r3, [r0, #12]
+ 774 0048 5B07     		lsls	r3, r3, #29
+ 775 004a 61D5     		bpl	.L287
+ 776              	.L265:
+ 777 004c 0220     		movs	r0, #2
+ 778              	.L240:
+ 779 004e 4FF40053 		mov	r3, #8192
+ 780 0052 C4F20203 		movt	r3, 16386
+ 781 0056 1969     		ldr	r1, [r3, #16]
+ 782 0058 41F6FE72 		movw	r2, #8190
+ 783 005c 0A40     		ands	r2, r2, r1
+ 784 005e 1A61     		str	r2, [r3, #16]
+ 785 0060 DEE7     		b	.L272
+ 786              	.L254:
+ 787 0062 41F6FF74 		movw	r4, #8191
+ 788              	.L225:
+ 789 0066 EA68     		ldr	r2, [r5, #12]
+ 790 0068 4FF40053 		mov	r3, #8192
+ 791 006c D207     		lsls	r2, r2, #31
+ 792 006e C4F20203 		movt	r3, 16386
+ 793 0072 06D4     		bmi	.L288
+ 794 0074 DA68     		ldr	r2, [r3, #12]
+ 795 0076 5007     		lsls	r0, r2, #29
+ 796 0078 08D5     		bpl	.L289
+ 797 007a 0220     		movs	r0, #2
+ 798 007c 74B9     		cbnz	r4, .L290
+ 799              	.L259:
+ 800 007e 0520     		movs	r0, #5
+ 801 0080 CEE7     		b	.L272
+ 802              	.L288:
+ 803 0082 631E     		subs	r3, r4, #1
+ 804 0084 002C     		cmp	r4, #0
+ 805 0086 FAD0     		beq	.L259
+ 806 0088 1C46     		mov	r4, r3
+ 807 008a ECE7     		b	.L225
+ 808              	.L289:
+ 809 008c DB68     		ldr	r3, [r3, #12]
+ 810 008e 13F0100F 		tst	r3, #16
+ 811 0092 0CBF     		ite	eq
+ 812 0094 0420     		moveq	r0, #4
+ 813 0096 0320     		movne	r0, #3
+ 814 0098 002C     		cmp	r4, #0
+ 815 009a F0D0     		beq	.L259
+ 816              	.L290:
+ 817 009c 0428     		cmp	r0, #4
+ 818 009e C5D0     		beq	.L284
+ 819 00a0 BEE7     		b	.L272
+ 820              	.L286:
+ 821 00a2 0320     		movs	r0, #3
+ 822 00a4 BCE7     		b	.L272
+ 823              	.L260:
+ 824 00a6 41F6FF74 		movw	r4, #8191
+ 825              	.L233:
+ 826 00aa C268     		ldr	r2, [r0, #12]
+ 827 00ac 4FF40053 		mov	r3, #8192
+ 828 00b0 D207     		lsls	r2, r2, #31
+ 829 00b2 C4F20203 		movt	r3, 16386
+ 830 00b6 06D4     		bmi	.L291
+ 831 00b8 DA68     		ldr	r2, [r3, #12]
+ 832 00ba 5207     		lsls	r2, r2, #29
+ 833 00bc 08D5     		bpl	.L292
+ 834 00be 0220     		movs	r0, #2
+ 835 00c0 74B9     		cbnz	r4, .L293
+ 836              	.L263:
+ 837 00c2 0520     		movs	r0, #5
+ 838 00c4 C3E7     		b	.L240
+ 839              	.L291:
+ 840 00c6 631E     		subs	r3, r4, #1
+ 841 00c8 002C     		cmp	r4, #0
+ 842 00ca FAD0     		beq	.L263
+ 843 00cc 1C46     		mov	r4, r3
+ 844 00ce ECE7     		b	.L233
+ 845              	.L292:
+ 846 00d0 DB68     		ldr	r3, [r3, #12]
+ 847 00d2 13F0100F 		tst	r3, #16
+ 848 00d6 0CBF     		ite	eq
+ 849 00d8 0420     		moveq	r0, #4
+ 850 00da 0320     		movne	r0, #3
+ 851 00dc 002C     		cmp	r4, #0
+ 852 00de F0D0     		beq	.L263
+ 853              	.L293:
+ 854 00e0 0428     		cmp	r0, #4
+ 855 00e2 B4D1     		bne	.L240
+ 856              	.L279:
+ 857 00e4 0236     		adds	r6, r6, #2
+ 858 00e6 0196     		str	r6, [sp, #4]
+ 859 00e8 019B     		ldr	r3, [sp, #4]
+ 860 00ea 090C     		lsrs	r1, r1, #16
+ 861 00ec 4FF40050 		mov	r0, #8192
+ 862 00f0 1980     		strh	r1, [r3, #0]	@ movhi
+ 863 00f2 C4F20200 		movt	r0, 16386
+ 864 00f6 C368     		ldr	r3, [r0, #12]
+ 865 00f8 DB07     		lsls	r3, r3, #31
+ 866 00fa 0ED4     		bmi	.L264
+ 867 00fc C368     		ldr	r3, [r0, #12]
+ 868 00fe 5907     		lsls	r1, r3, #29
+ 869 0100 A4D4     		bmi	.L265
+ 870 0102 C368     		ldr	r3, [r0, #12]
+ 871 0104 13F0100F 		tst	r3, #16
+ 872 0108 0CBF     		ite	eq
+ 873 010a 0420     		moveq	r0, #4
+ 874 010c 0320     		movne	r0, #3
+ 875 010e 9EE7     		b	.L240
+ 876              	.L287:
+ 877 0110 C368     		ldr	r3, [r0, #12]
+ 878 0112 D806     		lsls	r0, r3, #27
+ 879 0114 E6D5     		bpl	.L279
+ 880 0116 0320     		movs	r0, #3
+ 881 0118 99E7     		b	.L240
+ 882              	.L264:
+ 883 011a 41F6FF71 		movw	r1, #8191
+ 884              	.L241:
+ 885 011e C268     		ldr	r2, [r0, #12]
+ 886 0120 4FF40053 		mov	r3, #8192
+ 887 0124 D207     		lsls	r2, r2, #31
+ 888 0126 C4F20203 		movt	r3, 16386
+ 889 012a 07D4     		bmi	.L294
+ 890 012c DA68     		ldr	r2, [r3, #12]
+ 891 012e 5007     		lsls	r0, r2, #29
+ 892 0130 09D5     		bpl	.L295
+ 893 0132 0220     		movs	r0, #2
+ 894 0134 0029     		cmp	r1, #0
+ 895 0136 8AD1     		bne	.L240
+ 896              	.L296:
+ 897 0138 0520     		movs	r0, #5
+ 898 013a 88E7     		b	.L240
+ 899              	.L294:
+ 900 013c 4B1E     		subs	r3, r1, #1
+ 901 013e 0029     		cmp	r1, #0
+ 902 0140 BFD0     		beq	.L263
+ 903 0142 1946     		mov	r1, r3
+ 904 0144 EBE7     		b	.L241
+ 905              	.L295:
+ 906 0146 DB68     		ldr	r3, [r3, #12]
+ 907 0148 13F0100F 		tst	r3, #16
+ 908 014c 0CBF     		ite	eq
+ 909 014e 0420     		moveq	r0, #4
+ 910 0150 0320     		movne	r0, #3
+ 911 0152 0029     		cmp	r1, #0
+ 912 0154 F0D0     		beq	.L296
+ 913 0156 7AE7     		b	.L240
+ 915              		.section	.text.FLASH_ProgramHalfWord,"ax",%progbits
+ 916              		.align	2
+ 917              		.global	FLASH_ProgramHalfWord
+ 918              		.thumb
+ 919              		.thumb_func
+ 921              	FLASH_ProgramHalfWord:
+ 922              		@ args = 0, pretend = 0, frame = 0
+ 923              		@ frame_needed = 0, uses_anonymous_args = 0
+ 924              		@ link register save eliminated.
+ 925 0000 70B4     		push	{r4, r5, r6}
+ 926 0002 4FF40055 		mov	r5, #8192
+ 927 0006 C4F20205 		movt	r5, 16386
+ 928 000a EB68     		ldr	r3, [r5, #12]
+ 929 000c 0646     		mov	r6, r0
+ 930 000e D807     		lsls	r0, r3, #31
+ 931 0010 22D4     		bmi	.L317
+ 932 0012 EB68     		ldr	r3, [r5, #12]
+ 933 0014 0220     		movs	r0, #2
+ 934 0016 5A07     		lsls	r2, r3, #29
+ 935 0018 01D5     		bpl	.L337
+ 936              	.L329:
+ 937 001a 70BC     		pop	{r4, r5, r6}
+ 938 001c 7047     		bx	lr
+ 939              	.L337:
+ 940 001e EB68     		ldr	r3, [r5, #12]
+ 941 0020 DB06     		lsls	r3, r3, #27
+ 942 0022 39D4     		bmi	.L338
+ 943              	.L336:
+ 944 0024 4FF40050 		mov	r0, #8192
+ 945 0028 C4F20200 		movt	r0, 16386
+ 946 002c 0369     		ldr	r3, [r0, #16]
+ 947 002e 43F00103 		orr	r3, r3, #1
+ 948 0032 0361     		str	r3, [r0, #16]
+ 949 0034 3180     		strh	r1, [r6, #0]	@ movhi
+ 950 0036 C368     		ldr	r3, [r0, #12]
+ 951 0038 DB07     		lsls	r3, r3, #31
+ 952 003a 2FD4     		bmi	.L323
+ 953 003c C368     		ldr	r3, [r0, #12]
+ 954 003e 5907     		lsls	r1, r3, #29
+ 955 0040 4BD5     		bpl	.L339
+ 956 0042 0220     		movs	r0, #2
+ 957              	.L313:
+ 958 0044 4FF40053 		mov	r3, #8192
+ 959 0048 C4F20203 		movt	r3, 16386
+ 960 004c 1969     		ldr	r1, [r3, #16]
+ 961 004e 41F6FE72 		movw	r2, #8190
+ 962 0052 0A40     		ands	r2, r2, r1
+ 963 0054 1A61     		str	r2, [r3, #16]
+ 964 0056 E0E7     		b	.L329
+ 965              	.L317:
+ 966 0058 41F6FF74 		movw	r4, #8191
+ 967              	.L298:
+ 968 005c EA68     		ldr	r2, [r5, #12]
+ 969 005e 4FF40053 		mov	r3, #8192
+ 970 0062 D007     		lsls	r0, r2, #31
+ 971 0064 C4F20203 		movt	r3, 16386
+ 972 0068 06D4     		bmi	.L340
+ 973 006a DA68     		ldr	r2, [r3, #12]
+ 974 006c 5207     		lsls	r2, r2, #29
+ 975 006e 08D5     		bpl	.L341
+ 976 0070 0220     		movs	r0, #2
+ 977 0072 74B9     		cbnz	r4, .L342
+ 978              	.L322:
+ 979 0074 0520     		movs	r0, #5
+ 980 0076 D0E7     		b	.L329
+ 981              	.L340:
+ 982 0078 631E     		subs	r3, r4, #1
+ 983 007a 002C     		cmp	r4, #0
+ 984 007c FAD0     		beq	.L322
+ 985 007e 1C46     		mov	r4, r3
+ 986 0080 ECE7     		b	.L298
+ 987              	.L341:
+ 988 0082 DB68     		ldr	r3, [r3, #12]
+ 989 0084 13F0100F 		tst	r3, #16
+ 990 0088 0CBF     		ite	eq
+ 991 008a 0420     		moveq	r0, #4
+ 992 008c 0320     		movne	r0, #3
+ 993 008e 002C     		cmp	r4, #0
+ 994 0090 F0D0     		beq	.L322
+ 995              	.L342:
+ 996 0092 0428     		cmp	r0, #4
+ 997 0094 C6D0     		beq	.L336
+ 998 0096 C0E7     		b	.L329
+ 999              	.L338:
+ 1000 0098 0320     		movs	r0, #3
+ 1001 009a BEE7     		b	.L329
+ 1002              	.L323:
+ 1003 009c 41F6FF71 		movw	r1, #8191
+ 1004              	.L306:
+ 1005 00a0 C268     		ldr	r2, [r0, #12]
+ 1006 00a2 4FF40053 		mov	r3, #8192
+ 1007 00a6 D207     		lsls	r2, r2, #31
+ 1008 00a8 C4F20203 		movt	r3, 16386
+ 1009 00ac 07D4     		bmi	.L343
+ 1010 00ae DA68     		ldr	r2, [r3, #12]
+ 1011 00b0 5007     		lsls	r0, r2, #29
+ 1012 00b2 09D5     		bpl	.L344
+ 1013 00b4 0220     		movs	r0, #2
+ 1014 00b6 0029     		cmp	r1, #0
+ 1015 00b8 C4D1     		bne	.L313
+ 1016              	.L326:
+ 1017 00ba 0520     		movs	r0, #5
+ 1018 00bc C2E7     		b	.L313
+ 1019              	.L343:
+ 1020 00be 4B1E     		subs	r3, r1, #1
+ 1021 00c0 0029     		cmp	r1, #0
+ 1022 00c2 FAD0     		beq	.L326
+ 1023 00c4 1946     		mov	r1, r3
+ 1024 00c6 EBE7     		b	.L306
+ 1025              	.L344:
+ 1026 00c8 DB68     		ldr	r3, [r3, #12]
+ 1027 00ca 13F0100F 		tst	r3, #16
+ 1028 00ce 0CBF     		ite	eq
+ 1029 00d0 0420     		moveq	r0, #4
+ 1030 00d2 0320     		movne	r0, #3
+ 1031 00d4 0029     		cmp	r1, #0
+ 1032 00d6 F0D0     		beq	.L326
+ 1033 00d8 B4E7     		b	.L313
+ 1034              	.L339:
+ 1035 00da C368     		ldr	r3, [r0, #12]
+ 1036 00dc 13F0100F 		tst	r3, #16
+ 1037 00e0 0CBF     		ite	eq
+ 1038 00e2 0420     		moveq	r0, #4
+ 1039 00e4 0320     		movne	r0, #3
+ 1040 00e6 ADE7     		b	.L313
+ 1042              		.section	.text.FLASH_ProgramOptionByteData,"ax",%progbits
+ 1043              		.align	2
+ 1044              		.global	FLASH_ProgramOptionByteData
+ 1045              		.thumb
+ 1046              		.thumb_func
+ 1048              	FLASH_ProgramOptionByteData:
+ 1049              		@ args = 0, pretend = 0, frame = 0
+ 1050              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1051              		@ link register save eliminated.
+ 1052 0000 70B4     		push	{r4, r5, r6}
+ 1053 0002 4FF40055 		mov	r5, #8192
+ 1054 0006 C4F20205 		movt	r5, 16386
+ 1055 000a EB68     		ldr	r3, [r5, #12]
+ 1056 000c 0646     		mov	r6, r0
+ 1057 000e D807     		lsls	r0, r3, #31
+ 1058 0010 2CD4     		bmi	.L366
+ 1059 0012 EB68     		ldr	r3, [r5, #12]
+ 1060 0014 0220     		movs	r0, #2
+ 1061 0016 5A07     		lsls	r2, r3, #29
+ 1062 0018 01D5     		bpl	.L384
+ 1063              	.L377:
+ 1064 001a 70BC     		pop	{r4, r5, r6}
+ 1065 001c 7047     		bx	lr
+ 1066              	.L384:
+ 1067 001e EB68     		ldr	r3, [r5, #12]
+ 1068 0020 DB06     		lsls	r3, r3, #27
+ 1069 0022 43D4     		bmi	.L385
+ 1070              	.L382:
+ 1071 0024 4FF40053 		mov	r3, #8192
+ 1072 0028 40F22310 		movw	r0, #291
+ 1073 002c 48F6AB12 		movw	r2, #35243
+ 1074 0030 C4F20203 		movt	r3, 16386
+ 1075 0034 C4F26750 		movt	r0, 17767
+ 1076 0038 CCF6EF52 		movt	r2, 52719
+ 1077 003c 9860     		str	r0, [r3, #8]
+ 1078 003e 9A60     		str	r2, [r3, #8]
+ 1079 0040 1A69     		ldr	r2, [r3, #16]
+ 1080 0042 42F01002 		orr	r2, r2, #16
+ 1081 0046 1A61     		str	r2, [r3, #16]
+ 1082 0048 3180     		strh	r1, [r6, #0]	@ movhi
+ 1083 004a DA68     		ldr	r2, [r3, #12]
+ 1084 004c D007     		lsls	r0, r2, #31
+ 1085 004e 2FD4     		bmi	.L371
+ 1086 0050 DA68     		ldr	r2, [r3, #12]
+ 1087 0052 0220     		movs	r0, #2
+ 1088 0054 5107     		lsls	r1, r2, #29
+ 1089 0056 4BD5     		bpl	.L386
+ 1090              	.L363:
+ 1091 0058 4FF40053 		mov	r3, #8192
+ 1092 005c C4F20203 		movt	r3, 16386
+ 1093 0060 1969     		ldr	r1, [r3, #16]
+ 1094 0062 41F6EF72 		movw	r2, #8175
+ 1095 0066 0A40     		ands	r2, r2, r1
+ 1096 0068 1A61     		str	r2, [r3, #16]
+ 1097 006a D6E7     		b	.L377
+ 1098              	.L366:
+ 1099 006c 41F6FF74 		movw	r4, #8191
+ 1100              	.L346:
+ 1101 0070 EA68     		ldr	r2, [r5, #12]
+ 1102 0072 4FF40053 		mov	r3, #8192
+ 1103 0076 D007     		lsls	r0, r2, #31
+ 1104 0078 C4F20203 		movt	r3, 16386
+ 1105 007c 06D4     		bmi	.L387
+ 1106 007e DA68     		ldr	r2, [r3, #12]
+ 1107 0080 5207     		lsls	r2, r2, #29
+ 1108 0082 08D5     		bpl	.L388
+ 1109 0084 0220     		movs	r0, #2
+ 1110 0086 74B9     		cbnz	r4, .L353
+ 1111              	.L362:
+ 1112 0088 0520     		movs	r0, #5
+ 1113 008a C6E7     		b	.L377
+ 1114              	.L387:
+ 1115 008c 631E     		subs	r3, r4, #1
+ 1116 008e 002C     		cmp	r4, #0
+ 1117 0090 FAD0     		beq	.L362
+ 1118 0092 1C46     		mov	r4, r3
+ 1119 0094 ECE7     		b	.L346
+ 1120              	.L388:
+ 1121 0096 DB68     		ldr	r3, [r3, #12]
+ 1122 0098 13F0100F 		tst	r3, #16
+ 1123 009c 0CBF     		ite	eq
+ 1124 009e 0420     		moveq	r0, #4
+ 1125 00a0 0320     		movne	r0, #3
+ 1126 00a2 002C     		cmp	r4, #0
+ 1127 00a4 F0D0     		beq	.L362
+ 1128              	.L353:
+ 1129 00a6 0428     		cmp	r0, #4
+ 1130 00a8 BCD0     		beq	.L382
+ 1131 00aa B6E7     		b	.L377
+ 1132              	.L385:
+ 1133 00ac 0320     		movs	r0, #3
+ 1134 00ae B4E7     		b	.L377
+ 1135              	.L371:
+ 1136 00b0 41F6FF71 		movw	r1, #8191
+ 1137 00b4 1846     		mov	r0, r3
+ 1138              	.L355:
+ 1139 00b6 C268     		ldr	r2, [r0, #12]
+ 1140 00b8 4FF40053 		mov	r3, #8192
+ 1141 00bc D207     		lsls	r2, r2, #31
+ 1142 00be C4F20203 		movt	r3, 16386
+ 1143 00c2 07D4     		bmi	.L389
+ 1144 00c4 DA68     		ldr	r2, [r3, #12]
+ 1145 00c6 5207     		lsls	r2, r2, #29
+ 1146 00c8 09D5     		bpl	.L390
+ 1147 00ca 0220     		movs	r0, #2
+ 1148 00cc 0029     		cmp	r1, #0
+ 1149 00ce C3D1     		bne	.L363
+ 1150              	.L383:
+ 1151 00d0 0520     		movs	r0, #5
+ 1152 00d2 A2E7     		b	.L377
+ 1153              	.L389:
+ 1154 00d4 4B1E     		subs	r3, r1, #1
+ 1155 00d6 0029     		cmp	r1, #0
+ 1156 00d8 D6D0     		beq	.L362
+ 1157 00da 1946     		mov	r1, r3
+ 1158 00dc EBE7     		b	.L355
+ 1159              	.L390:
+ 1160 00de DB68     		ldr	r3, [r3, #12]
+ 1161 00e0 13F0100F 		tst	r3, #16
+ 1162 00e4 0CBF     		ite	eq
+ 1163 00e6 0420     		moveq	r0, #4
+ 1164 00e8 0320     		movne	r0, #3
+ 1165 00ea 0029     		cmp	r1, #0
+ 1166 00ec F0D0     		beq	.L383
+ 1167 00ee B3E7     		b	.L363
+ 1168              	.L386:
+ 1169 00f0 DB68     		ldr	r3, [r3, #12]
+ 1170 00f2 13F0100F 		tst	r3, #16
+ 1171 00f6 0CBF     		ite	eq
+ 1172 00f8 0420     		moveq	r0, #4
+ 1173 00fa 0320     		movne	r0, #3
+ 1174 00fc ACE7     		b	.L363
+ 1176 00fe 00BF     		.section	.text.FLASH_EnableWriteProtection,"ax",%progbits
+ 1177              		.align	2
+ 1178              		.global	FLASH_EnableWriteProtection
+ 1179              		.thumb
+ 1180              		.thumb_func
+ 1182              	FLASH_EnableWriteProtection:
+ 1183              		@ args = 0, pretend = 0, frame = 0
+ 1184              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1185              		@ link register save eliminated.
+ 1186 0000 70B4     		push	{r4, r5, r6}
+ 1187 0002 4FF40054 		mov	r4, #8192
+ 1188 0006 C4F20204 		movt	r4, 16386
+ 1189 000a E368     		ldr	r3, [r4, #12]
+ 1190 000c DA07     		lsls	r2, r3, #31
+ 1191 000e 0BD4     		bmi	.L446
+ 1192 0010 E368     		ldr	r3, [r4, #12]
+ 1193 0012 5B07     		lsls	r3, r3, #29
+ 1194 0014 03D5     		bpl	.L494
+ 1195 0016 0223     		movs	r3, #2
+ 1196              	.L451:
+ 1197 0018 1846     		mov	r0, r3
+ 1198              	.L491:
+ 1199 001a 70BC     		pop	{r4, r5, r6}
+ 1200 001c 7047     		bx	lr
+ 1201              	.L494:
+ 1202 001e E368     		ldr	r3, [r4, #12]
+ 1203 0020 D906     		lsls	r1, r3, #27
+ 1204 0022 12D5     		bpl	.L490
+ 1205 0024 0323     		movs	r3, #3
+ 1206 0026 F7E7     		b	.L451
+ 1207              	.L446:
+ 1208 0028 41F6FF71 		movw	r1, #8191
+ 1209              	.L392:
+ 1210 002c E268     		ldr	r2, [r4, #12]
+ 1211 002e 4FF40053 		mov	r3, #8192
+ 1212 0032 D207     		lsls	r2, r2, #31
+ 1213 0034 C4F20203 		movt	r3, 16386
+ 1214 0038 61D4     		bmi	.L495
+ 1215 003a DA68     		ldr	r2, [r3, #12]
+ 1216 003c 5207     		lsls	r2, r2, #29
+ 1217 003e 63D5     		bpl	.L496
+ 1218 0040 0223     		movs	r3, #2
+ 1219 0042 0029     		cmp	r1, #0
+ 1220 0044 59D0     		beq	.L440
+ 1221              	.L399:
+ 1222 0046 042B     		cmp	r3, #4
+ 1223 0048 E6D1     		bne	.L451
+ 1224              	.L490:
+ 1225 004a 4FF40053 		mov	r3, #8192
+ 1226 004e 40F22311 		movw	r1, #291
+ 1227 0052 48F6AB12 		movw	r2, #35243
+ 1228 0056 C4F20203 		movt	r3, 16386
+ 1229 005a C4F26751 		movt	r1, 17767
+ 1230 005e CCF6EF52 		movt	r2, 52719
+ 1231 0062 9960     		str	r1, [r3, #8]
+ 1232 0064 9A60     		str	r2, [r3, #8]
+ 1233 0066 C543     		mvns	r5, r0
+ 1234 0068 1969     		ldr	r1, [r3, #16]
+ 1235 006a EAB2     		uxtb	r2, r5
+ 1236 006c 41F01001 		orr	r1, r1, #16
+ 1237 0070 FF2A     		cmp	r2, #255
+ 1238 0072 1961     		str	r1, [r3, #16]
+ 1239 0074 C5F30726 		ubfx	r6, r5, #8, #8
+ 1240 0078 4FD0     		beq	.L497
+ 1241 007a 4FF47841 		mov	r1, #63488
+ 1242 007e C1F6FF71 		movt	r1, 8191
+ 1243 0082 0A81     		strh	r2, [r1, #8]	@ movhi
+ 1244 0084 DA68     		ldr	r2, [r3, #12]
+ 1245 0086 12F00102 		ands	r2, r2, #1
+ 1246 008a 40F08B80 		bne	.L452
+ 1247 008e D968     		ldr	r1, [r3, #12]
+ 1248 0090 4C07     		lsls	r4, r1, #29
+ 1249 0092 40F11A81 		bpl	.L498
+ 1250 0096 1346     		mov	r3, r2
+ 1251 0098 0220     		movs	r0, #2
+ 1252              	.L402:
+ 1253 009a C5F30744 		ubfx	r4, r5, #16, #8
+ 1254 009e 002A     		cmp	r2, #0
+ 1255 00a0 45D1     		bne	.L411
+ 1256              	.L493:
+ 1257 00a2 FF2C     		cmp	r4, #255
+ 1258 00a4 0CBF     		ite	eq
+ 1259 00a6 0022     		moveq	r2, #0
+ 1260 00a8 03F00102 		andne	r2, r3, #1
+ 1261              	.L412:
+ 1262 00ac 2D0E     		lsrs	r5, r5, #24
+ 1263 00ae 002A     		cmp	r2, #0
+ 1264 00b0 50D1     		bne	.L421
+ 1265 00b2 FF2D     		cmp	r5, #255
+ 1266 00b4 0CBF     		ite	eq
+ 1267 00b6 0023     		moveq	r3, #0
+ 1268 00b8 03F00103 		andne	r3, r3, #1
+ 1269              	.L422:
+ 1270 00bc 002B     		cmp	r3, #0
+ 1271 00be 5BD1     		bne	.L499
+ 1272              	.L431:
+ 1273 00c0 0528     		cmp	r0, #5
+ 1274 00c2 1AD0     		beq	.L440
+ 1275              	.L492:
+ 1276 00c4 4FF40053 		mov	r3, #8192
+ 1277 00c8 C4F20203 		movt	r3, 16386
+ 1278 00cc 1969     		ldr	r1, [r3, #16]
+ 1279 00ce 41F6EF72 		movw	r2, #8175
+ 1280 00d2 0A40     		ands	r2, r2, r1
+ 1281 00d4 1A61     		str	r2, [r3, #16]
+ 1282 00d6 A0E7     		b	.L491
+ 1283              	.L470:
+ 1284 00d8 41F6FF71 		movw	r1, #8191
+ 1285              	.L432:
+ 1286 00dc C268     		ldr	r2, [r0, #12]
+ 1287 00de 4FF40053 		mov	r3, #8192
+ 1288 00e2 D207     		lsls	r2, r2, #31
+ 1289 00e4 C4F20203 		movt	r3, 16386
+ 1290 00e8 00F1BB80 		bmi	.L500
+ 1291 00ec DA68     		ldr	r2, [r3, #12]
+ 1292 00ee 5207     		lsls	r2, r2, #29
+ 1293 00f0 40F1BC80 		bpl	.L501
+ 1294 00f4 0220     		movs	r0, #2
+ 1295 00f6 0029     		cmp	r1, #0
+ 1296 00f8 E2D1     		bne	.L431
+ 1297              	.L440:
+ 1298 00fa 0520     		movs	r0, #5
+ 1299 00fc 8DE7     		b	.L491
+ 1300              	.L495:
+ 1301 00fe 4B1E     		subs	r3, r1, #1
+ 1302 0100 0029     		cmp	r1, #0
+ 1303 0102 FAD0     		beq	.L440
+ 1304 0104 1946     		mov	r1, r3
+ 1305 0106 91E7     		b	.L392
+ 1306              	.L496:
+ 1307 0108 DB68     		ldr	r3, [r3, #12]
+ 1308 010a 13F0100F 		tst	r3, #16
+ 1309 010e 0CBF     		ite	eq
+ 1310 0110 0423     		moveq	r3, #4
+ 1311 0112 0323     		movne	r3, #3
+ 1312 0114 0029     		cmp	r1, #0
+ 1313 0116 F0D0     		beq	.L440
+ 1314 0118 95E7     		b	.L399
+ 1315              	.L497:
+ 1316 011a B6F1FF02 		subs	r2, r6, #255
+ 1317 011e 18BF     		it	ne
+ 1318 0120 0122     		movne	r2, #1
+ 1319 0122 C5F30744 		ubfx	r4, r5, #16, #8
+ 1320 0126 0420     		movs	r0, #4
+ 1321 0128 0123     		movs	r3, #1
+ 1322 012a 002A     		cmp	r2, #0
+ 1323 012c B9D0     		beq	.L493
+ 1324              	.L411:
+ 1325 012e 4FF47843 		mov	r3, #63488
+ 1326 0132 C1F6FF73 		movt	r3, 8191
+ 1327 0136 4FF40050 		mov	r0, #8192
+ 1328 013a 5E81     		strh	r6, [r3, #10]	@ movhi
+ 1329 013c C4F20200 		movt	r0, 16386
+ 1330 0140 C368     		ldr	r3, [r0, #12]
+ 1331 0142 13F00103 		ands	r3, r3, #1
+ 1332 0146 6DD1     		bne	.L458
+ 1333 0148 C168     		ldr	r1, [r0, #12]
+ 1334 014a 4907     		lsls	r1, r1, #29
+ 1335 014c 5AD5     		bpl	.L502
+ 1336 014e 1A46     		mov	r2, r3
+ 1337 0150 0220     		movs	r0, #2
+ 1338 0152 ABE7     		b	.L412
+ 1339              	.L421:
+ 1340 0154 4FF47843 		mov	r3, #63488
+ 1341 0158 C1F6FF73 		movt	r3, 8191
+ 1342 015c 4FF40050 		mov	r0, #8192
+ 1343 0160 9C81     		strh	r4, [r3, #12]	@ movhi
+ 1344 0162 C4F20200 		movt	r0, 16386
+ 1345 0166 C368     		ldr	r3, [r0, #12]
+ 1346 0168 DB07     		lsls	r3, r3, #31
+ 1347 016a 00F18A80 		bmi	.L464
+ 1348 016e C368     		ldr	r3, [r0, #12]
+ 1349 0170 5907     		lsls	r1, r3, #29
+ 1350 0172 38D5     		bpl	.L503
+ 1351              	.L471:
+ 1352 0174 0220     		movs	r0, #2
+ 1353 0176 A5E7     		b	.L492
+ 1354              	.L499:
+ 1355 0178 4FF47843 		mov	r3, #63488
+ 1356 017c C1F6FF73 		movt	r3, 8191
+ 1357 0180 4FF40050 		mov	r0, #8192
+ 1358 0184 DD81     		strh	r5, [r3, #14]	@ movhi
+ 1359 0186 C4F20200 		movt	r0, 16386
+ 1360 018a C368     		ldr	r3, [r0, #12]
+ 1361 018c DB07     		lsls	r3, r3, #31
+ 1362 018e A3D4     		bmi	.L470
+ 1363 0190 C368     		ldr	r3, [r0, #12]
+ 1364 0192 5907     		lsls	r1, r3, #29
+ 1365 0194 EED4     		bmi	.L471
+ 1366 0196 C368     		ldr	r3, [r0, #12]
+ 1367 0198 13F0100F 		tst	r3, #16
+ 1368 019c 0CBF     		ite	eq
+ 1369 019e 0420     		moveq	r0, #4
+ 1370 01a0 0320     		movne	r0, #3
+ 1371 01a2 8FE7     		b	.L492
+ 1372              	.L452:
+ 1373 01a4 41F6FF71 		movw	r1, #8191
+ 1374 01a8 1C46     		mov	r4, r3
+ 1375              	.L403:
+ 1376 01aa E268     		ldr	r2, [r4, #12]
+ 1377 01ac 4FF40053 		mov	r3, #8192
+ 1378 01b0 D007     		lsls	r0, r2, #31
+ 1379 01b2 C4F20203 		movt	r3, 16386
+ 1380 01b6 0AD4     		bmi	.L504
+ 1381 01b8 DA68     		ldr	r2, [r3, #12]
+ 1382 01ba 5207     		lsls	r2, r2, #29
+ 1383 01bc 0CD5     		bpl	.L505
+ 1384 01be 0220     		movs	r0, #2
+ 1385              	.L442:
+ 1386 01c0 0029     		cmp	r1, #0
+ 1387 01c2 40F09880 		bne	.L506
+ 1388              	.L457:
+ 1389 01c6 0022     		movs	r2, #0
+ 1390 01c8 1346     		mov	r3, r2
+ 1391 01ca 0520     		movs	r0, #5
+ 1392 01cc 65E7     		b	.L402
+ 1393              	.L504:
+ 1394 01ce 4B1E     		subs	r3, r1, #1
+ 1395 01d0 0029     		cmp	r1, #0
+ 1396 01d2 F8D0     		beq	.L457
+ 1397 01d4 1946     		mov	r1, r3
+ 1398 01d6 E8E7     		b	.L403
+ 1399              	.L505:
+ 1400 01d8 DB68     		ldr	r3, [r3, #12]
+ 1401 01da 13F0100F 		tst	r3, #16
+ 1402 01de 0CBF     		ite	eq
+ 1403 01e0 0420     		moveq	r0, #4
+ 1404 01e2 0320     		movne	r0, #3
+ 1405 01e4 ECE7     		b	.L442
+ 1406              	.L503:
+ 1407 01e6 C368     		ldr	r3, [r0, #12]
+ 1408 01e8 03F01003 		and	r3, r3, #16
+ 1409 01ec 002B     		cmp	r3, #0
+ 1410 01ee 18BF     		it	ne
+ 1411 01f0 0022     		movne	r2, #0
+ 1412 01f2 0CBF     		ite	eq
+ 1413 01f4 0420     		moveq	r0, #4
+ 1414 01f6 0320     		movne	r0, #3
+ 1415 01f8 FF2D     		cmp	r5, #255
+ 1416 01fa 0CBF     		ite	eq
+ 1417 01fc 0023     		moveq	r3, #0
+ 1418 01fe 02F00103 		andne	r3, r2, #1
+ 1419 0202 5BE7     		b	.L422
+ 1420              	.L502:
+ 1421 0204 C368     		ldr	r3, [r0, #12]
+ 1422 0206 03F01003 		and	r3, r3, #16
+ 1423 020a 002B     		cmp	r3, #0
+ 1424 020c 0CBF     		ite	eq
+ 1425 020e 1346     		moveq	r3, r2
+ 1426 0210 0023     		movne	r3, #0
+ 1427 0212 0CBF     		ite	eq
+ 1428 0214 0420     		moveq	r0, #4
+ 1429 0216 0320     		movne	r0, #3
+ 1430 0218 FF2C     		cmp	r4, #255
+ 1431 021a 0CBF     		ite	eq
+ 1432 021c 0022     		moveq	r2, #0
+ 1433 021e 03F00102 		andne	r2, r3, #1
+ 1434 0222 43E7     		b	.L412
+ 1435              	.L458:
+ 1436 0224 41F6FF71 		movw	r1, #8191
+ 1437              	.L413:
+ 1438 0228 C268     		ldr	r2, [r0, #12]
+ 1439 022a 4FF40053 		mov	r3, #8192
+ 1440 022e D207     		lsls	r2, r2, #31
+ 1441 0230 C4F20203 		movt	r3, 16386
+ 1442 0234 09D4     		bmi	.L507
+ 1443 0236 DA68     		ldr	r2, [r3, #12]
+ 1444 0238 5007     		lsls	r0, r2, #29
+ 1445 023a 0BD5     		bpl	.L508
+ 1446 023c 0220     		movs	r0, #2
+ 1447              	.L443:
+ 1448 023e 0029     		cmp	r1, #0
+ 1449 0240 55D1     		bne	.L509
+ 1450              	.L463:
+ 1451 0242 0022     		movs	r2, #0
+ 1452 0244 1346     		mov	r3, r2
+ 1453 0246 0520     		movs	r0, #5
+ 1454 0248 30E7     		b	.L412
+ 1455              	.L507:
+ 1456 024a 4B1E     		subs	r3, r1, #1
+ 1457 024c 0029     		cmp	r1, #0
+ 1458 024e F8D0     		beq	.L463
+ 1459 0250 1946     		mov	r1, r3
+ 1460 0252 E9E7     		b	.L413
+ 1461              	.L508:
+ 1462 0254 DB68     		ldr	r3, [r3, #12]
+ 1463 0256 13F0100F 		tst	r3, #16
+ 1464 025a 0CBF     		ite	eq
+ 1465 025c 0420     		moveq	r0, #4
+ 1466 025e 0320     		movne	r0, #3
+ 1467 0260 EDE7     		b	.L443
+ 1468              	.L500:
+ 1469 0262 4B1E     		subs	r3, r1, #1
+ 1470 0264 0029     		cmp	r1, #0
+ 1471 0266 40D0     		beq	.L510
+ 1472 0268 1946     		mov	r1, r3
+ 1473 026a 37E7     		b	.L432
+ 1474              	.L501:
+ 1475 026c DB68     		ldr	r3, [r3, #12]
+ 1476 026e 13F0100F 		tst	r3, #16
+ 1477 0272 0CBF     		ite	eq
+ 1478 0274 0423     		moveq	r3, #4
+ 1479 0276 0323     		movne	r3, #3
+ 1480              	.L436:
+ 1481 0278 1846     		mov	r0, r3
+ 1482 027a 0029     		cmp	r1, #0
+ 1483 027c 3FF43DAF 		beq	.L440
+ 1484 0280 1EE7     		b	.L431
+ 1485              	.L464:
+ 1486 0282 41F6FF71 		movw	r1, #8191
+ 1487              	.L423:
+ 1488 0286 C268     		ldr	r2, [r0, #12]
+ 1489 0288 4FF40053 		mov	r3, #8192
+ 1490 028c D207     		lsls	r2, r2, #31
+ 1491 028e C4F20203 		movt	r3, 16386
+ 1492 0292 0DD4     		bmi	.L511
+ 1493 0294 DA68     		ldr	r2, [r3, #12]
+ 1494 0296 5007     		lsls	r0, r2, #29
+ 1495 0298 10D5     		bpl	.L512
+ 1496 029a 0220     		movs	r0, #2
+ 1497              	.L444:
+ 1498 029c 0029     		cmp	r1, #0
+ 1499 029e 3FF42CAF 		beq	.L440
+ 1500 02a2 021F     		subs	r2, r0, #4
+ 1501 02a4 5342     		rsbs	r3, r2, #0
+ 1502 02a6 5341     		adcs	r3, r3, r2
+ 1503 02a8 FF2D     		cmp	r5, #255
+ 1504 02aa 08BF     		it	eq
+ 1505 02ac 0023     		moveq	r3, #0
+ 1506 02ae 05E7     		b	.L422
+ 1507              	.L511:
+ 1508 02b0 4B1E     		subs	r3, r1, #1
+ 1509 02b2 0029     		cmp	r1, #0
+ 1510 02b4 3FF421AF 		beq	.L440
+ 1511 02b8 1946     		mov	r1, r3
+ 1512 02ba E4E7     		b	.L423
+ 1513              	.L512:
+ 1514 02bc DB68     		ldr	r3, [r3, #12]
+ 1515 02be 13F0100F 		tst	r3, #16
+ 1516 02c2 0CBF     		ite	eq
+ 1517 02c4 0420     		moveq	r0, #4
+ 1518 02c6 0320     		movne	r0, #3
+ 1519 02c8 E8E7     		b	.L444
+ 1520              	.L498:
+ 1521 02ca DB68     		ldr	r3, [r3, #12]
+ 1522 02cc 03F01003 		and	r3, r3, #16
+ 1523 02d0 002B     		cmp	r3, #0
+ 1524 02d2 14BF     		ite	ne
+ 1525 02d4 0023     		movne	r3, #0
+ 1526 02d6 0123     		moveq	r3, #1
+ 1527 02d8 0CBF     		ite	eq
+ 1528 02da 0420     		moveq	r0, #4
+ 1529 02dc 0320     		movne	r0, #3
+ 1530 02de FF2E     		cmp	r6, #255
+ 1531 02e0 0CBF     		ite	eq
+ 1532 02e2 0022     		moveq	r2, #0
+ 1533 02e4 03F00102 		andne	r2, r3, #1
+ 1534 02e8 D7E6     		b	.L402
+ 1535              	.L510:
+ 1536 02ea 0123     		movs	r3, #1
+ 1537 02ec C4E7     		b	.L436
+ 1538              	.L509:
+ 1539 02ee 021F     		subs	r2, r0, #4
+ 1540 02f0 5342     		rsbs	r3, r2, #0
+ 1541 02f2 5341     		adcs	r3, r3, r2
+ 1542 02f4 D5E6     		b	.L493
+ 1543              	.L506:
+ 1544 02f6 041F     		subs	r4, r0, #4
+ 1545 02f8 6342     		rsbs	r3, r4, #0
+ 1546 02fa 6341     		adcs	r3, r3, r4
+ 1547 02fc FF2E     		cmp	r6, #255
+ 1548 02fe 0CBF     		ite	eq
+ 1549 0300 0022     		moveq	r2, #0
+ 1550 0302 03F00102 		andne	r2, r3, #1
+ 1551 0306 C8E6     		b	.L402
+ 1553              		.section	.text.FLASH_ReadOutProtection,"ax",%progbits
+ 1554              		.align	2
+ 1555              		.global	FLASH_ReadOutProtection
+ 1556              		.thumb
+ 1557              		.thumb_func
+ 1559              	FLASH_ReadOutProtection:
+ 1560              		@ args = 0, pretend = 0, frame = 0
+ 1561              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1562              		@ link register save eliminated.
+ 1563 0000 30B4     		push	{r4, r5}
+ 1564 0002 4FF40054 		mov	r4, #8192
+ 1565 0006 C4F20204 		movt	r4, 16386
+ 1566 000a E368     		ldr	r3, [r4, #12]
+ 1567 000c 0546     		mov	r5, r0
+ 1568 000e DB07     		lsls	r3, r3, #31
+ 1569 0010 30D4     		bmi	.L546
+ 1570 0012 E368     		ldr	r3, [r4, #12]
+ 1571 0014 5807     		lsls	r0, r3, #29
+ 1572 0016 02D5     		bpl	.L575
+ 1573 0018 0220     		movs	r0, #2
+ 1574              	.L563:
+ 1575 001a 30BC     		pop	{r4, r5}
+ 1576 001c 7047     		bx	lr
+ 1577              	.L575:
+ 1578 001e E368     		ldr	r3, [r4, #12]
+ 1579 0020 0320     		movs	r0, #3
+ 1580 0022 D906     		lsls	r1, r3, #27
+ 1581 0024 F9D4     		bmi	.L563
+ 1582              	.L573:
+ 1583 0026 4FF40050 		mov	r0, #8192
+ 1584 002a 40F22312 		movw	r2, #291
+ 1585 002e 48F6AB13 		movw	r3, #35243
+ 1586 0032 C4F20200 		movt	r0, 16386
+ 1587 0036 C4F26752 		movt	r2, 17767
+ 1588 003a CCF6EF53 		movt	r3, 52719
+ 1589 003e 8260     		str	r2, [r0, #8]
+ 1590 0040 8360     		str	r3, [r0, #8]
+ 1591 0042 0369     		ldr	r3, [r0, #16]
+ 1592 0044 43F02003 		orr	r3, r3, #32
+ 1593 0048 0361     		str	r3, [r0, #16]
+ 1594 004a 0369     		ldr	r3, [r0, #16]
+ 1595 004c 43F04003 		orr	r3, r3, #64
+ 1596 0050 0361     		str	r3, [r0, #16]
+ 1597 0052 C368     		ldr	r3, [r0, #12]
+ 1598 0054 DA07     		lsls	r2, r3, #31
+ 1599 0056 2FD4     		bmi	.L551
+ 1600 0058 C368     		ldr	r3, [r0, #12]
+ 1601 005a 5B07     		lsls	r3, r3, #29
+ 1602 005c 79D5     		bpl	.L576
+ 1603 005e 0220     		movs	r0, #2
+ 1604              	.L531:
+ 1605 0060 4FF40053 		mov	r3, #8192
+ 1606 0064 C4F20203 		movt	r3, 16386
+ 1607 0068 1969     		ldr	r1, [r3, #16]
+ 1608 006a 41F6DF72 		movw	r2, #8159
+ 1609 006e 0A40     		ands	r2, r2, r1
+ 1610 0070 1A61     		str	r2, [r3, #16]
+ 1611 0072 D2E7     		b	.L563
+ 1612              	.L546:
+ 1613 0074 4FF6FF71 		movw	r1, #65535
+ 1614 0078 C0F20A01 		movt	r1, 10
+ 1615              	.L514:
+ 1616 007c E268     		ldr	r2, [r4, #12]
+ 1617 007e 4FF40053 		mov	r3, #8192
+ 1618 0082 D207     		lsls	r2, r2, #31
+ 1619 0084 C4F20203 		movt	r3, 16386
+ 1620 0088 06D4     		bmi	.L577
+ 1621 008a DA68     		ldr	r2, [r3, #12]
+ 1622 008c 5007     		lsls	r0, r2, #29
+ 1623 008e 08D5     		bpl	.L578
+ 1624 0090 0220     		movs	r0, #2
+ 1625 0092 71B9     		cbnz	r1, .L521
+ 1626              	.L530:
+ 1627 0094 0520     		movs	r0, #5
+ 1628 0096 C0E7     		b	.L563
+ 1629              	.L577:
+ 1630 0098 4B1E     		subs	r3, r1, #1
+ 1631 009a 0029     		cmp	r1, #0
+ 1632 009c FAD0     		beq	.L530
+ 1633 009e 1946     		mov	r1, r3
+ 1634 00a0 ECE7     		b	.L514
+ 1635              	.L578:
+ 1636 00a2 DB68     		ldr	r3, [r3, #12]
+ 1637 00a4 13F0100F 		tst	r3, #16
+ 1638 00a8 0CBF     		ite	eq
+ 1639 00aa 0420     		moveq	r0, #4
+ 1640 00ac 0320     		movne	r0, #3
+ 1641 00ae 0029     		cmp	r1, #0
+ 1642 00b0 F0D0     		beq	.L530
+ 1643              	.L521:
+ 1644 00b2 0428     		cmp	r0, #4
+ 1645 00b4 B7D0     		beq	.L573
+ 1646 00b6 B0E7     		b	.L563
+ 1647              	.L551:
+ 1648 00b8 4FF6FF71 		movw	r1, #65535
+ 1649 00bc C0F20A01 		movt	r1, 10
+ 1650              	.L523:
+ 1651 00c0 C268     		ldr	r2, [r0, #12]
+ 1652 00c2 4FF40053 		mov	r3, #8192
+ 1653 00c6 D207     		lsls	r2, r2, #31
+ 1654 00c8 C4F20203 		movt	r3, 16386
+ 1655 00cc 30D4     		bmi	.L579
+ 1656 00ce DA68     		ldr	r2, [r3, #12]
+ 1657 00d0 5207     		lsls	r2, r2, #29
+ 1658 00d2 32D5     		bpl	.L580
+ 1659 00d4 0220     		movs	r0, #2
+ 1660 00d6 0029     		cmp	r1, #0
+ 1661 00d8 DCD0     		beq	.L530
+ 1662              	.L583:
+ 1663 00da 0428     		cmp	r0, #4
+ 1664 00dc C0D1     		bne	.L531
+ 1665              	.L569:
+ 1666 00de 4FF40053 		mov	r3, #8192
+ 1667 00e2 C4F20203 		movt	r3, 16386
+ 1668 00e6 1969     		ldr	r1, [r3, #16]
+ 1669 00e8 41F6DF72 		movw	r2, #8159
+ 1670 00ec 0A40     		ands	r2, r2, r1
+ 1671 00ee 1A61     		str	r2, [r3, #16]
+ 1672 00f0 1A69     		ldr	r2, [r3, #16]
+ 1673 00f2 42F01002 		orr	r2, r2, #16
+ 1674 00f6 1A61     		str	r2, [r3, #16]
+ 1675 00f8 4FF47843 		mov	r3, #63488
+ 1676 00fc C1F6FF73 		movt	r3, 8191
+ 1677 0100 25BB     		cbnz	r5, .L581
+ 1678 0102 A522     		movs	r2, #165
+ 1679 0104 1A80     		strh	r2, [r3, #0]	@ movhi
+ 1680              	.L533:
+ 1681 0106 4FF40050 		mov	r0, #8192
+ 1682 010a C4F20200 		movt	r0, 16386
+ 1683 010e C368     		ldr	r3, [r0, #12]
+ 1684 0110 DB07     		lsls	r3, r3, #31
+ 1685 0112 23D4     		bmi	.L554
+ 1686 0114 C368     		ldr	r3, [r0, #12]
+ 1687 0116 5907     		lsls	r1, r3, #29
+ 1688 0118 41D5     		bpl	.L582
+ 1689 011a 0220     		movs	r0, #2
+ 1690              	.L541:
+ 1691 011c 4FF40053 		mov	r3, #8192
+ 1692 0120 C4F20203 		movt	r3, 16386
+ 1693 0124 1969     		ldr	r1, [r3, #16]
+ 1694 0126 41F6EF72 		movw	r2, #8175
+ 1695 012a 0A40     		ands	r2, r2, r1
+ 1696 012c 1A61     		str	r2, [r3, #16]
+ 1697 012e 74E7     		b	.L563
+ 1698              	.L579:
+ 1699 0130 4B1E     		subs	r3, r1, #1
+ 1700 0132 0029     		cmp	r1, #0
+ 1701 0134 AED0     		beq	.L530
+ 1702 0136 1946     		mov	r1, r3
+ 1703 0138 C2E7     		b	.L523
+ 1704              	.L580:
+ 1705 013a DB68     		ldr	r3, [r3, #12]
+ 1706 013c 13F0100F 		tst	r3, #16
+ 1707 0140 0CBF     		ite	eq
+ 1708 0142 0420     		moveq	r0, #4
+ 1709 0144 0320     		movne	r0, #3
+ 1710 0146 0029     		cmp	r1, #0
+ 1711 0148 A4D0     		beq	.L530
+ 1712 014a C6E7     		b	.L583
+ 1713              	.L581:
+ 1714 014c 0022     		movs	r2, #0
+ 1715 014e 1A80     		strh	r2, [r3, #0]	@ movhi
+ 1716 0150 D9E7     		b	.L533
+ 1717              	.L576:
+ 1718 0152 C368     		ldr	r3, [r0, #12]
+ 1719 0154 0320     		movs	r0, #3
+ 1720 0156 D906     		lsls	r1, r3, #27
+ 1721 0158 82D4     		bmi	.L531
+ 1722 015a C0E7     		b	.L569
+ 1723              	.L554:
+ 1724 015c 4FF6FF71 		movw	r1, #65535
+ 1725 0160 C0F20A01 		movt	r1, 10
+ 1726              	.L534:
+ 1727 0164 C268     		ldr	r2, [r0, #12]
+ 1728 0166 4FF40053 		mov	r3, #8192
+ 1729 016a D207     		lsls	r2, r2, #31
+ 1730 016c C4F20203 		movt	r3, 16386
+ 1731 0170 07D4     		bmi	.L584
+ 1732 0172 DA68     		ldr	r2, [r3, #12]
+ 1733 0174 5007     		lsls	r0, r2, #29
+ 1734 0176 09D5     		bpl	.L585
+ 1735 0178 0220     		movs	r0, #2
+ 1736 017a 0029     		cmp	r1, #0
+ 1737 017c CED1     		bne	.L541
+ 1738              	.L574:
+ 1739 017e 0520     		movs	r0, #5
+ 1740 0180 4BE7     		b	.L563
+ 1741              	.L584:
+ 1742 0182 4B1E     		subs	r3, r1, #1
+ 1743 0184 0029     		cmp	r1, #0
+ 1744 0186 85D0     		beq	.L530
+ 1745 0188 1946     		mov	r1, r3
+ 1746 018a EBE7     		b	.L534
+ 1747              	.L585:
+ 1748 018c DB68     		ldr	r3, [r3, #12]
+ 1749 018e 13F0100F 		tst	r3, #16
+ 1750 0192 0CBF     		ite	eq
+ 1751 0194 0420     		moveq	r0, #4
+ 1752 0196 0320     		movne	r0, #3
+ 1753 0198 0029     		cmp	r1, #0
+ 1754 019a F0D0     		beq	.L574
+ 1755 019c BEE7     		b	.L541
+ 1756              	.L582:
+ 1757 019e C368     		ldr	r3, [r0, #12]
+ 1758 01a0 13F0100F 		tst	r3, #16
+ 1759 01a4 0CBF     		ite	eq
+ 1760 01a6 0420     		moveq	r0, #4
+ 1761 01a8 0320     		movne	r0, #3
+ 1762 01aa B7E7     		b	.L541
+ 1764              		.section	.text.FLASH_UserOptionByteConfig,"ax",%progbits
+ 1765              		.align	2
+ 1766              		.global	FLASH_UserOptionByteConfig
+ 1767              		.thumb
+ 1768              		.thumb_func
+ 1770              	FLASH_UserOptionByteConfig:
+ 1771              		@ args = 0, pretend = 0, frame = 0
+ 1772              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1773              		@ link register save eliminated.
+ 1774 0000 F0B4     		push	{r4, r5, r6, r7}
+ 1775 0002 48F6AB13 		movw	r3, #35243
+ 1776 0006 4FF40056 		mov	r6, #8192
+ 1777 000a 40F22314 		movw	r4, #291
+ 1778 000e C4F20206 		movt	r6, 16386
+ 1779 0012 CCF6EF53 		movt	r3, 52719
+ 1780 0016 C4F26754 		movt	r4, 17767
+ 1781 001a B460     		str	r4, [r6, #8]
+ 1782 001c B360     		str	r3, [r6, #8]
+ 1783 001e F368     		ldr	r3, [r6, #12]
+ 1784 0020 0746     		mov	r7, r0
+ 1785 0022 DB07     		lsls	r3, r3, #31
+ 1786 0024 2AD4     		bmi	.L607
+ 1787 0026 F368     		ldr	r3, [r6, #12]
+ 1788 0028 5807     		lsls	r0, r3, #29
+ 1789 002a 02D5     		bpl	.L625
+ 1790 002c 0220     		movs	r0, #2
+ 1791              	.L618:
+ 1792 002e F0BC     		pop	{r4, r5, r6, r7}
+ 1793 0030 7047     		bx	lr
+ 1794              	.L625:
+ 1795 0032 F368     		ldr	r3, [r6, #12]
+ 1796 0034 DB06     		lsls	r3, r3, #27
+ 1797 0036 41D4     		bmi	.L626
+ 1798              	.L623:
+ 1799 0038 4FF40050 		mov	r0, #8192
+ 1800 003c C4F20200 		movt	r0, 16386
+ 1801 0040 0469     		ldr	r4, [r0, #16]
+ 1802 0042 47F0F807 		orr	r7, r7, #248
+ 1803 0046 3943     		orrs	r1, r1, r7
+ 1804 0048 4FF47843 		mov	r3, #63488
+ 1805 004c C1F6FF73 		movt	r3, 8191
+ 1806 0050 44F01004 		orr	r4, r4, #16
+ 1807 0054 0A43     		orrs	r2, r2, r1
+ 1808 0056 0461     		str	r4, [r0, #16]
+ 1809 0058 5A80     		strh	r2, [r3, #2]	@ movhi
+ 1810 005a C368     		ldr	r3, [r0, #12]
+ 1811 005c DB07     		lsls	r3, r3, #31
+ 1812 005e 2FD4     		bmi	.L612
+ 1813 0060 C368     		ldr	r3, [r0, #12]
+ 1814 0062 5907     		lsls	r1, r3, #29
+ 1815 0064 4BD5     		bpl	.L627
+ 1816 0066 0220     		movs	r0, #2
+ 1817              	.L604:
+ 1818 0068 4FF40053 		mov	r3, #8192
+ 1819 006c C4F20203 		movt	r3, 16386
+ 1820 0070 1969     		ldr	r1, [r3, #16]
+ 1821 0072 41F6EF72 		movw	r2, #8175
+ 1822 0076 0A40     		ands	r2, r2, r1
+ 1823 0078 1A61     		str	r2, [r3, #16]
+ 1824 007a D8E7     		b	.L618
+ 1825              	.L607:
+ 1826 007c 41F6FF75 		movw	r5, #8191
+ 1827              	.L587:
+ 1828 0080 F468     		ldr	r4, [r6, #12]
+ 1829 0082 4FF40053 		mov	r3, #8192
+ 1830 0086 E007     		lsls	r0, r4, #31
+ 1831 0088 C4F20203 		movt	r3, 16386
+ 1832 008c 06D4     		bmi	.L628
+ 1833 008e DC68     		ldr	r4, [r3, #12]
+ 1834 0090 6007     		lsls	r0, r4, #29
+ 1835 0092 08D5     		bpl	.L629
+ 1836 0094 0220     		movs	r0, #2
+ 1837 0096 75B9     		cbnz	r5, .L594
+ 1838              	.L603:
+ 1839 0098 0520     		movs	r0, #5
+ 1840 009a C8E7     		b	.L618
+ 1841              	.L628:
+ 1842 009c 6B1E     		subs	r3, r5, #1
+ 1843 009e 002D     		cmp	r5, #0
+ 1844 00a0 FAD0     		beq	.L603
+ 1845 00a2 1D46     		mov	r5, r3
+ 1846 00a4 ECE7     		b	.L587
+ 1847              	.L629:
+ 1848 00a6 DB68     		ldr	r3, [r3, #12]
+ 1849 00a8 13F0100F 		tst	r3, #16
+ 1850 00ac 0CBF     		ite	eq
+ 1851 00ae 0420     		moveq	r0, #4
+ 1852 00b0 0320     		movne	r0, #3
+ 1853 00b2 002D     		cmp	r5, #0
+ 1854 00b4 F0D0     		beq	.L603
+ 1855              	.L594:
+ 1856 00b6 0428     		cmp	r0, #4
+ 1857 00b8 BED0     		beq	.L623
+ 1858 00ba B8E7     		b	.L618
+ 1859              	.L626:
+ 1860 00bc 0320     		movs	r0, #3
+ 1861 00be B6E7     		b	.L618
+ 1862              	.L612:
+ 1863 00c0 41F6FF71 		movw	r1, #8191
+ 1864              	.L596:
+ 1865 00c4 C268     		ldr	r2, [r0, #12]
+ 1866 00c6 4FF40053 		mov	r3, #8192
+ 1867 00ca D207     		lsls	r2, r2, #31
+ 1868 00cc C4F20203 		movt	r3, 16386
+ 1869 00d0 07D4     		bmi	.L630
+ 1870 00d2 DA68     		ldr	r2, [r3, #12]
+ 1871 00d4 5207     		lsls	r2, r2, #29
+ 1872 00d6 09D5     		bpl	.L631
+ 1873 00d8 0220     		movs	r0, #2
+ 1874 00da 0029     		cmp	r1, #0
+ 1875 00dc C4D1     		bne	.L604
+ 1876              	.L624:
+ 1877 00de 0520     		movs	r0, #5
+ 1878 00e0 A5E7     		b	.L618
+ 1879              	.L630:
+ 1880 00e2 4B1E     		subs	r3, r1, #1
+ 1881 00e4 0029     		cmp	r1, #0
+ 1882 00e6 D7D0     		beq	.L603
+ 1883 00e8 1946     		mov	r1, r3
+ 1884 00ea EBE7     		b	.L596
+ 1885              	.L631:
+ 1886 00ec DB68     		ldr	r3, [r3, #12]
+ 1887 00ee 13F0100F 		tst	r3, #16
+ 1888 00f2 0CBF     		ite	eq
+ 1889 00f4 0420     		moveq	r0, #4
+ 1890 00f6 0320     		movne	r0, #3
+ 1891 00f8 0029     		cmp	r1, #0
+ 1892 00fa F0D0     		beq	.L624
+ 1893 00fc B4E7     		b	.L604
+ 1894              	.L627:
+ 1895 00fe C368     		ldr	r3, [r0, #12]
+ 1896 0100 13F0100F 		tst	r3, #16
+ 1897 0104 0CBF     		ite	eq
+ 1898 0106 0420     		moveq	r0, #4
+ 1899 0108 0320     		movne	r0, #3
+ 1900 010a ADE7     		b	.L604
+ 1902              		.section	.text.FLASH_GetUserOptionByte,"ax",%progbits
+ 1903              		.align	2
+ 1904              		.global	FLASH_GetUserOptionByte
+ 1905              		.thumb
+ 1906              		.thumb_func
+ 1908              	FLASH_GetUserOptionByte:
+ 1909              		@ args = 0, pretend = 0, frame = 0
+ 1910              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1911              		@ link register save eliminated.
+ 1912 0000 4FF40053 		mov	r3, #8192
+ 1913 0004 C4F20203 		movt	r3, 16386
+ 1914 0008 D869     		ldr	r0, [r3, #28]
+ 1915 000a 8008     		lsrs	r0, r0, #2
+ 1916 000c 7047     		bx	lr
+ 1918 000e 00BF     		.section	.text.FLASH_GetWriteProtectionOptionByte,"ax",%progbits
+ 1919              		.align	2
+ 1920              		.global	FLASH_GetWriteProtectionOptionByte
+ 1921              		.thumb
+ 1922              		.thumb_func
+ 1924              	FLASH_GetWriteProtectionOptionByte:
+ 1925              		@ args = 0, pretend = 0, frame = 0
+ 1926              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1927              		@ link register save eliminated.
+ 1928 0000 4FF40053 		mov	r3, #8192
+ 1929 0004 C4F20203 		movt	r3, 16386
+ 1930 0008 186A     		ldr	r0, [r3, #32]
+ 1931 000a 7047     		bx	lr
+ 1933              		.section	.text.FLASH_GetReadOutProtectionStatus,"ax",%progbits
+ 1934              		.align	2
+ 1935              		.global	FLASH_GetReadOutProtectionStatus
+ 1936              		.thumb
+ 1937              		.thumb_func
+ 1939              	FLASH_GetReadOutProtectionStatus:
+ 1940              		@ args = 0, pretend = 0, frame = 0
+ 1941              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1942              		@ link register save eliminated.
+ 1943 0000 4FF40053 		mov	r3, #8192
+ 1944 0004 C4F20203 		movt	r3, 16386
+ 1945 0008 D869     		ldr	r0, [r3, #28]
+ 1946 000a C0F34000 		ubfx	r0, r0, #1, #1
+ 1947 000e 7047     		bx	lr
+ 1949              		.section	.text.FLASH_GetPrefetchBufferStatus,"ax",%progbits
+ 1950              		.align	2
+ 1951              		.global	FLASH_GetPrefetchBufferStatus
+ 1952              		.thumb
+ 1953              		.thumb_func
+ 1955              	FLASH_GetPrefetchBufferStatus:
+ 1956              		@ args = 0, pretend = 0, frame = 0
+ 1957              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1958              		@ link register save eliminated.
+ 1959 0000 4FF40053 		mov	r3, #8192
+ 1960 0004 C4F20203 		movt	r3, 16386
+ 1961 0008 1868     		ldr	r0, [r3, #0]
+ 1962 000a C0F34010 		ubfx	r0, r0, #5, #1
+ 1963 000e 7047     		bx	lr
+ 1965              		.section	.text.FLASH_ITConfig,"ax",%progbits
+ 1966              		.align	2
+ 1967              		.global	FLASH_ITConfig
+ 1968              		.thumb
+ 1969              		.thumb_func
+ 1971              	FLASH_ITConfig:
+ 1972              		@ args = 0, pretend = 0, frame = 0
+ 1973              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1974              		@ link register save eliminated.
+ 1975 0000 4FF40053 		mov	r3, #8192
+ 1976 0004 C4F20203 		movt	r3, 16386
+ 1977 0008 1A69     		ldr	r2, [r3, #16]
+ 1978 000a 19B9     		cbnz	r1, .L639
+ 1979 000c 22EA0000 		bic	r0, r2, r0
+ 1980 0010 1861     		str	r0, [r3, #16]
+ 1981 0012 7047     		bx	lr
+ 1982              	.L639:
+ 1983 0014 1043     		orrs	r0, r0, r2
+ 1984 0016 1861     		str	r0, [r3, #16]
+ 1985 0018 7047     		bx	lr
+ 1987 001a 00BF     		.section	.text.FLASH_GetFlagStatus,"ax",%progbits
+ 1988              		.align	2
+ 1989              		.global	FLASH_GetFlagStatus
+ 1990              		.thumb
+ 1991              		.thumb_func
+ 1993              	FLASH_GetFlagStatus:
+ 1994              		@ args = 0, pretend = 0, frame = 0
+ 1995              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1996              		@ link register save eliminated.
+ 1997 0000 4FF40053 		mov	r3, #8192
+ 1998 0004 0128     		cmp	r0, #1
+ 1999 0006 C4F20203 		movt	r3, 16386
+ 2000 000a 05D0     		beq	.L643
+ 2001 000c DB68     		ldr	r3, [r3, #12]
+ 2002 000e 1842     		tst	r0, r3
+ 2003 0010 0CBF     		ite	eq
+ 2004 0012 0020     		moveq	r0, #0
+ 2005 0014 0120     		movne	r0, #1
+ 2006 0016 7047     		bx	lr
+ 2007              	.L643:
+ 2008 0018 D869     		ldr	r0, [r3, #28]
+ 2009 001a 00F00100 		and	r0, r0, #1
+ 2010 001e 7047     		bx	lr
+ 2012              		.section	.text.FLASH_ClearFlag,"ax",%progbits
+ 2013              		.align	2
+ 2014              		.global	FLASH_ClearFlag
+ 2015              		.thumb
+ 2016              		.thumb_func
+ 2018              	FLASH_ClearFlag:
+ 2019              		@ args = 0, pretend = 0, frame = 0
+ 2020              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2021              		@ link register save eliminated.
+ 2022 0000 4FF40053 		mov	r3, #8192
+ 2023 0004 C4F20203 		movt	r3, 16386
+ 2024 0008 D860     		str	r0, [r3, #12]
+ 2025 000a 7047     		bx	lr
+ 2027              		.section	.text.FLASH_GetStatus,"ax",%progbits
+ 2028              		.align	2
+ 2029              		.global	FLASH_GetStatus
+ 2030              		.thumb
+ 2031              		.thumb_func
+ 2033              	FLASH_GetStatus:
+ 2034              		@ args = 0, pretend = 0, frame = 0
+ 2035              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2036              		@ link register save eliminated.
+ 2037 0000 4FF40053 		mov	r3, #8192
+ 2038 0004 C4F20203 		movt	r3, 16386
+ 2039 0008 DA68     		ldr	r2, [r3, #12]
+ 2040 000a D107     		lsls	r1, r2, #31
+ 2041 000c 0BD4     		bmi	.L647
+ 2042 000e DA68     		ldr	r2, [r3, #12]
+ 2043 0010 5207     		lsls	r2, r2, #29
+ 2044 0012 01D5     		bpl	.L650
+ 2045 0014 0220     		movs	r0, #2
+ 2046 0016 7047     		bx	lr
+ 2047              	.L650:
+ 2048 0018 DB68     		ldr	r3, [r3, #12]
+ 2049 001a 13F0100F 		tst	r3, #16
+ 2050 001e 0CBF     		ite	eq
+ 2051 0020 0420     		moveq	r0, #4
+ 2052 0022 0320     		movne	r0, #3
+ 2053 0024 7047     		bx	lr
+ 2054              	.L647:
+ 2055 0026 0120     		movs	r0, #1
+ 2056 0028 7047     		bx	lr
+ 2058 002a 00BF     		.section	.text.FLASH_GetBank1Status,"ax",%progbits
+ 2059              		.align	2
+ 2060              		.global	FLASH_GetBank1Status
+ 2061              		.thumb
+ 2062              		.thumb_func
+ 2064              	FLASH_GetBank1Status:
+ 2065              		@ args = 0, pretend = 0, frame = 0
+ 2066              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2067              		@ link register save eliminated.
+ 2068 0000 4FF40053 		mov	r3, #8192
+ 2069 0004 C4F20203 		movt	r3, 16386
+ 2070 0008 DA68     		ldr	r2, [r3, #12]
+ 2071 000a D207     		lsls	r2, r2, #31
+ 2072 000c 0BD4     		bmi	.L654
+ 2073 000e DA68     		ldr	r2, [r3, #12]
+ 2074 0010 5007     		lsls	r0, r2, #29
+ 2075 0012 01D5     		bpl	.L657
+ 2076 0014 0220     		movs	r0, #2
+ 2077 0016 7047     		bx	lr
+ 2078              	.L657:
+ 2079 0018 DB68     		ldr	r3, [r3, #12]
+ 2080 001a 13F0100F 		tst	r3, #16
+ 2081 001e 0CBF     		ite	eq
+ 2082 0020 0420     		moveq	r0, #4
+ 2083 0022 0320     		movne	r0, #3
+ 2084 0024 7047     		bx	lr
+ 2085              	.L654:
+ 2086 0026 0120     		movs	r0, #1
+ 2087 0028 7047     		bx	lr
+ 2089 002a 00BF     		.section	.text.FLASH_WaitForLastOperation,"ax",%progbits
+ 2090              		.align	2
+ 2091              		.global	FLASH_WaitForLastOperation
+ 2092              		.thumb
+ 2093              		.thumb_func
+ 2095              	FLASH_WaitForLastOperation:
+ 2096              		@ args = 0, pretend = 0, frame = 0
+ 2097              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2098              		@ link register save eliminated.
+ 2099 0000 4FF40053 		mov	r3, #8192
+ 2100 0004 C4F20203 		movt	r3, 16386
+ 2101 0008 DA68     		ldr	r2, [r3, #12]
+ 2102 000a 0146     		mov	r1, r0
+ 2103 000c D007     		lsls	r0, r2, #31
+ 2104 000e 0FD4     		bmi	.L679
+ 2105              	.L663:
+ 2106 0010 DA68     		ldr	r2, [r3, #12]
+ 2107 0012 5007     		lsls	r0, r2, #29
+ 2108 0014 03D5     		bpl	.L680
+ 2109 0016 0220     		movs	r0, #2
+ 2110 0018 49B9     		cbnz	r1, .L676
+ 2111              	.L673:
+ 2112 001a 0520     		movs	r0, #5
+ 2113 001c 7047     		bx	lr
+ 2114              	.L680:
+ 2115 001e DB68     		ldr	r3, [r3, #12]
+ 2116 0020 13F0100F 		tst	r3, #16
+ 2117 0024 0CBF     		ite	eq
+ 2118 0026 0420     		moveq	r0, #4
+ 2119 0028 0320     		movne	r0, #3
+ 2120 002a 0029     		cmp	r1, #0
+ 2121 002c F5D0     		beq	.L673
+ 2122              	.L676:
+ 2123 002e 7047     		bx	lr
+ 2124              	.L679:
+ 2125 0030 0029     		cmp	r1, #0
+ 2126 0032 F2D0     		beq	.L673
+ 2127 0034 0139     		subs	r1, r1, #1
+ 2128 0036 1846     		mov	r0, r3
+ 2129              	.L664:
+ 2130 0038 C268     		ldr	r2, [r0, #12]
+ 2131 003a 4FF40053 		mov	r3, #8192
+ 2132 003e D207     		lsls	r2, r2, #31
+ 2133 0040 C4F20203 		movt	r3, 16386
+ 2134 0044 E4D5     		bpl	.L663
+ 2135 0046 4B1E     		subs	r3, r1, #1
+ 2136 0048 0029     		cmp	r1, #0
+ 2137 004a E6D0     		beq	.L673
+ 2138 004c 1946     		mov	r1, r3
+ 2139 004e F3E7     		b	.L664
+ 2141              		.section	.text.FLASH_WaitForLastBank1Operation,"ax",%progbits
+ 2142              		.align	2
+ 2143              		.global	FLASH_WaitForLastBank1Operation
+ 2144              		.thumb
+ 2145              		.thumb_func
+ 2147              	FLASH_WaitForLastBank1Operation:
+ 2148              		@ args = 0, pretend = 0, frame = 0
+ 2149              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2150              		@ link register save eliminated.
+ 2151 0000 4FF40053 		mov	r3, #8192
+ 2152 0004 C4F20203 		movt	r3, 16386
+ 2153 0008 DA68     		ldr	r2, [r3, #12]
+ 2154 000a 0146     		mov	r1, r0
+ 2155 000c D007     		lsls	r0, r2, #31
+ 2156 000e 0FD4     		bmi	.L702
+ 2157              	.L686:
+ 2158 0010 DA68     		ldr	r2, [r3, #12]
+ 2159 0012 5207     		lsls	r2, r2, #29
+ 2160 0014 03D5     		bpl	.L703
+ 2161 0016 0220     		movs	r0, #2
+ 2162 0018 49B9     		cbnz	r1, .L699
+ 2163              	.L696:
+ 2164 001a 0520     		movs	r0, #5
+ 2165 001c 7047     		bx	lr
+ 2166              	.L703:
+ 2167 001e DB68     		ldr	r3, [r3, #12]
+ 2168 0020 13F0100F 		tst	r3, #16
+ 2169 0024 0CBF     		ite	eq
+ 2170 0026 0420     		moveq	r0, #4
+ 2171 0028 0320     		movne	r0, #3
+ 2172 002a 0029     		cmp	r1, #0
+ 2173 002c F5D0     		beq	.L696
+ 2174              	.L699:
+ 2175 002e 7047     		bx	lr
+ 2176              	.L702:
+ 2177 0030 0029     		cmp	r1, #0
+ 2178 0032 F2D0     		beq	.L696
+ 2179 0034 0139     		subs	r1, r1, #1
+ 2180 0036 1846     		mov	r0, r3
+ 2181              	.L687:
+ 2182 0038 C268     		ldr	r2, [r0, #12]
+ 2183 003a 4FF40053 		mov	r3, #8192
+ 2184 003e D207     		lsls	r2, r2, #31
+ 2185 0040 C4F20203 		movt	r3, 16386
+ 2186 0044 E4D5     		bpl	.L686
+ 2187 0046 4B1E     		subs	r3, r1, #1
+ 2188 0048 0029     		cmp	r1, #0
+ 2189 004a E6D0     		beq	.L696
+ 2190 004c 1946     		mov	r1, r3
+ 2191 004e F3E7     		b	.L687
+ 2193              		.ident	"GCC: (GNU) 4.7.0"
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 stm32f10x_flash.c
+     /tmp/ccIaEbr4.s:16     .text.FLASH_SetLatency:0000000000000000 $t
+     /tmp/ccIaEbr4.s:21     .text.FLASH_SetLatency:0000000000000000 FLASH_SetLatency
+     /tmp/ccIaEbr4.s:34     .text.FLASH_HalfCycleAccessCmd:0000000000000000 $t
+     /tmp/ccIaEbr4.s:39     .text.FLASH_HalfCycleAccessCmd:0000000000000000 FLASH_HalfCycleAccessCmd
+     /tmp/ccIaEbr4.s:54     .text.FLASH_PrefetchBufferCmd:0000000000000000 $t
+     /tmp/ccIaEbr4.s:59     .text.FLASH_PrefetchBufferCmd:0000000000000000 FLASH_PrefetchBufferCmd
+     /tmp/ccIaEbr4.s:74     .text.FLASH_Unlock:0000000000000000 $t
+     /tmp/ccIaEbr4.s:79     .text.FLASH_Unlock:0000000000000000 FLASH_Unlock
+     /tmp/ccIaEbr4.s:94     .text.FLASH_UnlockBank1:0000000000000000 $t
+     /tmp/ccIaEbr4.s:99     .text.FLASH_UnlockBank1:0000000000000000 FLASH_UnlockBank1
+     /tmp/ccIaEbr4.s:114    .text.FLASH_Lock:0000000000000000 $t
+     /tmp/ccIaEbr4.s:119    .text.FLASH_Lock:0000000000000000 FLASH_Lock
+     /tmp/ccIaEbr4.s:131    .text.FLASH_LockBank1:0000000000000000 $t
+     /tmp/ccIaEbr4.s:136    .text.FLASH_LockBank1:0000000000000000 FLASH_LockBank1
+     /tmp/ccIaEbr4.s:148    .text.FLASH_ErasePage:0000000000000000 $t
+     /tmp/ccIaEbr4.s:153    .text.FLASH_ErasePage:0000000000000000 FLASH_ErasePage
+     /tmp/ccIaEbr4.s:281    .text.FLASH_EraseAllPages:0000000000000000 $t
+     /tmp/ccIaEbr4.s:286    .text.FLASH_EraseAllPages:0000000000000000 FLASH_EraseAllPages
+     /tmp/ccIaEbr4.s:408    .text.FLASH_EraseAllBank1Pages:0000000000000000 $t
+     /tmp/ccIaEbr4.s:413    .text.FLASH_EraseAllBank1Pages:0000000000000000 FLASH_EraseAllBank1Pages
+     /tmp/ccIaEbr4.s:535    .text.FLASH_EraseOptionBytes:0000000000000000 $t
+     /tmp/ccIaEbr4.s:540    .text.FLASH_EraseOptionBytes:0000000000000000 FLASH_EraseOptionBytes
+     /tmp/ccIaEbr4.s:731    .text.FLASH_ProgramWord:0000000000000000 $t
+     /tmp/ccIaEbr4.s:736    .text.FLASH_ProgramWord:0000000000000000 FLASH_ProgramWord
+     /tmp/ccIaEbr4.s:916    .text.FLASH_ProgramHalfWord:0000000000000000 $t
+     /tmp/ccIaEbr4.s:921    .text.FLASH_ProgramHalfWord:0000000000000000 FLASH_ProgramHalfWord
+     /tmp/ccIaEbr4.s:1043   .text.FLASH_ProgramOptionByteData:0000000000000000 $t
+     /tmp/ccIaEbr4.s:1048   .text.FLASH_ProgramOptionByteData:0000000000000000 FLASH_ProgramOptionByteData
+     /tmp/ccIaEbr4.s:1177   .text.FLASH_EnableWriteProtection:0000000000000000 $t
+     /tmp/ccIaEbr4.s:1182   .text.FLASH_EnableWriteProtection:0000000000000000 FLASH_EnableWriteProtection
+     /tmp/ccIaEbr4.s:1554   .text.FLASH_ReadOutProtection:0000000000000000 $t
+     /tmp/ccIaEbr4.s:1559   .text.FLASH_ReadOutProtection:0000000000000000 FLASH_ReadOutProtection
+     /tmp/ccIaEbr4.s:1765   .text.FLASH_UserOptionByteConfig:0000000000000000 $t
+     /tmp/ccIaEbr4.s:1770   .text.FLASH_UserOptionByteConfig:0000000000000000 FLASH_UserOptionByteConfig
+     /tmp/ccIaEbr4.s:1903   .text.FLASH_GetUserOptionByte:0000000000000000 $t
+     /tmp/ccIaEbr4.s:1908   .text.FLASH_GetUserOptionByte:0000000000000000 FLASH_GetUserOptionByte
+     /tmp/ccIaEbr4.s:1919   .text.FLASH_GetWriteProtectionOptionByte:0000000000000000 $t
+     /tmp/ccIaEbr4.s:1924   .text.FLASH_GetWriteProtectionOptionByte:0000000000000000 FLASH_GetWriteProtectionOptionByte
+     /tmp/ccIaEbr4.s:1934   .text.FLASH_GetReadOutProtectionStatus:0000000000000000 $t
+     /tmp/ccIaEbr4.s:1939   .text.FLASH_GetReadOutProtectionStatus:0000000000000000 FLASH_GetReadOutProtectionStatus
+     /tmp/ccIaEbr4.s:1950   .text.FLASH_GetPrefetchBufferStatus:0000000000000000 $t
+     /tmp/ccIaEbr4.s:1955   .text.FLASH_GetPrefetchBufferStatus:0000000000000000 FLASH_GetPrefetchBufferStatus
+     /tmp/ccIaEbr4.s:1966   .text.FLASH_ITConfig:0000000000000000 $t
+     /tmp/ccIaEbr4.s:1971   .text.FLASH_ITConfig:0000000000000000 FLASH_ITConfig
+     /tmp/ccIaEbr4.s:1988   .text.FLASH_GetFlagStatus:0000000000000000 $t
+     /tmp/ccIaEbr4.s:1993   .text.FLASH_GetFlagStatus:0000000000000000 FLASH_GetFlagStatus
+     /tmp/ccIaEbr4.s:2013   .text.FLASH_ClearFlag:0000000000000000 $t
+     /tmp/ccIaEbr4.s:2018   .text.FLASH_ClearFlag:0000000000000000 FLASH_ClearFlag
+     /tmp/ccIaEbr4.s:2028   .text.FLASH_GetStatus:0000000000000000 $t
+     /tmp/ccIaEbr4.s:2033   .text.FLASH_GetStatus:0000000000000000 FLASH_GetStatus
+     /tmp/ccIaEbr4.s:2059   .text.FLASH_GetBank1Status:0000000000000000 $t
+     /tmp/ccIaEbr4.s:2064   .text.FLASH_GetBank1Status:0000000000000000 FLASH_GetBank1Status
+     /tmp/ccIaEbr4.s:2090   .text.FLASH_WaitForLastOperation:0000000000000000 $t
+     /tmp/ccIaEbr4.s:2095   .text.FLASH_WaitForLastOperation:0000000000000000 FLASH_WaitForLastOperation
+     /tmp/ccIaEbr4.s:2142   .text.FLASH_WaitForLastBank1Operation:0000000000000000 $t
+     /tmp/ccIaEbr4.s:2147   .text.FLASH_WaitForLastBank1Operation:0000000000000000 FLASH_WaitForLastBank1Operation
+
+NO UNDEFINED SYMBOLS

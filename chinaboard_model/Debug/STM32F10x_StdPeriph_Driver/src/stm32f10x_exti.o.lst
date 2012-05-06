@@ -1,0 +1,216 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 2
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"stm32f10x_exti.c"
+  15              		.section	.text.EXTI_DeInit,"ax",%progbits
+  16              		.align	2
+  17              		.global	EXTI_DeInit
+  18              		.thumb
+  19              		.thumb_func
+  21              	EXTI_DeInit:
+  22              		@ args = 0, pretend = 0, frame = 0
+  23              		@ frame_needed = 0, uses_anonymous_args = 0
+  24              		@ link register save eliminated.
+  25 0000 4FF48063 		mov	r3, #1024
+  26 0004 4FF6FF71 		movw	r1, #65535
+  27 0008 C4F20103 		movt	r3, 16385
+  28 000c 0022     		movs	r2, #0
+  29 000e C0F20F01 		movt	r1, 15
+  30 0012 1A60     		str	r2, [r3, #0]
+  31 0014 5A60     		str	r2, [r3, #4]
+  32 0016 9A60     		str	r2, [r3, #8]
+  33 0018 DA60     		str	r2, [r3, #12]
+  34 001a 5961     		str	r1, [r3, #20]
+  35 001c 7047     		bx	lr
+  37 001e 00BF     		.section	.text.EXTI_Init,"ax",%progbits
+  38              		.align	2
+  39              		.global	EXTI_Init
+  40              		.thumb
+  41              		.thumb_func
+  43              	EXTI_Init:
+  44              		@ args = 0, pretend = 0, frame = 0
+  45              		@ frame_needed = 0, uses_anonymous_args = 0
+  46              		@ link register save eliminated.
+  47 0000 8379     		ldrb	r3, [r0, #6]	@ zero_extendqisi2
+  48 0002 30B4     		push	{r4, r5}
+  49 0004 3BB3     		cbz	r3, .L3
+  50 0006 4FF48063 		mov	r3, #1024
+  51 000a C4F20103 		movt	r3, 16385
+  52 000e 0168     		ldr	r1, [r0, #0]
+  53 0010 1A68     		ldr	r2, [r3, #0]
+  54 0012 CC43     		mvns	r4, r1
+  55 0014 2240     		ands	r2, r2, r4
+  56 0016 1A60     		str	r2, [r3, #0]
+  57 0018 5D68     		ldr	r5, [r3, #4]
+  58 001a 0279     		ldrb	r2, [r0, #4]	@ zero_extendqisi2
+  59 001c 2C40     		ands	r4, r4, r5
+  60 001e 02F18042 		add	r2, r2, #1073741824
+  61 0022 5C60     		str	r4, [r3, #4]
+  62 0024 02F58232 		add	r2, r2, #66560
+  63 0028 1568     		ldr	r5, [r2, #0]
+  64 002a 4479     		ldrb	r4, [r0, #5]	@ zero_extendqisi2
+  65 002c 2943     		orrs	r1, r1, r5
+  66 002e 1160     		str	r1, [r2, #0]
+  67 0030 0268     		ldr	r2, [r0, #0]
+  68 0032 9868     		ldr	r0, [r3, #8]
+  69 0034 D143     		mvns	r1, r2
+  70 0036 0840     		ands	r0, r0, r1
+  71 0038 9860     		str	r0, [r3, #8]
+  72 003a D868     		ldr	r0, [r3, #12]
+  73 003c 102C     		cmp	r4, #16
+  74 003e 01EA0001 		and	r1, r1, r0
+  75 0042 D960     		str	r1, [r3, #12]
+  76 0044 13D0     		beq	.L7
+  77 0046 04F18044 		add	r4, r4, #1073741824
+  78 004a 04F58234 		add	r4, r4, #66560
+  79 004e 2368     		ldr	r3, [r4, #0]
+  80 0050 1A43     		orrs	r2, r2, r3
+  81 0052 2260     		str	r2, [r4, #0]
+  82 0054 09E0     		b	.L2
+  83              	.L3:
+  84 0056 0379     		ldrb	r3, [r0, #4]	@ zero_extendqisi2
+  85 0058 0168     		ldr	r1, [r0, #0]
+  86 005a 03F18043 		add	r3, r3, #1073741824
+  87 005e 03F58233 		add	r3, r3, #66560
+  88 0062 1A68     		ldr	r2, [r3, #0]
+  89 0064 22EA0102 		bic	r2, r2, r1
+  90 0068 1A60     		str	r2, [r3, #0]
+  91              	.L2:
+  92 006a 30BC     		pop	{r4, r5}
+  93 006c 7047     		bx	lr
+  94              	.L7:
+  95 006e 9968     		ldr	r1, [r3, #8]
+  96 0070 1143     		orrs	r1, r1, r2
+  97 0072 9960     		str	r1, [r3, #8]
+  98 0074 D968     		ldr	r1, [r3, #12]
+  99 0076 0A43     		orrs	r2, r2, r1
+ 100 0078 DA60     		str	r2, [r3, #12]
+ 101 007a F6E7     		b	.L2
+ 103              		.section	.text.EXTI_StructInit,"ax",%progbits
+ 104              		.align	2
+ 105              		.global	EXTI_StructInit
+ 106              		.thumb
+ 107              		.thumb_func
+ 109              	EXTI_StructInit:
+ 110              		@ args = 0, pretend = 0, frame = 0
+ 111              		@ frame_needed = 0, uses_anonymous_args = 0
+ 112              		@ link register save eliminated.
+ 113 0000 0023     		movs	r3, #0
+ 114 0002 0C22     		movs	r2, #12
+ 115 0004 0360     		str	r3, [r0, #0]
+ 116 0006 0371     		strb	r3, [r0, #4]
+ 117 0008 4271     		strb	r2, [r0, #5]
+ 118 000a 8371     		strb	r3, [r0, #6]
+ 119 000c 7047     		bx	lr
+ 121 000e 00BF     		.section	.text.EXTI_GenerateSWInterrupt,"ax",%progbits
+ 122              		.align	2
+ 123              		.global	EXTI_GenerateSWInterrupt
+ 124              		.thumb
+ 125              		.thumb_func
+ 127              	EXTI_GenerateSWInterrupt:
+ 128              		@ args = 0, pretend = 0, frame = 0
+ 129              		@ frame_needed = 0, uses_anonymous_args = 0
+ 130              		@ link register save eliminated.
+ 131 0000 4FF48063 		mov	r3, #1024
+ 132 0004 C4F20103 		movt	r3, 16385
+ 133 0008 1A69     		ldr	r2, [r3, #16]
+ 134 000a 1043     		orrs	r0, r0, r2
+ 135 000c 1861     		str	r0, [r3, #16]
+ 136 000e 7047     		bx	lr
+ 138              		.section	.text.EXTI_GetFlagStatus,"ax",%progbits
+ 139              		.align	2
+ 140              		.global	EXTI_GetFlagStatus
+ 141              		.thumb
+ 142              		.thumb_func
+ 144              	EXTI_GetFlagStatus:
+ 145              		@ args = 0, pretend = 0, frame = 0
+ 146              		@ frame_needed = 0, uses_anonymous_args = 0
+ 147              		@ link register save eliminated.
+ 148 0000 4FF48063 		mov	r3, #1024
+ 149 0004 C4F20103 		movt	r3, 16385
+ 150 0008 5B69     		ldr	r3, [r3, #20]
+ 151 000a 1842     		tst	r0, r3
+ 152 000c 0CBF     		ite	eq
+ 153 000e 0020     		moveq	r0, #0
+ 154 0010 0120     		movne	r0, #1
+ 155 0012 7047     		bx	lr
+ 157              		.section	.text.EXTI_ClearFlag,"ax",%progbits
+ 158              		.align	2
+ 159              		.global	EXTI_ClearFlag
+ 160              		.thumb
+ 161              		.thumb_func
+ 163              	EXTI_ClearFlag:
+ 164              		@ args = 0, pretend = 0, frame = 0
+ 165              		@ frame_needed = 0, uses_anonymous_args = 0
+ 166              		@ link register save eliminated.
+ 167 0000 4FF48063 		mov	r3, #1024
+ 168 0004 C4F20103 		movt	r3, 16385
+ 169 0008 5861     		str	r0, [r3, #20]
+ 170 000a 7047     		bx	lr
+ 172              		.section	.text.EXTI_GetITStatus,"ax",%progbits
+ 173              		.align	2
+ 174              		.global	EXTI_GetITStatus
+ 175              		.thumb
+ 176              		.thumb_func
+ 178              	EXTI_GetITStatus:
+ 179              		@ args = 0, pretend = 0, frame = 0
+ 180              		@ frame_needed = 0, uses_anonymous_args = 0
+ 181              		@ link register save eliminated.
+ 182 0000 4FF48063 		mov	r3, #1024
+ 183 0004 C4F20103 		movt	r3, 16385
+ 184 0008 1A68     		ldr	r2, [r3, #0]
+ 185 000a 5B69     		ldr	r3, [r3, #20]
+ 186 000c 0340     		ands	r3, r0, r3
+ 187 000e 04D0     		beq	.L14
+ 188 0010 1042     		tst	r0, r2
+ 189 0012 0CBF     		ite	eq
+ 190 0014 0020     		moveq	r0, #0
+ 191 0016 0120     		movne	r0, #1
+ 192 0018 7047     		bx	lr
+ 193              	.L14:
+ 194 001a 1846     		mov	r0, r3
+ 195 001c 7047     		bx	lr
+ 197 001e 00BF     		.section	.text.EXTI_ClearITPendingBit,"ax",%progbits
+ 198              		.align	2
+ 199              		.global	EXTI_ClearITPendingBit
+ 200              		.thumb
+ 201              		.thumb_func
+ 203              	EXTI_ClearITPendingBit:
+ 204              		@ args = 0, pretend = 0, frame = 0
+ 205              		@ frame_needed = 0, uses_anonymous_args = 0
+ 206              		@ link register save eliminated.
+ 207 0000 4FF48063 		mov	r3, #1024
+ 208 0004 C4F20103 		movt	r3, 16385
+ 209 0008 5861     		str	r0, [r3, #20]
+ 210 000a 7047     		bx	lr
+ 212              		.ident	"GCC: (GNU) 4.7.0"
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 stm32f10x_exti.c
+     /tmp/ccmxzb54.s:16     .text.EXTI_DeInit:0000000000000000 $t
+     /tmp/ccmxzb54.s:21     .text.EXTI_DeInit:0000000000000000 EXTI_DeInit
+     /tmp/ccmxzb54.s:38     .text.EXTI_Init:0000000000000000 $t
+     /tmp/ccmxzb54.s:43     .text.EXTI_Init:0000000000000000 EXTI_Init
+     /tmp/ccmxzb54.s:104    .text.EXTI_StructInit:0000000000000000 $t
+     /tmp/ccmxzb54.s:109    .text.EXTI_StructInit:0000000000000000 EXTI_StructInit
+     /tmp/ccmxzb54.s:122    .text.EXTI_GenerateSWInterrupt:0000000000000000 $t
+     /tmp/ccmxzb54.s:127    .text.EXTI_GenerateSWInterrupt:0000000000000000 EXTI_GenerateSWInterrupt
+     /tmp/ccmxzb54.s:139    .text.EXTI_GetFlagStatus:0000000000000000 $t
+     /tmp/ccmxzb54.s:144    .text.EXTI_GetFlagStatus:0000000000000000 EXTI_GetFlagStatus
+     /tmp/ccmxzb54.s:158    .text.EXTI_ClearFlag:0000000000000000 $t
+     /tmp/ccmxzb54.s:163    .text.EXTI_ClearFlag:0000000000000000 EXTI_ClearFlag
+     /tmp/ccmxzb54.s:173    .text.EXTI_GetITStatus:0000000000000000 $t
+     /tmp/ccmxzb54.s:178    .text.EXTI_GetITStatus:0000000000000000 EXTI_GetITStatus
+     /tmp/ccmxzb54.s:198    .text.EXTI_ClearITPendingBit:0000000000000000 $t
+     /tmp/ccmxzb54.s:203    .text.EXTI_ClearITPendingBit:0000000000000000 EXTI_ClearITPendingBit
+
+NO UNDEFINED SYMBOLS

@@ -1,0 +1,838 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 2
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"stm32f10x_gpio.c"
+  15              		.section	.text.GPIO_DeInit,"ax",%progbits
+  16              		.align	2
+  17              		.global	GPIO_DeInit
+  18              		.thumb
+  19              		.thumb_func
+  21              	GPIO_DeInit:
+  22              		@ args = 0, pretend = 0, frame = 0
+  23              		@ frame_needed = 0, uses_anonymous_args = 0
+  24 0000 08B5     		push	{r3, lr}
+  25 0002 4FF40063 		mov	r3, #2048
+  26 0006 C4F20103 		movt	r3, 16385
+  27 000a 9842     		cmp	r0, r3
+  28 000c 30D0     		beq	.L10
+  29 000e 4FF44063 		mov	r3, #3072
+  30 0012 C4F20103 		movt	r3, 16385
+  31 0016 9842     		cmp	r0, r3
+  32 0018 34D0     		beq	.L11
+  33 001a 4FF48053 		mov	r3, #4096
+  34 001e C4F20103 		movt	r3, 16385
+  35 0022 9842     		cmp	r0, r3
+  36 0024 38D0     		beq	.L12
+  37 0026 4FF4A053 		mov	r3, #5120
+  38 002a C4F20103 		movt	r3, 16385
+  39 002e 9842     		cmp	r0, r3
+  40 0030 3CD0     		beq	.L13
+  41 0032 4FF4C053 		mov	r3, #6144
+  42 0036 C4F20103 		movt	r3, 16385
+  43 003a 9842     		cmp	r0, r3
+  44 003c 40D0     		beq	.L14
+  45 003e 4FF4E053 		mov	r3, #7168
+  46 0042 C4F20103 		movt	r3, 16385
+  47 0046 9842     		cmp	r0, r3
+  48 0048 44D0     		beq	.L15
+  49 004a 4FF40053 		mov	r3, #8192
+  50 004e C4F20103 		movt	r3, 16385
+  51 0052 9842     		cmp	r0, r3
+  52 0054 00D0     		beq	.L16
+  53 0056 08BD     		pop	{r3, pc}
+  54              	.L16:
+  55 0058 0121     		movs	r1, #1
+  56 005a 4FF48070 		mov	r0, #256
+  57 005e FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+  58 0062 4FF48070 		mov	r0, #256
+  59 0066 0021     		movs	r1, #0
+  60 0068 BDE80840 		pop	{r3, lr}
+  61 006c FFF7FEBF 		b	RCC_APB2PeriphResetCmd
+  62              	.L10:
+  63 0070 0420     		movs	r0, #4
+  64 0072 0121     		movs	r1, #1
+  65 0074 FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+  66 0078 0420     		movs	r0, #4
+  67 007a 0021     		movs	r1, #0
+  68 007c BDE80840 		pop	{r3, lr}
+  69 0080 FFF7FEBF 		b	RCC_APB2PeriphResetCmd
+  70              	.L11:
+  71 0084 0820     		movs	r0, #8
+  72 0086 0121     		movs	r1, #1
+  73 0088 FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+  74 008c 0820     		movs	r0, #8
+  75 008e 0021     		movs	r1, #0
+  76 0090 BDE80840 		pop	{r3, lr}
+  77 0094 FFF7FEBF 		b	RCC_APB2PeriphResetCmd
+  78              	.L12:
+  79 0098 1020     		movs	r0, #16
+  80 009a 0121     		movs	r1, #1
+  81 009c FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+  82 00a0 1020     		movs	r0, #16
+  83 00a2 0021     		movs	r1, #0
+  84 00a4 BDE80840 		pop	{r3, lr}
+  85 00a8 FFF7FEBF 		b	RCC_APB2PeriphResetCmd
+  86              	.L13:
+  87 00ac 2020     		movs	r0, #32
+  88 00ae 0121     		movs	r1, #1
+  89 00b0 FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+  90 00b4 2020     		movs	r0, #32
+  91 00b6 0021     		movs	r1, #0
+  92 00b8 BDE80840 		pop	{r3, lr}
+  93 00bc FFF7FEBF 		b	RCC_APB2PeriphResetCmd
+  94              	.L14:
+  95 00c0 4020     		movs	r0, #64
+  96 00c2 0121     		movs	r1, #1
+  97 00c4 FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+  98 00c8 4020     		movs	r0, #64
+  99 00ca 0021     		movs	r1, #0
+ 100 00cc BDE80840 		pop	{r3, lr}
+ 101 00d0 FFF7FEBF 		b	RCC_APB2PeriphResetCmd
+ 102              	.L15:
+ 103 00d4 8020     		movs	r0, #128
+ 104 00d6 0121     		movs	r1, #1
+ 105 00d8 FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+ 106 00dc 8020     		movs	r0, #128
+ 107 00de 0021     		movs	r1, #0
+ 108 00e0 BDE80840 		pop	{r3, lr}
+ 109 00e4 FFF7FEBF 		b	RCC_APB2PeriphResetCmd
+ 111              		.section	.text.GPIO_AFIODeInit,"ax",%progbits
+ 112              		.align	2
+ 113              		.global	GPIO_AFIODeInit
+ 114              		.thumb
+ 115              		.thumb_func
+ 117              	GPIO_AFIODeInit:
+ 118              		@ args = 0, pretend = 0, frame = 0
+ 119              		@ frame_needed = 0, uses_anonymous_args = 0
+ 120 0000 0120     		movs	r0, #1
+ 121 0002 0146     		mov	r1, r0
+ 122 0004 08B5     		push	{r3, lr}
+ 123 0006 FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+ 124 000a 0120     		movs	r0, #1
+ 125 000c 0021     		movs	r1, #0
+ 126 000e BDE80840 		pop	{r3, lr}
+ 127 0012 FFF7FEBF 		b	RCC_APB2PeriphResetCmd
+ 129 0016 00BF     		.section	.text.GPIO_Init,"ax",%progbits
+ 130              		.align	2
+ 131              		.global	GPIO_Init
+ 132              		.thumb
+ 133              		.thumb_func
+ 135              	GPIO_Init:
+ 136              		@ args = 0, pretend = 0, frame = 0
+ 137              		@ frame_needed = 0, uses_anonymous_args = 0
+ 138              		@ link register save eliminated.
+ 139 0000 CA78     		ldrb	r2, [r1, #3]	@ zero_extendqisi2
+ 140 0002 30B4     		push	{r4, r5}
+ 141 0004 D306     		lsls	r3, r2, #27
+ 142 0006 48BF     		it	mi
+ 143 0008 8B78     		ldrbmi	r3, [r1, #2]	@ zero_extendqisi2
+ 144 000a 02F00F04 		and	r4, r2, #15
+ 145 000e 48BF     		it	mi
+ 146 0010 1C43     		orrmi	r4, r4, r3
+ 147 0012 0B88     		ldrh	r3, [r1, #0]
+ 148 0014 13F0FF0F 		tst	r3, #255
+ 149 0018 3CD0     		beq	.L21
+ 150 001a 482A     		cmp	r2, #72
+ 151 001c 0168     		ldr	r1, [r0, #0]
+ 152 001e 00F0A480 		beq	.L22
+ 153 0022 282A     		cmp	r2, #40
+ 154 0024 00F00981 		beq	.L23
+ 155 0028 13F0010F 		tst	r3, #1
+ 156 002c 1CBF     		itt	ne
+ 157 002e 21F00F01 		bicne	r1, r1, #15
+ 158 0032 2143     		orrne	r1, r4, r1
+ 159 0034 13F0020F 		tst	r3, #2
+ 160 0038 1CBF     		itt	ne
+ 161 003a 21F0F001 		bicne	r1, r1, #240
+ 162 003e 41EA0411 		orrne	r1, r1, r4, lsl #4
+ 163 0042 13F0040F 		tst	r3, #4
+ 164 0046 1CBF     		itt	ne
+ 165 0048 21F47061 		bicne	r1, r1, #3840
+ 166 004c 41EA0421 		orrne	r1, r1, r4, lsl #8
+ 167 0050 13F0080F 		tst	r3, #8
+ 168 0054 1CBF     		itt	ne
+ 169 0056 21F47041 		bicne	r1, r1, #61440
+ 170 005a 41EA0431 		orrne	r1, r1, r4, lsl #12
+ 171 005e 13F0100F 		tst	r3, #16
+ 172 0062 1CBF     		itt	ne
+ 173 0064 21F47021 		bicne	r1, r1, #983040
+ 174 0068 41EA0441 		orrne	r1, r1, r4, lsl #16
+ 175 006c 13F0200F 		tst	r3, #32
+ 176 0070 1CBF     		itt	ne
+ 177 0072 21F47001 		bicne	r1, r1, #15728640
+ 178 0076 41EA0451 		orrne	r1, r1, r4, lsl #20
+ 179 007a 13F0400F 		tst	r3, #64
+ 180 007e 1CBF     		itt	ne
+ 181 0080 21F07061 		bicne	r1, r1, #251658240
+ 182 0084 41EA0461 		orrne	r1, r1, r4, lsl #24
+ 183 0088 13F0800F 		tst	r3, #128
+ 184 008c 18BF     		it	ne
+ 185 008e 64F31F71 		bfine	r1, r4, #28, #4
+ 186              	.L32:
+ 187 0092 0160     		str	r1, [r0, #0]
+ 188              	.L21:
+ 189 0094 FF2B     		cmp	r3, #255
+ 190 0096 33D9     		bls	.L18
+ 191 0098 482A     		cmp	r2, #72
+ 192 009a 4168     		ldr	r1, [r0, #4]
+ 193 009c 32D0     		beq	.L50
+ 194 009e 282A     		cmp	r2, #40
+ 195 00a0 00F09A80 		beq	.L51
+ 196 00a4 DA05     		lsls	r2, r3, #23
+ 197 00a6 44BF     		itt	mi
+ 198 00a8 21F00F01 		bicmi	r1, r1, #15
+ 199 00ac 2143     		orrmi	r1, r4, r1
+ 200 00ae 9A05     		lsls	r2, r3, #22
+ 201 00b0 44BF     		itt	mi
+ 202 00b2 21F0F001 		bicmi	r1, r1, #240
+ 203 00b6 41EA0411 		orrmi	r1, r1, r4, lsl #4
+ 204 00ba 5A05     		lsls	r2, r3, #21
+ 205 00bc 44BF     		itt	mi
+ 206 00be 21F47061 		bicmi	r1, r1, #3840
+ 207 00c2 41EA0421 		orrmi	r1, r1, r4, lsl #8
+ 208 00c6 1A05     		lsls	r2, r3, #20
+ 209 00c8 44BF     		itt	mi
+ 210 00ca 21F47041 		bicmi	r1, r1, #61440
+ 211 00ce 41EA0431 		orrmi	r1, r1, r4, lsl #12
+ 212 00d2 DA04     		lsls	r2, r3, #19
+ 213 00d4 44BF     		itt	mi
+ 214 00d6 21F47021 		bicmi	r1, r1, #983040
+ 215 00da 41EA0441 		orrmi	r1, r1, r4, lsl #16
+ 216 00de 9A04     		lsls	r2, r3, #18
+ 217 00e0 44BF     		itt	mi
+ 218 00e2 21F47001 		bicmi	r1, r1, #15728640
+ 219 00e6 41EA0451 		orrmi	r1, r1, r4, lsl #20
+ 220 00ea 5A04     		lsls	r2, r3, #17
+ 221 00ec 44BF     		itt	mi
+ 222 00ee 21F07061 		bicmi	r1, r1, #251658240
+ 223 00f2 41EA0461 		orrmi	r1, r1, r4, lsl #24
+ 224 00f6 1B04     		lsls	r3, r3, #16
+ 225 00f8 48BF     		it	mi
+ 226 00fa 64F31F71 		bfimi	r1, r4, #28, #4
+ 227              	.L60:
+ 228 00fe 4160     		str	r1, [r0, #4]
+ 229              	.L18:
+ 230 0100 30BC     		pop	{r4, r5}
+ 231 0102 7047     		bx	lr
+ 232              	.L50:
+ 233 0104 03F48072 		and	r2, r3, #256
+ 234 0108 92B2     		uxth	r2, r2
+ 235 010a 002A     		cmp	r2, #0
+ 236 010c 40F0CE80 		bne	.L80
+ 237              	.L69:
+ 238 0110 03F40072 		and	r2, r3, #512
+ 239 0114 92B2     		uxth	r2, r2
+ 240 0116 002A     		cmp	r2, #0
+ 241 0118 40F0C280 		bne	.L81
+ 242              	.L70:
+ 243 011c 03F48062 		and	r2, r3, #1024
+ 244 0120 92B2     		uxth	r2, r2
+ 245 0122 002A     		cmp	r2, #0
+ 246 0124 40F0D980 		bne	.L82
+ 247              	.L71:
+ 248 0128 03F40062 		and	r2, r3, #2048
+ 249 012c 92B2     		uxth	r2, r2
+ 250 012e 002A     		cmp	r2, #0
+ 251 0130 40F0CD80 		bne	.L83
+ 252              	.L72:
+ 253 0134 03F48052 		and	r2, r3, #4096
+ 254 0138 92B2     		uxth	r2, r2
+ 255 013a 002A     		cmp	r2, #0
+ 256 013c 40F0C180 		bne	.L84
+ 257              	.L73:
+ 258 0140 03F40052 		and	r2, r3, #8192
+ 259 0144 92B2     		uxth	r2, r2
+ 260 0146 002A     		cmp	r2, #0
+ 261 0148 40F0B580 		bne	.L85
+ 262              	.L74:
+ 263 014c 03F48042 		and	r2, r3, #16384
+ 264 0150 92B2     		uxth	r2, r2
+ 265 0152 002A     		cmp	r2, #0
+ 266 0154 40F0C780 		bne	.L86
+ 267              	.L75:
+ 268 0158 03F40043 		and	r3, r3, #32768
+ 269 015c 9BB2     		uxth	r3, r3
+ 270 015e 002B     		cmp	r3, #0
+ 271 0160 CDD0     		beq	.L60
+ 272 0162 64F31F71 		bfi	r1, r4, #28, #4
+ 273 0166 0361     		str	r3, [r0, #16]
+ 274 0168 C9E7     		b	.L60
+ 275              	.L22:
+ 276 016a 13F00105 		ands	r5, r3, #1
+ 277 016e 18BF     		it	ne
+ 278 0170 0561     		strne	r5, [r0, #16]
+ 279 0172 03F00205 		and	r5, r3, #2
+ 280 0176 18BF     		it	ne
+ 281 0178 21F00F01 		bicne	r1, r1, #15
+ 282 017c ADB2     		uxth	r5, r5
+ 283 017e 18BF     		it	ne
+ 284 0180 2143     		orrne	r1, r4, r1
+ 285 0182 002D     		cmp	r5, #0
+ 286 0184 40F02081 		bne	.L87
+ 287              	.L42:
+ 288 0188 03F00405 		and	r5, r3, #4
+ 289 018c ADB2     		uxth	r5, r5
+ 290 018e 002D     		cmp	r5, #0
+ 291 0190 40F01481 		bne	.L88
+ 292              	.L43:
+ 293 0194 03F00805 		and	r5, r3, #8
+ 294 0198 ADB2     		uxth	r5, r5
+ 295 019a 002D     		cmp	r5, #0
+ 296 019c 40F00881 		bne	.L89
+ 297              	.L44:
+ 298 01a0 03F01005 		and	r5, r3, #16
+ 299 01a4 ADB2     		uxth	r5, r5
+ 300 01a6 002D     		cmp	r5, #0
+ 301 01a8 40F0FC80 		bne	.L90
+ 302              	.L45:
+ 303 01ac 03F02005 		and	r5, r3, #32
+ 304 01b0 ADB2     		uxth	r5, r5
+ 305 01b2 002D     		cmp	r5, #0
+ 306 01b4 40F0F080 		bne	.L91
+ 307              	.L46:
+ 308 01b8 03F04005 		and	r5, r3, #64
+ 309 01bc ADB2     		uxth	r5, r5
+ 310 01be 002D     		cmp	r5, #0
+ 311 01c0 40F0E480 		bne	.L92
+ 312              	.L47:
+ 313 01c4 03F08005 		and	r5, r3, #128
+ 314 01c8 ADB2     		uxth	r5, r5
+ 315 01ca 002D     		cmp	r5, #0
+ 316 01cc 3FF461AF 		beq	.L32
+ 317 01d0 64F31F71 		bfi	r1, r4, #28, #4
+ 318 01d4 0561     		str	r5, [r0, #16]
+ 319 01d6 5CE7     		b	.L32
+ 320              	.L51:
+ 321 01d8 03F48072 		and	r2, r3, #256
+ 322 01dc 92B2     		uxth	r2, r2
+ 323 01de 002A     		cmp	r2, #0
+ 324 01e0 40F0AB80 		bne	.L93
+ 325              	.L61:
+ 326 01e4 03F40072 		and	r2, r3, #512
+ 327 01e8 92B2     		uxth	r2, r2
+ 328 01ea 002A     		cmp	r2, #0
+ 329 01ec 40F09F80 		bne	.L94
+ 330              	.L62:
+ 331 01f0 03F48062 		and	r2, r3, #1024
+ 332 01f4 92B2     		uxth	r2, r2
+ 333 01f6 002A     		cmp	r2, #0
+ 334 01f8 40F09380 		bne	.L95
+ 335              	.L63:
+ 336 01fc 03F40062 		and	r2, r3, #2048
+ 337 0200 92B2     		uxth	r2, r2
+ 338 0202 002A     		cmp	r2, #0
+ 339 0204 40F08780 		bne	.L96
+ 340              	.L64:
+ 341 0208 03F48052 		and	r2, r3, #4096
+ 342 020c 92B2     		uxth	r2, r2
+ 343 020e 002A     		cmp	r2, #0
+ 344 0210 7BD1     		bne	.L97
+ 345              	.L65:
+ 346 0212 03F40052 		and	r2, r3, #8192
+ 347 0216 92B2     		uxth	r2, r2
+ 348 0218 002A     		cmp	r2, #0
+ 349 021a 70D1     		bne	.L98
+ 350              	.L66:
+ 351 021c 03F48042 		and	r2, r3, #16384
+ 352 0220 92B2     		uxth	r2, r2
+ 353 0222 002A     		cmp	r2, #0
+ 354 0224 65D1     		bne	.L99
+ 355              	.L67:
+ 356 0226 03F40043 		and	r3, r3, #32768
+ 357 022a 9BB2     		uxth	r3, r3
+ 358 022c 002B     		cmp	r3, #0
+ 359 022e 3FF466AF 		beq	.L60
+ 360 0232 64F31F71 		bfi	r1, r4, #28, #4
+ 361 0236 4361     		str	r3, [r0, #20]
+ 362 0238 61E7     		b	.L60
+ 363              	.L23:
+ 364 023a 13F00105 		ands	r5, r3, #1
+ 365 023e 18BF     		it	ne
+ 366 0240 4561     		strne	r5, [r0, #20]
+ 367 0242 03F00205 		and	r5, r3, #2
+ 368 0246 18BF     		it	ne
+ 369 0248 21F00F01 		bicne	r1, r1, #15
+ 370 024c ADB2     		uxth	r5, r5
+ 371 024e 18BF     		it	ne
+ 372 0250 2143     		orrne	r1, r4, r1
+ 373 0252 002D     		cmp	r5, #0
+ 374 0254 40F08E80 		bne	.L100
+ 375              	.L34:
+ 376 0258 03F00405 		and	r5, r3, #4
+ 377 025c ADB2     		uxth	r5, r5
+ 378 025e 002D     		cmp	r5, #0
+ 379 0260 40F08280 		bne	.L101
+ 380              	.L35:
+ 381 0264 03F00805 		and	r5, r3, #8
+ 382 0268 ADB2     		uxth	r5, r5
+ 383 026a 002D     		cmp	r5, #0
+ 384 026c 76D1     		bne	.L102
+ 385              	.L36:
+ 386 026e 03F01005 		and	r5, r3, #16
+ 387 0272 ADB2     		uxth	r5, r5
+ 388 0274 002D     		cmp	r5, #0
+ 389 0276 6BD1     		bne	.L103
+ 390              	.L37:
+ 391 0278 03F02005 		and	r5, r3, #32
+ 392 027c ADB2     		uxth	r5, r5
+ 393 027e 002D     		cmp	r5, #0
+ 394 0280 60D1     		bne	.L104
+ 395              	.L38:
+ 396 0282 03F04005 		and	r5, r3, #64
+ 397 0286 ADB2     		uxth	r5, r5
+ 398 0288 002D     		cmp	r5, #0
+ 399 028a 79D1     		bne	.L105
+ 400              	.L39:
+ 401 028c 03F08005 		and	r5, r3, #128
+ 402 0290 ADB2     		uxth	r5, r5
+ 403 0292 002D     		cmp	r5, #0
+ 404 0294 3FF4FDAE 		beq	.L32
+ 405 0298 64F31F71 		bfi	r1, r4, #28, #4
+ 406 029c 4561     		str	r5, [r0, #20]
+ 407 029e F8E6     		b	.L32
+ 408              	.L81:
+ 409 02a0 21F0F001 		bic	r1, r1, #240
+ 410 02a4 41EA0411 		orr	r1, r1, r4, lsl #4
+ 411 02a8 0261     		str	r2, [r0, #16]
+ 412 02aa 37E7     		b	.L70
+ 413              	.L80:
+ 414 02ac 21F00F01 		bic	r1, r1, #15
+ 415 02b0 2143     		orrs	r1, r1, r4
+ 416 02b2 0261     		str	r2, [r0, #16]
+ 417 02b4 2CE7     		b	.L69
+ 418              	.L85:
+ 419 02b6 21F47001 		bic	r1, r1, #15728640
+ 420 02ba 41EA0451 		orr	r1, r1, r4, lsl #20
+ 421 02be 0261     		str	r2, [r0, #16]
+ 422 02c0 44E7     		b	.L74
+ 423              	.L84:
+ 424 02c2 21F47021 		bic	r1, r1, #983040
+ 425 02c6 41EA0441 		orr	r1, r1, r4, lsl #16
+ 426 02ca 0261     		str	r2, [r0, #16]
+ 427 02cc 38E7     		b	.L73
+ 428              	.L83:
+ 429 02ce 21F47041 		bic	r1, r1, #61440
+ 430 02d2 41EA0431 		orr	r1, r1, r4, lsl #12
+ 431 02d6 0261     		str	r2, [r0, #16]
+ 432 02d8 2CE7     		b	.L72
+ 433              	.L82:
+ 434 02da 21F47061 		bic	r1, r1, #3840
+ 435 02de 41EA0421 		orr	r1, r1, r4, lsl #8
+ 436 02e2 0261     		str	r2, [r0, #16]
+ 437 02e4 20E7     		b	.L71
+ 438              	.L86:
+ 439 02e6 21F07061 		bic	r1, r1, #251658240
+ 440 02ea 41EA0461 		orr	r1, r1, r4, lsl #24
+ 441 02ee 0261     		str	r2, [r0, #16]
+ 442 02f0 32E7     		b	.L75
+ 443              	.L99:
+ 444 02f2 21F07061 		bic	r1, r1, #251658240
+ 445 02f6 41EA0461 		orr	r1, r1, r4, lsl #24
+ 446 02fa 4261     		str	r2, [r0, #20]
+ 447 02fc 93E7     		b	.L67
+ 448              	.L98:
+ 449 02fe 21F47001 		bic	r1, r1, #15728640
+ 450 0302 41EA0451 		orr	r1, r1, r4, lsl #20
+ 451 0306 4261     		str	r2, [r0, #20]
+ 452 0308 88E7     		b	.L66
+ 453              	.L97:
+ 454 030a 21F47021 		bic	r1, r1, #983040
+ 455 030e 41EA0441 		orr	r1, r1, r4, lsl #16
+ 456 0312 4261     		str	r2, [r0, #20]
+ 457 0314 7DE7     		b	.L65
+ 458              	.L96:
+ 459 0316 21F47041 		bic	r1, r1, #61440
+ 460 031a 41EA0431 		orr	r1, r1, r4, lsl #12
+ 461 031e 4261     		str	r2, [r0, #20]
+ 462 0320 72E7     		b	.L64
+ 463              	.L95:
+ 464 0322 21F47061 		bic	r1, r1, #3840
+ 465 0326 41EA0421 		orr	r1, r1, r4, lsl #8
+ 466 032a 4261     		str	r2, [r0, #20]
+ 467 032c 66E7     		b	.L63
+ 468              	.L94:
+ 469 032e 21F0F001 		bic	r1, r1, #240
+ 470 0332 41EA0411 		orr	r1, r1, r4, lsl #4
+ 471 0336 4261     		str	r2, [r0, #20]
+ 472 0338 5AE7     		b	.L62
+ 473              	.L93:
+ 474 033a 21F00F01 		bic	r1, r1, #15
+ 475 033e 2143     		orrs	r1, r1, r4
+ 476 0340 4261     		str	r2, [r0, #20]
+ 477 0342 4FE7     		b	.L61
+ 478              	.L104:
+ 479 0344 21F47001 		bic	r1, r1, #15728640
+ 480 0348 41EA0451 		orr	r1, r1, r4, lsl #20
+ 481 034c 4561     		str	r5, [r0, #20]
+ 482 034e 98E7     		b	.L38
+ 483              	.L103:
+ 484 0350 21F47021 		bic	r1, r1, #983040
+ 485 0354 41EA0441 		orr	r1, r1, r4, lsl #16
+ 486 0358 4561     		str	r5, [r0, #20]
+ 487 035a 8DE7     		b	.L37
+ 488              	.L102:
+ 489 035c 21F47041 		bic	r1, r1, #61440
+ 490 0360 41EA0431 		orr	r1, r1, r4, lsl #12
+ 491 0364 4561     		str	r5, [r0, #20]
+ 492 0366 82E7     		b	.L36
+ 493              	.L101:
+ 494 0368 21F47061 		bic	r1, r1, #3840
+ 495 036c 41EA0421 		orr	r1, r1, r4, lsl #8
+ 496 0370 4561     		str	r5, [r0, #20]
+ 497 0372 77E7     		b	.L35
+ 498              	.L100:
+ 499 0374 21F0F001 		bic	r1, r1, #240
+ 500 0378 41EA0411 		orr	r1, r1, r4, lsl #4
+ 501 037c 4561     		str	r5, [r0, #20]
+ 502 037e 6BE7     		b	.L34
+ 503              	.L105:
+ 504 0380 21F07061 		bic	r1, r1, #251658240
+ 505 0384 41EA0461 		orr	r1, r1, r4, lsl #24
+ 506 0388 4561     		str	r5, [r0, #20]
+ 507 038a 7FE7     		b	.L39
+ 508              	.L92:
+ 509 038c 21F07061 		bic	r1, r1, #251658240
+ 510 0390 41EA0461 		orr	r1, r1, r4, lsl #24
+ 511 0394 0561     		str	r5, [r0, #16]
+ 512 0396 15E7     		b	.L47
+ 513              	.L91:
+ 514 0398 21F47001 		bic	r1, r1, #15728640
+ 515 039c 41EA0451 		orr	r1, r1, r4, lsl #20
+ 516 03a0 0561     		str	r5, [r0, #16]
+ 517 03a2 09E7     		b	.L46
+ 518              	.L90:
+ 519 03a4 21F47021 		bic	r1, r1, #983040
+ 520 03a8 41EA0441 		orr	r1, r1, r4, lsl #16
+ 521 03ac 0561     		str	r5, [r0, #16]
+ 522 03ae FDE6     		b	.L45
+ 523              	.L89:
+ 524 03b0 21F47041 		bic	r1, r1, #61440
+ 525 03b4 41EA0431 		orr	r1, r1, r4, lsl #12
+ 526 03b8 0561     		str	r5, [r0, #16]
+ 527 03ba F1E6     		b	.L44
+ 528              	.L88:
+ 529 03bc 21F47061 		bic	r1, r1, #3840
+ 530 03c0 41EA0421 		orr	r1, r1, r4, lsl #8
+ 531 03c4 0561     		str	r5, [r0, #16]
+ 532 03c6 E5E6     		b	.L43
+ 533              	.L87:
+ 534 03c8 21F0F001 		bic	r1, r1, #240
+ 535 03cc 41EA0411 		orr	r1, r1, r4, lsl #4
+ 536 03d0 0561     		str	r5, [r0, #16]
+ 537 03d2 D9E6     		b	.L42
+ 539              		.section	.text.GPIO_StructInit,"ax",%progbits
+ 540              		.align	2
+ 541              		.global	GPIO_StructInit
+ 542              		.thumb
+ 543              		.thumb_func
+ 545              	GPIO_StructInit:
+ 546              		@ args = 0, pretend = 0, frame = 0
+ 547              		@ frame_needed = 0, uses_anonymous_args = 0
+ 548              		@ link register save eliminated.
+ 549 0000 4FF6FF73 		movw	r3, #65535
+ 550 0004 0380     		strh	r3, [r0, #0]	@ movhi
+ 551 0006 0223     		movs	r3, #2
+ 552 0008 8370     		strb	r3, [r0, #2]
+ 553 000a 0423     		movs	r3, #4
+ 554 000c C370     		strb	r3, [r0, #3]
+ 555 000e 7047     		bx	lr
+ 557              		.section	.text.GPIO_ReadInputDataBit,"ax",%progbits
+ 558              		.align	2
+ 559              		.global	GPIO_ReadInputDataBit
+ 560              		.thumb
+ 561              		.thumb_func
+ 563              	GPIO_ReadInputDataBit:
+ 564              		@ args = 0, pretend = 0, frame = 0
+ 565              		@ frame_needed = 0, uses_anonymous_args = 0
+ 566              		@ link register save eliminated.
+ 567 0000 8368     		ldr	r3, [r0, #8]
+ 568 0002 1942     		tst	r1, r3
+ 569 0004 0CBF     		ite	eq
+ 570 0006 0020     		moveq	r0, #0
+ 571 0008 0120     		movne	r0, #1
+ 572 000a 7047     		bx	lr
+ 574              		.section	.text.GPIO_ReadInputData,"ax",%progbits
+ 575              		.align	2
+ 576              		.global	GPIO_ReadInputData
+ 577              		.thumb
+ 578              		.thumb_func
+ 580              	GPIO_ReadInputData:
+ 581              		@ args = 0, pretend = 0, frame = 0
+ 582              		@ frame_needed = 0, uses_anonymous_args = 0
+ 583              		@ link register save eliminated.
+ 584 0000 8068     		ldr	r0, [r0, #8]
+ 585 0002 80B2     		uxth	r0, r0
+ 586 0004 7047     		bx	lr
+ 588 0006 00BF     		.section	.text.GPIO_ReadOutputDataBit,"ax",%progbits
+ 589              		.align	2
+ 590              		.global	GPIO_ReadOutputDataBit
+ 591              		.thumb
+ 592              		.thumb_func
+ 594              	GPIO_ReadOutputDataBit:
+ 595              		@ args = 0, pretend = 0, frame = 0
+ 596              		@ frame_needed = 0, uses_anonymous_args = 0
+ 597              		@ link register save eliminated.
+ 598 0000 C368     		ldr	r3, [r0, #12]
+ 599 0002 1942     		tst	r1, r3
+ 600 0004 0CBF     		ite	eq
+ 601 0006 0020     		moveq	r0, #0
+ 602 0008 0120     		movne	r0, #1
+ 603 000a 7047     		bx	lr
+ 605              		.section	.text.GPIO_ReadOutputData,"ax",%progbits
+ 606              		.align	2
+ 607              		.global	GPIO_ReadOutputData
+ 608              		.thumb
+ 609              		.thumb_func
+ 611              	GPIO_ReadOutputData:
+ 612              		@ args = 0, pretend = 0, frame = 0
+ 613              		@ frame_needed = 0, uses_anonymous_args = 0
+ 614              		@ link register save eliminated.
+ 615 0000 C068     		ldr	r0, [r0, #12]
+ 616 0002 80B2     		uxth	r0, r0
+ 617 0004 7047     		bx	lr
+ 619 0006 00BF     		.section	.text.GPIO_SetBits,"ax",%progbits
+ 620              		.align	2
+ 621              		.global	GPIO_SetBits
+ 622              		.thumb
+ 623              		.thumb_func
+ 625              	GPIO_SetBits:
+ 626              		@ args = 0, pretend = 0, frame = 0
+ 627              		@ frame_needed = 0, uses_anonymous_args = 0
+ 628              		@ link register save eliminated.
+ 629 0000 0161     		str	r1, [r0, #16]
+ 630 0002 7047     		bx	lr
+ 632              		.section	.text.GPIO_ResetBits,"ax",%progbits
+ 633              		.align	2
+ 634              		.global	GPIO_ResetBits
+ 635              		.thumb
+ 636              		.thumb_func
+ 638              	GPIO_ResetBits:
+ 639              		@ args = 0, pretend = 0, frame = 0
+ 640              		@ frame_needed = 0, uses_anonymous_args = 0
+ 641              		@ link register save eliminated.
+ 642 0000 4161     		str	r1, [r0, #20]
+ 643 0002 7047     		bx	lr
+ 645              		.section	.text.GPIO_WriteBit,"ax",%progbits
+ 646              		.align	2
+ 647              		.global	GPIO_WriteBit
+ 648              		.thumb
+ 649              		.thumb_func
+ 651              	GPIO_WriteBit:
+ 652              		@ args = 0, pretend = 0, frame = 0
+ 653              		@ frame_needed = 0, uses_anonymous_args = 0
+ 654              		@ link register save eliminated.
+ 655 0000 0AB9     		cbnz	r2, .L116
+ 656 0002 4161     		str	r1, [r0, #20]
+ 657 0004 7047     		bx	lr
+ 658              	.L116:
+ 659 0006 0161     		str	r1, [r0, #16]
+ 660 0008 7047     		bx	lr
+ 662 000a 00BF     		.section	.text.GPIO_Write,"ax",%progbits
+ 663              		.align	2
+ 664              		.global	GPIO_Write
+ 665              		.thumb
+ 666              		.thumb_func
+ 668              	GPIO_Write:
+ 669              		@ args = 0, pretend = 0, frame = 0
+ 670              		@ frame_needed = 0, uses_anonymous_args = 0
+ 671              		@ link register save eliminated.
+ 672 0000 C160     		str	r1, [r0, #12]
+ 673 0002 7047     		bx	lr
+ 675              		.section	.text.GPIO_PinLockConfig,"ax",%progbits
+ 676              		.align	2
+ 677              		.global	GPIO_PinLockConfig
+ 678              		.thumb
+ 679              		.thumb_func
+ 681              	GPIO_PinLockConfig:
+ 682              		@ args = 0, pretend = 0, frame = 0
+ 683              		@ frame_needed = 0, uses_anonymous_args = 0
+ 684              		@ link register save eliminated.
+ 685 0000 41F48033 		orr	r3, r1, #65536
+ 686 0004 8361     		str	r3, [r0, #24]
+ 687 0006 8161     		str	r1, [r0, #24]
+ 688 0008 8361     		str	r3, [r0, #24]
+ 689 000a 8369     		ldr	r3, [r0, #24]
+ 690 000c 8369     		ldr	r3, [r0, #24]
+ 691 000e 7047     		bx	lr
+ 693              		.section	.text.GPIO_EventOutputConfig,"ax",%progbits
+ 694              		.align	2
+ 695              		.global	GPIO_EventOutputConfig
+ 696              		.thumb
+ 697              		.thumb_func
+ 699              	GPIO_EventOutputConfig:
+ 700              		@ args = 0, pretend = 0, frame = 0
+ 701              		@ frame_needed = 0, uses_anonymous_args = 0
+ 702              		@ link register save eliminated.
+ 703 0000 0023     		movs	r3, #0
+ 704 0002 C4F20103 		movt	r3, 16385
+ 705 0006 10B4     		push	{r4}
+ 706 0008 1C68     		ldr	r4, [r3, #0]
+ 707 000a 4FF68072 		movw	r2, #65408
+ 708 000e 2240     		ands	r2, r2, r4
+ 709 0010 41EA0011 		orr	r1, r1, r0, lsl #4
+ 710 0014 0A43     		orrs	r2, r2, r1
+ 711 0016 1A60     		str	r2, [r3, #0]
+ 712 0018 10BC     		pop	{r4}
+ 713 001a 7047     		bx	lr
+ 715              		.section	.text.GPIO_EventOutputCmd,"ax",%progbits
+ 716              		.align	2
+ 717              		.global	GPIO_EventOutputCmd
+ 718              		.thumb
+ 719              		.thumb_func
+ 721              	GPIO_EventOutputCmd:
+ 722              		@ args = 0, pretend = 0, frame = 0
+ 723              		@ frame_needed = 0, uses_anonymous_args = 0
+ 724              		@ link register save eliminated.
+ 725 0000 1C23     		movs	r3, #28
+ 726 0002 C4F22023 		movt	r3, 16928
+ 727 0006 1860     		str	r0, [r3, #0]
+ 728 0008 7047     		bx	lr
+ 730 000a 00BF     		.section	.text.GPIO_PinRemapConfig,"ax",%progbits
+ 731              		.align	2
+ 732              		.global	GPIO_PinRemapConfig
+ 733              		.thumb
+ 734              		.thumb_func
+ 736              	GPIO_PinRemapConfig:
+ 737              		@ args = 0, pretend = 0, frame = 0
+ 738              		@ frame_needed = 0, uses_anonymous_args = 0
+ 739              		@ link register save eliminated.
+ 740 0000 0023     		movs	r3, #0
+ 741 0002 0028     		cmp	r0, #0
+ 742 0004 C4F20103 		movt	r3, 16385
+ 743 0008 00F44012 		and	r2, r0, #3145728
+ 744 000c B4BF     		ite	lt
+ 745 000e DB69     		ldrlt	r3, [r3, #28]
+ 746 0010 5B68     		ldrge	r3, [r3, #4]
+ 747 0012 B2F5401F 		cmp	r2, #3145728
+ 748 0016 30B4     		push	{r4, r5}
+ 749 0018 84B2     		uxth	r4, r0
+ 750 001a 22D0     		beq	.L133
+ 751 001c C202     		lsls	r2, r0, #11
+ 752 001e 17D5     		bpl	.L126
+ 753 0020 C0F30342 		ubfx	r2, r0, #16, #4
+ 754 0024 0325     		movs	r5, #3
+ 755 0026 05FA02F2 		lsl	r2, r5, r2
+ 756 002a 23EA0203 		bic	r3, r3, r2
+ 757 002e 43F07063 		orr	r3, r3, #251658240
+ 758              	.L125:
+ 759 0032 21B1     		cbz	r1, .L127
+ 760 0034 420D     		lsrs	r2, r0, #21
+ 761 0036 1201     		lsls	r2, r2, #4
+ 762 0038 04FA02F4 		lsl	r4, r4, r2
+ 763 003c 2343     		orrs	r3, r3, r4
+ 764              	.L127:
+ 765 003e 0022     		movs	r2, #0
+ 766 0040 C4F20102 		movt	r2, 16385
+ 767 0044 0028     		cmp	r0, #0
+ 768 0046 B4BF     		ite	lt
+ 769 0048 D361     		strlt	r3, [r2, #28]
+ 770 004a 5360     		strge	r3, [r2, #4]
+ 771 004c 30BC     		pop	{r4, r5}
+ 772 004e 7047     		bx	lr
+ 773              	.L126:
+ 774 0050 420D     		lsrs	r2, r0, #21
+ 775 0052 1201     		lsls	r2, r2, #4
+ 776 0054 04FA02F2 		lsl	r2, r4, r2
+ 777 0058 23EA0203 		bic	r3, r3, r2
+ 778 005c 43F07063 		orr	r3, r3, #251658240
+ 779 0060 E7E7     		b	.L125
+ 780              	.L133:
+ 781 0062 0022     		movs	r2, #0
+ 782 0064 C4F20102 		movt	r2, 16385
+ 783 0068 5568     		ldr	r5, [r2, #4]
+ 784 006a 23F07063 		bic	r3, r3, #251658240
+ 785 006e 25F07065 		bic	r5, r5, #251658240
+ 786 0072 5560     		str	r5, [r2, #4]
+ 787 0074 DDE7     		b	.L125
+ 789 0076 00BF     		.section	.text.GPIO_EXTILineConfig,"ax",%progbits
+ 790              		.align	2
+ 791              		.global	GPIO_EXTILineConfig
+ 792              		.thumb
+ 793              		.thumb_func
+ 795              	GPIO_EXTILineConfig:
+ 796              		@ args = 0, pretend = 0, frame = 0
+ 797              		@ frame_needed = 0, uses_anonymous_args = 0
+ 798              		@ link register save eliminated.
+ 799 0000 01F00303 		and	r3, r1, #3
+ 800 0004 9B00     		lsls	r3, r3, #2
+ 801 0006 0F22     		movs	r2, #15
+ 802 0008 02FA03F2 		lsl	r2, r2, r3
+ 803 000c 00FA03F0 		lsl	r0, r0, r3
+ 804 0010 8908     		lsrs	r1, r1, #2
+ 805 0012 0023     		movs	r3, #0
+ 806 0014 C4F20103 		movt	r3, 16385
+ 807 0018 0231     		adds	r1, r1, #2
+ 808 001a 10B4     		push	{r4}
+ 809 001c 53F82140 		ldr	r4, [r3, r1, lsl #2]
+ 810 0020 24EA0202 		bic	r2, r4, r2
+ 811 0024 43F82120 		str	r2, [r3, r1, lsl #2]
+ 812 0028 53F82120 		ldr	r2, [r3, r1, lsl #2]
+ 813 002c 1043     		orrs	r0, r0, r2
+ 814 002e 43F82100 		str	r0, [r3, r1, lsl #2]
+ 815 0032 10BC     		pop	{r4}
+ 816 0034 7047     		bx	lr
+ 818 0036 00BF     		.section	.text.GPIO_ETH_MediaInterfaceConfig,"ax",%progbits
+ 819              		.align	2
+ 820              		.global	GPIO_ETH_MediaInterfaceConfig
+ 821              		.thumb
+ 822              		.thumb_func
+ 824              	GPIO_ETH_MediaInterfaceConfig:
+ 825              		@ args = 0, pretend = 0, frame = 0
+ 826              		@ frame_needed = 0, uses_anonymous_args = 0
+ 827              		@ link register save eliminated.
+ 828 0000 DC23     		movs	r3, #220
+ 829 0002 C4F22023 		movt	r3, 16928
+ 830 0006 1860     		str	r0, [r3, #0]
+ 831 0008 7047     		bx	lr
+ 833 000a 00BF     		.ident	"GCC: (GNU) 4.7.0"
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 stm32f10x_gpio.c
+     /tmp/ccAZ2tT6.s:16     .text.GPIO_DeInit:0000000000000000 $t
+     /tmp/ccAZ2tT6.s:21     .text.GPIO_DeInit:0000000000000000 GPIO_DeInit
+     /tmp/ccAZ2tT6.s:112    .text.GPIO_AFIODeInit:0000000000000000 $t
+     /tmp/ccAZ2tT6.s:117    .text.GPIO_AFIODeInit:0000000000000000 GPIO_AFIODeInit
+     /tmp/ccAZ2tT6.s:130    .text.GPIO_Init:0000000000000000 $t
+     /tmp/ccAZ2tT6.s:135    .text.GPIO_Init:0000000000000000 GPIO_Init
+     /tmp/ccAZ2tT6.s:540    .text.GPIO_StructInit:0000000000000000 $t
+     /tmp/ccAZ2tT6.s:545    .text.GPIO_StructInit:0000000000000000 GPIO_StructInit
+     /tmp/ccAZ2tT6.s:558    .text.GPIO_ReadInputDataBit:0000000000000000 $t
+     /tmp/ccAZ2tT6.s:563    .text.GPIO_ReadInputDataBit:0000000000000000 GPIO_ReadInputDataBit
+     /tmp/ccAZ2tT6.s:575    .text.GPIO_ReadInputData:0000000000000000 $t
+     /tmp/ccAZ2tT6.s:580    .text.GPIO_ReadInputData:0000000000000000 GPIO_ReadInputData
+     /tmp/ccAZ2tT6.s:589    .text.GPIO_ReadOutputDataBit:0000000000000000 $t
+     /tmp/ccAZ2tT6.s:594    .text.GPIO_ReadOutputDataBit:0000000000000000 GPIO_ReadOutputDataBit
+     /tmp/ccAZ2tT6.s:606    .text.GPIO_ReadOutputData:0000000000000000 $t
+     /tmp/ccAZ2tT6.s:611    .text.GPIO_ReadOutputData:0000000000000000 GPIO_ReadOutputData
+     /tmp/ccAZ2tT6.s:620    .text.GPIO_SetBits:0000000000000000 $t
+     /tmp/ccAZ2tT6.s:625    .text.GPIO_SetBits:0000000000000000 GPIO_SetBits
+     /tmp/ccAZ2tT6.s:633    .text.GPIO_ResetBits:0000000000000000 $t
+     /tmp/ccAZ2tT6.s:638    .text.GPIO_ResetBits:0000000000000000 GPIO_ResetBits
+     /tmp/ccAZ2tT6.s:646    .text.GPIO_WriteBit:0000000000000000 $t
+     /tmp/ccAZ2tT6.s:651    .text.GPIO_WriteBit:0000000000000000 GPIO_WriteBit
+     /tmp/ccAZ2tT6.s:663    .text.GPIO_Write:0000000000000000 $t
+     /tmp/ccAZ2tT6.s:668    .text.GPIO_Write:0000000000000000 GPIO_Write
+     /tmp/ccAZ2tT6.s:676    .text.GPIO_PinLockConfig:0000000000000000 $t
+     /tmp/ccAZ2tT6.s:681    .text.GPIO_PinLockConfig:0000000000000000 GPIO_PinLockConfig
+     /tmp/ccAZ2tT6.s:694    .text.GPIO_EventOutputConfig:0000000000000000 $t
+     /tmp/ccAZ2tT6.s:699    .text.GPIO_EventOutputConfig:0000000000000000 GPIO_EventOutputConfig
+     /tmp/ccAZ2tT6.s:716    .text.GPIO_EventOutputCmd:0000000000000000 $t
+     /tmp/ccAZ2tT6.s:721    .text.GPIO_EventOutputCmd:0000000000000000 GPIO_EventOutputCmd
+     /tmp/ccAZ2tT6.s:731    .text.GPIO_PinRemapConfig:0000000000000000 $t
+     /tmp/ccAZ2tT6.s:736    .text.GPIO_PinRemapConfig:0000000000000000 GPIO_PinRemapConfig
+     /tmp/ccAZ2tT6.s:790    .text.GPIO_EXTILineConfig:0000000000000000 $t
+     /tmp/ccAZ2tT6.s:795    .text.GPIO_EXTILineConfig:0000000000000000 GPIO_EXTILineConfig
+     /tmp/ccAZ2tT6.s:819    .text.GPIO_ETH_MediaInterfaceConfig:0000000000000000 $t
+     /tmp/ccAZ2tT6.s:824    .text.GPIO_ETH_MediaInterfaceConfig:0000000000000000 GPIO_ETH_MediaInterfaceConfig
+
+UNDEFINED SYMBOLS
+RCC_APB2PeriphResetCmd

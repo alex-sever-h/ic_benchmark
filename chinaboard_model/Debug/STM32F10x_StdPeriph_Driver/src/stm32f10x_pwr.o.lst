@@ -1,0 +1,209 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 2
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"stm32f10x_pwr.c"
+  15              		.section	.text.PWR_DeInit,"ax",%progbits
+  16              		.align	2
+  17              		.global	PWR_DeInit
+  18              		.thumb
+  19              		.thumb_func
+  21              	PWR_DeInit:
+  22              		@ args = 0, pretend = 0, frame = 0
+  23              		@ frame_needed = 0, uses_anonymous_args = 0
+  24 0000 0121     		movs	r1, #1
+  25 0002 08B5     		push	{r3, lr}
+  26 0004 4FF08050 		mov	r0, #268435456
+  27 0008 FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+  28 000c 4FF08050 		mov	r0, #268435456
+  29 0010 0021     		movs	r1, #0
+  30 0012 BDE80840 		pop	{r3, lr}
+  31 0016 FFF7FEBF 		b	RCC_APB1PeriphResetCmd
+  33 001a 00BF     		.section	.text.PWR_BackupAccessCmd,"ax",%progbits
+  34              		.align	2
+  35              		.global	PWR_BackupAccessCmd
+  36              		.thumb
+  37              		.thumb_func
+  39              	PWR_BackupAccessCmd:
+  40              		@ args = 0, pretend = 0, frame = 0
+  41              		@ frame_needed = 0, uses_anonymous_args = 0
+  42              		@ link register save eliminated.
+  43 0000 2023     		movs	r3, #32
+  44 0002 C4F20E23 		movt	r3, 16910
+  45 0006 1860     		str	r0, [r3, #0]
+  46 0008 7047     		bx	lr
+  48 000a 00BF     		.section	.text.PWR_PVDCmd,"ax",%progbits
+  49              		.align	2
+  50              		.global	PWR_PVDCmd
+  51              		.thumb
+  52              		.thumb_func
+  54              	PWR_PVDCmd:
+  55              		@ args = 0, pretend = 0, frame = 0
+  56              		@ frame_needed = 0, uses_anonymous_args = 0
+  57              		@ link register save eliminated.
+  58 0000 1023     		movs	r3, #16
+  59 0002 C4F20E23 		movt	r3, 16910
+  60 0006 1860     		str	r0, [r3, #0]
+  61 0008 7047     		bx	lr
+  63 000a 00BF     		.section	.text.PWR_PVDLevelConfig,"ax",%progbits
+  64              		.align	2
+  65              		.global	PWR_PVDLevelConfig
+  66              		.thumb
+  67              		.thumb_func
+  69              	PWR_PVDLevelConfig:
+  70              		@ args = 0, pretend = 0, frame = 0
+  71              		@ frame_needed = 0, uses_anonymous_args = 0
+  72              		@ link register save eliminated.
+  73 0000 4FF4E043 		mov	r3, #28672
+  74 0004 C4F20003 		movt	r3, 16384
+  75 0008 1A68     		ldr	r2, [r3, #0]
+  76 000a 22F0E002 		bic	r2, r2, #224
+  77 000e 1043     		orrs	r0, r0, r2
+  78 0010 1860     		str	r0, [r3, #0]
+  79 0012 7047     		bx	lr
+  81              		.section	.text.PWR_WakeUpPinCmd,"ax",%progbits
+  82              		.align	2
+  83              		.global	PWR_WakeUpPinCmd
+  84              		.thumb
+  85              		.thumb_func
+  87              	PWR_WakeUpPinCmd:
+  88              		@ args = 0, pretend = 0, frame = 0
+  89              		@ frame_needed = 0, uses_anonymous_args = 0
+  90              		@ link register save eliminated.
+  91 0000 A023     		movs	r3, #160
+  92 0002 C4F20E23 		movt	r3, 16910
+  93 0006 1860     		str	r0, [r3, #0]
+  94 0008 7047     		bx	lr
+  96 000a 00BF     		.section	.text.PWR_EnterSTOPMode,"ax",%progbits
+  97              		.align	2
+  98              		.global	PWR_EnterSTOPMode
+  99              		.thumb
+ 100              		.thumb_func
+ 102              	PWR_EnterSTOPMode:
+ 103              		@ args = 0, pretend = 0, frame = 0
+ 104              		@ frame_needed = 0, uses_anonymous_args = 0
+ 105              		@ link register save eliminated.
+ 106 0000 4FF4E042 		mov	r2, #28672
+ 107 0004 C4F20002 		movt	r2, 16384
+ 108 0008 10B4     		push	{r4}
+ 109 000a 1468     		ldr	r4, [r2, #0]
+ 110 000c 4FF46D43 		mov	r3, #60672
+ 111 0010 24F00304 		bic	r4, r4, #3
+ 112 0014 2043     		orrs	r0, r0, r4
+ 113 0016 1060     		str	r0, [r2, #0]
+ 114 0018 CEF20003 		movt	r3, 57344
+ 115 001c 1A69     		ldr	r2, [r3, #16]
+ 116 001e 0129     		cmp	r1, #1
+ 117 0020 42F00402 		orr	r2, r2, #4
+ 118 0024 1A61     		str	r2, [r3, #16]
+ 119 0026 0AD0     		beq	.L10
+ 120              	@ 1212 "../CMSIS/CM3/CoreSupport/core_cm3.h" 1
+ 121 0028 20BF     		wfe
+ 122              	@ 0 "" 2
+ 123              		.thumb
+ 124              	.L8:
+ 125 002a 4FF46D43 		mov	r3, #60672
+ 126 002e CEF20003 		movt	r3, 57344
+ 127 0032 1A69     		ldr	r2, [r3, #16]
+ 128 0034 22F00402 		bic	r2, r2, #4
+ 129 0038 1A61     		str	r2, [r3, #16]
+ 130 003a 10BC     		pop	{r4}
+ 131 003c 7047     		bx	lr
+ 132              	.L10:
+ 133              	@ 1211 "../CMSIS/CM3/CoreSupport/core_cm3.h" 1
+ 134 003e 30BF     		wfi
+ 135              	@ 0 "" 2
+ 136              		.thumb
+ 137 0040 F3E7     		b	.L8
+ 139 0042 00BF     		.section	.text.PWR_EnterSTANDBYMode,"ax",%progbits
+ 140              		.align	2
+ 141              		.global	PWR_EnterSTANDBYMode
+ 142              		.thumb
+ 143              		.thumb_func
+ 145              	PWR_EnterSTANDBYMode:
+ 146              		@ args = 0, pretend = 0, frame = 0
+ 147              		@ frame_needed = 0, uses_anonymous_args = 0
+ 148              		@ link register save eliminated.
+ 149 0000 4FF4E043 		mov	r3, #28672
+ 150 0004 C4F20003 		movt	r3, 16384
+ 151 0008 1968     		ldr	r1, [r3, #0]
+ 152 000a 4FF46D42 		mov	r2, #60672
+ 153 000e 41F00401 		orr	r1, r1, #4
+ 154 0012 1960     		str	r1, [r3, #0]
+ 155 0014 1968     		ldr	r1, [r3, #0]
+ 156 0016 CEF20002 		movt	r2, 57344
+ 157 001a 41F00201 		orr	r1, r1, #2
+ 158 001e 1960     		str	r1, [r3, #0]
+ 159 0020 1369     		ldr	r3, [r2, #16]
+ 160 0022 43F00403 		orr	r3, r3, #4
+ 161 0026 1361     		str	r3, [r2, #16]
+ 162              	@ 1211 "../CMSIS/CM3/CoreSupport/core_cm3.h" 1
+ 163 0028 30BF     		wfi
+ 164              	@ 0 "" 2
+ 165              		.thumb
+ 166 002a 7047     		bx	lr
+ 168              		.section	.text.PWR_GetFlagStatus,"ax",%progbits
+ 169              		.align	2
+ 170              		.global	PWR_GetFlagStatus
+ 171              		.thumb
+ 172              		.thumb_func
+ 174              	PWR_GetFlagStatus:
+ 175              		@ args = 0, pretend = 0, frame = 0
+ 176              		@ frame_needed = 0, uses_anonymous_args = 0
+ 177              		@ link register save eliminated.
+ 178 0000 4FF4E043 		mov	r3, #28672
+ 179 0004 C4F20003 		movt	r3, 16384
+ 180 0008 5B68     		ldr	r3, [r3, #4]
+ 181 000a 1842     		tst	r0, r3
+ 182 000c 0CBF     		ite	eq
+ 183 000e 0020     		moveq	r0, #0
+ 184 0010 0120     		movne	r0, #1
+ 185 0012 7047     		bx	lr
+ 187              		.section	.text.PWR_ClearFlag,"ax",%progbits
+ 188              		.align	2
+ 189              		.global	PWR_ClearFlag
+ 190              		.thumb
+ 191              		.thumb_func
+ 193              	PWR_ClearFlag:
+ 194              		@ args = 0, pretend = 0, frame = 0
+ 195              		@ frame_needed = 0, uses_anonymous_args = 0
+ 196              		@ link register save eliminated.
+ 197 0000 4FF4E043 		mov	r3, #28672
+ 198 0004 C4F20003 		movt	r3, 16384
+ 199 0008 1A68     		ldr	r2, [r3, #0]
+ 200 000a 42EA8000 		orr	r0, r2, r0, lsl #2
+ 201 000e 1860     		str	r0, [r3, #0]
+ 202 0010 7047     		bx	lr
+ 204 0012 00BF     		.ident	"GCC: (GNU) 4.7.0"
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 stm32f10x_pwr.c
+     /tmp/ccSO5Ype.s:16     .text.PWR_DeInit:0000000000000000 $t
+     /tmp/ccSO5Ype.s:21     .text.PWR_DeInit:0000000000000000 PWR_DeInit
+     /tmp/ccSO5Ype.s:34     .text.PWR_BackupAccessCmd:0000000000000000 $t
+     /tmp/ccSO5Ype.s:39     .text.PWR_BackupAccessCmd:0000000000000000 PWR_BackupAccessCmd
+     /tmp/ccSO5Ype.s:49     .text.PWR_PVDCmd:0000000000000000 $t
+     /tmp/ccSO5Ype.s:54     .text.PWR_PVDCmd:0000000000000000 PWR_PVDCmd
+     /tmp/ccSO5Ype.s:64     .text.PWR_PVDLevelConfig:0000000000000000 $t
+     /tmp/ccSO5Ype.s:69     .text.PWR_PVDLevelConfig:0000000000000000 PWR_PVDLevelConfig
+     /tmp/ccSO5Ype.s:82     .text.PWR_WakeUpPinCmd:0000000000000000 $t
+     /tmp/ccSO5Ype.s:87     .text.PWR_WakeUpPinCmd:0000000000000000 PWR_WakeUpPinCmd
+     /tmp/ccSO5Ype.s:97     .text.PWR_EnterSTOPMode:0000000000000000 $t
+     /tmp/ccSO5Ype.s:102    .text.PWR_EnterSTOPMode:0000000000000000 PWR_EnterSTOPMode
+     /tmp/ccSO5Ype.s:140    .text.PWR_EnterSTANDBYMode:0000000000000000 $t
+     /tmp/ccSO5Ype.s:145    .text.PWR_EnterSTANDBYMode:0000000000000000 PWR_EnterSTANDBYMode
+     /tmp/ccSO5Ype.s:169    .text.PWR_GetFlagStatus:0000000000000000 $t
+     /tmp/ccSO5Ype.s:174    .text.PWR_GetFlagStatus:0000000000000000 PWR_GetFlagStatus
+     /tmp/ccSO5Ype.s:188    .text.PWR_ClearFlag:0000000000000000 $t
+     /tmp/ccSO5Ype.s:193    .text.PWR_ClearFlag:0000000000000000 PWR_ClearFlag
+
+UNDEFINED SYMBOLS
+RCC_APB1PeriphResetCmd

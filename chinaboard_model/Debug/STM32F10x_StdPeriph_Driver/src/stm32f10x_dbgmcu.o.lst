@@ -1,0 +1,74 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 2
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"stm32f10x_dbgmcu.c"
+  15              		.section	.text.DBGMCU_GetREVID,"ax",%progbits
+  16              		.align	2
+  17              		.global	DBGMCU_GetREVID
+  18              		.thumb
+  19              		.thumb_func
+  21              	DBGMCU_GetREVID:
+  22              		@ args = 0, pretend = 0, frame = 0
+  23              		@ frame_needed = 0, uses_anonymous_args = 0
+  24              		@ link register save eliminated.
+  25 0000 4FF40053 		mov	r3, #8192
+  26 0004 CEF20403 		movt	r3, 57348
+  27 0008 1868     		ldr	r0, [r3, #0]
+  28 000a 000C     		lsrs	r0, r0, #16
+  29 000c 7047     		bx	lr
+  31 000e 00BF     		.section	.text.DBGMCU_GetDEVID,"ax",%progbits
+  32              		.align	2
+  33              		.global	DBGMCU_GetDEVID
+  34              		.thumb
+  35              		.thumb_func
+  37              	DBGMCU_GetDEVID:
+  38              		@ args = 0, pretend = 0, frame = 0
+  39              		@ frame_needed = 0, uses_anonymous_args = 0
+  40              		@ link register save eliminated.
+  41 0000 4FF40053 		mov	r3, #8192
+  42 0004 CEF20403 		movt	r3, 57348
+  43 0008 1868     		ldr	r0, [r3, #0]
+  44 000a 0005     		lsls	r0, r0, #20
+  45 000c 000D     		lsrs	r0, r0, #20
+  46 000e 7047     		bx	lr
+  48              		.section	.text.DBGMCU_Config,"ax",%progbits
+  49              		.align	2
+  50              		.global	DBGMCU_Config
+  51              		.thumb
+  52              		.thumb_func
+  54              	DBGMCU_Config:
+  55              		@ args = 0, pretend = 0, frame = 0
+  56              		@ frame_needed = 0, uses_anonymous_args = 0
+  57              		@ link register save eliminated.
+  58 0000 4FF40053 		mov	r3, #8192
+  59 0004 CEF20403 		movt	r3, 57348
+  60 0008 5A68     		ldr	r2, [r3, #4]
+  61 000a 19B9     		cbnz	r1, .L7
+  62 000c 22EA0000 		bic	r0, r2, r0
+  63 0010 5860     		str	r0, [r3, #4]
+  64 0012 7047     		bx	lr
+  65              	.L7:
+  66 0014 1043     		orrs	r0, r0, r2
+  67 0016 5860     		str	r0, [r3, #4]
+  68 0018 7047     		bx	lr
+  70 001a 00BF     		.ident	"GCC: (GNU) 4.7.0"
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 stm32f10x_dbgmcu.c
+     /tmp/ccHFSYk0.s:16     .text.DBGMCU_GetREVID:0000000000000000 $t
+     /tmp/ccHFSYk0.s:21     .text.DBGMCU_GetREVID:0000000000000000 DBGMCU_GetREVID
+     /tmp/ccHFSYk0.s:32     .text.DBGMCU_GetDEVID:0000000000000000 $t
+     /tmp/ccHFSYk0.s:37     .text.DBGMCU_GetDEVID:0000000000000000 DBGMCU_GetDEVID
+     /tmp/ccHFSYk0.s:49     .text.DBGMCU_Config:0000000000000000 $t
+     /tmp/ccHFSYk0.s:54     .text.DBGMCU_Config:0000000000000000 DBGMCU_Config
+
+NO UNDEFINED SYMBOLS

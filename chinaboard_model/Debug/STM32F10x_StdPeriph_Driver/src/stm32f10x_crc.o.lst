@@ -1,0 +1,121 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 2
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"stm32f10x_crc.c"
+  15              		.section	.text.CRC_ResetDR,"ax",%progbits
+  16              		.align	2
+  17              		.global	CRC_ResetDR
+  18              		.thumb
+  19              		.thumb_func
+  21              	CRC_ResetDR:
+  22              		@ args = 0, pretend = 0, frame = 0
+  23              		@ frame_needed = 0, uses_anonymous_args = 0
+  24              		@ link register save eliminated.
+  25 0000 4FF44053 		mov	r3, #12288
+  26 0004 C4F20203 		movt	r3, 16386
+  27 0008 0122     		movs	r2, #1
+  28 000a 9A60     		str	r2, [r3, #8]
+  29 000c 7047     		bx	lr
+  31 000e 00BF     		.section	.text.CRC_CalcCRC,"ax",%progbits
+  32              		.align	2
+  33              		.global	CRC_CalcCRC
+  34              		.thumb
+  35              		.thumb_func
+  37              	CRC_CalcCRC:
+  38              		@ args = 0, pretend = 0, frame = 0
+  39              		@ frame_needed = 0, uses_anonymous_args = 0
+  40              		@ link register save eliminated.
+  41 0000 4FF44053 		mov	r3, #12288
+  42 0004 C4F20203 		movt	r3, 16386
+  43 0008 1860     		str	r0, [r3, #0]
+  44 000a 1868     		ldr	r0, [r3, #0]
+  45 000c 7047     		bx	lr
+  47 000e 00BF     		.section	.text.CRC_CalcBlockCRC,"ax",%progbits
+  48              		.align	2
+  49              		.global	CRC_CalcBlockCRC
+  50              		.thumb
+  51              		.thumb_func
+  53              	CRC_CalcBlockCRC:
+  54              		@ args = 0, pretend = 0, frame = 0
+  55              		@ frame_needed = 0, uses_anonymous_args = 0
+  56              		@ link register save eliminated.
+  57 0000 51B1     		cbz	r1, .L6
+  58 0002 4FF44052 		mov	r2, #12288
+  59 0006 00EB8101 		add	r1, r0, r1, lsl #2
+  60 000a C4F20202 		movt	r2, 16386
+  61              	.L5:
+  62 000e 50F8043B 		ldr	r3, [r0], #4
+  63 0012 8842     		cmp	r0, r1
+  64 0014 1360     		str	r3, [r2, #0]
+  65 0016 FAD1     		bne	.L5
+  66              	.L6:
+  67 0018 4FF44053 		mov	r3, #12288
+  68 001c C4F20203 		movt	r3, 16386
+  69 0020 1868     		ldr	r0, [r3, #0]
+  70 0022 7047     		bx	lr
+  72              		.section	.text.CRC_GetCRC,"ax",%progbits
+  73              		.align	2
+  74              		.global	CRC_GetCRC
+  75              		.thumb
+  76              		.thumb_func
+  78              	CRC_GetCRC:
+  79              		@ args = 0, pretend = 0, frame = 0
+  80              		@ frame_needed = 0, uses_anonymous_args = 0
+  81              		@ link register save eliminated.
+  82 0000 4FF44053 		mov	r3, #12288
+  83 0004 C4F20203 		movt	r3, 16386
+  84 0008 1868     		ldr	r0, [r3, #0]
+  85 000a 7047     		bx	lr
+  87              		.section	.text.CRC_SetIDRegister,"ax",%progbits
+  88              		.align	2
+  89              		.global	CRC_SetIDRegister
+  90              		.thumb
+  91              		.thumb_func
+  93              	CRC_SetIDRegister:
+  94              		@ args = 0, pretend = 0, frame = 0
+  95              		@ frame_needed = 0, uses_anonymous_args = 0
+  96              		@ link register save eliminated.
+  97 0000 4FF44053 		mov	r3, #12288
+  98 0004 C4F20203 		movt	r3, 16386
+  99 0008 1871     		strb	r0, [r3, #4]
+ 100 000a 7047     		bx	lr
+ 102              		.section	.text.CRC_GetIDRegister,"ax",%progbits
+ 103              		.align	2
+ 104              		.global	CRC_GetIDRegister
+ 105              		.thumb
+ 106              		.thumb_func
+ 108              	CRC_GetIDRegister:
+ 109              		@ args = 0, pretend = 0, frame = 0
+ 110              		@ frame_needed = 0, uses_anonymous_args = 0
+ 111              		@ link register save eliminated.
+ 112 0000 4FF44053 		mov	r3, #12288
+ 113 0004 C4F20203 		movt	r3, 16386
+ 114 0008 1879     		ldrb	r0, [r3, #4]	@ zero_extendqisi2
+ 115 000a 7047     		bx	lr
+ 117              		.ident	"GCC: (GNU) 4.7.0"
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 stm32f10x_crc.c
+     /tmp/ccCi9gHU.s:16     .text.CRC_ResetDR:0000000000000000 $t
+     /tmp/ccCi9gHU.s:21     .text.CRC_ResetDR:0000000000000000 CRC_ResetDR
+     /tmp/ccCi9gHU.s:32     .text.CRC_CalcCRC:0000000000000000 $t
+     /tmp/ccCi9gHU.s:37     .text.CRC_CalcCRC:0000000000000000 CRC_CalcCRC
+     /tmp/ccCi9gHU.s:48     .text.CRC_CalcBlockCRC:0000000000000000 $t
+     /tmp/ccCi9gHU.s:53     .text.CRC_CalcBlockCRC:0000000000000000 CRC_CalcBlockCRC
+     /tmp/ccCi9gHU.s:73     .text.CRC_GetCRC:0000000000000000 $t
+     /tmp/ccCi9gHU.s:78     .text.CRC_GetCRC:0000000000000000 CRC_GetCRC
+     /tmp/ccCi9gHU.s:88     .text.CRC_SetIDRegister:0000000000000000 $t
+     /tmp/ccCi9gHU.s:93     .text.CRC_SetIDRegister:0000000000000000 CRC_SetIDRegister
+     /tmp/ccCi9gHU.s:103    .text.CRC_GetIDRegister:0000000000000000 $t
+     /tmp/ccCi9gHU.s:108    .text.CRC_GetIDRegister:0000000000000000 CRC_GetIDRegister
+
+NO UNDEFINED SYMBOLS

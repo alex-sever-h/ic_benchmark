@@ -1,0 +1,794 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 2
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"stm32f10x_adc.c"
+  15              		.section	.text.ADC_DeInit,"ax",%progbits
+  16              		.align	2
+  17              		.global	ADC_DeInit
+  18              		.thumb
+  19              		.thumb_func
+  21              	ADC_DeInit:
+  22              		@ args = 0, pretend = 0, frame = 0
+  23              		@ frame_needed = 0, uses_anonymous_args = 0
+  24 0000 08B5     		push	{r3, lr}
+  25 0002 4FF41053 		mov	r3, #9216
+  26 0006 C4F20103 		movt	r3, 16385
+  27 000a 9842     		cmp	r0, r3
+  28 000c 18D0     		beq	.L6
+  29 000e 4FF42053 		mov	r3, #10240
+  30 0012 C4F20103 		movt	r3, 16385
+  31 0016 9842     		cmp	r0, r3
+  32 0018 1ED0     		beq	.L7
+  33 001a 4FF47053 		mov	r3, #15360
+  34 001e C4F20103 		movt	r3, 16385
+  35 0022 9842     		cmp	r0, r3
+  36 0024 00D0     		beq	.L8
+  37 0026 08BD     		pop	{r3, pc}
+  38              	.L8:
+  39 0028 0121     		movs	r1, #1
+  40 002a 4FF40040 		mov	r0, #32768
+  41 002e FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+  42 0032 4FF40040 		mov	r0, #32768
+  43 0036 0021     		movs	r1, #0
+  44 0038 BDE80840 		pop	{r3, lr}
+  45 003c FFF7FEBF 		b	RCC_APB2PeriphResetCmd
+  46              	.L6:
+  47 0040 0121     		movs	r1, #1
+  48 0042 4FF40070 		mov	r0, #512
+  49 0046 FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+  50 004a 4FF40070 		mov	r0, #512
+  51 004e 0021     		movs	r1, #0
+  52 0050 BDE80840 		pop	{r3, lr}
+  53 0054 FFF7FEBF 		b	RCC_APB2PeriphResetCmd
+  54              	.L7:
+  55 0058 0121     		movs	r1, #1
+  56 005a 4FF48060 		mov	r0, #1024
+  57 005e FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+  58 0062 4FF48060 		mov	r0, #1024
+  59 0066 0021     		movs	r1, #0
+  60 0068 BDE80840 		pop	{r3, lr}
+  61 006c FFF7FEBF 		b	RCC_APB2PeriphResetCmd
+  63              		.section	.text.ADC_Init,"ax",%progbits
+  64              		.align	2
+  65              		.global	ADC_Init
+  66              		.thumb
+  67              		.thumb_func
+  69              	ADC_Init:
+  70              		@ args = 0, pretend = 0, frame = 0
+  71              		@ frame_needed = 0, uses_anonymous_args = 0
+  72              		@ link register save eliminated.
+  73 0000 4268     		ldr	r2, [r0, #4]
+  74 0002 0B68     		ldr	r3, [r1, #0]
+  75 0004 22F47022 		bic	r2, r2, #983040
+  76 0008 70B4     		push	{r4, r5, r6}
+  77 000a 22F48072 		bic	r2, r2, #256
+  78 000e 0C79     		ldrb	r4, [r1, #4]	@ zero_extendqisi2
+  79 0010 1343     		orrs	r3, r3, r2
+  80 0012 43EA0423 		orr	r3, r3, r4, lsl #8
+  81 0016 4360     		str	r3, [r0, #4]
+  82 0018 8668     		ldr	r6, [r0, #8]
+  83 001a 8C68     		ldr	r4, [r1, #8]
+  84 001c CA68     		ldr	r2, [r1, #12]
+  85 001e 4FF2FD73 		movw	r3, #63485
+  86 0022 CFF6F173 		movt	r3, 65521
+  87 0026 4D79     		ldrb	r5, [r1, #5]	@ zero_extendqisi2
+  88 0028 2243     		orrs	r2, r2, r4
+  89 002a 3340     		ands	r3, r3, r6
+  90 002c 1343     		orrs	r3, r3, r2
+  91 002e 43EA4503 		orr	r3, r3, r5, lsl #1
+  92 0032 8360     		str	r3, [r0, #8]
+  93 0034 0B7C     		ldrb	r3, [r1, #16]	@ zero_extendqisi2
+  94 0036 C26A     		ldr	r2, [r0, #44]
+  95 0038 013B     		subs	r3, r3, #1
+  96 003a 22F47002 		bic	r2, r2, #15728640
+  97 003e DBB2     		uxtb	r3, r3
+  98 0040 42EA0353 		orr	r3, r2, r3, lsl #20
+  99 0044 C362     		str	r3, [r0, #44]
+ 100 0046 70BC     		pop	{r4, r5, r6}
+ 101 0048 7047     		bx	lr
+ 103 004a 00BF     		.section	.text.ADC_StructInit,"ax",%progbits
+ 104              		.align	2
+ 105              		.global	ADC_StructInit
+ 106              		.thumb
+ 107              		.thumb_func
+ 109              	ADC_StructInit:
+ 110              		@ args = 0, pretend = 0, frame = 0
+ 111              		@ frame_needed = 0, uses_anonymous_args = 0
+ 112              		@ link register save eliminated.
+ 113 0000 0023     		movs	r3, #0
+ 114 0002 0360     		str	r3, [r0, #0]
+ 115 0004 0371     		strb	r3, [r0, #4]
+ 116 0006 4371     		strb	r3, [r0, #5]
+ 117 0008 8360     		str	r3, [r0, #8]
+ 118 000a C360     		str	r3, [r0, #12]
+ 119 000c 0123     		movs	r3, #1
+ 120 000e 0374     		strb	r3, [r0, #16]
+ 121 0010 7047     		bx	lr
+ 123 0012 00BF     		.section	.text.ADC_Cmd,"ax",%progbits
+ 124              		.align	2
+ 125              		.global	ADC_Cmd
+ 126              		.thumb
+ 127              		.thumb_func
+ 129              	ADC_Cmd:
+ 130              		@ args = 0, pretend = 0, frame = 0
+ 131              		@ frame_needed = 0, uses_anonymous_args = 0
+ 132              		@ link register save eliminated.
+ 133 0000 8368     		ldr	r3, [r0, #8]
+ 134 0002 19B9     		cbnz	r1, .L14
+ 135 0004 23F00103 		bic	r3, r3, #1
+ 136 0008 8360     		str	r3, [r0, #8]
+ 137 000a 7047     		bx	lr
+ 138              	.L14:
+ 139 000c 43F00103 		orr	r3, r3, #1
+ 140 0010 8360     		str	r3, [r0, #8]
+ 141 0012 7047     		bx	lr
+ 143              		.section	.text.ADC_DMACmd,"ax",%progbits
+ 144              		.align	2
+ 145              		.global	ADC_DMACmd
+ 146              		.thumb
+ 147              		.thumb_func
+ 149              	ADC_DMACmd:
+ 150              		@ args = 0, pretend = 0, frame = 0
+ 151              		@ frame_needed = 0, uses_anonymous_args = 0
+ 152              		@ link register save eliminated.
+ 153 0000 8368     		ldr	r3, [r0, #8]
+ 154 0002 19B9     		cbnz	r1, .L18
+ 155 0004 23F48073 		bic	r3, r3, #256
+ 156 0008 8360     		str	r3, [r0, #8]
+ 157 000a 7047     		bx	lr
+ 158              	.L18:
+ 159 000c 43F48073 		orr	r3, r3, #256
+ 160 0010 8360     		str	r3, [r0, #8]
+ 161 0012 7047     		bx	lr
+ 163              		.section	.text.ADC_ITConfig,"ax",%progbits
+ 164              		.align	2
+ 165              		.global	ADC_ITConfig
+ 166              		.thumb
+ 167              		.thumb_func
+ 169              	ADC_ITConfig:
+ 170              		@ args = 0, pretend = 0, frame = 0
+ 171              		@ frame_needed = 0, uses_anonymous_args = 0
+ 172              		@ link register save eliminated.
+ 173 0000 C9B2     		uxtb	r1, r1
+ 174 0002 4368     		ldr	r3, [r0, #4]
+ 175 0004 1AB9     		cbnz	r2, .L22
+ 176 0006 23EA0101 		bic	r1, r3, r1
+ 177 000a 4160     		str	r1, [r0, #4]
+ 178 000c 7047     		bx	lr
+ 179              	.L22:
+ 180 000e 1943     		orrs	r1, r1, r3
+ 181 0010 4160     		str	r1, [r0, #4]
+ 182 0012 7047     		bx	lr
+ 184              		.section	.text.ADC_ResetCalibration,"ax",%progbits
+ 185              		.align	2
+ 186              		.global	ADC_ResetCalibration
+ 187              		.thumb
+ 188              		.thumb_func
+ 190              	ADC_ResetCalibration:
+ 191              		@ args = 0, pretend = 0, frame = 0
+ 192              		@ frame_needed = 0, uses_anonymous_args = 0
+ 193              		@ link register save eliminated.
+ 194 0000 8368     		ldr	r3, [r0, #8]
+ 195 0002 43F00803 		orr	r3, r3, #8
+ 196 0006 8360     		str	r3, [r0, #8]
+ 197 0008 7047     		bx	lr
+ 199 000a 00BF     		.section	.text.ADC_GetResetCalibrationStatus,"ax",%progbits
+ 200              		.align	2
+ 201              		.global	ADC_GetResetCalibrationStatus
+ 202              		.thumb
+ 203              		.thumb_func
+ 205              	ADC_GetResetCalibrationStatus:
+ 206              		@ args = 0, pretend = 0, frame = 0
+ 207              		@ frame_needed = 0, uses_anonymous_args = 0
+ 208              		@ link register save eliminated.
+ 209 0000 8068     		ldr	r0, [r0, #8]
+ 210 0002 C0F3C000 		ubfx	r0, r0, #3, #1
+ 211 0006 7047     		bx	lr
+ 213              		.section	.text.ADC_StartCalibration,"ax",%progbits
+ 214              		.align	2
+ 215              		.global	ADC_StartCalibration
+ 216              		.thumb
+ 217              		.thumb_func
+ 219              	ADC_StartCalibration:
+ 220              		@ args = 0, pretend = 0, frame = 0
+ 221              		@ frame_needed = 0, uses_anonymous_args = 0
+ 222              		@ link register save eliminated.
+ 223 0000 8368     		ldr	r3, [r0, #8]
+ 224 0002 43F00403 		orr	r3, r3, #4
+ 225 0006 8360     		str	r3, [r0, #8]
+ 226 0008 7047     		bx	lr
+ 228 000a 00BF     		.section	.text.ADC_GetCalibrationStatus,"ax",%progbits
+ 229              		.align	2
+ 230              		.global	ADC_GetCalibrationStatus
+ 231              		.thumb
+ 232              		.thumb_func
+ 234              	ADC_GetCalibrationStatus:
+ 235              		@ args = 0, pretend = 0, frame = 0
+ 236              		@ frame_needed = 0, uses_anonymous_args = 0
+ 237              		@ link register save eliminated.
+ 238 0000 8068     		ldr	r0, [r0, #8]
+ 239 0002 C0F38000 		ubfx	r0, r0, #2, #1
+ 240 0006 7047     		bx	lr
+ 242              		.section	.text.ADC_SoftwareStartConvCmd,"ax",%progbits
+ 243              		.align	2
+ 244              		.global	ADC_SoftwareStartConvCmd
+ 245              		.thumb
+ 246              		.thumb_func
+ 248              	ADC_SoftwareStartConvCmd:
+ 249              		@ args = 0, pretend = 0, frame = 0
+ 250              		@ frame_needed = 0, uses_anonymous_args = 0
+ 251              		@ link register save eliminated.
+ 252 0000 8368     		ldr	r3, [r0, #8]
+ 253 0002 19B9     		cbnz	r1, .L30
+ 254 0004 23F4A003 		bic	r3, r3, #5242880
+ 255 0008 8360     		str	r3, [r0, #8]
+ 256 000a 7047     		bx	lr
+ 257              	.L30:
+ 258 000c 43F4A003 		orr	r3, r3, #5242880
+ 259 0010 8360     		str	r3, [r0, #8]
+ 260 0012 7047     		bx	lr
+ 262              		.section	.text.ADC_GetSoftwareStartConvStatus,"ax",%progbits
+ 263              		.align	2
+ 264              		.global	ADC_GetSoftwareStartConvStatus
+ 265              		.thumb
+ 266              		.thumb_func
+ 268              	ADC_GetSoftwareStartConvStatus:
+ 269              		@ args = 0, pretend = 0, frame = 0
+ 270              		@ frame_needed = 0, uses_anonymous_args = 0
+ 271              		@ link register save eliminated.
+ 272 0000 8068     		ldr	r0, [r0, #8]
+ 273 0002 C0F38050 		ubfx	r0, r0, #22, #1
+ 274 0006 7047     		bx	lr
+ 276              		.section	.text.ADC_DiscModeChannelCountConfig,"ax",%progbits
+ 277              		.align	2
+ 278              		.global	ADC_DiscModeChannelCountConfig
+ 279              		.thumb
+ 280              		.thumb_func
+ 282              	ADC_DiscModeChannelCountConfig:
+ 283              		@ args = 0, pretend = 0, frame = 0
+ 284              		@ frame_needed = 0, uses_anonymous_args = 0
+ 285              		@ link register save eliminated.
+ 286 0000 4368     		ldr	r3, [r0, #4]
+ 287 0002 0139     		subs	r1, r1, #1
+ 288 0004 23F46043 		bic	r3, r3, #57344
+ 289 0008 43EA4133 		orr	r3, r3, r1, lsl #13
+ 290 000c 4360     		str	r3, [r0, #4]
+ 291 000e 7047     		bx	lr
+ 293              		.section	.text.ADC_DiscModeCmd,"ax",%progbits
+ 294              		.align	2
+ 295              		.global	ADC_DiscModeCmd
+ 296              		.thumb
+ 297              		.thumb_func
+ 299              	ADC_DiscModeCmd:
+ 300              		@ args = 0, pretend = 0, frame = 0
+ 301              		@ frame_needed = 0, uses_anonymous_args = 0
+ 302              		@ link register save eliminated.
+ 303 0000 4368     		ldr	r3, [r0, #4]
+ 304 0002 19B9     		cbnz	r1, .L36
+ 305 0004 23F40063 		bic	r3, r3, #2048
+ 306 0008 4360     		str	r3, [r0, #4]
+ 307 000a 7047     		bx	lr
+ 308              	.L36:
+ 309 000c 43F40063 		orr	r3, r3, #2048
+ 310 0010 4360     		str	r3, [r0, #4]
+ 311 0012 7047     		bx	lr
+ 313              		.section	.text.ADC_RegularChannelConfig,"ax",%progbits
+ 314              		.align	2
+ 315              		.global	ADC_RegularChannelConfig
+ 316              		.thumb
+ 317              		.thumb_func
+ 319              	ADC_RegularChannelConfig:
+ 320              		@ args = 0, pretend = 0, frame = 0
+ 321              		@ frame_needed = 0, uses_anonymous_args = 0
+ 322              		@ link register save eliminated.
+ 323 0000 0929     		cmp	r1, #9
+ 324 0002 70B4     		push	{r4, r5, r6}
+ 325 0004 01EB4104 		add	r4, r1, r1, lsl #1
+ 326 0008 1ED9     		bls	.L38
+ 327 000a 1E3C     		subs	r4, r4, #30
+ 328 000c 0726     		movs	r6, #7
+ 329 000e 06FA04F6 		lsl	r6, r6, r4
+ 330 0012 03FA04F4 		lsl	r4, r3, r4
+ 331 0016 C568     		ldr	r5, [r0, #12]
+ 332 0018 062A     		cmp	r2, #6
+ 333 001a 25EA0603 		bic	r3, r5, r6
+ 334 001e 43EA0403 		orr	r3, r3, r4
+ 335 0022 C360     		str	r3, [r0, #12]
+ 336 0024 1DD9     		bls	.L43
+ 337              	.L40:
+ 338 0026 0C2A     		cmp	r2, #12
+ 339 0028 02EB8202 		add	r2, r2, r2, lsl #2
+ 340 002c 27D9     		bls	.L44
+ 341 002e 413A     		subs	r2, r2, #65
+ 342 0030 1F24     		movs	r4, #31
+ 343 0032 04FA02F4 		lsl	r4, r4, r2
+ 344 0036 01FA02F1 		lsl	r1, r1, r2
+ 345 003a C36A     		ldr	r3, [r0, #44]
+ 346 003c 23EA0402 		bic	r2, r3, r4
+ 347 0040 0A43     		orrs	r2, r2, r1
+ 348 0042 C262     		str	r2, [r0, #44]
+ 349              	.L37:
+ 350 0044 70BC     		pop	{r4, r5, r6}
+ 351 0046 7047     		bx	lr
+ 352              	.L38:
+ 353 0048 0726     		movs	r6, #7
+ 354 004a 06FA04F6 		lsl	r6, r6, r4
+ 355 004e 03FA04F4 		lsl	r4, r3, r4
+ 356 0052 0569     		ldr	r5, [r0, #16]
+ 357 0054 062A     		cmp	r2, #6
+ 358 0056 25EA0603 		bic	r3, r5, r6
+ 359 005a 43EA0403 		orr	r3, r3, r4
+ 360 005e 0361     		str	r3, [r0, #16]
+ 361 0060 E1D8     		bhi	.L40
+ 362              	.L43:
+ 363 0062 013A     		subs	r2, r2, #1
+ 364 0064 02EB8202 		add	r2, r2, r2, lsl #2
+ 365 0068 1F24     		movs	r4, #31
+ 366 006a 04FA02F4 		lsl	r4, r4, r2
+ 367 006e 01FA02F1 		lsl	r1, r1, r2
+ 368 0072 436B     		ldr	r3, [r0, #52]
+ 369 0074 23EA0402 		bic	r2, r3, r4
+ 370 0078 0A43     		orrs	r2, r2, r1
+ 371 007a 4263     		str	r2, [r0, #52]
+ 372 007c E2E7     		b	.L37
+ 373              	.L44:
+ 374 007e 233A     		subs	r2, r2, #35
+ 375 0080 1F24     		movs	r4, #31
+ 376 0082 04FA02F4 		lsl	r4, r4, r2
+ 377 0086 01FA02F1 		lsl	r1, r1, r2
+ 378 008a 036B     		ldr	r3, [r0, #48]
+ 379 008c 23EA0402 		bic	r2, r3, r4
+ 380 0090 0A43     		orrs	r2, r2, r1
+ 381 0092 0263     		str	r2, [r0, #48]
+ 382 0094 D6E7     		b	.L37
+ 384 0096 00BF     		.section	.text.ADC_ExternalTrigConvCmd,"ax",%progbits
+ 385              		.align	2
+ 386              		.global	ADC_ExternalTrigConvCmd
+ 387              		.thumb
+ 388              		.thumb_func
+ 390              	ADC_ExternalTrigConvCmd:
+ 391              		@ args = 0, pretend = 0, frame = 0
+ 392              		@ frame_needed = 0, uses_anonymous_args = 0
+ 393              		@ link register save eliminated.
+ 394 0000 8368     		ldr	r3, [r0, #8]
+ 395 0002 19B9     		cbnz	r1, .L48
+ 396 0004 23F48013 		bic	r3, r3, #1048576
+ 397 0008 8360     		str	r3, [r0, #8]
+ 398 000a 7047     		bx	lr
+ 399              	.L48:
+ 400 000c 43F48013 		orr	r3, r3, #1048576
+ 401 0010 8360     		str	r3, [r0, #8]
+ 402 0012 7047     		bx	lr
+ 404              		.section	.text.ADC_GetConversionValue,"ax",%progbits
+ 405              		.align	2
+ 406              		.global	ADC_GetConversionValue
+ 407              		.thumb
+ 408              		.thumb_func
+ 410              	ADC_GetConversionValue:
+ 411              		@ args = 0, pretend = 0, frame = 0
+ 412              		@ frame_needed = 0, uses_anonymous_args = 0
+ 413              		@ link register save eliminated.
+ 414 0000 C06C     		ldr	r0, [r0, #76]
+ 415 0002 80B2     		uxth	r0, r0
+ 416 0004 7047     		bx	lr
+ 418 0006 00BF     		.section	.text.ADC_GetDualModeConversionValue,"ax",%progbits
+ 419              		.align	2
+ 420              		.global	ADC_GetDualModeConversionValue
+ 421              		.thumb
+ 422              		.thumb_func
+ 424              	ADC_GetDualModeConversionValue:
+ 425              		@ args = 0, pretend = 0, frame = 0
+ 426              		@ frame_needed = 0, uses_anonymous_args = 0
+ 427              		@ link register save eliminated.
+ 428 0000 42F24C43 		movw	r3, #9292
+ 429 0004 C4F20103 		movt	r3, 16385
+ 430 0008 1868     		ldr	r0, [r3, #0]
+ 431 000a 7047     		bx	lr
+ 433              		.section	.text.ADC_AutoInjectedConvCmd,"ax",%progbits
+ 434              		.align	2
+ 435              		.global	ADC_AutoInjectedConvCmd
+ 436              		.thumb
+ 437              		.thumb_func
+ 439              	ADC_AutoInjectedConvCmd:
+ 440              		@ args = 0, pretend = 0, frame = 0
+ 441              		@ frame_needed = 0, uses_anonymous_args = 0
+ 442              		@ link register save eliminated.
+ 443 0000 4368     		ldr	r3, [r0, #4]
+ 444 0002 19B9     		cbnz	r1, .L54
+ 445 0004 23F48063 		bic	r3, r3, #1024
+ 446 0008 4360     		str	r3, [r0, #4]
+ 447 000a 7047     		bx	lr
+ 448              	.L54:
+ 449 000c 43F48063 		orr	r3, r3, #1024
+ 450 0010 4360     		str	r3, [r0, #4]
+ 451 0012 7047     		bx	lr
+ 453              		.section	.text.ADC_InjectedDiscModeCmd,"ax",%progbits
+ 454              		.align	2
+ 455              		.global	ADC_InjectedDiscModeCmd
+ 456              		.thumb
+ 457              		.thumb_func
+ 459              	ADC_InjectedDiscModeCmd:
+ 460              		@ args = 0, pretend = 0, frame = 0
+ 461              		@ frame_needed = 0, uses_anonymous_args = 0
+ 462              		@ link register save eliminated.
+ 463 0000 4368     		ldr	r3, [r0, #4]
+ 464 0002 19B9     		cbnz	r1, .L58
+ 465 0004 23F48053 		bic	r3, r3, #4096
+ 466 0008 4360     		str	r3, [r0, #4]
+ 467 000a 7047     		bx	lr
+ 468              	.L58:
+ 469 000c 43F48053 		orr	r3, r3, #4096
+ 470 0010 4360     		str	r3, [r0, #4]
+ 471 0012 7047     		bx	lr
+ 473              		.section	.text.ADC_ExternalTrigInjectedConvConfig,"ax",%progbits
+ 474              		.align	2
+ 475              		.global	ADC_ExternalTrigInjectedConvConfig
+ 476              		.thumb
+ 477              		.thumb_func
+ 479              	ADC_ExternalTrigInjectedConvConfig:
+ 480              		@ args = 0, pretend = 0, frame = 0
+ 481              		@ frame_needed = 0, uses_anonymous_args = 0
+ 482              		@ link register save eliminated.
+ 483 0000 8368     		ldr	r3, [r0, #8]
+ 484 0002 23F4E043 		bic	r3, r3, #28672
+ 485 0006 1943     		orrs	r1, r1, r3
+ 486 0008 8160     		str	r1, [r0, #8]
+ 487 000a 7047     		bx	lr
+ 489              		.section	.text.ADC_ExternalTrigInjectedConvCmd,"ax",%progbits
+ 490              		.align	2
+ 491              		.global	ADC_ExternalTrigInjectedConvCmd
+ 492              		.thumb
+ 493              		.thumb_func
+ 495              	ADC_ExternalTrigInjectedConvCmd:
+ 496              		@ args = 0, pretend = 0, frame = 0
+ 497              		@ frame_needed = 0, uses_anonymous_args = 0
+ 498              		@ link register save eliminated.
+ 499 0000 8368     		ldr	r3, [r0, #8]
+ 500 0002 19B9     		cbnz	r1, .L63
+ 501 0004 23F40043 		bic	r3, r3, #32768
+ 502 0008 8360     		str	r3, [r0, #8]
+ 503 000a 7047     		bx	lr
+ 504              	.L63:
+ 505 000c 43F40043 		orr	r3, r3, #32768
+ 506 0010 8360     		str	r3, [r0, #8]
+ 507 0012 7047     		bx	lr
+ 509              		.section	.text.ADC_SoftwareStartInjectedConvCmd,"ax",%progbits
+ 510              		.align	2
+ 511              		.global	ADC_SoftwareStartInjectedConvCmd
+ 512              		.thumb
+ 513              		.thumb_func
+ 515              	ADC_SoftwareStartInjectedConvCmd:
+ 516              		@ args = 0, pretend = 0, frame = 0
+ 517              		@ frame_needed = 0, uses_anonymous_args = 0
+ 518              		@ link register save eliminated.
+ 519 0000 8368     		ldr	r3, [r0, #8]
+ 520 0002 19B9     		cbnz	r1, .L67
+ 521 0004 23F40213 		bic	r3, r3, #2129920
+ 522 0008 8360     		str	r3, [r0, #8]
+ 523 000a 7047     		bx	lr
+ 524              	.L67:
+ 525 000c 43F40213 		orr	r3, r3, #2129920
+ 526 0010 8360     		str	r3, [r0, #8]
+ 527 0012 7047     		bx	lr
+ 529              		.section	.text.ADC_GetSoftwareStartInjectedConvCmdStatus,"ax",%progbits
+ 530              		.align	2
+ 531              		.global	ADC_GetSoftwareStartInjectedConvCmdStatus
+ 532              		.thumb
+ 533              		.thumb_func
+ 535              	ADC_GetSoftwareStartInjectedConvCmdStatus:
+ 536              		@ args = 0, pretend = 0, frame = 0
+ 537              		@ frame_needed = 0, uses_anonymous_args = 0
+ 538              		@ link register save eliminated.
+ 539 0000 8068     		ldr	r0, [r0, #8]
+ 540 0002 C0F34050 		ubfx	r0, r0, #21, #1
+ 541 0006 7047     		bx	lr
+ 543              		.section	.text.ADC_InjectedChannelConfig,"ax",%progbits
+ 544              		.align	2
+ 545              		.global	ADC_InjectedChannelConfig
+ 546              		.thumb
+ 547              		.thumb_func
+ 549              	ADC_InjectedChannelConfig:
+ 550              		@ args = 0, pretend = 0, frame = 0
+ 551              		@ frame_needed = 0, uses_anonymous_args = 0
+ 552              		@ link register save eliminated.
+ 553 0000 0929     		cmp	r1, #9
+ 554 0002 70B4     		push	{r4, r5, r6}
+ 555 0004 01EB4104 		add	r4, r1, r1, lsl #1
+ 556 0008 1CD8     		bhi	.L72
+ 557 000a 0726     		movs	r6, #7
+ 558 000c 06FA04F6 		lsl	r6, r6, r4
+ 559 0010 03FA04F4 		lsl	r4, r3, r4
+ 560 0014 0569     		ldr	r5, [r0, #16]
+ 561 0016 25EA0603 		bic	r3, r5, r6
+ 562 001a 2343     		orrs	r3, r3, r4
+ 563 001c 0361     		str	r3, [r0, #16]
+ 564              	.L71:
+ 565 001e 836B     		ldr	r3, [r0, #56]
+ 566 0020 C3F30154 		ubfx	r4, r3, #20, #2
+ 567 0024 121B     		subs	r2, r2, r4
+ 568 0026 0232     		adds	r2, r2, #2
+ 569 0028 D2B2     		uxtb	r2, r2
+ 570 002a 02EB8202 		add	r2, r2, r2, lsl #2
+ 571 002e 1F24     		movs	r4, #31
+ 572 0030 04FA02F4 		lsl	r4, r4, r2
+ 573 0034 01FA02F1 		lsl	r1, r1, r2
+ 574 0038 23EA0403 		bic	r3, r3, r4
+ 575 003c 0B43     		orrs	r3, r3, r1
+ 576 003e 8363     		str	r3, [r0, #56]
+ 577 0040 70BC     		pop	{r4, r5, r6}
+ 578 0042 7047     		bx	lr
+ 579              	.L72:
+ 580 0044 1E3C     		subs	r4, r4, #30
+ 581 0046 0726     		movs	r6, #7
+ 582 0048 06FA04F6 		lsl	r6, r6, r4
+ 583 004c 03FA04F4 		lsl	r4, r3, r4
+ 584 0050 C568     		ldr	r5, [r0, #12]
+ 585 0052 25EA0603 		bic	r3, r5, r6
+ 586 0056 2343     		orrs	r3, r3, r4
+ 587 0058 C360     		str	r3, [r0, #12]
+ 588 005a E0E7     		b	.L71
+ 590              		.section	.text.ADC_InjectedSequencerLengthConfig,"ax",%progbits
+ 591              		.align	2
+ 592              		.global	ADC_InjectedSequencerLengthConfig
+ 593              		.thumb
+ 594              		.thumb_func
+ 596              	ADC_InjectedSequencerLengthConfig:
+ 597              		@ args = 0, pretend = 0, frame = 0
+ 598              		@ frame_needed = 0, uses_anonymous_args = 0
+ 599              		@ link register save eliminated.
+ 600 0000 836B     		ldr	r3, [r0, #56]
+ 601 0002 0139     		subs	r1, r1, #1
+ 602 0004 23F44013 		bic	r3, r3, #3145728
+ 603 0008 43EA0153 		orr	r3, r3, r1, lsl #20
+ 604 000c 8363     		str	r3, [r0, #56]
+ 605 000e 7047     		bx	lr
+ 607              		.section	.text.ADC_SetInjectedOffset,"ax",%progbits
+ 608              		.align	2
+ 609              		.global	ADC_SetInjectedOffset
+ 610              		.thumb
+ 611              		.thumb_func
+ 613              	ADC_SetInjectedOffset:
+ 614              		@ args = 0, pretend = 0, frame = 8
+ 615              		@ frame_needed = 0, uses_anonymous_args = 0
+ 616              		@ link register save eliminated.
+ 617 0000 82B0     		sub	sp, sp, #8
+ 618 0002 0023     		movs	r3, #0
+ 619 0004 0193     		str	r3, [sp, #4]
+ 620 0006 0190     		str	r0, [sp, #4]
+ 621 0008 019B     		ldr	r3, [sp, #4]
+ 622 000a C918     		adds	r1, r1, r3
+ 623 000c 0191     		str	r1, [sp, #4]
+ 624 000e 019B     		ldr	r3, [sp, #4]
+ 625 0010 1A60     		str	r2, [r3, #0]
+ 626 0012 02B0     		add	sp, sp, #8
+ 627 0014 7047     		bx	lr
+ 629 0016 00BF     		.section	.text.ADC_GetInjectedConversionValue,"ax",%progbits
+ 630              		.align	2
+ 631              		.global	ADC_GetInjectedConversionValue
+ 632              		.thumb
+ 633              		.thumb_func
+ 635              	ADC_GetInjectedConversionValue:
+ 636              		@ args = 0, pretend = 0, frame = 8
+ 637              		@ frame_needed = 0, uses_anonymous_args = 0
+ 638              		@ link register save eliminated.
+ 639 0000 82B0     		sub	sp, sp, #8
+ 640 0002 0023     		movs	r3, #0
+ 641 0004 0193     		str	r3, [sp, #4]
+ 642 0006 0190     		str	r0, [sp, #4]
+ 643 0008 019B     		ldr	r3, [sp, #4]
+ 644 000a 2833     		adds	r3, r3, #40
+ 645 000c 5918     		adds	r1, r3, r1
+ 646 000e 0191     		str	r1, [sp, #4]
+ 647 0010 019B     		ldr	r3, [sp, #4]
+ 648 0012 1868     		ldr	r0, [r3, #0]
+ 649 0014 80B2     		uxth	r0, r0
+ 650 0016 02B0     		add	sp, sp, #8
+ 651 0018 7047     		bx	lr
+ 653 001a 00BF     		.section	.text.ADC_AnalogWatchdogCmd,"ax",%progbits
+ 654              		.align	2
+ 655              		.global	ADC_AnalogWatchdogCmd
+ 656              		.thumb
+ 657              		.thumb_func
+ 659              	ADC_AnalogWatchdogCmd:
+ 660              		@ args = 0, pretend = 0, frame = 0
+ 661              		@ frame_needed = 0, uses_anonymous_args = 0
+ 662              		@ link register save eliminated.
+ 663 0000 4368     		ldr	r3, [r0, #4]
+ 664 0002 23F44003 		bic	r3, r3, #12582912
+ 665 0006 23F40073 		bic	r3, r3, #512
+ 666 000a 1943     		orrs	r1, r1, r3
+ 667 000c 4160     		str	r1, [r0, #4]
+ 668 000e 7047     		bx	lr
+ 670              		.section	.text.ADC_AnalogWatchdogThresholdsConfig,"ax",%progbits
+ 671              		.align	2
+ 672              		.global	ADC_AnalogWatchdogThresholdsConfig
+ 673              		.thumb
+ 674              		.thumb_func
+ 676              	ADC_AnalogWatchdogThresholdsConfig:
+ 677              		@ args = 0, pretend = 0, frame = 0
+ 678              		@ frame_needed = 0, uses_anonymous_args = 0
+ 679              		@ link register save eliminated.
+ 680 0000 4162     		str	r1, [r0, #36]
+ 681 0002 8262     		str	r2, [r0, #40]
+ 682 0004 7047     		bx	lr
+ 684 0006 00BF     		.section	.text.ADC_AnalogWatchdogSingleChannelConfig,"ax",%progbits
+ 685              		.align	2
+ 686              		.global	ADC_AnalogWatchdogSingleChannelConfig
+ 687              		.thumb
+ 688              		.thumb_func
+ 690              	ADC_AnalogWatchdogSingleChannelConfig:
+ 691              		@ args = 0, pretend = 0, frame = 0
+ 692              		@ frame_needed = 0, uses_anonymous_args = 0
+ 693              		@ link register save eliminated.
+ 694 0000 4368     		ldr	r3, [r0, #4]
+ 695 0002 23F01F03 		bic	r3, r3, #31
+ 696 0006 1943     		orrs	r1, r1, r3
+ 697 0008 4160     		str	r1, [r0, #4]
+ 698 000a 7047     		bx	lr
+ 700              		.section	.text.ADC_TempSensorVrefintCmd,"ax",%progbits
+ 701              		.align	2
+ 702              		.global	ADC_TempSensorVrefintCmd
+ 703              		.thumb
+ 704              		.thumb_func
+ 706              	ADC_TempSensorVrefintCmd:
+ 707              		@ args = 0, pretend = 0, frame = 0
+ 708              		@ frame_needed = 0, uses_anonymous_args = 0
+ 709              		@ link register save eliminated.
+ 710 0000 4FF41053 		mov	r3, #9216
+ 711 0004 C4F20103 		movt	r3, 16385
+ 712 0008 9A68     		ldr	r2, [r3, #8]
+ 713 000a 18B9     		cbnz	r0, .L82
+ 714 000c 22F40002 		bic	r2, r2, #8388608
+ 715 0010 9A60     		str	r2, [r3, #8]
+ 716 0012 7047     		bx	lr
+ 717              	.L82:
+ 718 0014 42F40002 		orr	r2, r2, #8388608
+ 719 0018 9A60     		str	r2, [r3, #8]
+ 720 001a 7047     		bx	lr
+ 722              		.section	.text.ADC_GetFlagStatus,"ax",%progbits
+ 723              		.align	2
+ 724              		.global	ADC_GetFlagStatus
+ 725              		.thumb
+ 726              		.thumb_func
+ 728              	ADC_GetFlagStatus:
+ 729              		@ args = 0, pretend = 0, frame = 0
+ 730              		@ frame_needed = 0, uses_anonymous_args = 0
+ 731              		@ link register save eliminated.
+ 732 0000 0368     		ldr	r3, [r0, #0]
+ 733 0002 1942     		tst	r1, r3
+ 734 0004 0CBF     		ite	eq
+ 735 0006 0020     		moveq	r0, #0
+ 736 0008 0120     		movne	r0, #1
+ 737 000a 7047     		bx	lr
+ 739              		.section	.text.ADC_ClearFlag,"ax",%progbits
+ 740              		.align	2
+ 741              		.global	ADC_ClearFlag
+ 742              		.thumb
+ 743              		.thumb_func
+ 745              	ADC_ClearFlag:
+ 746              		@ args = 0, pretend = 0, frame = 0
+ 747              		@ frame_needed = 0, uses_anonymous_args = 0
+ 748              		@ link register save eliminated.
+ 749 0000 C943     		mvns	r1, r1
+ 750 0002 0160     		str	r1, [r0, #0]
+ 751 0004 7047     		bx	lr
+ 753 0006 00BF     		.section	.text.ADC_GetITStatus,"ax",%progbits
+ 754              		.align	2
+ 755              		.global	ADC_GetITStatus
+ 756              		.thumb
+ 757              		.thumb_func
+ 759              	ADC_GetITStatus:
+ 760              		@ args = 0, pretend = 0, frame = 0
+ 761              		@ frame_needed = 0, uses_anonymous_args = 0
+ 762              		@ link register save eliminated.
+ 763 0000 4368     		ldr	r3, [r0, #4]
+ 764 0002 0068     		ldr	r0, [r0, #0]
+ 765 0004 10EA1120 		ands	r0, r0, r1, lsr #8
+ 766 0008 04D0     		beq	.L86
+ 767 000a C9B2     		uxtb	r1, r1
+ 768 000c 1942     		tst	r1, r3
+ 769 000e 0CBF     		ite	eq
+ 770 0010 0020     		moveq	r0, #0
+ 771 0012 0120     		movne	r0, #1
+ 772              	.L86:
+ 773 0014 7047     		bx	lr
+ 775 0016 00BF     		.section	.text.ADC_ClearITPendingBit,"ax",%progbits
+ 776              		.align	2
+ 777              		.global	ADC_ClearITPendingBit
+ 778              		.thumb
+ 779              		.thumb_func
+ 781              	ADC_ClearITPendingBit:
+ 782              		@ args = 0, pretend = 0, frame = 0
+ 783              		@ frame_needed = 0, uses_anonymous_args = 0
+ 784              		@ link register save eliminated.
+ 785 0000 6FEA1121 		mvn	r1, r1, lsr #8
+ 786 0004 0160     		str	r1, [r0, #0]
+ 787 0006 7047     		bx	lr
+ 789              		.ident	"GCC: (GNU) 4.7.0"
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 stm32f10x_adc.c
+     /tmp/cclY1pR2.s:16     .text.ADC_DeInit:0000000000000000 $t
+     /tmp/cclY1pR2.s:21     .text.ADC_DeInit:0000000000000000 ADC_DeInit
+     /tmp/cclY1pR2.s:64     .text.ADC_Init:0000000000000000 $t
+     /tmp/cclY1pR2.s:69     .text.ADC_Init:0000000000000000 ADC_Init
+     /tmp/cclY1pR2.s:104    .text.ADC_StructInit:0000000000000000 $t
+     /tmp/cclY1pR2.s:109    .text.ADC_StructInit:0000000000000000 ADC_StructInit
+     /tmp/cclY1pR2.s:124    .text.ADC_Cmd:0000000000000000 $t
+     /tmp/cclY1pR2.s:129    .text.ADC_Cmd:0000000000000000 ADC_Cmd
+     /tmp/cclY1pR2.s:144    .text.ADC_DMACmd:0000000000000000 $t
+     /tmp/cclY1pR2.s:149    .text.ADC_DMACmd:0000000000000000 ADC_DMACmd
+     /tmp/cclY1pR2.s:164    .text.ADC_ITConfig:0000000000000000 $t
+     /tmp/cclY1pR2.s:169    .text.ADC_ITConfig:0000000000000000 ADC_ITConfig
+     /tmp/cclY1pR2.s:185    .text.ADC_ResetCalibration:0000000000000000 $t
+     /tmp/cclY1pR2.s:190    .text.ADC_ResetCalibration:0000000000000000 ADC_ResetCalibration
+     /tmp/cclY1pR2.s:200    .text.ADC_GetResetCalibrationStatus:0000000000000000 $t
+     /tmp/cclY1pR2.s:205    .text.ADC_GetResetCalibrationStatus:0000000000000000 ADC_GetResetCalibrationStatus
+     /tmp/cclY1pR2.s:214    .text.ADC_StartCalibration:0000000000000000 $t
+     /tmp/cclY1pR2.s:219    .text.ADC_StartCalibration:0000000000000000 ADC_StartCalibration
+     /tmp/cclY1pR2.s:229    .text.ADC_GetCalibrationStatus:0000000000000000 $t
+     /tmp/cclY1pR2.s:234    .text.ADC_GetCalibrationStatus:0000000000000000 ADC_GetCalibrationStatus
+     /tmp/cclY1pR2.s:243    .text.ADC_SoftwareStartConvCmd:0000000000000000 $t
+     /tmp/cclY1pR2.s:248    .text.ADC_SoftwareStartConvCmd:0000000000000000 ADC_SoftwareStartConvCmd
+     /tmp/cclY1pR2.s:263    .text.ADC_GetSoftwareStartConvStatus:0000000000000000 $t
+     /tmp/cclY1pR2.s:268    .text.ADC_GetSoftwareStartConvStatus:0000000000000000 ADC_GetSoftwareStartConvStatus
+     /tmp/cclY1pR2.s:277    .text.ADC_DiscModeChannelCountConfig:0000000000000000 $t
+     /tmp/cclY1pR2.s:282    .text.ADC_DiscModeChannelCountConfig:0000000000000000 ADC_DiscModeChannelCountConfig
+     /tmp/cclY1pR2.s:294    .text.ADC_DiscModeCmd:0000000000000000 $t
+     /tmp/cclY1pR2.s:299    .text.ADC_DiscModeCmd:0000000000000000 ADC_DiscModeCmd
+     /tmp/cclY1pR2.s:314    .text.ADC_RegularChannelConfig:0000000000000000 $t
+     /tmp/cclY1pR2.s:319    .text.ADC_RegularChannelConfig:0000000000000000 ADC_RegularChannelConfig
+     /tmp/cclY1pR2.s:385    .text.ADC_ExternalTrigConvCmd:0000000000000000 $t
+     /tmp/cclY1pR2.s:390    .text.ADC_ExternalTrigConvCmd:0000000000000000 ADC_ExternalTrigConvCmd
+     /tmp/cclY1pR2.s:405    .text.ADC_GetConversionValue:0000000000000000 $t
+     /tmp/cclY1pR2.s:410    .text.ADC_GetConversionValue:0000000000000000 ADC_GetConversionValue
+     /tmp/cclY1pR2.s:419    .text.ADC_GetDualModeConversionValue:0000000000000000 $t
+     /tmp/cclY1pR2.s:424    .text.ADC_GetDualModeConversionValue:0000000000000000 ADC_GetDualModeConversionValue
+     /tmp/cclY1pR2.s:434    .text.ADC_AutoInjectedConvCmd:0000000000000000 $t
+     /tmp/cclY1pR2.s:439    .text.ADC_AutoInjectedConvCmd:0000000000000000 ADC_AutoInjectedConvCmd
+     /tmp/cclY1pR2.s:454    .text.ADC_InjectedDiscModeCmd:0000000000000000 $t
+     /tmp/cclY1pR2.s:459    .text.ADC_InjectedDiscModeCmd:0000000000000000 ADC_InjectedDiscModeCmd
+     /tmp/cclY1pR2.s:474    .text.ADC_ExternalTrigInjectedConvConfig:0000000000000000 $t
+     /tmp/cclY1pR2.s:479    .text.ADC_ExternalTrigInjectedConvConfig:0000000000000000 ADC_ExternalTrigInjectedConvConfig
+     /tmp/cclY1pR2.s:490    .text.ADC_ExternalTrigInjectedConvCmd:0000000000000000 $t
+     /tmp/cclY1pR2.s:495    .text.ADC_ExternalTrigInjectedConvCmd:0000000000000000 ADC_ExternalTrigInjectedConvCmd
+     /tmp/cclY1pR2.s:510    .text.ADC_SoftwareStartInjectedConvCmd:0000000000000000 $t
+     /tmp/cclY1pR2.s:515    .text.ADC_SoftwareStartInjectedConvCmd:0000000000000000 ADC_SoftwareStartInjectedConvCmd
+     /tmp/cclY1pR2.s:530    .text.ADC_GetSoftwareStartInjectedConvCmdStatus:0000000000000000 $t
+     /tmp/cclY1pR2.s:535    .text.ADC_GetSoftwareStartInjectedConvCmdStatus:0000000000000000 ADC_GetSoftwareStartInjectedConvCmdStatus
+     /tmp/cclY1pR2.s:544    .text.ADC_InjectedChannelConfig:0000000000000000 $t
+     /tmp/cclY1pR2.s:549    .text.ADC_InjectedChannelConfig:0000000000000000 ADC_InjectedChannelConfig
+     /tmp/cclY1pR2.s:591    .text.ADC_InjectedSequencerLengthConfig:0000000000000000 $t
+     /tmp/cclY1pR2.s:596    .text.ADC_InjectedSequencerLengthConfig:0000000000000000 ADC_InjectedSequencerLengthConfig
+     /tmp/cclY1pR2.s:608    .text.ADC_SetInjectedOffset:0000000000000000 $t
+     /tmp/cclY1pR2.s:613    .text.ADC_SetInjectedOffset:0000000000000000 ADC_SetInjectedOffset
+     /tmp/cclY1pR2.s:630    .text.ADC_GetInjectedConversionValue:0000000000000000 $t
+     /tmp/cclY1pR2.s:635    .text.ADC_GetInjectedConversionValue:0000000000000000 ADC_GetInjectedConversionValue
+     /tmp/cclY1pR2.s:654    .text.ADC_AnalogWatchdogCmd:0000000000000000 $t
+     /tmp/cclY1pR2.s:659    .text.ADC_AnalogWatchdogCmd:0000000000000000 ADC_AnalogWatchdogCmd
+     /tmp/cclY1pR2.s:671    .text.ADC_AnalogWatchdogThresholdsConfig:0000000000000000 $t
+     /tmp/cclY1pR2.s:676    .text.ADC_AnalogWatchdogThresholdsConfig:0000000000000000 ADC_AnalogWatchdogThresholdsConfig
+     /tmp/cclY1pR2.s:685    .text.ADC_AnalogWatchdogSingleChannelConfig:0000000000000000 $t
+     /tmp/cclY1pR2.s:690    .text.ADC_AnalogWatchdogSingleChannelConfig:0000000000000000 ADC_AnalogWatchdogSingleChannelConfig
+     /tmp/cclY1pR2.s:701    .text.ADC_TempSensorVrefintCmd:0000000000000000 $t
+     /tmp/cclY1pR2.s:706    .text.ADC_TempSensorVrefintCmd:0000000000000000 ADC_TempSensorVrefintCmd
+     /tmp/cclY1pR2.s:723    .text.ADC_GetFlagStatus:0000000000000000 $t
+     /tmp/cclY1pR2.s:728    .text.ADC_GetFlagStatus:0000000000000000 ADC_GetFlagStatus
+     /tmp/cclY1pR2.s:740    .text.ADC_ClearFlag:0000000000000000 $t
+     /tmp/cclY1pR2.s:745    .text.ADC_ClearFlag:0000000000000000 ADC_ClearFlag
+     /tmp/cclY1pR2.s:754    .text.ADC_GetITStatus:0000000000000000 $t
+     /tmp/cclY1pR2.s:759    .text.ADC_GetITStatus:0000000000000000 ADC_GetITStatus
+     /tmp/cclY1pR2.s:776    .text.ADC_ClearITPendingBit:0000000000000000 $t
+     /tmp/cclY1pR2.s:781    .text.ADC_ClearITPendingBit:0000000000000000 ADC_ClearITPendingBit
+
+UNDEFINED SYMBOLS
+RCC_APB2PeriphResetCmd

@@ -1,0 +1,762 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 2
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"vectors_stm32f10x_md.c"
+  15              		.section	.text.NMI_Handler,"ax",%progbits
+  16              		.align	2
+  17              		.weak	NMI_Handler
+  18              		.thumb
+  19              		.thumb_func
+  21              	NMI_Handler:
+  22              		@ args = 0, pretend = 0, frame = 0
+  23              		@ frame_needed = 0, uses_anonymous_args = 0
+  24              		@ link register save eliminated.
+  25              	.L2:
+  26 0000 FEE7     		b	.L2
+  28 0002 00BF     		.section	.text.HardFault_Handler,"ax",%progbits
+  29              		.align	2
+  30              		.weak	HardFault_Handler
+  31              		.thumb
+  32              		.thumb_func
+  34              	HardFault_Handler:
+  35              		@ args = 0, pretend = 0, frame = 0
+  36              		@ frame_needed = 0, uses_anonymous_args = 0
+  37              		@ link register save eliminated.
+  38              	.L4:
+  39 0000 FEE7     		b	.L4
+  41 0002 00BF     		.section	.text.MemManage_Handler,"ax",%progbits
+  42              		.align	2
+  43              		.weak	MemManage_Handler
+  44              		.thumb
+  45              		.thumb_func
+  47              	MemManage_Handler:
+  48              		@ args = 0, pretend = 0, frame = 0
+  49              		@ frame_needed = 0, uses_anonymous_args = 0
+  50              		@ link register save eliminated.
+  51              	.L6:
+  52 0000 FEE7     		b	.L6
+  54 0002 00BF     		.section	.text.BusFault_Handler,"ax",%progbits
+  55              		.align	2
+  56              		.weak	BusFault_Handler
+  57              		.thumb
+  58              		.thumb_func
+  60              	BusFault_Handler:
+  61              		@ args = 0, pretend = 0, frame = 0
+  62              		@ frame_needed = 0, uses_anonymous_args = 0
+  63              		@ link register save eliminated.
+  64              	.L8:
+  65 0000 FEE7     		b	.L8
+  67 0002 00BF     		.section	.text.UsageFault_Handler,"ax",%progbits
+  68              		.align	2
+  69              		.weak	UsageFault_Handler
+  70              		.thumb
+  71              		.thumb_func
+  73              	UsageFault_Handler:
+  74              		@ args = 0, pretend = 0, frame = 0
+  75              		@ frame_needed = 0, uses_anonymous_args = 0
+  76              		@ link register save eliminated.
+  77              	.L10:
+  78 0000 FEE7     		b	.L10
+  80 0002 00BF     		.section	.text.SVC_Handler,"ax",%progbits
+  81              		.align	2
+  82              		.weak	SVC_Handler
+  83              		.thumb
+  84              		.thumb_func
+  86              	SVC_Handler:
+  87              		@ args = 0, pretend = 0, frame = 0
+  88              		@ frame_needed = 0, uses_anonymous_args = 0
+  89              		@ link register save eliminated.
+  90              	.L12:
+  91 0000 FEE7     		b	.L12
+  93 0002 00BF     		.section	.text.DebugMon_Handler,"ax",%progbits
+  94              		.align	2
+  95              		.weak	DebugMon_Handler
+  96              		.thumb
+  97              		.thumb_func
+  99              	DebugMon_Handler:
+ 100              		@ args = 0, pretend = 0, frame = 0
+ 101              		@ frame_needed = 0, uses_anonymous_args = 0
+ 102              		@ link register save eliminated.
+ 103              	.L14:
+ 104 0000 FEE7     		b	.L14
+ 106 0002 00BF     		.section	.text.PendSV_Handler,"ax",%progbits
+ 107              		.align	2
+ 108              		.weak	PendSV_Handler
+ 109              		.thumb
+ 110              		.thumb_func
+ 112              	PendSV_Handler:
+ 113              		@ args = 0, pretend = 0, frame = 0
+ 114              		@ frame_needed = 0, uses_anonymous_args = 0
+ 115              		@ link register save eliminated.
+ 116              	.L16:
+ 117 0000 FEE7     		b	.L16
+ 119 0002 00BF     		.section	.text.SysTick_Handler,"ax",%progbits
+ 120              		.align	2
+ 121              		.weak	SysTick_Handler
+ 122              		.thumb
+ 123              		.thumb_func
+ 125              	SysTick_Handler:
+ 126              		@ args = 0, pretend = 0, frame = 0
+ 127              		@ frame_needed = 0, uses_anonymous_args = 0
+ 128              		@ link register save eliminated.
+ 129              	.L18:
+ 130 0000 FEE7     		b	.L18
+ 132 0002 00BF     		.section	.text.WWDG_IRQHandler,"ax",%progbits
+ 133              		.align	2
+ 134              		.weak	WWDG_IRQHandler
+ 135              		.thumb
+ 136              		.thumb_func
+ 138              	WWDG_IRQHandler:
+ 139              		@ args = 0, pretend = 0, frame = 0
+ 140              		@ frame_needed = 0, uses_anonymous_args = 0
+ 141              		@ link register save eliminated.
+ 142              	.L20:
+ 143 0000 FEE7     		b	.L20
+ 145 0002 00BF     		.section	.text.PVD_IRQHandler,"ax",%progbits
+ 146              		.align	2
+ 147              		.weak	PVD_IRQHandler
+ 148              		.thumb
+ 149              		.thumb_func
+ 151              	PVD_IRQHandler:
+ 152              		@ args = 0, pretend = 0, frame = 0
+ 153              		@ frame_needed = 0, uses_anonymous_args = 0
+ 154              		@ link register save eliminated.
+ 155              	.L22:
+ 156 0000 FEE7     		b	.L22
+ 158 0002 00BF     		.section	.text.TAMPER_IRQHandler,"ax",%progbits
+ 159              		.align	2
+ 160              		.weak	TAMPER_IRQHandler
+ 161              		.thumb
+ 162              		.thumb_func
+ 164              	TAMPER_IRQHandler:
+ 165              		@ args = 0, pretend = 0, frame = 0
+ 166              		@ frame_needed = 0, uses_anonymous_args = 0
+ 167              		@ link register save eliminated.
+ 168              	.L24:
+ 169 0000 FEE7     		b	.L24
+ 171 0002 00BF     		.section	.text.RTC_IRQHandler,"ax",%progbits
+ 172              		.align	2
+ 173              		.weak	RTC_IRQHandler
+ 174              		.thumb
+ 175              		.thumb_func
+ 177              	RTC_IRQHandler:
+ 178              		@ args = 0, pretend = 0, frame = 0
+ 179              		@ frame_needed = 0, uses_anonymous_args = 0
+ 180              		@ link register save eliminated.
+ 181              	.L26:
+ 182 0000 FEE7     		b	.L26
+ 184 0002 00BF     		.section	.text.FLASH_IRQHandler,"ax",%progbits
+ 185              		.align	2
+ 186              		.weak	FLASH_IRQHandler
+ 187              		.thumb
+ 188              		.thumb_func
+ 190              	FLASH_IRQHandler:
+ 191              		@ args = 0, pretend = 0, frame = 0
+ 192              		@ frame_needed = 0, uses_anonymous_args = 0
+ 193              		@ link register save eliminated.
+ 194              	.L28:
+ 195 0000 FEE7     		b	.L28
+ 197 0002 00BF     		.section	.text.RCC_IRQHandler,"ax",%progbits
+ 198              		.align	2
+ 199              		.weak	RCC_IRQHandler
+ 200              		.thumb
+ 201              		.thumb_func
+ 203              	RCC_IRQHandler:
+ 204              		@ args = 0, pretend = 0, frame = 0
+ 205              		@ frame_needed = 0, uses_anonymous_args = 0
+ 206              		@ link register save eliminated.
+ 207              	.L30:
+ 208 0000 FEE7     		b	.L30
+ 210 0002 00BF     		.section	.text.EXTI0_IRQHandler,"ax",%progbits
+ 211              		.align	2
+ 212              		.weak	EXTI0_IRQHandler
+ 213              		.thumb
+ 214              		.thumb_func
+ 216              	EXTI0_IRQHandler:
+ 217              		@ args = 0, pretend = 0, frame = 0
+ 218              		@ frame_needed = 0, uses_anonymous_args = 0
+ 219              		@ link register save eliminated.
+ 220              	.L32:
+ 221 0000 FEE7     		b	.L32
+ 223 0002 00BF     		.section	.text.EXTI1_IRQHandler,"ax",%progbits
+ 224              		.align	2
+ 225              		.weak	EXTI1_IRQHandler
+ 226              		.thumb
+ 227              		.thumb_func
+ 229              	EXTI1_IRQHandler:
+ 230              		@ args = 0, pretend = 0, frame = 0
+ 231              		@ frame_needed = 0, uses_anonymous_args = 0
+ 232              		@ link register save eliminated.
+ 233              	.L34:
+ 234 0000 FEE7     		b	.L34
+ 236 0002 00BF     		.section	.text.EXTI2_IRQHandler,"ax",%progbits
+ 237              		.align	2
+ 238              		.weak	EXTI2_IRQHandler
+ 239              		.thumb
+ 240              		.thumb_func
+ 242              	EXTI2_IRQHandler:
+ 243              		@ args = 0, pretend = 0, frame = 0
+ 244              		@ frame_needed = 0, uses_anonymous_args = 0
+ 245              		@ link register save eliminated.
+ 246              	.L36:
+ 247 0000 FEE7     		b	.L36
+ 249 0002 00BF     		.section	.text.EXTI3_IRQHandler,"ax",%progbits
+ 250              		.align	2
+ 251              		.weak	EXTI3_IRQHandler
+ 252              		.thumb
+ 253              		.thumb_func
+ 255              	EXTI3_IRQHandler:
+ 256              		@ args = 0, pretend = 0, frame = 0
+ 257              		@ frame_needed = 0, uses_anonymous_args = 0
+ 258              		@ link register save eliminated.
+ 259              	.L38:
+ 260 0000 FEE7     		b	.L38
+ 262 0002 00BF     		.section	.text.EXTI4_IRQHandler,"ax",%progbits
+ 263              		.align	2
+ 264              		.weak	EXTI4_IRQHandler
+ 265              		.thumb
+ 266              		.thumb_func
+ 268              	EXTI4_IRQHandler:
+ 269              		@ args = 0, pretend = 0, frame = 0
+ 270              		@ frame_needed = 0, uses_anonymous_args = 0
+ 271              		@ link register save eliminated.
+ 272              	.L40:
+ 273 0000 FEE7     		b	.L40
+ 275 0002 00BF     		.section	.text.DMA1_Channel1_IRQHandler,"ax",%progbits
+ 276              		.align	2
+ 277              		.weak	DMA1_Channel1_IRQHandler
+ 278              		.thumb
+ 279              		.thumb_func
+ 281              	DMA1_Channel1_IRQHandler:
+ 282              		@ args = 0, pretend = 0, frame = 0
+ 283              		@ frame_needed = 0, uses_anonymous_args = 0
+ 284              		@ link register save eliminated.
+ 285              	.L42:
+ 286 0000 FEE7     		b	.L42
+ 288 0002 00BF     		.section	.text.DMA1_Channel2_IRQHandler,"ax",%progbits
+ 289              		.align	2
+ 290              		.weak	DMA1_Channel2_IRQHandler
+ 291              		.thumb
+ 292              		.thumb_func
+ 294              	DMA1_Channel2_IRQHandler:
+ 295              		@ args = 0, pretend = 0, frame = 0
+ 296              		@ frame_needed = 0, uses_anonymous_args = 0
+ 297              		@ link register save eliminated.
+ 298              	.L44:
+ 299 0000 FEE7     		b	.L44
+ 301 0002 00BF     		.section	.text.DMA1_Channel3_IRQHandler,"ax",%progbits
+ 302              		.align	2
+ 303              		.weak	DMA1_Channel3_IRQHandler
+ 304              		.thumb
+ 305              		.thumb_func
+ 307              	DMA1_Channel3_IRQHandler:
+ 308              		@ args = 0, pretend = 0, frame = 0
+ 309              		@ frame_needed = 0, uses_anonymous_args = 0
+ 310              		@ link register save eliminated.
+ 311              	.L46:
+ 312 0000 FEE7     		b	.L46
+ 314 0002 00BF     		.section	.text.DMA1_Channel4_IRQHandler,"ax",%progbits
+ 315              		.align	2
+ 316              		.weak	DMA1_Channel4_IRQHandler
+ 317              		.thumb
+ 318              		.thumb_func
+ 320              	DMA1_Channel4_IRQHandler:
+ 321              		@ args = 0, pretend = 0, frame = 0
+ 322              		@ frame_needed = 0, uses_anonymous_args = 0
+ 323              		@ link register save eliminated.
+ 324              	.L48:
+ 325 0000 FEE7     		b	.L48
+ 327 0002 00BF     		.section	.text.DMA1_Channel5_IRQHandler,"ax",%progbits
+ 328              		.align	2
+ 329              		.weak	DMA1_Channel5_IRQHandler
+ 330              		.thumb
+ 331              		.thumb_func
+ 333              	DMA1_Channel5_IRQHandler:
+ 334              		@ args = 0, pretend = 0, frame = 0
+ 335              		@ frame_needed = 0, uses_anonymous_args = 0
+ 336              		@ link register save eliminated.
+ 337              	.L50:
+ 338 0000 FEE7     		b	.L50
+ 340 0002 00BF     		.section	.text.DMA1_Channel6_IRQHandler,"ax",%progbits
+ 341              		.align	2
+ 342              		.weak	DMA1_Channel6_IRQHandler
+ 343              		.thumb
+ 344              		.thumb_func
+ 346              	DMA1_Channel6_IRQHandler:
+ 347              		@ args = 0, pretend = 0, frame = 0
+ 348              		@ frame_needed = 0, uses_anonymous_args = 0
+ 349              		@ link register save eliminated.
+ 350              	.L52:
+ 351 0000 FEE7     		b	.L52
+ 353 0002 00BF     		.section	.text.DMA1_Channel7_IRQHandler,"ax",%progbits
+ 354              		.align	2
+ 355              		.weak	DMA1_Channel7_IRQHandler
+ 356              		.thumb
+ 357              		.thumb_func
+ 359              	DMA1_Channel7_IRQHandler:
+ 360              		@ args = 0, pretend = 0, frame = 0
+ 361              		@ frame_needed = 0, uses_anonymous_args = 0
+ 362              		@ link register save eliminated.
+ 363              	.L54:
+ 364 0000 FEE7     		b	.L54
+ 366 0002 00BF     		.section	.text.ADC1_2_IRQHandler,"ax",%progbits
+ 367              		.align	2
+ 368              		.weak	ADC1_2_IRQHandler
+ 369              		.thumb
+ 370              		.thumb_func
+ 372              	ADC1_2_IRQHandler:
+ 373              		@ args = 0, pretend = 0, frame = 0
+ 374              		@ frame_needed = 0, uses_anonymous_args = 0
+ 375              		@ link register save eliminated.
+ 376              	.L56:
+ 377 0000 FEE7     		b	.L56
+ 379 0002 00BF     		.section	.text.USB_HP_CAN_TX_IRQHandler,"ax",%progbits
+ 380              		.align	2
+ 381              		.weak	USB_HP_CAN_TX_IRQHandler
+ 382              		.thumb
+ 383              		.thumb_func
+ 385              	USB_HP_CAN_TX_IRQHandler:
+ 386              		@ args = 0, pretend = 0, frame = 0
+ 387              		@ frame_needed = 0, uses_anonymous_args = 0
+ 388              		@ link register save eliminated.
+ 389              	.L58:
+ 390 0000 FEE7     		b	.L58
+ 392 0002 00BF     		.section	.text.USB_LP_CAN_RX0_IRQHandler,"ax",%progbits
+ 393              		.align	2
+ 394              		.weak	USB_LP_CAN_RX0_IRQHandler
+ 395              		.thumb
+ 396              		.thumb_func
+ 398              	USB_LP_CAN_RX0_IRQHandler:
+ 399              		@ args = 0, pretend = 0, frame = 0
+ 400              		@ frame_needed = 0, uses_anonymous_args = 0
+ 401              		@ link register save eliminated.
+ 402              	.L60:
+ 403 0000 FEE7     		b	.L60
+ 405 0002 00BF     		.section	.text.CAN_RX1_IRQHandler,"ax",%progbits
+ 406              		.align	2
+ 407              		.weak	CAN_RX1_IRQHandler
+ 408              		.thumb
+ 409              		.thumb_func
+ 411              	CAN_RX1_IRQHandler:
+ 412              		@ args = 0, pretend = 0, frame = 0
+ 413              		@ frame_needed = 0, uses_anonymous_args = 0
+ 414              		@ link register save eliminated.
+ 415              	.L62:
+ 416 0000 FEE7     		b	.L62
+ 418 0002 00BF     		.section	.text.CAN_SCE_IRQHandler,"ax",%progbits
+ 419              		.align	2
+ 420              		.weak	CAN_SCE_IRQHandler
+ 421              		.thumb
+ 422              		.thumb_func
+ 424              	CAN_SCE_IRQHandler:
+ 425              		@ args = 0, pretend = 0, frame = 0
+ 426              		@ frame_needed = 0, uses_anonymous_args = 0
+ 427              		@ link register save eliminated.
+ 428              	.L64:
+ 429 0000 FEE7     		b	.L64
+ 431 0002 00BF     		.section	.text.EXTI9_5_IRQHandler,"ax",%progbits
+ 432              		.align	2
+ 433              		.weak	EXTI9_5_IRQHandler
+ 434              		.thumb
+ 435              		.thumb_func
+ 437              	EXTI9_5_IRQHandler:
+ 438              		@ args = 0, pretend = 0, frame = 0
+ 439              		@ frame_needed = 0, uses_anonymous_args = 0
+ 440              		@ link register save eliminated.
+ 441              	.L66:
+ 442 0000 FEE7     		b	.L66
+ 444 0002 00BF     		.section	.text.TIM1_BRK_IRQHandler,"ax",%progbits
+ 445              		.align	2
+ 446              		.weak	TIM1_BRK_IRQHandler
+ 447              		.thumb
+ 448              		.thumb_func
+ 450              	TIM1_BRK_IRQHandler:
+ 451              		@ args = 0, pretend = 0, frame = 0
+ 452              		@ frame_needed = 0, uses_anonymous_args = 0
+ 453              		@ link register save eliminated.
+ 454              	.L68:
+ 455 0000 FEE7     		b	.L68
+ 457 0002 00BF     		.section	.text.TIM1_UP_IRQHandler,"ax",%progbits
+ 458              		.align	2
+ 459              		.weak	TIM1_UP_IRQHandler
+ 460              		.thumb
+ 461              		.thumb_func
+ 463              	TIM1_UP_IRQHandler:
+ 464              		@ args = 0, pretend = 0, frame = 0
+ 465              		@ frame_needed = 0, uses_anonymous_args = 0
+ 466              		@ link register save eliminated.
+ 467              	.L70:
+ 468 0000 FEE7     		b	.L70
+ 470 0002 00BF     		.section	.text.TIM1_TRG_COM_IRQHandler,"ax",%progbits
+ 471              		.align	2
+ 472              		.weak	TIM1_TRG_COM_IRQHandler
+ 473              		.thumb
+ 474              		.thumb_func
+ 476              	TIM1_TRG_COM_IRQHandler:
+ 477              		@ args = 0, pretend = 0, frame = 0
+ 478              		@ frame_needed = 0, uses_anonymous_args = 0
+ 479              		@ link register save eliminated.
+ 480              	.L72:
+ 481 0000 FEE7     		b	.L72
+ 483 0002 00BF     		.section	.text.TIM1_CC_IRQHandler,"ax",%progbits
+ 484              		.align	2
+ 485              		.weak	TIM1_CC_IRQHandler
+ 486              		.thumb
+ 487              		.thumb_func
+ 489              	TIM1_CC_IRQHandler:
+ 490              		@ args = 0, pretend = 0, frame = 0
+ 491              		@ frame_needed = 0, uses_anonymous_args = 0
+ 492              		@ link register save eliminated.
+ 493              	.L74:
+ 494 0000 FEE7     		b	.L74
+ 496 0002 00BF     		.section	.text.TIM2_IRQHandler,"ax",%progbits
+ 497              		.align	2
+ 498              		.weak	TIM2_IRQHandler
+ 499              		.thumb
+ 500              		.thumb_func
+ 502              	TIM2_IRQHandler:
+ 503              		@ args = 0, pretend = 0, frame = 0
+ 504              		@ frame_needed = 0, uses_anonymous_args = 0
+ 505              		@ link register save eliminated.
+ 506              	.L76:
+ 507 0000 FEE7     		b	.L76
+ 509 0002 00BF     		.section	.text.TIM3_IRQHandler,"ax",%progbits
+ 510              		.align	2
+ 511              		.weak	TIM3_IRQHandler
+ 512              		.thumb
+ 513              		.thumb_func
+ 515              	TIM3_IRQHandler:
+ 516              		@ args = 0, pretend = 0, frame = 0
+ 517              		@ frame_needed = 0, uses_anonymous_args = 0
+ 518              		@ link register save eliminated.
+ 519              	.L78:
+ 520 0000 FEE7     		b	.L78
+ 522 0002 00BF     		.section	.text.TIM4_IRQHandler,"ax",%progbits
+ 523              		.align	2
+ 524              		.weak	TIM4_IRQHandler
+ 525              		.thumb
+ 526              		.thumb_func
+ 528              	TIM4_IRQHandler:
+ 529              		@ args = 0, pretend = 0, frame = 0
+ 530              		@ frame_needed = 0, uses_anonymous_args = 0
+ 531              		@ link register save eliminated.
+ 532              	.L80:
+ 533 0000 FEE7     		b	.L80
+ 535 0002 00BF     		.section	.text.I2C1_EV_IRQHandler,"ax",%progbits
+ 536              		.align	2
+ 537              		.weak	I2C1_EV_IRQHandler
+ 538              		.thumb
+ 539              		.thumb_func
+ 541              	I2C1_EV_IRQHandler:
+ 542              		@ args = 0, pretend = 0, frame = 0
+ 543              		@ frame_needed = 0, uses_anonymous_args = 0
+ 544              		@ link register save eliminated.
+ 545              	.L82:
+ 546 0000 FEE7     		b	.L82
+ 548 0002 00BF     		.section	.text.I2C1_ER_IRQHandler,"ax",%progbits
+ 549              		.align	2
+ 550              		.weak	I2C1_ER_IRQHandler
+ 551              		.thumb
+ 552              		.thumb_func
+ 554              	I2C1_ER_IRQHandler:
+ 555              		@ args = 0, pretend = 0, frame = 0
+ 556              		@ frame_needed = 0, uses_anonymous_args = 0
+ 557              		@ link register save eliminated.
+ 558              	.L84:
+ 559 0000 FEE7     		b	.L84
+ 561 0002 00BF     		.section	.text.I2C2_EV_IRQHandler,"ax",%progbits
+ 562              		.align	2
+ 563              		.weak	I2C2_EV_IRQHandler
+ 564              		.thumb
+ 565              		.thumb_func
+ 567              	I2C2_EV_IRQHandler:
+ 568              		@ args = 0, pretend = 0, frame = 0
+ 569              		@ frame_needed = 0, uses_anonymous_args = 0
+ 570              		@ link register save eliminated.
+ 571              	.L86:
+ 572 0000 FEE7     		b	.L86
+ 574 0002 00BF     		.section	.text.I2C2_ER_IRQHandler,"ax",%progbits
+ 575              		.align	2
+ 576              		.weak	I2C2_ER_IRQHandler
+ 577              		.thumb
+ 578              		.thumb_func
+ 580              	I2C2_ER_IRQHandler:
+ 581              		@ args = 0, pretend = 0, frame = 0
+ 582              		@ frame_needed = 0, uses_anonymous_args = 0
+ 583              		@ link register save eliminated.
+ 584              	.L88:
+ 585 0000 FEE7     		b	.L88
+ 587 0002 00BF     		.section	.text.SPI1_IRQHandler,"ax",%progbits
+ 588              		.align	2
+ 589              		.weak	SPI1_IRQHandler
+ 590              		.thumb
+ 591              		.thumb_func
+ 593              	SPI1_IRQHandler:
+ 594              		@ args = 0, pretend = 0, frame = 0
+ 595              		@ frame_needed = 0, uses_anonymous_args = 0
+ 596              		@ link register save eliminated.
+ 597              	.L90:
+ 598 0000 FEE7     		b	.L90
+ 600 0002 00BF     		.section	.text.SPI2_IRQHandler,"ax",%progbits
+ 601              		.align	2
+ 602              		.weak	SPI2_IRQHandler
+ 603              		.thumb
+ 604              		.thumb_func
+ 606              	SPI2_IRQHandler:
+ 607              		@ args = 0, pretend = 0, frame = 0
+ 608              		@ frame_needed = 0, uses_anonymous_args = 0
+ 609              		@ link register save eliminated.
+ 610              	.L92:
+ 611 0000 FEE7     		b	.L92
+ 613 0002 00BF     		.section	.text.USART1_IRQHandler,"ax",%progbits
+ 614              		.align	2
+ 615              		.weak	USART1_IRQHandler
+ 616              		.thumb
+ 617              		.thumb_func
+ 619              	USART1_IRQHandler:
+ 620              		@ args = 0, pretend = 0, frame = 0
+ 621              		@ frame_needed = 0, uses_anonymous_args = 0
+ 622              		@ link register save eliminated.
+ 623              	.L94:
+ 624 0000 FEE7     		b	.L94
+ 626 0002 00BF     		.section	.text.USART2_IRQHandler,"ax",%progbits
+ 627              		.align	2
+ 628              		.weak	USART2_IRQHandler
+ 629              		.thumb
+ 630              		.thumb_func
+ 632              	USART2_IRQHandler:
+ 633              		@ args = 0, pretend = 0, frame = 0
+ 634              		@ frame_needed = 0, uses_anonymous_args = 0
+ 635              		@ link register save eliminated.
+ 636              	.L96:
+ 637 0000 FEE7     		b	.L96
+ 639 0002 00BF     		.section	.text.USART3_IRQHandler,"ax",%progbits
+ 640              		.align	2
+ 641              		.weak	USART3_IRQHandler
+ 642              		.thumb
+ 643              		.thumb_func
+ 645              	USART3_IRQHandler:
+ 646              		@ args = 0, pretend = 0, frame = 0
+ 647              		@ frame_needed = 0, uses_anonymous_args = 0
+ 648              		@ link register save eliminated.
+ 649              	.L98:
+ 650 0000 FEE7     		b	.L98
+ 652 0002 00BF     		.section	.text.EXTI15_10_IRQHandler,"ax",%progbits
+ 653              		.align	2
+ 654              		.weak	EXTI15_10_IRQHandler
+ 655              		.thumb
+ 656              		.thumb_func
+ 658              	EXTI15_10_IRQHandler:
+ 659              		@ args = 0, pretend = 0, frame = 0
+ 660              		@ frame_needed = 0, uses_anonymous_args = 0
+ 661              		@ link register save eliminated.
+ 662              	.L100:
+ 663 0000 FEE7     		b	.L100
+ 665 0002 00BF     		.section	.text.RTCAlarm_IRQHandler,"ax",%progbits
+ 666              		.align	2
+ 667              		.weak	RTCAlarm_IRQHandler
+ 668              		.thumb
+ 669              		.thumb_func
+ 671              	RTCAlarm_IRQHandler:
+ 672              		@ args = 0, pretend = 0, frame = 0
+ 673              		@ frame_needed = 0, uses_anonymous_args = 0
+ 674              		@ link register save eliminated.
+ 675              	.L102:
+ 676 0000 FEE7     		b	.L102
+ 678 0002 00BF     		.section	.text.USBWakeUp_IRQHandler,"ax",%progbits
+ 679              		.align	2
+ 680              		.weak	USBWakeUp_IRQHandler
+ 681              		.thumb
+ 682              		.thumb_func
+ 684              	USBWakeUp_IRQHandler:
+ 685              		@ args = 0, pretend = 0, frame = 0
+ 686              		@ frame_needed = 0, uses_anonymous_args = 0
+ 687              		@ link register save eliminated.
+ 688              	.L104:
+ 689 0000 FEE7     		b	.L104
+ 691              		.global	gVectors
+ 692              		.section	.vectors,"a",%progbits
+ 693              		.align	2
+ 696              	gVectors:
+ 697 0000 00000000 		.word	_estack
+ 698 0004 00000000 		.word	ResetHandler
+ 699 0008 00000000 		.word	NMI_Handler
+ 700 000c 00000000 		.word	HardFault_Handler
+ 701 0010 00000000 		.word	MemManage_Handler
+ 702 0014 00000000 		.word	BusFault_Handler
+ 703 0018 00000000 		.word	UsageFault_Handler
+ 704 001c 00000000 		.word	0
+ 705 0020 00000000 		.word	0
+ 706 0024 00000000 		.word	0
+ 707 0028 00000000 		.word	0
+ 708 002c 00000000 		.word	SVC_Handler
+ 709 0030 00000000 		.word	DebugMon_Handler
+ 710 0034 00000000 		.word	0
+ 711 0038 00000000 		.word	PendSV_Handler
+ 712 003c 00000000 		.word	SysTick_Handler
+ 713 0040 00000000 		.word	WWDG_IRQHandler
+ 714 0044 00000000 		.word	PVD_IRQHandler
+ 715 0048 00000000 		.word	TAMPER_IRQHandler
+ 716 004c 00000000 		.word	RTC_IRQHandler
+ 717 0050 00000000 		.word	FLASH_IRQHandler
+ 718 0054 00000000 		.word	RCC_IRQHandler
+ 719 0058 00000000 		.word	EXTI0_IRQHandler
+ 720 005c 00000000 		.word	EXTI1_IRQHandler
+ 721 0060 00000000 		.word	EXTI2_IRQHandler
+ 722 0064 00000000 		.word	EXTI3_IRQHandler
+ 723 0068 00000000 		.word	EXTI4_IRQHandler
+ 724 006c 00000000 		.word	DMA1_Channel1_IRQHandler
+ 725 0070 00000000 		.word	DMA1_Channel2_IRQHandler
+ 726 0074 00000000 		.word	DMA1_Channel3_IRQHandler
+ 727 0078 00000000 		.word	DMA1_Channel4_IRQHandler
+ 728 007c 00000000 		.word	DMA1_Channel5_IRQHandler
+ 729 0080 00000000 		.word	DMA1_Channel6_IRQHandler
+ 730 0084 00000000 		.word	DMA1_Channel7_IRQHandler
+ 731 0088 00000000 		.word	ADC1_2_IRQHandler
+ 732 008c 00000000 		.word	USB_HP_CAN_TX_IRQHandler
+ 733 0090 00000000 		.word	USB_LP_CAN_RX0_IRQHandler
+ 734 0094 00000000 		.word	CAN_RX1_IRQHandler
+ 735 0098 00000000 		.word	CAN_SCE_IRQHandler
+ 736 009c 00000000 		.word	EXTI9_5_IRQHandler
+ 737 00a0 00000000 		.word	TIM1_BRK_IRQHandler
+ 738 00a4 00000000 		.word	TIM1_UP_IRQHandler
+ 739 00a8 00000000 		.word	TIM1_TRG_COM_IRQHandler
+ 740 00ac 00000000 		.word	TIM1_CC_IRQHandler
+ 741 00b0 00000000 		.word	TIM2_IRQHandler
+ 742 00b4 00000000 		.word	TIM3_IRQHandler
+ 743 00b8 00000000 		.word	TIM4_IRQHandler
+ 744 00bc 00000000 		.word	I2C1_EV_IRQHandler
+ 745 00c0 00000000 		.word	I2C1_ER_IRQHandler
+ 746 00c4 00000000 		.word	I2C2_EV_IRQHandler
+ 747 00c8 00000000 		.word	I2C2_ER_IRQHandler
+ 748 00cc 00000000 		.word	SPI1_IRQHandler
+ 749 00d0 00000000 		.word	SPI2_IRQHandler
+ 750 00d4 00000000 		.word	USART1_IRQHandler
+ 751 00d8 00000000 		.word	USART2_IRQHandler
+ 752 00dc 00000000 		.word	USART3_IRQHandler
+ 753 00e0 00000000 		.word	EXTI15_10_IRQHandler
+ 754 00e4 00000000 		.word	RTCAlarm_IRQHandler
+ 755 00e8 00000000 		.word	USBWakeUp_IRQHandler
+ 756              		.ident	"GCC: (GNU) 4.7.0"
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 vectors_stm32f10x_md.c
+     /tmp/cc0N2ej1.s:16     .text.NMI_Handler:0000000000000000 $t
+     /tmp/cc0N2ej1.s:21     .text.NMI_Handler:0000000000000000 NMI_Handler
+     /tmp/cc0N2ej1.s:29     .text.HardFault_Handler:0000000000000000 $t
+     /tmp/cc0N2ej1.s:34     .text.HardFault_Handler:0000000000000000 HardFault_Handler
+     /tmp/cc0N2ej1.s:42     .text.MemManage_Handler:0000000000000000 $t
+     /tmp/cc0N2ej1.s:47     .text.MemManage_Handler:0000000000000000 MemManage_Handler
+     /tmp/cc0N2ej1.s:55     .text.BusFault_Handler:0000000000000000 $t
+     /tmp/cc0N2ej1.s:60     .text.BusFault_Handler:0000000000000000 BusFault_Handler
+     /tmp/cc0N2ej1.s:68     .text.UsageFault_Handler:0000000000000000 $t
+     /tmp/cc0N2ej1.s:73     .text.UsageFault_Handler:0000000000000000 UsageFault_Handler
+     /tmp/cc0N2ej1.s:81     .text.SVC_Handler:0000000000000000 $t
+     /tmp/cc0N2ej1.s:86     .text.SVC_Handler:0000000000000000 SVC_Handler
+     /tmp/cc0N2ej1.s:94     .text.DebugMon_Handler:0000000000000000 $t
+     /tmp/cc0N2ej1.s:99     .text.DebugMon_Handler:0000000000000000 DebugMon_Handler
+     /tmp/cc0N2ej1.s:107    .text.PendSV_Handler:0000000000000000 $t
+     /tmp/cc0N2ej1.s:112    .text.PendSV_Handler:0000000000000000 PendSV_Handler
+     /tmp/cc0N2ej1.s:120    .text.SysTick_Handler:0000000000000000 $t
+     /tmp/cc0N2ej1.s:125    .text.SysTick_Handler:0000000000000000 SysTick_Handler
+     /tmp/cc0N2ej1.s:133    .text.WWDG_IRQHandler:0000000000000000 $t
+     /tmp/cc0N2ej1.s:138    .text.WWDG_IRQHandler:0000000000000000 WWDG_IRQHandler
+     /tmp/cc0N2ej1.s:146    .text.PVD_IRQHandler:0000000000000000 $t
+     /tmp/cc0N2ej1.s:151    .text.PVD_IRQHandler:0000000000000000 PVD_IRQHandler
+     /tmp/cc0N2ej1.s:159    .text.TAMPER_IRQHandler:0000000000000000 $t
+     /tmp/cc0N2ej1.s:164    .text.TAMPER_IRQHandler:0000000000000000 TAMPER_IRQHandler
+     /tmp/cc0N2ej1.s:172    .text.RTC_IRQHandler:0000000000000000 $t
+     /tmp/cc0N2ej1.s:177    .text.RTC_IRQHandler:0000000000000000 RTC_IRQHandler
+     /tmp/cc0N2ej1.s:185    .text.FLASH_IRQHandler:0000000000000000 $t
+     /tmp/cc0N2ej1.s:190    .text.FLASH_IRQHandler:0000000000000000 FLASH_IRQHandler
+     /tmp/cc0N2ej1.s:198    .text.RCC_IRQHandler:0000000000000000 $t
+     /tmp/cc0N2ej1.s:203    .text.RCC_IRQHandler:0000000000000000 RCC_IRQHandler
+     /tmp/cc0N2ej1.s:211    .text.EXTI0_IRQHandler:0000000000000000 $t
+     /tmp/cc0N2ej1.s:216    .text.EXTI0_IRQHandler:0000000000000000 EXTI0_IRQHandler
+     /tmp/cc0N2ej1.s:224    .text.EXTI1_IRQHandler:0000000000000000 $t
+     /tmp/cc0N2ej1.s:229    .text.EXTI1_IRQHandler:0000000000000000 EXTI1_IRQHandler
+     /tmp/cc0N2ej1.s:237    .text.EXTI2_IRQHandler:0000000000000000 $t
+     /tmp/cc0N2ej1.s:242    .text.EXTI2_IRQHandler:0000000000000000 EXTI2_IRQHandler
+     /tmp/cc0N2ej1.s:250    .text.EXTI3_IRQHandler:0000000000000000 $t
+     /tmp/cc0N2ej1.s:255    .text.EXTI3_IRQHandler:0000000000000000 EXTI3_IRQHandler
+     /tmp/cc0N2ej1.s:263    .text.EXTI4_IRQHandler:0000000000000000 $t
+     /tmp/cc0N2ej1.s:268    .text.EXTI4_IRQHandler:0000000000000000 EXTI4_IRQHandler
+     /tmp/cc0N2ej1.s:276    .text.DMA1_Channel1_IRQHandler:0000000000000000 $t
+     /tmp/cc0N2ej1.s:281    .text.DMA1_Channel1_IRQHandler:0000000000000000 DMA1_Channel1_IRQHandler
+     /tmp/cc0N2ej1.s:289    .text.DMA1_Channel2_IRQHandler:0000000000000000 $t
+     /tmp/cc0N2ej1.s:294    .text.DMA1_Channel2_IRQHandler:0000000000000000 DMA1_Channel2_IRQHandler
+     /tmp/cc0N2ej1.s:302    .text.DMA1_Channel3_IRQHandler:0000000000000000 $t
+     /tmp/cc0N2ej1.s:307    .text.DMA1_Channel3_IRQHandler:0000000000000000 DMA1_Channel3_IRQHandler
+     /tmp/cc0N2ej1.s:315    .text.DMA1_Channel4_IRQHandler:0000000000000000 $t
+     /tmp/cc0N2ej1.s:320    .text.DMA1_Channel4_IRQHandler:0000000000000000 DMA1_Channel4_IRQHandler
+     /tmp/cc0N2ej1.s:328    .text.DMA1_Channel5_IRQHandler:0000000000000000 $t
+     /tmp/cc0N2ej1.s:333    .text.DMA1_Channel5_IRQHandler:0000000000000000 DMA1_Channel5_IRQHandler
+     /tmp/cc0N2ej1.s:341    .text.DMA1_Channel6_IRQHandler:0000000000000000 $t
+     /tmp/cc0N2ej1.s:346    .text.DMA1_Channel6_IRQHandler:0000000000000000 DMA1_Channel6_IRQHandler
+     /tmp/cc0N2ej1.s:354    .text.DMA1_Channel7_IRQHandler:0000000000000000 $t
+     /tmp/cc0N2ej1.s:359    .text.DMA1_Channel7_IRQHandler:0000000000000000 DMA1_Channel7_IRQHandler
+     /tmp/cc0N2ej1.s:367    .text.ADC1_2_IRQHandler:0000000000000000 $t
+     /tmp/cc0N2ej1.s:372    .text.ADC1_2_IRQHandler:0000000000000000 ADC1_2_IRQHandler
+     /tmp/cc0N2ej1.s:380    .text.USB_HP_CAN_TX_IRQHandler:0000000000000000 $t
+     /tmp/cc0N2ej1.s:385    .text.USB_HP_CAN_TX_IRQHandler:0000000000000000 USB_HP_CAN_TX_IRQHandler
+     /tmp/cc0N2ej1.s:393    .text.USB_LP_CAN_RX0_IRQHandler:0000000000000000 $t
+     /tmp/cc0N2ej1.s:398    .text.USB_LP_CAN_RX0_IRQHandler:0000000000000000 USB_LP_CAN_RX0_IRQHandler
+     /tmp/cc0N2ej1.s:406    .text.CAN_RX1_IRQHandler:0000000000000000 $t
+     /tmp/cc0N2ej1.s:411    .text.CAN_RX1_IRQHandler:0000000000000000 CAN_RX1_IRQHandler
+     /tmp/cc0N2ej1.s:419    .text.CAN_SCE_IRQHandler:0000000000000000 $t
+     /tmp/cc0N2ej1.s:424    .text.CAN_SCE_IRQHandler:0000000000000000 CAN_SCE_IRQHandler
+     /tmp/cc0N2ej1.s:432    .text.EXTI9_5_IRQHandler:0000000000000000 $t
+     /tmp/cc0N2ej1.s:437    .text.EXTI9_5_IRQHandler:0000000000000000 EXTI9_5_IRQHandler
+     /tmp/cc0N2ej1.s:445    .text.TIM1_BRK_IRQHandler:0000000000000000 $t
+     /tmp/cc0N2ej1.s:450    .text.TIM1_BRK_IRQHandler:0000000000000000 TIM1_BRK_IRQHandler
+     /tmp/cc0N2ej1.s:458    .text.TIM1_UP_IRQHandler:0000000000000000 $t
+     /tmp/cc0N2ej1.s:463    .text.TIM1_UP_IRQHandler:0000000000000000 TIM1_UP_IRQHandler
+     /tmp/cc0N2ej1.s:471    .text.TIM1_TRG_COM_IRQHandler:0000000000000000 $t
+     /tmp/cc0N2ej1.s:476    .text.TIM1_TRG_COM_IRQHandler:0000000000000000 TIM1_TRG_COM_IRQHandler
+     /tmp/cc0N2ej1.s:484    .text.TIM1_CC_IRQHandler:0000000000000000 $t
+     /tmp/cc0N2ej1.s:489    .text.TIM1_CC_IRQHandler:0000000000000000 TIM1_CC_IRQHandler
+     /tmp/cc0N2ej1.s:497    .text.TIM2_IRQHandler:0000000000000000 $t
+     /tmp/cc0N2ej1.s:502    .text.TIM2_IRQHandler:0000000000000000 TIM2_IRQHandler
+     /tmp/cc0N2ej1.s:510    .text.TIM3_IRQHandler:0000000000000000 $t
+     /tmp/cc0N2ej1.s:515    .text.TIM3_IRQHandler:0000000000000000 TIM3_IRQHandler
+     /tmp/cc0N2ej1.s:523    .text.TIM4_IRQHandler:0000000000000000 $t
+     /tmp/cc0N2ej1.s:528    .text.TIM4_IRQHandler:0000000000000000 TIM4_IRQHandler
+     /tmp/cc0N2ej1.s:536    .text.I2C1_EV_IRQHandler:0000000000000000 $t
+     /tmp/cc0N2ej1.s:541    .text.I2C1_EV_IRQHandler:0000000000000000 I2C1_EV_IRQHandler
+     /tmp/cc0N2ej1.s:549    .text.I2C1_ER_IRQHandler:0000000000000000 $t
+     /tmp/cc0N2ej1.s:554    .text.I2C1_ER_IRQHandler:0000000000000000 I2C1_ER_IRQHandler
+     /tmp/cc0N2ej1.s:562    .text.I2C2_EV_IRQHandler:0000000000000000 $t
+     /tmp/cc0N2ej1.s:567    .text.I2C2_EV_IRQHandler:0000000000000000 I2C2_EV_IRQHandler
+     /tmp/cc0N2ej1.s:575    .text.I2C2_ER_IRQHandler:0000000000000000 $t
+     /tmp/cc0N2ej1.s:580    .text.I2C2_ER_IRQHandler:0000000000000000 I2C2_ER_IRQHandler
+     /tmp/cc0N2ej1.s:588    .text.SPI1_IRQHandler:0000000000000000 $t
+     /tmp/cc0N2ej1.s:593    .text.SPI1_IRQHandler:0000000000000000 SPI1_IRQHandler
+     /tmp/cc0N2ej1.s:601    .text.SPI2_IRQHandler:0000000000000000 $t
+     /tmp/cc0N2ej1.s:606    .text.SPI2_IRQHandler:0000000000000000 SPI2_IRQHandler
+     /tmp/cc0N2ej1.s:614    .text.USART1_IRQHandler:0000000000000000 $t
+     /tmp/cc0N2ej1.s:619    .text.USART1_IRQHandler:0000000000000000 USART1_IRQHandler
+     /tmp/cc0N2ej1.s:627    .text.USART2_IRQHandler:0000000000000000 $t
+     /tmp/cc0N2ej1.s:632    .text.USART2_IRQHandler:0000000000000000 USART2_IRQHandler
+     /tmp/cc0N2ej1.s:640    .text.USART3_IRQHandler:0000000000000000 $t
+     /tmp/cc0N2ej1.s:645    .text.USART3_IRQHandler:0000000000000000 USART3_IRQHandler
+     /tmp/cc0N2ej1.s:653    .text.EXTI15_10_IRQHandler:0000000000000000 $t
+     /tmp/cc0N2ej1.s:658    .text.EXTI15_10_IRQHandler:0000000000000000 EXTI15_10_IRQHandler
+     /tmp/cc0N2ej1.s:666    .text.RTCAlarm_IRQHandler:0000000000000000 $t
+     /tmp/cc0N2ej1.s:671    .text.RTCAlarm_IRQHandler:0000000000000000 RTCAlarm_IRQHandler
+     /tmp/cc0N2ej1.s:679    .text.USBWakeUp_IRQHandler:0000000000000000 $t
+     /tmp/cc0N2ej1.s:684    .text.USBWakeUp_IRQHandler:0000000000000000 USBWakeUp_IRQHandler
+     /tmp/cc0N2ej1.s:696    .vectors:0000000000000000 gVectors
+     /tmp/cc0N2ej1.s:693    .vectors:0000000000000000 $d
+
+UNDEFINED SYMBOLS
+_estack
+ResetHandler
