@@ -1,0 +1,133 @@
+   1              		.cpu arm7tdmi-s
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 2
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.file	"timer.c"
+  13              		.text
+  14              	.Ltext0:
+  15              		.cfi_sections	.debug_frame
+  16              		.section	.text.init_counter_ms,"ax",%progbits
+  17              		.align	2
+  18              		.global	init_counter_ms
+  20              	init_counter_ms:
+  21              	.LFB0:
+  22              		.file 1 "../src/timer.c"
+   1:../src/timer.c **** #include "../inc/timer.h"
+   2:../src/timer.c **** #include "../inc/target.h"
+   3:../src/timer.c **** #include "../inc_lpc/lpc213x.h"
+   4:../src/timer.c **** 
+   5:../src/timer.c **** void init_counter_ms()
+   6:../src/timer.c **** {   
+  23              		.loc 1 6 0
+  24              		.cfi_startproc
+  25              		@ Function supports interworking.
+  26              		@ args = 0, pretend = 0, frame = 0
+  27              		@ frame_needed = 0, uses_anonymous_args = 0
+  28              		@ link register save eliminated.
+   7:../src/timer.c ****   T0TCR  = 0x1;         //counter enable
+  29              		.loc 1 7 0
+  30 0000 10309FE5 		ldr	r3, .L2
+  31 0004 0120A0E3 		mov	r2, #1
+  32 0008 042083E5 		str	r2, [r3, #4]
+   8:../src/timer.c ****   T0PR   = Fpclk / 1000;  //prescaler set to count ms
+  33              		.loc 1 8 0
+  34 000c 08209FE5 		ldr	r2, .L2+4
+  35 0010 0C2083E5 		str	r2, [r3, #12]
+  36 0014 1EFF2FE1 		bx	lr
+  37              	.L3:
+  38              		.align	2
+  39              	.L2:
+  40 0018 004000E0 		.word	-536854528
+  41 001c 66E60000 		.word	58982
+  42              		.cfi_endproc
+  43              	.LFE0:
+  45              		.section	.text.reset_counter,"ax",%progbits
+  46              		.align	2
+  47              		.global	reset_counter
+  49              	reset_counter:
+  50              	.LFB1:
+   9:../src/timer.c **** }
+  10:../src/timer.c **** 
+  11:../src/timer.c **** void reset_counter()
+  12:../src/timer.c **** {
+  51              		.loc 1 12 0
+  52              		.cfi_startproc
+  53              		@ Function supports interworking.
+  54              		@ args = 0, pretend = 0, frame = 0
+  55              		@ frame_needed = 0, uses_anonymous_args = 0
+  56              		@ link register save eliminated.
+  13:../src/timer.c ****   T0TCR = 0x3;          //reset to 0
+  57              		.loc 1 13 0
+  58 0000 10309FE5 		ldr	r3, .L5
+  59 0004 0320A0E3 		mov	r2, #3
+  60 0008 042083E5 		str	r2, [r3, #4]
+  14:../src/timer.c ****   T0TCR = 0x1;          //restart
+  61              		.loc 1 14 0
+  62 000c 0120A0E3 		mov	r2, #1
+  63 0010 042083E5 		str	r2, [r3, #4]
+  64 0014 1EFF2FE1 		bx	lr
+  65              	.L6:
+  66              		.align	2
+  67              	.L5:
+  68 0018 004000E0 		.word	-536854528
+  69              		.cfi_endproc
+  70              	.LFE1:
+  72              		.section	.text.read_counter,"ax",%progbits
+  73              		.align	2
+  74              		.global	read_counter
+  76              	read_counter:
+  77              	.LFB2:
+  15:../src/timer.c **** }
+  16:../src/timer.c **** 
+  17:../src/timer.c **** unsigned int read_counter()
+  18:../src/timer.c **** {
+  78              		.loc 1 18 0
+  79              		.cfi_startproc
+  80              		@ Function supports interworking.
+  81              		@ args = 0, pretend = 0, frame = 0
+  82              		@ frame_needed = 0, uses_anonymous_args = 0
+  83              		@ link register save eliminated.
+  19:../src/timer.c ****   return T0TC;        //read time
+  84              		.loc 1 19 0
+  85 0000 04309FE5 		ldr	r3, .L8
+  86 0004 080093E5 		ldr	r0, [r3, #8]
+  20:../src/timer.c **** }
+  87              		.loc 1 20 0
+  88 0008 1EFF2FE1 		bx	lr
+  89              	.L9:
+  90              		.align	2
+  91              	.L8:
+  92 000c 004000E0 		.word	-536854528
+  93              		.cfi_endproc
+  94              	.LFE2:
+  96              		.text
+  97              	.Letext0:
+  98              		.file 2 "../src/../inc_lpc/lpcTMR.h"
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 timer.c
+     /tmp/ccOhwAmD.s:17     .text.init_counter_ms:0000000000000000 $a
+     /tmp/ccOhwAmD.s:20     .text.init_counter_ms:0000000000000000 init_counter_ms
+     /tmp/ccOhwAmD.s:40     .text.init_counter_ms:0000000000000018 $d
+     /tmp/ccOhwAmD.s:46     .text.reset_counter:0000000000000000 $a
+     /tmp/ccOhwAmD.s:49     .text.reset_counter:0000000000000000 reset_counter
+     /tmp/ccOhwAmD.s:68     .text.reset_counter:0000000000000018 $d
+     /tmp/ccOhwAmD.s:73     .text.read_counter:0000000000000000 $a
+     /tmp/ccOhwAmD.s:76     .text.read_counter:0000000000000000 read_counter
+     /tmp/ccOhwAmD.s:92     .text.read_counter:000000000000000c $d
+                     .debug_frame:0000000000000010 $d
+                           .group:0000000000000000 wm4.target.h.3.96dccf878d6502485bd76a1b862a959d
+                           .group:0000000000000000 wm4.lpc213x.h.15.4e57150503f9987fca2e0f44b413182c
+                           .group:0000000000000000 wm4.lpcTMR.h.15.5d8c6944123d2303f976236c185e5c9a
+                           .group:0000000000000000 wm4.lpcUART.h.15.0f98b1282caa7bcace095134821cf321
+                           .group:0000000000000000 wm4.lpcSCB.h.15.1012a370a86d3e047c485ab84e847f6f
+                           .group:0000000000000000 wm4.lpcVIC.h.15.116b52310ce75ea4a204a3e3bc4de613
+                           .group:0000000000000000 wm4.lpc213x.h.36.97cbc9815be9db61df6cc76641d23caf
+
+NO UNDEFINED SYMBOLS

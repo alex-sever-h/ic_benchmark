@@ -1,0 +1,124 @@
+   1              		.cpu arm7tdmi-s
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 2
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.file	"main.c"
+  13              		.section	.text.feed,"ax",%progbits
+  14              		.align	2
+  15              		.global	feed
+  17              	feed:
+  18              		@ Function supports interworking.
+  19              		@ args = 0, pretend = 0, frame = 0
+  20              		@ frame_needed = 0, uses_anonymous_args = 0
+  21              		@ link register save eliminated.
+  22 0000 10309FE5 		ldr	r3, .L2
+  23 0004 5520E0E3 		mvn	r2, #85
+  24 0008 8C20C3E5 		strb	r2, [r3, #140]
+  25 000c 5520A0E3 		mov	r2, #85
+  26 0010 8C20C3E5 		strb	r2, [r3, #140]
+  27 0014 1EFF2FE1 		bx	lr
+  28              	.L3:
+  29              		.align	2
+  30              	.L2:
+  31 0018 00C01FE0 		.word	-534790144
+  33              		.section	.text.init_chip,"ax",%progbits
+  34              		.align	2
+  35              		.global	init_chip
+  37              	init_chip:
+  38              		@ Function supports interworking.
+  39              		@ args = 0, pretend = 0, frame = 0
+  40              		@ frame_needed = 0, uses_anonymous_args = 0
+  41              		@ link register save eliminated.
+  42 0000 6C209FE5 		ldr	r2, .L11
+  43 0004 2300A0E3 		mov	r0, #35
+  44 0008 8400C2E5 		strb	r0, [r2, #132]
+  45 000c 5510E0E3 		mvn	r1, #85
+  46 0010 5530A0E3 		mov	r3, #85
+  47 0014 0100A0E3 		mov	r0, #1
+  48 0018 8C10C2E5 		strb	r1, [r2, #140]
+  49 001c 8C30C2E5 		strb	r3, [r2, #140]
+  50 0020 8000C2E5 		strb	r0, [r2, #128]
+  51 0024 8C10C2E5 		strb	r1, [r2, #140]
+  52 0028 8C30C2E5 		strb	r3, [r2, #140]
+  53              	.L5:
+  54 002c B838D2E1 		ldrh	r3, [r2, #136]
+  55 0030 010B13E3 		tst	r3, #1024
+  56 0034 38309FE5 		ldr	r3, .L11
+  57 0038 FBFFFF0A 		beq	.L5
+  58 003c 0310A0E3 		mov	r1, #3
+  59 0040 8010C3E5 		strb	r1, [r3, #128]
+  60 0044 5510E0E3 		mvn	r1, #85
+  61 0048 8C10C3E5 		strb	r1, [r3, #140]
+  62 004c 5510A0E3 		mov	r1, #85
+  63 0050 8C10C3E5 		strb	r1, [r3, #140]
+  64 0054 0220A0E3 		mov	r2, #2
+  65 0058 0010A0E3 		mov	r1, #0
+  66 005c 0010C3E5 		strb	r1, [r3, #0]
+  67 0060 0420C3E5 		strb	r2, [r3, #4]
+  68 0064 0020C3E5 		strb	r2, [r3, #0]
+  69 0068 0120A0E3 		mov	r2, #1
+  70 006c 0021C3E5 		strb	r2, [r3, #256]
+  71 0070 1EFF2FE1 		bx	lr
+  72              	.L12:
+  73              		.align	2
+  74              	.L11:
+  75 0074 00C01FE0 		.word	-534790144
+  77              		.section	.text.startup.main,"ax",%progbits
+  78              		.align	2
+  79              		.global	main
+  81              	main:
+  82              		@ Function supports interworking.
+  83              		@ Volatile: function does not return.
+  84              		@ args = 0, pretend = 0, frame = 0
+  85              		@ frame_needed = 0, uses_anonymous_args = 0
+  86 0000 08402DE9 		stmfd	sp!, {r3, lr}
+  87 0004 FEFFFFEB 		bl	init_chip
+  88 0008 FEFFFFEB 		bl	init_counter_ms
+  89 000c 14009FE5 		ldr	r0, .L15
+  90 0010 FEFFFFEB 		bl	UARTInit
+  91 0014 10009FE5 		ldr	r0, .L15+4
+  92 0018 0010A0E3 		mov	r1, #0
+  93 001c FEFFFFEB 		bl	UARTSend
+  94              	.L14:
+  95 0020 FEFFFFEB 		bl	start_benchmark
+  96 0024 FDFFFFEA 		b	.L14
+  97              	.L16:
+  98              		.align	2
+  99              	.L15:
+ 100 0028 00C20100 		.word	115200
+ 101 002c 00000000 		.word	.LC0
+ 103              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 104              		.align	2
+ 105              	.LC0:
+ 106 0000 2D2D2D2D 		.ascii	"--------------UART INITIALIZED--------------\012\012"
+ 106      2D2D2D2D 
+ 106      2D2D2D2D 
+ 106      2D2D5541 
+ 106      52542049 
+ 107 002e 00       		.ascii	"\000"
+ 108 002f 00       		.ident	"GCC: (GNU) 4.7.0"
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 main.c
+     /tmp/ccFYt8mj.s:14     .text.feed:0000000000000000 $a
+     /tmp/ccFYt8mj.s:17     .text.feed:0000000000000000 feed
+     /tmp/ccFYt8mj.s:31     .text.feed:0000000000000018 $d
+     /tmp/ccFYt8mj.s:34     .text.init_chip:0000000000000000 $a
+     /tmp/ccFYt8mj.s:37     .text.init_chip:0000000000000000 init_chip
+     /tmp/ccFYt8mj.s:75     .text.init_chip:0000000000000074 $d
+     /tmp/ccFYt8mj.s:78     .text.startup.main:0000000000000000 $a
+     /tmp/ccFYt8mj.s:81     .text.startup.main:0000000000000000 main
+     /tmp/ccFYt8mj.s:100    .text.startup.main:0000000000000028 $d
+     /tmp/ccFYt8mj.s:104    .rodata.str1.4:0000000000000000 $d
+
+UNDEFINED SYMBOLS
+init_counter_ms
+UARTInit
+UARTSend
+start_benchmark

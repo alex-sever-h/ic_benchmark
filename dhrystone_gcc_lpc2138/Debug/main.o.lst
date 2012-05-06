@@ -1,0 +1,298 @@
+   1              		.cpu arm7tdmi-s
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 2
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.file	"main.c"
+  13              		.text
+  14              	.Ltext0:
+  15              		.cfi_sections	.debug_frame
+  16              		.section	.text.feed,"ax",%progbits
+  17              		.align	2
+  18              		.global	feed
+  20              	feed:
+  21              	.LFB1:
+  22              		.file 1 "../main.c"
+   1:../main.c     **** /*
+   2:../main.c     ****  * main.c
+   3:../main.c     ****  *
+   4:../main.c     ****  *  Created on: Mar 14, 2012
+   5:../main.c     ****  *      Author: alexs
+   6:../main.c     ****  */
+   7:../main.c     **** 
+   8:../main.c     **** #include "inc_lpc/lpc213x.h"
+   9:../main.c     **** #include "inc/target.h"
+  10:../main.c     **** #include "inc/uart.h"
+  11:../main.c     **** #include "inc/timer.h"
+  12:../main.c     **** #include "inc/benchmark.h"
+  13:../main.c     **** 
+  14:../main.c     **** #include <stdlib.h>
+  15:../main.c     **** 
+  16:../main.c     **** void init_chip(void);
+  17:../main.c     **** 
+  18:../main.c     **** 
+  19:../main.c     **** int main(void)
+  20:../main.c     **** {
+  21:../main.c     ****   init_chip();
+  22:../main.c     ****   init_counter_ms();
+  23:../main.c     **** 
+  24:../main.c     ****   UARTInit(115200);
+  25:../main.c     ****   UARTSend("--------------UART INITIALIZED--------------\n\n", 0);
+  26:../main.c     **** 
+  27:../main.c     ****   while(1)
+  28:../main.c     ****     start_benchmark();
+  29:../main.c     **** 
+  30:../main.c     ****   return 0;
+  31:../main.c     **** }
+  32:../main.c     **** 
+  33:../main.c     **** 
+  34:../main.c     **** void feed(void)
+  35:../main.c     **** {
+  23              		.loc 1 35 0
+  24              		.cfi_startproc
+  25              		@ Function supports interworking.
+  26              		@ args = 0, pretend = 0, frame = 0
+  27              		@ frame_needed = 0, uses_anonymous_args = 0
+  28              		@ link register save eliminated.
+  36:../main.c     ****   PLLFEED=0xAA;
+  29              		.loc 1 36 0
+  30 0000 10309FE5 		ldr	r3, .L2
+  31 0004 5520E0E3 		mvn	r2, #85
+  32 0008 8C20C3E5 		strb	r2, [r3, #140]
+  37:../main.c     ****   PLLFEED=0x55;
+  33              		.loc 1 37 0
+  34 000c 5520A0E3 		mov	r2, #85
+  35 0010 8C20C3E5 		strb	r2, [r3, #140]
+  36 0014 1EFF2FE1 		bx	lr
+  37              	.L3:
+  38              		.align	2
+  39              	.L2:
+  40 0018 00C01FE0 		.word	-534790144
+  41              		.cfi_endproc
+  42              	.LFE1:
+  44              		.section	.text.init_chip,"ax",%progbits
+  45              		.align	2
+  46              		.global	init_chip
+  48              	init_chip:
+  49              	.LFB2:
+  38:../main.c     **** }
+  39:../main.c     **** 
+  40:../main.c     **** void init_chip(void)
+  41:../main.c     **** {
+  50              		.loc 1 41 0
+  51              		.cfi_startproc
+  52              		@ Function supports interworking.
+  53              		@ args = 0, pretend = 0, frame = 0
+  54              		@ frame_needed = 0, uses_anonymous_args = 0
+  55              		@ link register save eliminated.
+  42:../main.c     **** 
+  43:../main.c     ****   // Enabling PLL
+  44:../main.c     **** 
+  45:../main.c     ****   PLLCFG=PLLCFG_VAL;
+  56              		.loc 1 45 0
+  57 0000 6C209FE5 		ldr	r2, .L11
+  58 0004 2300A0E3 		mov	r0, #35
+  59 0008 8400C2E5 		strb	r0, [r2, #132]
+  60              	.LBB8:
+  61              	.LBB9:
+  36:../main.c     ****   PLLFEED=0xAA;
+  62              		.loc 1 36 0
+  63 000c 5510E0E3 		mvn	r1, #85
+  37:../main.c     ****   PLLFEED=0x55;
+  64              		.loc 1 37 0
+  65 0010 5530A0E3 		mov	r3, #85
+  66              	.LBE9:
+  67              	.LBE8:
+  46:../main.c     ****   feed();
+  47:../main.c     **** 
+  48:../main.c     ****   PLLCON=0x1;
+  68              		.loc 1 48 0
+  69 0014 0100A0E3 		mov	r0, #1
+  70              	.LBB11:
+  71              	.LBB10:
+  36:../main.c     ****   PLLFEED=0xAA;
+  72              		.loc 1 36 0
+  73 0018 8C10C2E5 		strb	r1, [r2, #140]
+  37:../main.c     ****   PLLFEED=0x55;
+  74              		.loc 1 37 0
+  75 001c 8C30C2E5 		strb	r3, [r2, #140]
+  76              	.LBE10:
+  77              	.LBE11:
+  78              		.loc 1 48 0
+  79 0020 8000C2E5 		strb	r0, [r2, #128]
+  80              	.LBB12:
+  81              	.LBB13:
+  36:../main.c     ****   PLLFEED=0xAA;
+  82              		.loc 1 36 0
+  83 0024 8C10C2E5 		strb	r1, [r2, #140]
+  37:../main.c     ****   PLLFEED=0x55;
+  84              		.loc 1 37 0
+  85 0028 8C30C2E5 		strb	r3, [r2, #140]
+  86              	.L5:
+  87              	.LBE13:
+  88              	.LBE12:
+  49:../main.c     ****   feed();
+  50:../main.c     **** 
+  51:../main.c     ****   while(!(PLLSTAT & 0x400)) ;
+  89              		.loc 1 51 0 discriminator 1
+  90 002c B838D2E1 		ldrh	r3, [r2, #136]
+  91 0030 010B13E3 		tst	r3, #1024
+  92 0034 38309FE5 		ldr	r3, .L11
+  93 0038 FBFFFF0A 		beq	.L5
+  52:../main.c     **** 
+  53:../main.c     ****   PLLCON=0x3;
+  94              		.loc 1 53 0
+  95 003c 0310A0E3 		mov	r1, #3
+  96 0040 8010C3E5 		strb	r1, [r3, #128]
+  97              	.LBB14:
+  98              	.LBB15:
+  36:../main.c     ****   PLLFEED=0xAA;
+  99              		.loc 1 36 0
+ 100 0044 5510E0E3 		mvn	r1, #85
+ 101 0048 8C10C3E5 		strb	r1, [r3, #140]
+  37:../main.c     ****   PLLFEED=0x55;
+ 102              		.loc 1 37 0
+ 103 004c 5510A0E3 		mov	r1, #85
+ 104 0050 8C10C3E5 		strb	r1, [r3, #140]
+ 105              	.LBE15:
+ 106              	.LBE14:
+  54:../main.c     ****   feed();
+  55:../main.c     **** 
+  56:../main.c     ****   // Enabling MAM
+  57:../main.c     **** 
+  58:../main.c     ****   MAMCR=0x0;
+  59:../main.c     ****   MAMTIM=0x2;
+ 107              		.loc 1 59 0
+ 108 0054 0220A0E3 		mov	r2, #2
+  58:../main.c     ****   MAMCR=0x0;
+ 109              		.loc 1 58 0
+ 110 0058 0010A0E3 		mov	r1, #0
+ 111 005c 0010C3E5 		strb	r1, [r3, #0]
+ 112              		.loc 1 59 0
+ 113 0060 0420C3E5 		strb	r2, [r3, #4]
+  60:../main.c     ****   MAMCR=0x2;
+ 114              		.loc 1 60 0
+ 115 0064 0020C3E5 		strb	r2, [r3, #0]
+  61:../main.c     **** 
+  62:../main.c     ****   // Enabling Fpclk = Fcclk
+  63:../main.c     **** 
+  64:../main.c     ****   APBDIV=APBDIV_VAL;
+ 116              		.loc 1 64 0
+ 117 0068 0120A0E3 		mov	r2, #1
+ 118 006c 0021C3E5 		strb	r2, [r3, #256]
+ 119 0070 1EFF2FE1 		bx	lr
+ 120              	.L12:
+ 121              		.align	2
+ 122              	.L11:
+ 123 0074 00C01FE0 		.word	-534790144
+ 124              		.cfi_endproc
+ 125              	.LFE2:
+ 127              		.section	.text.startup.main,"ax",%progbits
+ 128              		.align	2
+ 129              		.global	main
+ 131              	main:
+ 132              	.LFB0:
+  20:../main.c     **** {
+ 133              		.loc 1 20 0
+ 134              		.cfi_startproc
+ 135              		@ Function supports interworking.
+ 136              		@ Volatile: function does not return.
+ 137              		@ args = 0, pretend = 0, frame = 0
+ 138              		@ frame_needed = 0, uses_anonymous_args = 0
+ 139 0000 08402DE9 		stmfd	sp!, {r3, lr}
+ 140              	.LCFI0:
+ 141              		.cfi_def_cfa_offset 8
+ 142              		.cfi_offset 3, -8
+ 143              		.cfi_offset 14, -4
+  21:../main.c     ****   init_chip();
+ 144              		.loc 1 21 0
+ 145 0004 FEFFFFEB 		bl	init_chip
+ 146              	.LVL0:
+  22:../main.c     ****   init_counter_ms();
+ 147              		.loc 1 22 0
+ 148 0008 FEFFFFEB 		bl	init_counter_ms
+ 149              	.LVL1:
+  24:../main.c     ****   UARTInit(115200);
+ 150              		.loc 1 24 0
+ 151 000c 14009FE5 		ldr	r0, .L15
+ 152 0010 FEFFFFEB 		bl	UARTInit
+ 153              	.LVL2:
+  25:../main.c     ****   UARTSend("--------------UART INITIALIZED--------------\n\n", 0);
+ 154              		.loc 1 25 0
+ 155 0014 10009FE5 		ldr	r0, .L15+4
+ 156 0018 0010A0E3 		mov	r1, #0
+ 157 001c FEFFFFEB 		bl	UARTSend
+ 158              	.LVL3:
+ 159              	.L14:
+  28:../main.c     ****     start_benchmark();
+ 160              		.loc 1 28 0 discriminator 1
+ 161 0020 FEFFFFEB 		bl	start_benchmark
+ 162              	.LVL4:
+ 163 0024 FDFFFFEA 		b	.L14
+ 164              	.L16:
+ 165              		.align	2
+ 166              	.L15:
+ 167 0028 00C20100 		.word	115200
+ 168 002c 00000000 		.word	.LC0
+ 169              		.cfi_endproc
+ 170              	.LFE0:
+ 172              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 173              		.align	2
+ 174              	.LC0:
+ 175 0000 2D2D2D2D 		.ascii	"--------------UART INITIALIZED--------------\012\012"
+ 175      2D2D2D2D 
+ 175      2D2D2D2D 
+ 175      2D2D5541 
+ 175      52542049 
+ 176 002e 00       		.ascii	"\000"
+ 177 002f 00       		.text
+ 178              	.Letext0:
+ 179              		.file 2 "../inc_lpc/lpcSCB.h"
+ 180              		.file 3 "../inc/timer.h"
+ 181              		.file 4 "../inc/uart.h"
+ 182              		.file 5 "../inc/benchmark.h"
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 main.c
+     /tmp/ccZkGU1K.s:17     .text.feed:0000000000000000 $a
+     /tmp/ccZkGU1K.s:20     .text.feed:0000000000000000 feed
+     /tmp/ccZkGU1K.s:40     .text.feed:0000000000000018 $d
+     /tmp/ccZkGU1K.s:45     .text.init_chip:0000000000000000 $a
+     /tmp/ccZkGU1K.s:48     .text.init_chip:0000000000000000 init_chip
+     /tmp/ccZkGU1K.s:123    .text.init_chip:0000000000000074 $d
+     /tmp/ccZkGU1K.s:128    .text.startup.main:0000000000000000 $a
+     /tmp/ccZkGU1K.s:131    .text.startup.main:0000000000000000 main
+     /tmp/ccZkGU1K.s:167    .text.startup.main:0000000000000028 $d
+     /tmp/ccZkGU1K.s:173    .rodata.str1.4:0000000000000000 $d
+                     .debug_frame:0000000000000010 $d
+                           .group:0000000000000000 wm4.lpc213x.h.15.4e57150503f9987fca2e0f44b413182c
+                           .group:0000000000000000 wm4.lpcTMR.h.15.5d8c6944123d2303f976236c185e5c9a
+                           .group:0000000000000000 wm4.lpcUART.h.15.0f98b1282caa7bcace095134821cf321
+                           .group:0000000000000000 wm4.lpcSCB.h.15.1012a370a86d3e047c485ab84e847f6f
+                           .group:0000000000000000 wm4.lpcVIC.h.15.116b52310ce75ea4a204a3e3bc4de613
+                           .group:0000000000000000 wm4.lpc213x.h.36.97cbc9815be9db61df6cc76641d23caf
+                           .group:0000000000000000 wm4.target.h.3.96dccf878d6502485bd76a1b862a959d
+                           .group:0000000000000000 wm4.irq.h.14.4cfdd196bd43dd901c13cb04b5c89d78
+                           .group:0000000000000000 wm4.uart.h.7.c380785a0e53261b57a1cdd19735d46c
+                           .group:0000000000000000 wm4.newlib.h.8.4b2338a4bcae55bd64283f2c77089b80
+                           .group:0000000000000000 wm4.config.h.193.5fb8ef056cdff92dec3dee9552839d8c
+                           .group:0000000000000000 wm4._ansi.h.23.95dee4059009fe3ab635a191bb73dc66
+                           .group:0000000000000000 wm4.stdlib.h.13.603ed7eb09a1561ab06840b7c0fcff58
+                           .group:0000000000000000 wm4.stddef.h.187.40b3a084f9bc2c020a9e00b9eabe9c14
+                           .group:0000000000000000 wm4._default_types.h.6.1dbd2e581fd590860c7c17f21d147e91
+                           .group:0000000000000000 wm4.lock.h.2.9bc98482741e5e2a9450b12934a684ea
+                           .group:0000000000000000 wm4.stddef.h.349.31f4c5baff3fa2689010b32028da9c47
+                           .group:0000000000000000 wm4.reent.h.16.9e42f0e588b85e70b2bf6572af57ce64
+                           .group:0000000000000000 wm4.alloca.h.8.dfc0c703c47ec3e69746825b17d9e66d
+                           .group:0000000000000000 wm4.stdlib.h.50.f5923f1950ced340a337f4676566f65a
+
+UNDEFINED SYMBOLS
+init_counter_ms
+UARTInit
+UARTSend
+start_benchmark

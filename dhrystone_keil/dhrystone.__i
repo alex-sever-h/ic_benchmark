@@ -1,0 +1,1 @@
+--feedback "Dhrystone.fed" -c --cpu ARM7TDMI -g -O3 -I C:\Keil\ARM\RV31\Inc -I C:\Keil\ARM\CMSIS\Include -I C:\Keil\ARM\Inc\Philips -o "dhrystone.o" --omf_browse "dhrystone.crf" --depend "dhrystone.d" "dhrystone.c"

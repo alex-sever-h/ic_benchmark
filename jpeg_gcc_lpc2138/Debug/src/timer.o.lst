@@ -1,0 +1,78 @@
+   1              		.cpu arm7tdmi-s
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 2
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.file	"timer.c"
+  13              		.section	.text.init_counter_ms,"ax",%progbits
+  14              		.align	2
+  15              		.global	init_counter_ms
+  17              	init_counter_ms:
+  18              		@ Function supports interworking.
+  19              		@ args = 0, pretend = 0, frame = 0
+  20              		@ frame_needed = 0, uses_anonymous_args = 0
+  21              		@ link register save eliminated.
+  22 0000 10309FE5 		ldr	r3, .L2
+  23 0004 0120A0E3 		mov	r2, #1
+  24 0008 042083E5 		str	r2, [r3, #4]
+  25 000c 08209FE5 		ldr	r2, .L2+4
+  26 0010 0C2083E5 		str	r2, [r3, #12]
+  27 0014 1EFF2FE1 		bx	lr
+  28              	.L3:
+  29              		.align	2
+  30              	.L2:
+  31 0018 004000E0 		.word	-536854528
+  32 001c 66E60000 		.word	58982
+  34              		.section	.text.reset_counter,"ax",%progbits
+  35              		.align	2
+  36              		.global	reset_counter
+  38              	reset_counter:
+  39              		@ Function supports interworking.
+  40              		@ args = 0, pretend = 0, frame = 0
+  41              		@ frame_needed = 0, uses_anonymous_args = 0
+  42              		@ link register save eliminated.
+  43 0000 10309FE5 		ldr	r3, .L5
+  44 0004 0320A0E3 		mov	r2, #3
+  45 0008 042083E5 		str	r2, [r3, #4]
+  46 000c 0120A0E3 		mov	r2, #1
+  47 0010 042083E5 		str	r2, [r3, #4]
+  48 0014 1EFF2FE1 		bx	lr
+  49              	.L6:
+  50              		.align	2
+  51              	.L5:
+  52 0018 004000E0 		.word	-536854528
+  54              		.section	.text.read_counter,"ax",%progbits
+  55              		.align	2
+  56              		.global	read_counter
+  58              	read_counter:
+  59              		@ Function supports interworking.
+  60              		@ args = 0, pretend = 0, frame = 0
+  61              		@ frame_needed = 0, uses_anonymous_args = 0
+  62              		@ link register save eliminated.
+  63 0000 04309FE5 		ldr	r3, .L8
+  64 0004 080093E5 		ldr	r0, [r3, #8]
+  65 0008 1EFF2FE1 		bx	lr
+  66              	.L9:
+  67              		.align	2
+  68              	.L8:
+  69 000c 004000E0 		.word	-536854528
+  71              		.ident	"GCC: (GNU) 4.7.0"
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 timer.c
+     /tmp/cce68X4h.s:14     .text.init_counter_ms:0000000000000000 $a
+     /tmp/cce68X4h.s:17     .text.init_counter_ms:0000000000000000 init_counter_ms
+     /tmp/cce68X4h.s:31     .text.init_counter_ms:0000000000000018 $d
+     /tmp/cce68X4h.s:35     .text.reset_counter:0000000000000000 $a
+     /tmp/cce68X4h.s:38     .text.reset_counter:0000000000000000 reset_counter
+     /tmp/cce68X4h.s:52     .text.reset_counter:0000000000000018 $d
+     /tmp/cce68X4h.s:55     .text.read_counter:0000000000000000 $a
+     /tmp/cce68X4h.s:58     .text.read_counter:0000000000000000 read_counter
+     /tmp/cce68X4h.s:69     .text.read_counter:000000000000000c $d
+
+NO UNDEFINED SYMBOLS

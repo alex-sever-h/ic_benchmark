@@ -1,0 +1,30 @@
+;#<FEEDBACK># ARM Linker, 4.1 [Build 894]: Last Updated: Fri Apr 06 09:27:40 2012
+;VERSION 0.2
+;FILE benchmark.o
+Func_1 <= USED 0
+Func_2 <= USED 0
+Func_3 <= USED 0
+Proc_1 <= USED 0
+Proc_2 <= USED 0
+Proc_3 <= USED 0
+Proc_4 <= USED 0
+Proc_5 <= USED 0
+Proc_6 <= USED 0
+Proc_7 <= USED 0
+Proc_8 <= USED 0
+;FILE lcd.o
+lcd_clear <= USED 0
+lcd_command_write <= USED 0
+lcd_data_write <= USED 0
+lcd_gotoxy <= USED 0
+lcd_init <= USED 0
+lcd_init_pins <= USED 0
+lcd_putchar <= USED 0
+lcd_putstring <= USED 0
+lcd_test <= USED 0
+;FILE main.o
+feed <= USED 0
+init_chip <= USED 0
+;FILE timer.o
+;FILE uart.o
+UART0Handler <= USED 0

@@ -1,0 +1,275 @@
+   1              		.cpu arm7tdmi-s
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 2
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.file	"uart.c"
+  13              		.section	.text.UART0Handler,"ax",%progbits
+  14              		.align	2
+  15              		.global	UART0Handler
+  17              	UART0Handler:
+  18              		@ Interrupt Service Routine.
+  19              		@ args = 0, pretend = 0, frame = 0
+  20              		@ frame_needed = 0, uses_anonymous_args = 0
+  21              		@ link register save eliminated.
+  22 0000 0F102DE9 		stmfd	sp!, {r0, r1, r2, r3, ip}
+  23 0004 18219FE5 		ldr	r2, .L18
+  24 0008 0830D2E5 		ldrb	r3, [r2, #8]	@ zero_extendqisi2
+  25 000c A330A0E1 		mov	r3, r3, lsr #1
+  26 0010 073003E2 		and	r3, r3, #7
+  27 0014 030053E3 		cmp	r3, #3
+  28 0018 0A00000A 		beq	.L13
+  29 001c 020053E3 		cmp	r3, #2
+  30 0020 1B00000A 		beq	.L14
+  31 0024 060053E3 		cmp	r3, #6
+  32 0028 2A00000A 		beq	.L15
+  33 002c 010053E3 		cmp	r3, #1
+  34 0030 3400000A 		beq	.L16
+  35              	.L6:
+  36 0034 0020A0E3 		mov	r2, #0
+  37 0038 0030E0E3 		mvn	r3, #0
+  38 003c CF2F03E5 		str	r2, [r3, #-4047]
+  39              	.L1:
+  40 0040 0F10BDE8 		ldmfd	sp!, {r0, r1, r2, r3, ip}
+  41 0044 04F05EE2 		subs	pc, lr, #4
+  42              	.L13:
+  43 0048 1430D2E5 		ldrb	r3, [r2, #20]	@ zero_extendqisi2
+  44 004c 9E0013E2 		ands	r0, r3, #158
+  45 0050 FF1003E2 		and	r1, r3, #255
+  46 0054 2400001A 		bne	.L17
+  47 0058 010013E3 		tst	r3, #1
+  48 005c F4FFFF0A 		beq	.L6
+  49 0060 C0309FE5 		ldr	r3, .L18+4
+  50 0064 001093E5 		ldr	r1, [r3, #0]
+  51 0068 00C0D2E5 		ldrb	ip, [r2, #0]	@ zero_extendqisi2
+  52 006c B8209FE5 		ldr	r2, .L18+8
+  53 0070 FFC00CE2 		and	ip, ip, #255
+  54 0074 01C0C2E7 		strb	ip, [r2, r1]
+  55 0078 002093E5 		ldr	r2, [r3, #0]
+  56 007c 012082E2 		add	r2, r2, #1
+  57 0080 002083E5 		str	r2, [r3, #0]
+  58 0084 002093E5 		ldr	r2, [r3, #0]
+  59 0088 100052E3 		cmp	r2, #16
+  60 008c 00008305 		streq	r0, [r3, #0]
+  61 0090 E7FFFFEA 		b	.L6
+  62              	.L14:
+  63 0094 8C309FE5 		ldr	r3, .L18+4
+  64 0098 001093E5 		ldr	r1, [r3, #0]
+  65 009c 0000D2E5 		ldrb	r0, [r2, #0]	@ zero_extendqisi2
+  66 00a0 84209FE5 		ldr	r2, .L18+8
+  67 00a4 FF0000E2 		and	r0, r0, #255
+  68 00a8 0100C2E7 		strb	r0, [r2, r1]
+  69 00ac 002093E5 		ldr	r2, [r3, #0]
+  70 00b0 012082E2 		add	r2, r2, #1
+  71 00b4 002083E5 		str	r2, [r3, #0]
+  72 00b8 002093E5 		ldr	r2, [r3, #0]
+  73 00bc 100052E3 		cmp	r2, #16
+  74 00c0 0020A003 		moveq	r2, #0
+  75 00c4 00208305 		streq	r2, [r3, #0]
+  76 00c8 002093E5 		ldr	r2, [r3, #0]
+  77 00cc 012042E2 		sub	r2, r2, #1
+  78 00d0 002083E5 		str	r2, [r3, #0]
+  79 00d4 D6FFFFEA 		b	.L6
+  80              	.L15:
+  81 00d8 50309FE5 		ldr	r3, .L18+12
+  82 00dc 002093E5 		ldr	r2, [r3, #0]
+  83 00e0 012C82E3 		orr	r2, r2, #256
+  84 00e4 002083E5 		str	r2, [r3, #0]
+  85 00e8 D1FFFFEA 		b	.L6
+  86              	.L17:
+  87 00ec 3C309FE5 		ldr	r3, .L18+12
+  88 00f0 001083E5 		str	r1, [r3, #0]
+  89 00f4 0030D2E5 		ldrb	r3, [r2, #0]	@ zero_extendqisi2
+  90 00f8 0020A0E3 		mov	r2, #0
+  91 00fc 0030E0E3 		mvn	r3, #0
+  92 0100 CF2F03E5 		str	r2, [r3, #-4047]
+  93 0104 CDFFFFEA 		b	.L1
+  94              	.L16:
+  95 0108 1420D2E5 		ldrb	r2, [r2, #20]	@ zero_extendqisi2
+  96 010c 202012E2 		ands	r2, r2, #32
+  97 0110 1C209F15 		ldrne	r2, .L18+16
+  98 0114 18309F05 		ldreq	r3, .L18+16
+  99 0118 0030C215 		strneb	r3, [r2, #0]
+ 100 011c 0020C305 		streqb	r2, [r3, #0]
+ 101 0120 C3FFFFEA 		b	.L6
+ 102              	.L19:
+ 103              		.align	2
+ 104              	.L18:
+ 105 0124 00C000E0 		.word	-536821760
+ 106 0128 00000000 		.word	.LANCHOR0
+ 107 012c 00000000 		.word	UART0Buffer
+ 108 0130 00000000 		.word	UART0Status
+ 109 0134 00000000 		.word	.LANCHOR1
+ 111              		.global	__aeabi_uidiv
+ 112              		.section	.text.UARTInit,"ax",%progbits
+ 113              		.align	2
+ 114              		.global	UARTInit
+ 116              	UARTInit:
+ 117              		@ Function supports interworking.
+ 118              		@ args = 0, pretend = 0, frame = 0
+ 119              		@ frame_needed = 0, uses_anonymous_args = 0
+ 120 0000 A0209FE5 		ldr	r2, .L21
+ 121 0004 00C092E5 		ldr	ip, [r2, #0]
+ 122 0008 38402DE9 		stmfd	sp!, {r3, r4, r5, lr}
+ 123 000c 98409FE5 		ldr	r4, .L21+4
+ 124 0010 05C08CE3 		orr	ip, ip, #5
+ 125 0014 0150A0E3 		mov	r5, #1
+ 126 0018 0030A0E3 		mov	r3, #0
+ 127 001c 00C082E5 		str	ip, [r2, #0]
+ 128 0020 0450C4E5 		strb	r5, [r4, #4]
+ 129 0024 0830C4E5 		strb	r3, [r4, #8]
+ 130 0028 1430C4E5 		strb	r3, [r4, #20]
+ 131 002c 7C30E0E3 		mvn	r3, #124
+ 132 0030 0C30C4E5 		strb	r3, [r4, #12]
+ 133 0034 0010A0E1 		mov	r1, r0
+ 134 0038 E109A0E3 		mov	r0, #3686400
+ 135 003c FEFFFFEB 		bl	__aeabi_uidiv
+ 136 0040 68209FE5 		ldr	r2, .L21+8
+ 137 0044 9032C2E0 		smull	r3, r2, r0, r2
+ 138 0048 C03FA0E1 		mov	r3, r0, asr #31
+ 139 004c 002082E0 		add	r2, r2, r0
+ 140 0050 C22363E0 		rsb	r2, r3, r2, asr #7
+ 141 0054 020080E0 		add	r0, r0, r2
+ 142 0058 FF2002E2 		and	r2, r2, #255
+ 143 005c 0420C4E5 		strb	r2, [r4, #4]
+ 144 0060 FF1000E2 		and	r1, r0, #255
+ 145 0064 0320A0E3 		mov	r2, #3
+ 146 0068 0010C4E5 		strb	r1, [r4, #0]
+ 147 006c 0C20C4E5 		strb	r2, [r4, #12]
+ 148 0070 4720A0E3 		mov	r2, #71
+ 149 0074 0820C4E5 		strb	r2, [r4, #8]
+ 150 0078 0720A0E3 		mov	r2, #7
+ 151 007c 0420C4E5 		strb	r2, [r4, #4]
+ 152 0080 2C209FE5 		ldr	r2, .L21+12
+ 153 0084 0030E0E3 		mvn	r3, #0
+ 154 0088 FF2E03E5 		str	r2, [r3, #-3839]
+ 155 008c 2620A0E3 		mov	r2, #38
+ 156 0090 FF2D03E5 		str	r2, [r3, #-3583]
+ 157 0094 4020A0E3 		mov	r2, #64
+ 158 0098 0500A0E1 		mov	r0, r5
+ 159 009c EF2F03E5 		str	r2, [r3, #-4079]
+ 160 00a0 3840BDE8 		ldmfd	sp!, {r3, r4, r5, lr}
+ 161 00a4 1EFF2FE1 		bx	lr
+ 162              	.L22:
+ 163              		.align	2
+ 164              	.L21:
+ 165 00a8 00C002E0 		.word	-536690688
+ 166 00ac 00C000E0 		.word	-536821760
+ 167 00b0 81808080 		.word	-2139062143
+ 168 00b4 00000000 		.word	UART0Handler
+ 170              		.section	.text.UARTSend,"ax",%progbits
+ 171              		.align	2
+ 172              		.global	UARTSend
+ 174              	UARTSend:
+ 175              		@ Function supports interworking.
+ 176              		@ args = 0, pretend = 0, frame = 0
+ 177              		@ frame_needed = 0, uses_anonymous_args = 0
+ 178 0000 000051E3 		cmp	r1, #0
+ 179 0004 38402DE9 		stmfd	sp!, {r3, r4, r5, lr}
+ 180 0008 0040A0E1 		mov	r4, r0
+ 181 000c 0E0000DA 		ble	.L24
+ 182              	.L26:
+ 183 0010 44209FE5 		ldr	r2, .L35
+ 184 0014 44009FE5 		ldr	r0, .L35+4
+ 185 0018 015084E0 		add	r5, r4, r1
+ 186 001c 02C0A0E1 		mov	ip, r2
+ 187 0020 0010A0E3 		mov	r1, #0
+ 188              	.L34:
+ 189 0024 0030D2E5 		ldrb	r3, [r2, #0]	@ zero_extendqisi2
+ 190 0028 000053E3 		cmp	r3, #0
+ 191 002c FCFFFF0A 		beq	.L34
+ 192 0030 0130D4E4 		ldrb	r3, [r4], #1	@ zero_extendqisi2
+ 193 0034 050054E1 		cmp	r4, r5
+ 194 0038 0030C0E5 		strb	r3, [r0, #0]
+ 195 003c 0010CCE5 		strb	r1, [ip, #0]
+ 196 0040 F7FFFF1A 		bne	.L34
+ 197              	.L23:
+ 198 0044 3840BDE8 		ldmfd	sp!, {r3, r4, r5, lr}
+ 199 0048 1EFF2FE1 		bx	lr
+ 200              	.L24:
+ 201 004c FEFFFFEB 		bl	strlen
+ 202 0050 001050E2 		subs	r1, r0, #0
+ 203 0054 EDFFFF1A 		bne	.L26
+ 204 0058 F9FFFFEA 		b	.L23
+ 205              	.L36:
+ 206              		.align	2
+ 207              	.L35:
+ 208 005c 00000000 		.word	.LANCHOR1
+ 209 0060 00C000E0 		.word	-536821760
+ 211              		.section	.text.puts_UART,"ax",%progbits
+ 212              		.align	2
+ 213              		.global	puts_UART
+ 215              	puts_UART:
+ 216              		@ Function supports interworking.
+ 217              		@ args = 0, pretend = 0, frame = 0
+ 218              		@ frame_needed = 0, uses_anonymous_args = 0
+ 219 0000 38402DE9 		stmfd	sp!, {r3, r4, r5, lr}
+ 220 0004 0040A0E1 		mov	r4, r0
+ 221 0008 FEFFFFEB 		bl	strlen
+ 222 000c 000050E3 		cmp	r0, #0
+ 223 0010 0C00000A 		beq	.L37
+ 224 0014 34209FE5 		ldr	r2, .L48
+ 225 0018 34509FE5 		ldr	r5, .L48+4
+ 226 001c 00C084E0 		add	ip, r4, r0
+ 227 0020 0010A0E3 		mov	r1, #0
+ 228 0024 0200A0E1 		mov	r0, r2
+ 229              	.L47:
+ 230 0028 0030D2E5 		ldrb	r3, [r2, #0]	@ zero_extendqisi2
+ 231 002c 000053E3 		cmp	r3, #0
+ 232 0030 FCFFFF0A 		beq	.L47
+ 233 0034 0130D4E4 		ldrb	r3, [r4], #1	@ zero_extendqisi2
+ 234 0038 0C0054E1 		cmp	r4, ip
+ 235 003c 0030C5E5 		strb	r3, [r5, #0]
+ 236 0040 0010C0E5 		strb	r1, [r0, #0]
+ 237 0044 F7FFFF1A 		bne	.L47
+ 238              	.L37:
+ 239 0048 3840BDE8 		ldmfd	sp!, {r3, r4, r5, lr}
+ 240 004c 1EFF2FE1 		bx	lr
+ 241              	.L49:
+ 242              		.align	2
+ 243              	.L48:
+ 244 0050 00000000 		.word	.LANCHOR1
+ 245 0054 00C000E0 		.word	-536821760
+ 247              		.global	UART0Count
+ 248              		.comm	UART0Buffer,16,4
+ 249              		.global	UART0TxEmpty
+ 250              		.comm	UART0Status,4,4
+ 251              		.section	.data.UART0TxEmpty,"aw",%progbits
+ 252              		.set	.LANCHOR1,. + 0
+ 255              	UART0TxEmpty:
+ 256 0000 01       		.byte	1
+ 257              		.section	.bss.UART0Count,"aw",%nobits
+ 258              		.align	2
+ 259              		.set	.LANCHOR0,. + 0
+ 262              	UART0Count:
+ 263 0000 00000000 		.space	4
+ 264              		.ident	"GCC: (GNU) 4.7.0"
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 uart.c
+     /tmp/ccSFyEZg.s:14     .text.UART0Handler:0000000000000000 $a
+     /tmp/ccSFyEZg.s:17     .text.UART0Handler:0000000000000000 UART0Handler
+     /tmp/ccSFyEZg.s:105    .text.UART0Handler:0000000000000124 $d
+                            *COM*:0000000000000010 UART0Buffer
+                            *COM*:0000000000000004 UART0Status
+     /tmp/ccSFyEZg.s:113    .text.UARTInit:0000000000000000 $a
+     /tmp/ccSFyEZg.s:116    .text.UARTInit:0000000000000000 UARTInit
+     /tmp/ccSFyEZg.s:165    .text.UARTInit:00000000000000a8 $d
+     /tmp/ccSFyEZg.s:171    .text.UARTSend:0000000000000000 $a
+     /tmp/ccSFyEZg.s:174    .text.UARTSend:0000000000000000 UARTSend
+     /tmp/ccSFyEZg.s:208    .text.UARTSend:000000000000005c $d
+     /tmp/ccSFyEZg.s:212    .text.puts_UART:0000000000000000 $a
+     /tmp/ccSFyEZg.s:215    .text.puts_UART:0000000000000000 puts_UART
+     /tmp/ccSFyEZg.s:244    .text.puts_UART:0000000000000050 $d
+     /tmp/ccSFyEZg.s:262    .bss.UART0Count:0000000000000000 UART0Count
+     /tmp/ccSFyEZg.s:255    .data.UART0TxEmpty:0000000000000000 UART0TxEmpty
+     /tmp/ccSFyEZg.s:258    .bss.UART0Count:0000000000000000 $d
+
+UNDEFINED SYMBOLS
+__aeabi_uidiv
+strlen

@@ -1,0 +1,27 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+H:\developer_embedded\ic_bench\dhrystone_keil\Dhrystone.uvproj
+Project File Date:  04/06/2012
+
+<h2>Output:</h2>
+Rebuild target 'Target 1'
+assembling Startup.s...
+compiling main.c...
+main.c(30): warning:  #111-D: statement is unreachable
+compiling timer.c...
+compiling uart.c...
+uart.c(25): warning:  #550-D: variable "Dummy" was set but never used
+compiling lcd.c...
+compiling benchmark.c...
+benchmark.c(485): warning: C3017W: Enum_Loc may be used before being set
+benchmark.c(638): warning: C3017W: Ch_Loc may be used before being set
+benchmark.c(199): warning: C3017W: Int_3_Loc may be used before being set
+benchmark.c(638): warning: C3017W: Ch_Loc may be used before being set
+benchmark.c(485): warning: C3017W: Enum_Loc may be used before being set
+linking...
+Program Size: Code=8212 RO-data=72 RW-data=32 ZI-data=30928  
+FromELF: creating hex file...
+"Dhrystone.axf" - 0 Error(s), 7 Warning(s).
